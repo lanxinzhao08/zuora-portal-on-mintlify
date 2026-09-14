@@ -1,0 +1,544 @@
+@import url('./fonts/fonts.css');
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F8F9FB; /* Main body background */
+  color: #333333;
+}
+
+table, th, td {
+  border: 1px solid rgb(228, 231, 235);
+  border-collapse: collapse;
+}
+
+td {
+  padding: 6px 13px;
+}
+
+th {
+  background-color: rgb(241, 245, 248);
+  padding: 6px 13px;
+}
+
+table.md {
+  border-radius: 0 !important;
+}
+
+.hero-section {
+  background-color: #E6F3F7; /* Top section background */
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 0 0 10px 10px; /* Example for rounded bottom corners */
+}
+
+.getting-started-section {
+  background: linear-gradient(to right, #02929C, #6383D3); /* Gradient from teal to blue */
+  padding: 20px 0;
+  border-radius: 8px;
+}
+
+.explore-apis-section {
+  background-color: #E6F3F7; /* Green background for first row */
+  padding: 20px 0;
+  border-radius: 8px;
+}
+
+/* Toggle Button Styles */
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  background: white;
+  border-radius: 8px;
+  padding: 4px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-btn {
+  background: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.toggle-btn:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.toggle-btn.active {
+  background: #E6F3F7;
+  color: #333;
+  font-weight: 600;
+}
+
+.toggle-btn:first-child {
+  margin-right: 2px;
+}
+
+.toggle-btn:last-child {
+  margin-left: 2px;
+}
+
+.explore-sdks-section {
+  background-color: #E8EEF6; /* Green background for first row */
+  padding: 20px 0;
+  border-radius: 8px;
+}
+
+.dev-resources-section {
+  background-color: #F8F9FB; /* Green background for first row */
+  padding: 20px 0;
+  border-radius: 8px;
+}
+
+.hero-section h1 {
+  color: #000000;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  padding: 10px 10px 5px 20px; /* top right bottom left */
+  flex: 1; /* Allows cards to grow and shrink */
+  min-width: 280px; /* Minimum width for cards */
+  max-width: 350px; /* Max width for cards in a row */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+.card h3, .card h4 {
+  color: #000000;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card ul li {
+  margin-bottom: 5px;
+}
+
+.card ul li a {
+  color: #007079;
+  text-decoration: none;
+}
+
+.card ul li a:hover {
+  text-decoration: underline;
+}
+
+.icon {
+  font-size: 1.2em; /* Adjust icon size */
+  color: #007079; /* Ensure icon color matches text */
+}
+
+/* Styles overrides which can't be done by the theme.ts */
+
+article th {
+  resize: none!important;
+}
+
+/* Workaround to compensate body margin-top which is added by the wc-mega-menu */
+body.wc-loaded > #___gatsby {
+  margin-top: calc(0px - var(--zuora-generic-header-height));
+}
+
+/* Place for the wc-mega-menu */
+.overrideNavbar {
+  
+ /** height: var(--zuora-generic-header-height);*/ /**no longer needed after upgraded to new DC*/
+  font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+
+/* Fix footer overlapping by other elements (TOC, Searchbox) */
+wc-mega-footer {
+  z-index: 11;
+}
+
+header > nav > ul > li a span {
+  color: var(--zuora-header-link-color);
+  font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+#content[role=button] {
+  font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+mega-menu {
+  font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+.main-nav {
+  font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+.main-nav > li > a > span {
+  font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+.sidebar:active {
+  font-weight: 600 !important;
+}
+
+:host-context(span) {
+  font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+/* Code samples boolean values color */
+code .token.boolean {
+    color: #F1F5F8 !important;
+}
+
+/* color of the selected tab in try it component */
+.react-tabs__tab--selected {
+    border-bottom-color: #00D2B9 !important;
+}
+
+/* align drilldown menu title item styles with regular menu */
+aside ul > div > :not(div + span) > span {
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 16px;
+    margin-bottom: -8px;
+    margin-top: -8px;
+}
+
+/* take into account wc-mega-menu height for paddings and height of jumbotron */
+.zuora-jumbotron {
+    height: calc(350px + var(--zuora-generic-header-height)) !important;
+    padding-top: var(--zuora-generic-header-height) !important;
+}
+
+/** expose loading bar */
+div#nprogress > div.bar {
+  z-index: 100000;
+}
+ 
+/** Adjust paragraphs margins*/
+p {
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+
+/**Customize the bold font*/
+b, strong {
+  font-weight: 600 !important;
+}
+
+/**Adjust the left sidebar's width*/
+aside {
+  font-weight: 700;
+  /* width: 272px !important; */
+  position: initial;
+}
+
+/**Adjust the API group name formatting*/
+aside > div > ul > ul > ul > span {
+  padding: 8px !important;
+}
+
+/**Make the toc scrollable*/
+#gatsby-focus-wrapper > div > div > div > div > aside > div {
+  max-height: calc(100vh - 40px);
+  font-size: 14px;
+}
+
+nav {
+  z-index: 11;
+}
+
+
+/** horizontal navbar customization **/
+
+#navbar a span {
+  font-weight: 500;
+  color: #103426 !important;
+}
+
+#navbar {
+  font-size: 0.5rem;
+  padding: 0.15em 2.75em;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: #F1F5F8 !important; 
+/*  background-color: #e4e7e8 !important; */
+}
+
+#navbar > a > img {
+  height: 1.75rem !important;
+  margin: 1.25em;
+}
+
+#search {
+  font-size: 14px;
+  padding: 0.5em 2.5em 0.5em 1em;
+/*  background-color: #FAFAFA; */
+/* background-color: #e4e7e8 !important; */
+  width:236px;
+}
+
+#navbar > ul {
+  padding-inline-start: 16em;
+}
+
+#navbar > ul > span > span {
+  margin-left: 12em;
+}
+
+#navbar > ul > span > span > span {
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);  /* Safari and Chrome */
+  padding-bottom: 2rem;
+}
+
+.code-snippets-tabs .snippets-tabs-headers .tab-header {
+  color: rgb(0, 0, 0, 0.7) !important;
+}
+
+i[data-cy='arrow'] {
+  visibility: hidden;
+}
+
+.mt-6 {
+  margin-top: 24px;
+}
+
+.icon_item {
+  align-items: flex-start;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  min-width: 0;
+  transition: opacity .15s;
+}
+
+.overrideNavbar > div {
+  background-color: #FFFFFF;
+  font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+:root {
+  /* --md-content-max-width: 910px; */
+  --content-width: 760px;
+  --content-v-padding: 40px;
+  --content-h-padding: 56px;
+  --font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+.ovr-page.page-body {
+  padding-top: 42px
+}
+
+.page-body {
+  flex: 1 0 auto;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: var(--content-v-padding) var(--content-h-padding);
+  width: calc(var(--content-width) + var(--content-h-padding)* 2);
+}
+
+.ovr-page {
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.variable {
+  font-weight: 600;
+}
+
+.function {
+  color: #F5FBFF;
+  font-weight: 600;
+}
+
+#gatsby-focus-wrapper > div > div > div > div > aside > div a:hover,
+#gatsby-focus-wrapper > div > div > div > div > aside > div a:active {
+  color: #000000 !important;
+  background-color: #e4e7eb !important;
+}
+
+#gatsby-focus-wrapper > div > div > div > div > aside > div a.active {
+  color: #000000 !important;
+  background-color: #e4e7eb !important;
+}
+
+/**Customize the image size*/
+img {
+  max-width: 100% !important;
+}
+
+.api-content > div > div > div > div > div > div > div {
+  font-size: 14px;
+}
+
+/* article > ul > li > table, article > ul > li > table th, article > ul > li > table td {
+  border: 1px solid rgb(235, 237, 240);
+  border-collapse: collapse;
+  border-radius: 4px;
+  padding: 0.4em;
+} */
+/* article > ul > li > table > thead {
+  background-color: rgb(241, 245, 248);
+} */
+
+section[class*="Layout_ContentWrapper"] {
+  line-height: 1.5rem;
+}
+
+
+section[class*="Layout__ContentWrapper"] code {
+  font-size: 13px !important;
+  background-color: rgba(38, 50, 56, 0.04);
+  border: 1px solid rgb(228, 231, 235);
+  color: #E53935;
+}
+
+section[class*="Layout__ContentWrapper"] p {
+  line-height: 1.5rem;
+}
+
+section[class*="Layout__ContentWrapper"] ul > li {
+  line-height: 1.5rem;
+  padding-bottom: 0.3rem;
+}
+
+section[class*="Layout__ContentWrapper"] ol > li {
+  line-height: 1.5rem;
+  padding-bottom: 0.3rem;
+}
+
+section[class*="Layout__ContentWrapper"] > h4 {
+  line-height: 1.5em;
+}
+
+div[class*="GuideStep__Wrapper"] {
+  line-height: 1.5rem;
+}
+
+#gatsby-focus-wrapper div[class*="CodeGuideFile__Wrapper"] > pre[class*="language-"] {
+  padding-bottom: 80px !important;
+}
+
+div[class*="CodeGuide__CodeGuideWrapper"] > div[class*="CodeTabs"] {
+  margin-bottom: 50px;
+}
+
+/**Disable the invisible copy button above code fonts**/
+/**
+.code-wrapper .gatsby-code-button-container {
+  display: none !important;
+}
+*/
+/** Make TOC scrollable **/
+#gatsby-focus-wrapper > div > div > div > aside > div {
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+
+
+#gatsby-focus-wrapper > div > div > div > aside > div > a.active, 
+#gatsby-focus-wrapper > div > div > div > aside > div > a:hover, 
+#gatsby-focus-wrapper > div > div > div > aside > div > a:focus {
+  background-color: #e4e7eb !important;
+  color: #000000
+}
+
+details > summary {
+  color: #00d2b9 !important;
+  padding-left: 1em !important;
+}
+
+details > p {
+  padding-left: 2em;
+  color:rgba(0, 0, 0, 0.6);
+}
+
+[data-component-name="Search/Search"] {
+  width: -webkit-fill-available;
+}
+
+[data-testid="search-trigger-input"] {
+  width: -webkit-fill-available;
+}
+
+[data-component-name="Panel/Panel"] > div:not([data-component-name]) {
+  display: none;
+}
+
+[data-testid="panel-languages"] {
+  display: none;
+}
+
+.download-button {
+  text-decoration: none;
+  text-align: center;
+  width: auto;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s, box-shadow 0.25s;
+  line-height: 1;
+  font-family: inherit;
+  box-shadow: none;
+  background-color: rgb(0, 210, 185);
+  color: rgb(255, 255, 255) !important;
+  font-size: 12px;
+  padding: 8px 10px;
+  min-width: 90px;
+  text-decoration: none;
+}
+
+.download-button:hover {
+  background-color: rgb(0, 185, 163);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px 0px;
+  text-decoration: none !important;
+}
+
+
+[data-component-name="Search/SearchFilterField"]:has(input[placeholder="Search api version..."]) {
+  display: none;
+}
+
+[data-component-name="Dropdown/DropdownMenuItem"]:has([data-component-name="icons/VSCodeIcon/VSCodeIcon"]),
+[data-component-name="Dropdown/DropdownMenuItem"]:has([data-component-name="icons/CursorIcon/CursorIcon"]),
+[data-component-name="Dropdown/DropdownMenuItem"]:has([data-component-name="icons/ClaudeIcon/ClaudeIcon"]),
+[data-component-name="Dropdown/DropdownMenuItem"]:has([data-component-name="icons/ChatGptIcon/ChatGptIcon"]) {
+  display: none;
+}
+
+[data-component-name="Search/SearchDialog"] {
+  z-index: 100000 !important;
+}

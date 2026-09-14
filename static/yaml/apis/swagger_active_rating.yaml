@@ -1,0 +1,3958 @@
+swagger: '2.0'
+info:
+  version: '2020-02-10'
+  title: Active Rating API
+  x-logo:
+    url: https://www.zuora.com/wp-content/uploads/2016/10/zuora-dev-logo-api-ref.svg
+  description: |
+
+  contact:
+    email: docs@zuora.com
+host: rest.zuora.com
+schemes:
+  - https
+basePath: /
+produces:
+  - application/json; charset=utf-8
+consumes:
+  - application/json; charset=utf-8
+
+tags:
+  - name: Usage (with Active Rating)
+    description: |
+      **Note:** The Usage (with Active Rating) operations are part of the [Active Rating](https://knowledgecenter.zuora.com/CB_Billing/J_Billing_Operations/H_Active_Rating) feature. You cannot use these operations with the [Usage](/api-reference/#tag/Usage) operations.
+
+      If a 500 or 502 error occurs when you call any of the Usage (with Active Rating) operations, the first troubleshooting step is to retry the call.
+
+
+parameters:
+  GLOBAL_HEADER_Authorization_OAuth:
+    name: Authorization
+    in: header
+    required: true
+    type: string
+    description: |
+      `Bearer {token}` for a valid OAuth token.
+
+  GLOBAL_HEADER_Zuora_Entity_Ids_Single:
+    name: Zuora-Entity-Ids
+    in: header
+    required: false
+    type: string
+    description: |
+      An entity ID. If you have [Zuora Multi-entity](https://knowledgecenter.zuora.com/BB_Introducing_Z_Business/Multi-entity) enabled and the OAuth token is valid for more than one entity, you must use this header to specify which entity to perform the operation in. If the OAuth token is only valid for a single entity, or you do not have Zuora Multi-entity enabled, you do not need to set this header.
+
+  GLOBAL_HEADER_Zuora_Track_Id:
+    name: Zuora-Track-Id
+    in: header
+    required: false
+    type: string
+    maxLength: 64
+    description: |
+      A custom identifier for tracing the API call. If you set a value for this header, Zuora returns the same value in the response headers. This header enables you to associate your system process identifiers with Zuora API calls, to assist with troubleshooting in the event of an issue.
+
+      The value of this field must use the US-ASCII character set and must not include any of the following characters: colon (`:`), semicolon (`;`), double quote (`"`), and quote (`'`).
+
+  GLOBAL_HEADER_Cursor:
+    name: cursor
+    in: query
+    description: |
+      The cursor indicator of the data page you want to retrieve. By default, the first page of data is returned in the response. If more data pages are available, the operation returns `true` in the `hasMore` response body field. The `cursor` response body field specifies the cursor indicator of the next page of data. If there is no data after the current page, the value of `cursor` is `null`.
+    required: false
+    type: string
+
+  GLOBAL_HEADER_page_Usage:
+    name: page
+    in: query
+    description: |
+      The index number of the page you want to retrieve. By default, the first page is returned in the response.
+    required: false
+    type: integer
+    format: int32
+    default: 0
+
+  GLOBAL_HEADER_pageSize_Usage:
+    name: pageSize
+    in: query
+    description: |
+      The maximum number of rows in a page to return in a response.
+    minimum: 25
+    maximum: 2000
+    default: 100
+    required: false
+    type: integer
+    format: int32
+
+  GLOBAL_HEADER_If_Match:
+    name: If-Match
+    in: header
+    required: false
+    type: string
+    description: |
+      The expected ETag of the resource. You can use this header to perform a conditional request. Zuora responds with 412 Precondition Failed if the ETag of the resource does not match the value of this header.
+
+paths:
+## START OF USAGE (WITH ACTIVE RATING)
+
+# CREATE USAGE RECORDS
+  '/usage':
+    post:
+      summary: Create usage records
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Creates a single or multiple usage records for an account. The account that you want to create usage records for must have a corresponding usage-based rate plan charge.
+
+        For more information about the usage data format, see [Usage Data Import](https://knowledgecenter.zuora.com/CB_Billing/J_Billing_Operations/H_Active_Rating/Usage_Data_Import).
+
+      operationId: POST_UsageRecords
+      tags:
+        - Usage (with Active Rating)
+      consumes:
+        - application/vnd.zuora.usage-bulk+json;charset=UTF-8
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: Content-Type
+          in: header
+          description: |
+            The type of the request content.
+
+            - If you create multiple usage records, you must specify the value of this parameter to `application/vnd.zuora.usage-bulk+json`.
+
+
+            - If you create a single usage record, you do not need to specify this field.
+          required: true
+          type: string
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/POSTUsageRecordRequestType'
+      responses:
+        200:
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/POSTUsageRecordResponseType'
+          examples:
+            application/json:
+              {
+                "data": [
+                  {
+                    "id": "448219e0-faa4-4fd7-b13e-ecd308a92454"
+                  },
+                  {
+                    "id": "850fe5c1-8d2d-45e4-a01e-875a0199e108"
+                  }
+                ]
+              }
+
+        400:
+          description: 'Bad Request'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "Invalid date format",
+                  "errors": [
+                    {
+                      "objectName": "usage",
+                      "field": "startDateTime",
+                      "reason": "InvalidDateFormat",
+                      "message": "Invalid date format"
+                    }
+                  ]
+                }
+              }
+
+        409:
+          description: 'Conflict'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "There is already a usage record with the same uniqueKey. The uniqueKey must be unique, value: abc",
+                  "errors": [
+                    {
+                      "objectName": "usage",
+                      "field": "uniqueKey",
+                      "reason": "DuplicateValue",
+                      "message": "There is already a usage record with the same uniqueKey. The uniqueKey must be unique, value: abc"
+                    }
+                  ]
+                }
+              }
+
+        500:
+          description: 'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "An internal error occurred. Please retry the request."
+                }
+              }
+
+      x-code-samples:
+      - lang: Curl
+        source: "curl -X POST -H \"Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3\"\
+          \ -H \"Content-Type: application/vnd.zuora.usage-bulk+json\" -d '{\n    \"data\": [\n       \
+          \ {\n            \"accountNumber\": \"A00002689\", \n            \"description\"\
+          : \"Disk usage for A00002689\", \n            \"groupId\": \"Group A\",\
+          \ \n            \"quantity\": \"15\", \n            \"startDateTime\": \"\
+          2017-01-14T21:32:00+08:00\", \n            \"tag\": \"AccountNumber:A00002689\"\
+          , \n            \"unitOfMeasure\": \"Each\"\n        }, \n        {\n  \
+          \          \"accountNumber\": \"A00002689\", \n            \"description\"\
+          : \"Disk usage for A00002689\", \n            \"groupId\": \"Group B\",\
+          \ \n            \"quantity\": \"15\", \n            \"startDateTime\": \"\
+          2017-01-14T21:32:00+08:00\", \n            \"tag\": \"AccountNumber:A00002689\"\
+          , \n            \"unitOfMeasure\": \"Each\"\n        }\n    ]\n}' \"https://rest.zuora.com/usage\""
+
+
+
+  '/usage/{id}':
+# UPDATE USAGE RECORD
+    put:
+      summary: Update usage record
+      operationId: PUT_UsageRecord
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Updates certain information of a specified usage record. Note that you can only update usage records that are not billed.
+
+      tags:
+        - Usage (with Active Rating)
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: id
+          in: path
+          description: |
+            The ID of the usage record you want to update.
+          required: true
+          type: string
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PUTUsageType'
+      responses:
+        200:
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+             {
+                "id": "035e35bd-880a-47c9-99df-830143b13aed"
+              }
+          schema:
+            $ref: '#/definitions/PUTUpdateUsageResponseType'
+
+        400:
+          description: 'Bad Request'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "Invalid date format",
+                  "errors": [
+                    {
+                      "objectName": "usage",
+                      "field": "startDateTime",
+                      "reason": "InvalidDateFormat",
+                      "message": "Invalid date format"
+                    }
+                  ]
+                }
+              }
+
+        404:
+          description: 'Not Found'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "The usage record 03c816b4-60a2-4586-9625-0003ce35010a could not be found.",
+                  "errors": [
+                    {
+                      "objectName": "usage",
+                      "reason": "ResourceNotFound",
+                      "message": "The usage record 03c816b4-60a2-4586-9625-0003ce35010a could not be found."
+                    }
+                   ]
+                }
+              }
+
+        409:
+          description: 'Conflict'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "There is already a usage record with the same uniqueKey. The uniqueKey must be unique, value: abc",
+                  "errors": [
+                    {
+                      "objectName": "usage",
+                      "field": "uniqueKey",
+                      "reason": "DuplicateValue",
+                      "message": "There is already a usage record with the same uniqueKey. The uniqueKey must be unique, value: abc"
+                    }
+                  ]
+                }
+              }
+
+        500:
+          description: 'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "Usage has been already billed and invoiced, and can no longer be modified 03c816b4-60a2-4586-9625-3ce3bc65010a"
+                }
+              }
+
+
+
+# GET USAGE RECORD
+    get:
+      summary: Get usage record
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Retrieves information about a specific usage record.
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: id
+          in: path
+          description: |
+            The ID of the usage record you want to retrieve.
+          required: true
+          type: string
+      operationId: GET_UsageRecord
+      tags:
+        - Usage (with Active Rating)
+      responses:
+        200:
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+             {
+                "id": "03c816b4-60a2-4586-9625-3ce3bc65010a",
+                "accountNumber": "A00000001",
+                "tag": "ChargeNumber:C-00000003",
+                "quantity": 30,
+                "unitOfMeasure": "Each",
+                "groupId": "B",
+                "startDateTime": "2017-02-03T00:00:00Z",
+                "uniqueKey": null,
+                "description": null,
+                "importId": null,
+                "fileName": null,
+                "status": "Processed",
+                "customFields": {
+                    "username": "Grace",
+                    "age": 20
+                },
+                "createdOn": "2017-11-17T00:38:15.961Z",
+                "createdBy": "1dfee841-92f2-4da1-8ab1-4f7b45df9feb",
+                "updatedOn": "2017-11-17T00:41:29.196Z",
+                "updatedBy": "1dfee841-92f2-4da1-8ab1-4f7b45df9feb"
+              }
+          schema:
+            $ref: '#/definitions/GETUsageResponseType'
+
+        404:
+          description: 'Not Found'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "The usage record ab123-34f could not be found.",
+                  "errors": [
+                    {
+                      "objectName": "usage",
+                      "reason": "ResourceNotFound",
+                      "message": "The usage record ab123-34f could not be found."
+                    }
+                  ]
+                }
+              }
+
+        500:
+          description: 'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "An internal error occurred. Please retry the request."
+                }
+              }
+
+
+
+# DELETE USAGE RECORD
+    delete:
+      summary: Delete usage record
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Deletes a usage record. Note that you can only delete usage records with the Pending or Rated status.
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: id
+          in: path
+          description: |
+            The ID of the usage record you want to delete.
+          required: true
+          type: string
+      operationId: DELETE_UsageRecord
+      tags:
+        - Usage (with Active Rating)
+      responses:
+        200:
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+             {
+                "success": "true"
+             }
+          schema:
+            $ref: '#/definitions/DELETEUsageResponseType'
+
+        404:
+          description: 'Not Found'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "The usage record 03c816b4-60a2-4586-9625-0003ce35010a could not be found.",
+                  "errors": [
+                    {
+                      "objectName": "usage",
+                      "reason": "ResourceNotFound",
+                      "message": "The usage record 03c816b4-60a2-4586-9625-0003ce35010a could not be found."
+                    }
+                   ]
+                }
+              }
+
+        500:
+          description: 'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "Usage has been already billed and invoiced, and can no longer be modified 03c816b4-60a2-4586-9625-3ce3bc65010a"
+                }
+              }
+
+
+
+# QUERY USAGE RECORDS
+  '/usage/query':
+    get:
+      summary: Query usage records
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Retrieves information about usage records.
+
+        You can specify certain response fields you want to retrieve by specifying the `fields` and `filters` query parameters. By default, all the response fields are returned in the response.
+      operationId: GET_UsageRecordsQuery
+      tags:
+        - Usage (with Active Rating)
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: fields
+          in: query
+          description: |
+            The fields of the usage records you want to retrieve. By default, all the fields in the **Responses** section are returned.
+
+            Use commas to separate the field names. You can specify any fields described in the **Responses** section. For example: `/usage/query?fields=tag,quantity,id`
+          required: false
+          type: string
+        - name: filters
+          in: query
+          description: |
+            This parameter restricts the data returned in the response. You can use this parameter to supply a dimension you want to filter on.
+
+            A single filter uses the following form:
+
+            *field_name* *operator* *field_value*
+
+            Supported operators: `=`, `!=`, `>`, `<`, `>=`, `<=`, `IS NULL`, `IS NOT NULL`, `IN` (The letters are not case sensitive.)
+
+            You can specify any fields except for the custom fields described in the **Responses** section. Filters can be combined using the `AND` boolean logic. For example: *field_name* *operator* *field_value* AND *field_name* *operator* *field_value*
+
+            Currently, the fields in filters must include at least one of the following fields: `accountNumber`, `status`, `uniqueKey`, and `updatedOn`.
+
+            Examples:
+
+            - /usage/query?filters= (id ='035e35bd-880a-47c9-99df-830143b13aed' AND status='Pending')
+
+            - /usage/query?fields=tag,id&filters= (quantity > 10 AND status='Pending')
+
+            - /usage/query?filters=(status in ('Pending','Rated'))
+          required: false
+          type: string
+        - $ref: '#/parameters/GLOBAL_HEADER_page_Usage'
+        - $ref: '#/parameters/GLOBAL_HEADER_pageSize_Usage'
+
+      responses:
+        200:
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/QueryUsageResponseType'
+          examples:
+            application/json:
+              {
+                 "data": [
+                    {
+                       "id": "63b75b21-64a8-410e-a391-13865261933c",
+                       "accountNumber": "A000003",
+                       "tag": "ChargeNumber:C-00000001",
+                       "quantity": 50,
+                       "unitOfMeasure": "Each",
+                       "groupId": "B",
+                       "startDateTime": "2017-02-03T00:00:00Z",
+                       "uniqueKey": null,
+                       "description": null,
+                       "importId": null,
+                       "fileName": null,
+                       "status": "Pending",
+                       "customFields": {
+                          "username": "Grace",
+                          "age": 28
+                       },
+                       "createdOn": "2017-11-23T07:52:08.673Z",
+                       "createdBy": "c189f9bd-e529-457a-9b8a-102fe0a5bc4f",
+                       "updatedOn": "2017-11-23T07:52:08.673Z",
+                       "updatedBy": "c189f9bd-e529-457a-9b8a-102fe0a5bc4f"
+                    }
+                 ]
+              }
+
+        500:
+          description: 'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "An internal error occurred. Please retry the request."
+                }
+              }
+
+
+
+# QUERY USAGE RECORDS IN STREAM
+  '/usage/stream-query':
+    get:
+      summary: Query usage records in stream
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Retrieves information about usage records in a stream without pagination.
+
+        You can specify certain response fields you want to retrieve by sepcifying the `fields` and `filters` query parameters. By default, all the reponse fields are returned in the response.
+
+        The value of the `filters` parameter must be [URL-encoded](https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding). If you want to use a plus sign `+` in the endpoint URL, you must replace the plus sign `+` with `%2B`. For example, if you use `/usage/stream-query?filters=(status='Pending' and startDateTime > '2018-04-04T13:32:37+08:00') ` in the endpoint URL, an error occurs. You have to use `/usage/stream-query?filters=(status='Pending' and startDateTime > '2018-04-04T13:32:37%2B08:00') ` instead.
+      operationId: GET_UsageRecordsStreamQuery
+      tags:
+        - Usage (with Active Rating)
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: fields
+          in: query
+          description: |
+            The fields of the usage records you want to retrieve. By default, all the fields in the **Responses** section are returned.
+
+            Use commas to separate the field names. You can specify any fields described in the **Responses** section. For example: `/usage/stream-query?fields=tag,quantity,id,customFields.age`
+          required: false
+          type: string
+        - name: filters
+          in: query
+          description: |
+            This parameter restricts the data returned in the response. You can use this parameter to supply a dimension you want to filter on.
+
+            A single filter uses the following form:
+
+            *field_name* *operator* *field_value*
+
+            Supported operators: `=`, `!=`, `>`, `<`, `>=`, `<=`, `IS NULL`, `IS NOT NULL`, `IN` (The letters are not case sensitive.)
+
+            You can specify any fields, including the custom fields, described in the **Responses** section. Filters can be combined using the `AND` boolean logic. For example: *field_name* *operator* *field_value* AND *field_name* *operator* *field_value*
+
+            Currently, the fields in filters must include at least one of the following fields: `accountNumber`, `unitOfMeasure`, `status`, `uniqueKey`, and `updatedOn`.
+
+            Examples:
+
+            - /usage/stream-query?filters= (id ='035e35bd-880a-47c9-99df-830143b13aed' AND status='Pending' AND customFields.age=20)
+
+            - /usage/stream-query?fields=tag,id&filters= (quantity > 10 AND unitOfMeasure = 'GB')
+
+            - /usage/stream-query?filters=(status in ('Pending','Rated'))
+          required: false
+          type: string
+      responses:
+        200:
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/QueryUsageResponseType'
+          examples:
+            application/json:
+              {
+                 "data": [
+                    {
+                       "id": "63b75b21-64a8-410e-a391-13865261933c",
+                       "accountNumber": "A000003",
+                       "tag": "ChargeNumber:C-00000001",
+                       "quantity": 50,
+                       "unitOfMeasure": "Each",
+                       "groupId": "B",
+                       "startDateTime": "2017-02-03T00:00:00Z",
+                       "uniqueKey": null,
+                       "description": null,
+                       "importId": null,
+                       "fileName": null,
+                       "status": "Pending",
+                       "customFields": {
+                          "name": "Grace",
+                          "age": 28
+                       },
+                       "createdOn": "2017-11-23T07:52:08.673Z",
+                       "createdBy": "c189f9bd-e529-457a-9b8a-102fe0a5bc4f",
+                       "updatedOn": "2017-11-23T07:52:08.673Z",
+                       "updatedBy": "c189f9bd-e529-457a-9b8a-102fe0a5bc4f"
+                    }
+                 ]
+              }
+
+        500:
+          description: 'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "An internal error occurred. Please retry the request."
+                }
+              }
+
+
+
+
+  '/usage-imports':
+# IMPORT USAGE FILE
+    post:
+      summary: Import usage file
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Imports usage data by uploading a usage file.
+
+        A usage file can be in comma-separated value (`.csv`), Microsoft Excel (`.xls`), or ZIP format. The maximum size of a usage file in CSV, Excel, or ZIP format to be uploaded is 20 MB. If the size of a usage file exceeds 20 MB, zip the usage file before uploading it. One ZIP file can only contain one CSV or Excel file.
+
+        The name of a usage file cannot be longer than 50 characters, including the length of the file name extension.
+
+        For more information about the usage file format, see [Usage Data Import](https://knowledgecenter.zuora.com/CB_Billing/J_Billing_Operations/H_Active_Rating/Usage_Data_Import).
+      operationId: POST_ImportUsageFile
+      consumes:
+        - multipart/form-data
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: file
+          in: formData
+          type: file
+          required: true
+          description: |
+            The path and name of the usage file to be imported.
+        - name: description
+          in: formData
+          type: string
+          required: false
+          description: |
+            The description of the usage file to be imported.
+      tags:
+        - Usage (with Active Rating)
+      responses:
+        200:
+          description:  'OK'
+          schema:
+            $ref: '#/definitions/POSTUsageImportResponseType'
+          examples:
+            application/json:
+              {
+                  "id": "2ec7dc51-9171-48b1-b7e1-9eb915d12734",
+                  "status": "PENDING"
+              }
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+            Location:
+              description: |
+                The URL for your import file. After you have uploaded the file, Zuora assigns the file to this address.
+              type: string
+              format: uri
+
+        400:
+          description:  'Bad Request'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageImportsErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "Required request part 'file' is not present"
+                }
+              }
+
+        500:
+          description:  'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageImportsErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "An internal error occurred. Please retry the request."
+                }
+              }
+
+      x-code-samples:
+      - lang: Curl
+        source: |
+          curl -X POST -H "Authorization: Bearer 66c7fc29ea984b049284d10f6b6328f5' -F "file=@UsageData.csv" -F "description=import testing" "https://rest.zuora.com/usage-imports"
+
+
+
+# GET USAGE IMPORTS
+    get:
+      summary: Get usage imports
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Retrieves the information about all the usage import files, such as the processing status of the usage import files, the total number of usage records that are validated, and the number of usage records with validation errors.
+
+        The response is in descending order by the date and time of the `updatedOn` field.
+
+      operationId: GET_UsageImports
+      tags:
+        - Usage (with Active Rating)
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - $ref: '#/parameters/GLOBAL_HEADER_page_Usage'
+        - $ref: '#/parameters/GLOBAL_HEADER_pageSize_Usage'
+
+      responses:
+        200:
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/UsageImports'
+          examples:
+            application/json:
+              {
+                "data":[
+                {
+                  "id": "2ec7dc51-9171-48b1-b7e1-9eb915d12734",
+                  "name": "Usages.csv",
+                  "description": "Usages",
+                  "status": "VALIDATED_FAILED",
+                  "processStart": "2017-09-14T14:54:16+08:00",
+                  "processEnd": "2017-09-14T14:54:16+08:00",
+                  "totalCount": 2,
+                  "errorCount": 2,
+                  "importedCount": 0,
+                  "createdBy": "10",
+                  "createdOn": "2017-09-14T14:54:15+08:00",
+                  "updatedBy": "10",
+                  "updatedOn": "2017-09-14T14:54:16+08:00"
+                }
+                ]
+              }
+
+        500:
+          description:  'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageImportsErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "An internal error occurred. Please retry the request."
+                }
+              }
+
+
+
+# GET DETAILS OF USAGE IMPORT
+  '/usage-imports/{id}/detail':
+    get:
+      summary: Get details of usage import
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Retrieves the detailed information about a specified usage import file.
+      operationId: GET_UsageImportDetails
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: id
+          in: path
+          description: |
+            The ID of the usage import.
+          required: true
+          type: string
+      tags:
+        - Usage (with Active Rating)
+      responses:
+        200:
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: "#/definitions/GetUsageDetailResponseType"
+          examples:
+            application/json:
+              {
+                "id": "2ec7dc51-9171-48b1-b7e1-9eb915d12734",
+                "name": "Usages.csv",
+                "description": "Usages import",
+                "status": "VALIDATED_FAILED",
+                "processStart": "2017-09-14T14:54:16+08:00",
+                "processEnd": "2017-09-14T14:54:16+08:00",
+                "totalCount": 2,
+                "errorCount": 2,
+                "importedCount": 0,
+                "createdBy": "10",
+                "createdOn": "2017-09-14T14:54:15+08:00",
+                "updatedBy": "10",
+                "updatedOn": "2017-09-14T14:54:16+08:00"
+              }
+
+        404:
+          description:  'Not Found'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageImportsErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "No usage import has been found (importId: 0574342c-d565-4fbf-bba3-262054ffd546)",
+                  "errors": [
+                    {
+                      "objectName": "UsageImport",
+                      "reason": "ResourceNotFound",
+                      "rejectedValue": "0574342c-d565-4fbf-bba3-262054ffd546",
+                      "message": "No usage import has been found (importId: 0574342c-d565-4fbf-bba3-262054ffd546)"
+                    }
+                  ]
+                }
+              }
+
+        500:
+          description:  'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageImportsErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "An internal error occurred. Please retry the request."
+                }
+              }
+
+
+
+# GET STATUS OF USAGE IMPORT
+  '/usage-imports/{id}/status':
+    get:
+      summary: Get status of usage import
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Retrieves the processing status of a specified usage import file.
+      operationId: GET_UsageImportStatus
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: id
+          in: path
+          description: |
+            The ID of the usage import.
+          required: true
+          type: string
+      tags:
+        - Usage (with Active Rating)
+      responses:
+        200:
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/GETUsageImportStatusResponseType'
+          examples:
+            application/json:
+              {
+                "status": "VALIDATED_FAILED"
+              }
+
+        404:
+          description:  'Not Found'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageImportsErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "No usage import has been found (importId: 0574342c-d565-4fbf-bba3-262054ffd546)",
+                  "errors": [
+                    {
+                      "objectName": "UsageImport",
+                      "reason": "ResourceNotFound",
+                      "rejectedValue": "0574342c-d565-4fbf-bba3-262054ffd546",
+                      "message": "No usage import has been found (importId: 0574342c-d565-4fbf-bba3-262054ffd546)"
+                    }
+                  ]
+                }
+              }
+
+        500:
+          description:  'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageImportsErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "An internal error occurred. Please retry the request."
+                }
+              }
+
+
+
+# DOWNLOAD USAGE IMPORT FILE
+  '/usage-imports/{id}/import-file':
+    get:
+      summary: Download usage import file
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Downloads a usage import file with the specified usage import ID.
+      operationId: GET_DownloadUsageImportFile
+      produces:
+        - application/octet-stream
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: id
+          in: path
+          description: |
+            The ID of the usage import.
+          required: true
+          type: string
+      tags:
+        - Usage (with Active Rating)
+      responses:
+        200:
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+
+        404:
+          description:  'Not Found'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageImportsErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "No usage import has been found (importId: 0574342c-d565-4fbf-bba3-262054ffd546)",
+                  "errors": [
+                    {
+                      "objectName": "UsageImport",
+                      "reason": "ResourceNotFound",
+                      "rejectedValue": "0574342c-d565-4fbf-bba3-262054ffd546",
+                      "message": "No usage import has been found (importId: 0574342c-d565-4fbf-bba3-262054ffd546)"
+                    }
+                  ]
+                }
+              }
+
+        500:
+          description:  'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageImportsErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "An internal error occurred. Please retry the request."
+                }
+              }
+
+
+
+
+# DOWNLOAD USAGE IMPORT FAILURE FILE
+  '/usage-imports/{id}/errors':
+    get:
+      summary: Download usage import failure file
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Downloads the corresponding usage import failure file when a usage file fails to be imported. Usage import failure files are only available for usage import files in VALIDATED_FAILED status.
+
+        The downloaded usage import failure file is in ZIP format, and contains the error information about each usage record failing to be imported.
+      operationId: GET_DownloadUsageImportFailureFile
+      produces:
+        - application/octet-stream
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: id
+          in: path
+          description: |
+            The ID of the usage import.
+          required: true
+          type: string
+      tags:
+        - Usage (with Active Rating)
+      responses:
+        200:
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+
+        404:
+          description:  'Not Found'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageImportsErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "No usage import has been found (importId: 0574342c-d565-4fbf-bba3-262054ffd546)",
+                  "errors": [
+                    {
+                      "objectName": "UsageImport",
+                      "reason": "ResourceNotFound",
+                      "rejectedValue": "0574342c-d565-4fbf-bba3-262054ffd546",
+                      "message": "No usage import has been found (importId: 0574342c-d565-4fbf-bba3-262054ffd546)"
+                    }
+                  ]
+                }
+              }
+
+        500:
+          description:  'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonUsageImportsErrorResponse'
+          examples:
+            application/json:
+              {
+                "error": {
+                  "message": "An internal error occurred. Please retry the request."
+                }
+              }
+
+
+
+
+
+# DOWNLOAD USAGE FILE TEMPLATE
+
+  '/usage-imports/templates/{fileType}':
+    get:
+      summary: Download usage file template
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Downloads a usage file template. The usage file template can be in comma-separated value (`.csv`) or Microsoft Excel (`.xls`) format.
+
+        After the template is downloaded, you can create a usage file based on the template and add usage records to the file.
+
+      operationId: GET_DownloadUsageFileTemplate
+      tags:
+        - Usage (with Active Rating)
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+
+        - name: fileType
+          in: path
+          description: |
+            The type of the usage file template to be downladed.
+          required: true
+          type: string
+          enum:
+            - csv
+            - xls
+      responses:
+        200:
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+
+
+
+
+
+
+
+# GET RATING RESULTS BY ACCOUNT
+  '/rating/rated-results/account/{accountNumber}':
+
+    get:
+      summary: Get rating results by account
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Retrieves the rating result of all the usage charges associated with the specified customer account. The response returns the rating amount of the charges based on billing period.
+
+        By default, the response data is displayed in descending order by updated time.
+
+        You can specify the date range for which you want to rate in the `fromDate` and `toDate` query parameters. For example: /rated-results/account/*accountNumber*?fromDate=2016-08-01&toDate=2016-08-21
+
+      operationId: 'GET_RatingResultsByAccount'
+      tags:
+        - Usage (with Active Rating)
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: accountNumber
+          in: path
+          description: |
+            The account number. For example, A00000001.
+          required: true
+          type: string
+        - name: fromDate
+          in: query
+          description: |
+            The start date of the date range for which you want to rate. The date must be in `yyyy-mm-dd` format. For example, 2007-12-03.
+
+            You can specify this parameter to restrict the data returned in the response. Make sure you specify a valid date in this query parameter:
+
+            - If you only specify the `fromDate` query parameter but do not specify the `toDate` query parameter:
+
+              `endDate` > `fromDate`
+
+
+            - If you specify both the `fromDate` and `toDate` query parameters:
+
+              `startDate` <= `toDate` and `endDate` > `fromDate`
+
+            `startDate` is the start date of the rating result. `endDate` is the end date of the rating result.
+          required: false
+          type: string
+          format: date
+        - name: toDate
+          in: query
+          description: |
+            The end date of the date range for which you want to rate. The date must be in `yyyy-mm-dd` format. For example, 2007-12-03.
+
+            You can specify this parameter to restrict the data returned in the response. Make sure you specify a valid date in this query parameters:
+            - If you only specify the `toDate` query parameter but do not specify the `fromDate` query parameter:
+
+              `startDate` <= `toDate`
+
+
+            - If you specify both the `fromDate` and `toDate` query parameters:
+
+              `startDate` <= `toDate` and `endDate` > `fromDate`
+
+            `startDate` is the start date of the rating result. `endDate` is the end date of the rating result.
+          required: false
+          type: string
+          format: date
+        - $ref: '#/parameters/GLOBAL_HEADER_Cursor'
+        - $ref: '#/parameters/GLOBAL_HEADER_pageSize_Usage'
+
+      responses:
+        '200':
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "dataSet": [
+                  {
+                    "id": "c42e3a08-e439-4238-aeb8-17fd7a0f1201",
+                    "startDate": "2016-02-01",
+                    "endDate": "2016-02-29",
+                    "amount": 5000,
+                    "chargeNumber": "C-00000037",
+                    "subscriptionNumber": "A-S00007532",
+                    "accountNumber": "A00015562",
+                    "currency": "USD",
+                    "additionalInfo": {
+                      "uom": "Each",
+                      "quantity": 50
+                    },
+                    "ratedTime": "2017-05-17T09:23:45.288Z"
+                  }
+                ],
+               "cursor": null,
+               "count": 1,
+               "hasMore": false
+              }
+          schema:
+            $ref: '#/definitions/GetRatedResultsType'
+
+        '400':
+          description: 'Bad Request'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "invalid_date_format",
+                    "message": "Invalid format(field fromDate,value 201-08-01)"
+                    }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+        '404':
+          description: 'Not Found'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "invalid_resource",
+                    "message": "Invalid resource (/rating/ratedresults/account/)"
+                  }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+        '500':
+          description: 'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "unknown",
+                    "message": "Internal error, please contact Zuora support"
+                  }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+
+
+# GET RATING RESULTS BY SUBSCRIPTION
+  '/rating/rated-results/subscription/{subscriptionNumber}':
+
+    get:
+      summary: Get rating results by subscription
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Retrieves the rating result of all the usage charges associated with the specified subscription. The rating is based on billing period.
+
+
+        You can specify the date range for which you want to rate in the `fromDate` and `toDate` query parameters. For example: /rated-results/subscription/*subscriptionNumber*?fromDate=2016-08-01&toDate=2016-08-21
+
+      operationId: 'GET_RatingResultsBySubscripiton'
+      tags:
+        - Usage (with Active Rating)
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: subscriptionNumber
+          in: path
+          description:  |
+            The subscription number. For example, A-S00000001.
+          required: true
+          type: string
+        - name: fromDate
+          in: query
+          description: |
+            The start date of the date range for which you want to rate. The date must be in `yyyy-mm-dd` format. For example, 2007-12-03.
+
+
+            You can specify this parameter to restrict the data returned in the response. Make sure you specify a valid date in this query parameter:
+
+            - If you only specify the `fromDate` query parameter but do not specify the `toDate` query parameter:
+
+              `endDate` > `fromDate`
+
+
+            - If you specify both the `fromDate` and `toDate` query parameters:
+
+              `startDate` <= `toDate` and `endDate` > `fromDate`
+
+            `startDate` is the start date of the rating result. `endDate` is the end date of the rating result.
+
+          required: false
+          type: string
+          format: date
+        - name: toDate
+          in: query
+          description: |
+            The end date of the date range for which you want to rate. The date must be in `yyyy-mm-dd` format. For example, 2007-12-03.
+
+            Make sure you specify a valid date in this query parameters:
+            - If you only specify the `toDate` query parameter but do not specify the `fromDate` query parameter:
+
+              `startDate` <= `toDate`
+
+
+            - If you specify both the `fromDate` and `toDate` query parameters:
+
+              `startDate` <= `toDate` and `endDate` > `fromDate`
+
+            `startDate` is the start date of the rating result. `endDate` is the end date of the rating result.
+
+          required: false
+          type: string
+          format: date
+        - $ref: '#/parameters/GLOBAL_HEADER_Cursor'
+        - $ref: '#/parameters/GLOBAL_HEADER_pageSize_Usage'
+      responses:
+        '200':
+          description:  'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "dataSet": [
+                  {
+                    "id": "c42e3a08-e439-4238-aeb8-17fd7a0f1201",
+                    "startDate": "2016-02-01",
+                    "endDate": "2016-02-29",
+                    "amount": 5000,
+                    "chargeNumber": "C-00000037",
+                    "subscriptionNumber": "A-S00007532",
+                    "accountNumber": "A00015562",
+                    "currency": "USD",
+                    "additionalInfo": {
+                      "uom": "Each",
+                      "quantity": 50
+                    },
+                    "ratedTime": "2017-05-17T09:23:45.288Z"
+                  }
+                ],
+                "cursor": null,
+                "count": 1,
+                "hasMore": false
+              }
+          schema:
+            $ref: '#/definitions/GetRatedResultsType'
+
+        '400':
+          description: 'Bad Request'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "invalid_date_format",
+                    "message": "Invalid format(field fromDate,value 201-08-01)"
+                    }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+        '404':
+          description: 'Not Found'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "invalid_resource",
+                    "message": "Invalid resource (/rating/ratedresults/subscription/)"
+                  }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+        '500':
+          description: 'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "unknown",
+                    "message": "Internal error, please contact Zuora support"
+                  }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+
+
+# GET RATING RESULTS BY CHARGE
+  '/rating/rated-results/charge/{chargeNumber}':
+    get:
+      summary: Get rating results by charge
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Retrieves the rating result of all the usage charges associated with the specified rate plan charge. The rating is based on billing period.
+
+        You can specify the date range for which you want to rate in the `fromDate` and `toDate` query parameters. For example: /rated-results/charge/*chargenNumber*?fromDate=2016-08-01&toDate=2016-08-21
+
+      operationId: 'GET_RatingResultsByCharge'
+      tags:
+        - Usage (with Active Rating)
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: chargeNumber
+          in: path
+          description: |
+            The charge number. For example, C-00000001.
+          required: true
+          type: string
+        - name: fromDate
+          in: query
+          description: |
+            The start date of the date range for which you want to rate. The date must be in `yyyy-mm-dd` format. For example, 2007-12-03.
+
+            You can specify this parameter to restrict the data returned in the response. Make sure you specify a valid date in this query parameter:
+
+            - If you only specify the `fromDate` query parameter but do not specify the `toDate` query parameter:
+
+              `endDate` > `fromDate`
+
+
+            - If you specify both the `fromDate` and `toDate` query parameters:
+
+              `startDate` <= `toDate` and `endDate` > `fromDate`
+
+            `startDate` is the start date of the rating result. `endDate` is the end date of the rating result.
+          required: false
+          type: string
+          format: date
+        - name: toDate
+          in: query
+          description: |
+            The end date of the date range for which you want to rate. The date must be in `yyyy-mm-dd` format. For example, 2007-12-03.
+
+            Make sure you specify a valid date in this query parameters:
+            - If you only specify the `toDate` query parameter but do not specify the `fromDate` query parameter:
+
+              `startDate` <= `toDate`
+
+
+            - If you specify both the `fromDate` and `toDate` query parameters:
+
+              `startDate` <= `toDate` and `endDate` > `fromDate`
+
+            `startDate` is the start date of the rating result. `endDate` is the end date of the rating result.
+          required: false
+          type: string
+          format: date
+        - $ref: '#/parameters/GLOBAL_HEADER_Cursor'
+        - $ref: '#/parameters/GLOBAL_HEADER_pageSize_Usage'
+      responses:
+        '200':
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "dataSet": [
+                  {
+                    "id": "c42e3a08-e439-4238-aeb8-17fd7a0f1201",
+                    "startDate": "2016-02-01",
+                    "endDate": "2016-02-29",
+                    "amount": 5000,
+                    "chargeNumber": "C-00000037",
+                    "subscriptionNumber": "A-S00007532",
+                    "accountNumber": "A00015562",
+                    "currency": "USD",
+                    "additionalInfo": {
+                      "uom": "Each",
+                      "quantity": 50
+                    },
+                    "ratedTime": "2017-05-17T09:23:45.288Z"
+                  }
+                ],
+                "cursor": null,
+                "count": 1,
+                "hasMore": false
+              }
+          schema:
+            $ref: '#/definitions/GetRatedResultsType'
+
+        '400':
+          description: 'Bad Request'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "invalid_date_format",
+                    "message": "Invalid format(field fromDate,value 201-08-01)"
+                    }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+        '404':
+          description: 'Not Found'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "invalid_resource",
+                    "message": "Invalid resource (/rating/ratedresults/charge/)"
+                  }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+        '500':
+          description: 'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "unknown",
+                    "message": "Internal error, please contact Zuora support"
+                  }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+
+
+# GET RATED USAGE BY ACCOUNT
+  '/rating/rated-usages/account/{accountNumber}':
+
+    get:
+      summary: Get rated usage by account
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Retrieves the rating result of the usage records associated with the specified customer account. The response returns the rating result of each usage record.
+
+        You can specify the date range for which you want to get the usage rating result in the `fromDate` and `toDate` query parameters. For example: /rated-usages/account/*accountNumber*?fromDate=2016-08-01&toDate=2016-08-21
+
+      operationId: 'GET_UsageRatingByAccount'
+      tags:
+        - Usage (with Active Rating)
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: accountNumber
+          in: path
+          description: |
+            The account number. For example, A00000001.
+          required: true
+          type: string
+        - name: fromDate
+          in: query
+          description: |
+            The start date of the date range for which you want to get the rating result. The date must be in `yyyy-mm-dd` format. For example, 2007-12-03.
+
+            You can specify this parameter to restrict the data returned in the response. Make sure you specify a valid date in this query parameter:
+
+            - If you only specify the `fromDate` query parameter but do not specify the `toDate` query parameter:
+
+              `startDate` >= `fromDate`
+
+
+            - If you specify both the `fromDate` and `toDate` parameters:
+
+              `startDate` >= `fromDate` and `startDate` <= `toDate`
+
+            `startDate` is the start date when the usage is consumed in your tenant time zone.
+
+          required: false
+          type: string
+          format: date
+        - name: toDate
+          in: query
+          description: |
+            The end date of the date range for which you want to get the rating result. The date must be in `yyyy-mm-dd` format. For example, 2007-12-03.
+
+            Make sure you specify a valid date in this query parameters:
+            - If you only specify the `toDate` query parameter but do not specify the `fromDate` query parameter:
+
+              `startDate` <= `toDate`
+
+
+            - If you specify both the `fromDate` and `toDate` query parameters:
+
+              `startDate` >= `fromDate` and `startDate` <= `toDate`
+
+            `startDate` is the start date when the usage is consumed in your tenant time zone.
+
+          required: false
+          type: string
+          format: date
+        - $ref: '#/parameters/GLOBAL_HEADER_Cursor'
+        - $ref: '#/parameters/GLOBAL_HEADER_pageSize_Usage'
+      responses:
+        '200':
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "dataSet": [
+                  {
+                    "id": "0a3e8fd8-2613-41c9-99e5-c13be7fb9268",
+                    "startDate": "2016-01-05",
+                    "amount": 2500,
+                    "currency": "USD",
+                    "chargeNumber": "C-00000037",
+                    "subscriptionNumber": "A-S00007532",
+                    "accountNumber": "A00015562",
+                    "quantity": 25,
+                    "unitOfMeasure": "Each",
+                    "usageId": "633223e8-7b5e-44d5-bba3-629f59f5ecbe",
+                    "ratedResultId": "c4df71b9-284b-4dff-b3c4-95763e7f74ea"
+                  },
+                  {
+                    "id": "4785969a-e130-45f2-9935-c73681a3c21d",
+                    "startDate": "2016-01-05",
+                    "amount": 2500,
+                    "currency": "USD",
+                    "chargeNumber": "C-00000037",
+                    "subscriptionNumber": "A-S00007532",
+                    "accountNumber": "A00015562",
+                    "quantity": 25,
+                    "unitOfMeasure": "Each",
+                    "usageId": "370d4ce8-6d29-4730-8ac9-4849e81ff13b",
+                    "ratedResultId": "c4df71b9-284b-4dff-b3c4-95763e7f74ea"
+                  }
+                ],
+                "cursor": null,
+                "count": 2,
+                "hasMore": false
+              }
+          schema:
+            $ref: '#/definitions/GetRatedUsageResultsType'
+
+        '400':
+          description: 'Bad Request'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "invalid_date_format",
+                    "message": "Invalid format(field fromDate,value 201-08-01)"
+                    }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+        '404':
+          description: 'Not Found'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "invalid_resource",
+                    "message": "Invalid resource (/rating/ratedusages/account/)"
+                  }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+        '500':
+          description: 'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "unknown",
+                    "message": "Internal error, please contact Zuora support"
+                  }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+
+
+# GET RATED USAGE BY SUBSCRIPTION
+  '/rating/rated-usages/subscription/{subscriptionNumber}':
+
+    get:
+      summary: Get rated usage by subscription
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Retrieves the rating result of the usage records associated with the specified subscription. The response returns the rating result of each usage record.
+
+        You can specify the date range for which you want to get the rating result in the `fromDate` and `toDate` query parameters. For example: /rated-results/subscription/*subscriptionNumber*?fromDate=2016-08-01&toDate=2016-08-21
+
+      operationId: 'GET_UsageRatingBySubscription'
+      tags:
+        - Usage (with Active Rating)
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: subscriptionNumber
+          in: path
+          description:  |
+            The subscription number. For example, A-S00000001.
+          required: true
+          type: string
+        - name: fromDate
+          in: query
+          description: |
+            The start date of the date range for which you want to get the rating result. The date must be in `yyyy-mm-dd` format. For example, 2007-12-03.
+
+            You can specify this parameter to restrict the data returned in the response. Make sure you specify a valid date in this query parameter:
+
+            - If you only specify the `fromDate` query parameter but do not specify the `toDate` query parameter:
+
+              `startDate` >= `fromDate`
+
+
+            - If you specify both the `fromDate` and `toDate` parameters:
+
+              `startDate` >= `fromDate` and `startDate` <= `toDate`
+
+            `startDate` is the start date when the usage is consumed in your tenant time zone.
+
+          required: false
+          type: string
+          format: date
+        - name: toDate
+          in: query
+          description: |
+            The end date of the date range for which you want to get the rating result. The date must be in `yyyy-mm-dd` format. For example, 2007-12-03.
+
+            Make sure you specify a valid date in this query parameters:
+            - If you only specify the `toDate` query parameter but do not specify the `fromDate` query parameter:
+
+              `startDate` <= `toDate`
+
+            - If you specify both the `fromDate` and `toDate` query parameters:
+
+              `startDate` >= `fromDate` and `startDate` <= `toDate`
+
+            `startDate` is the start date when the usage is consumed in your tenant time zone.
+
+          required: false
+          type: string
+          format: date
+        - $ref: '#/parameters/GLOBAL_HEADER_Cursor'
+        - $ref: '#/parameters/GLOBAL_HEADER_pageSize_Usage'
+      responses:
+        '200':
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "dataSet": [
+                  {
+                    "id": "0a3e8fd8-2613-41c9-99e5-c13be7fb9268",
+                    "startDate": "2016-01-05",
+                    "amount": 2500,
+                    "currency": "USD",
+                    "chargeNumber": "C-00000037",
+                    "subscriptionNumber": "A-S00007532",
+                    "accountNumber": "A00015562",
+                    "quantity": 25,
+                    "unitOfMeasure": "Each",
+                    "usageId": "633223e8-7b5e-44d5-bba3-629f59f5ecbe",
+                    "ratedResultId": "c4df71b9-284b-4dff-b3c4-95763e7f74ea"
+                  },
+                  {
+                    "id": "4785969a-e130-45f2-9935-c73681a3c21d",
+                    "startDate": "2016-01-05",
+                    "amount": 2500,
+                    "currency": "USD",
+                    "chargeNumber": "C-00000037",
+                    "subscriptionNumber": "A-S00007532",
+                    "accountNumber": "A00015562",
+                    "quantity": 25,
+                    "unitOfMeasure": "Each",
+                    "usageId": "370d4ce8-6d29-4730-8ac9-4849e81ff13b",
+                    "ratedResultId": "c4df71b9-284b-4dff-b3c4-95763e7f74ea"
+                  }
+                ],
+                "cursor": null,
+                "count": 2,
+                "hasMore": false
+              }
+          schema:
+            $ref: '#/definitions/GetRatedUsageResultsType'
+
+        '400':
+          description: 'Bad Request'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "invalid_date_format",
+                    "message": "Invalid format(field fromDate,value 201-08-01)"
+                    }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+        '404':
+          description: 'Not Found'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "invalid_resource",
+                    "message": "Invalid resource (/rating/ratedusages/subscription/)"
+                  }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+        '500':
+          description: 'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "unknown",
+                    "message": "Internal error, please contact Zuora support"
+                  }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+
+
+# GET RATED USAGE BY CHARGE
+  '/rating/rated-usages/charge/{chargeNumber}':
+
+    get:
+      summary: Get rated usage by charge
+      description: |
+        **Note:** This operation is available only if Active Rating is enabled. The Active Rating feature is in development. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Retrieves the rating result of the usage records associated with the specified charge.  The response returns the rating result of each usage record.
+
+        You can specify the date range for which you want to get the rating result in the `fromDate` and `toDate` query parameters. For example: /rated-results/charge/*chargenNumber*?fromDate=2016-08-01&toDate=2016-08-21
+
+      operationId: 'GET_UsageRatingByCharge'
+      tags:
+        - Usage (with Active Rating)
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - name: chargeNumber
+          in: path
+          description: |
+            The charge number. For example, C-00000001.
+          required: true
+          type: string
+        - name: fromDate
+          in: query
+          description: |
+            The start date of the date range for which you want to get the rating result. The date must be in `yyyy-mm-dd` format. For example, 2007-12-03.
+
+            You can specify this parameter to restrict the data returned in the response. Make sure you specify a valid date in this query parameter:
+
+            - If you only specify the `fromDate` query parameter but do not specify the `toDate` query parameter:
+
+              `startDate` >= `fromDate`
+
+
+            - If you specify both the `fromDate` and `toDate` parameters:
+
+              `startDate` >= `fromDate` and `startDate` <= `toDate`
+
+            `startDate` is the start date when the usage is consumed in your tenant time zone.
+          required: false
+          type: string
+          format: date
+        - name: toDate
+          in: query
+          description: |
+            The end date of the date range for which you want to get the rating result. The date must be in `yyyy-mm-dd` format. For example, 2007-12-03.
+
+            Make sure you specify a valid date in this query parameters:
+            - If you only specify the `toDate` query parameter but do not specify the `fromDate` query parameter:
+
+              `startDate` <= `toDate`
+
+
+            - If you specify both the `fromDate` and `toDate` query parameters:
+
+              `startDate` >= `fromDate` and `startDate` <= `toDate`
+
+            `startDate` is the start date when the usage is consumed in your tenant time zone.
+          required: false
+          type: string
+          format: date
+        - $ref: '#/parameters/GLOBAL_HEADER_Cursor'
+        - $ref: '#/parameters/GLOBAL_HEADER_pageSize_Usage'
+      responses:
+        '200':
+          description: 'OK'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                  "dataSet": [
+                    {
+                      "id": "0a3e8fd8-2613-41c9-99e5-c13be7fb9268",
+                      "startDate": "2016-01-05",
+                      "amount": 2500,
+                      "currency": "USD",
+                      "chargeNumber": "C-00000037",
+                      "subscriptionNumber": "A-S00007532",
+                      "accountNumber": "A00015562",
+                      "quantity": 25,
+                      "unitOfMeasure": "Each",
+                      "usageId": "633223e8-7b5e-44d5-bba3-629f59f5ecbe",
+                      "ratedResultId": "c4df71b9-284b-4dff-b3c4-95763e7f74ea"
+                    },
+                    {
+                      "id": "4785969a-e130-45f2-9935-c73681a3c21d",
+                      "startDate": "2016-01-05",
+                      "amount": 2500,
+                      "currency": "USD",
+                      "chargeNumber": "C-00000037",
+                      "subscriptionNumber": "A-S00007532",
+                      "accountNumber": "A00015562",
+                      "quantity": 25,
+                      "unitOfMeasure": "Each",
+                      "usageId": "370d4ce8-6d29-4730-8ac9-4849e81ff13b",
+                      "ratedResultId": "c4df71b9-284b-4dff-b3c4-95763e7f74ea"
+                    }
+                  ],
+                  "cursor": null,
+                  "count": 2,
+                  "hasMore": false
+              }
+          schema:
+            $ref: '#/definitions/GetRatedUsageResultsType'
+
+        '400':
+          description: 'Bad Request'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "invalid_date_format",
+                    "message": "Invalid format(field fromDate,value 201-08-01)"
+                    }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+        '404':
+          description: 'Not Found'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "invalid_resource",
+                    "message": "Invalid resource (/rating/ratedusages/charge/)"
+                  }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+        '500':
+          description: 'Internal Server Error'
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          examples:
+            application/json:
+              {
+                "reasons": [
+                  {
+                    "code": "unknown",
+                    "message": "Internal error, please contact Zuora support"
+                  }
+                ]
+              }
+          schema:
+            $ref: '#/definitions/CommonRatingErrorResponse'
+
+  /fields/definitions/Usage:
+# GET USAGE CUSTOM FIELDS DEFINITION
+    get:
+      summary: Get Usage custom field definition
+      description: |
+        **Note:** This operation is available only if Active Rating and Custom Fields services are enabled. The Custom Fields service is in **Limited Availability** and Active Rating is in development. If you wish to have access to the services, submit a request at [Zuora Global Support](http://support.zuora.com/).
+      operationId: GET_CustomFieldsDefinitionInGlobalNamespace
+      tags:
+        - Usage (with Active Rating)
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+            ETag:
+              description: |
+                The ETag of the resource. You can provide the ETag to operations that support the If-Match header.
+              type: string
+          schema:
+            $ref: '#/definitions/CustomFieldsDefinitionNoNamespace'
+          examples:
+            application/json:
+              {
+                "id": "97de95f6-1991-4469-95b3-9a2c7090b96f",
+                "type": "Usage",
+                "createdById": "8a534f48-4194-4a4b-812a-166e87ccf714",
+                "updatedById": "8a534f48-4194-4a4b-812a-166e87ccf714",
+                "createdDate": "2018-01-18T08:41:06.530Z",
+                "updatedDate": "2018-01-18T08:41:06.530Z",
+                "schema": {
+                  "title": "Usage",
+                  "type": "object",
+                  "properties": {
+                    "firstName": {
+                      "type": "string"
+                    },
+                    "lastName": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    },
+                    "age": {
+                      "description": "Age in years",
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "firstName",
+                    "lastName"
+                  ]
+                }
+              }
+        '400':
+          description: Bad Request
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonErrorResponse'
+          examples:
+            application/json:
+              {
+                "code": 400,
+                "message": "Bad Request"
+              }
+
+# SET SCHEMA OF USAGE CUSTOM FIELD DEFINITION
+    put:
+      summary: Set schema of Usage custom field definition
+      description: |
+        **Note:** This operation is available only if Active Rating and Custom Fields services are enabled. The Custom Fields service is in **Limited Availability** and Active Rating is in development. If you wish to have access to the services, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        ## Limitations
+
+        This custom fields definition has the following limitations:
+
+        * The maximum number of characters for custom field API name is	64.
+        * The maximum number of characters for custom field label (`label`) is	64.
+        * The maximum number of characters for custom field description	is 250.
+        * The maximum number of picklist options	is 250.
+        * Custom field names are case sensitive and must contain `__c` as the suffix.
+
+        If you want to add new custom fields or update existing custom fields, you must include the schema of all existing custom fields in the request body.
+      operationId: PUT_CustomFieldsDefinitionInGlobalNamespace
+      tags:
+        - Usage (with Active Rating)
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+        - $ref: '#/parameters/GLOBAL_HEADER_If_Match'
+        - name: body
+          in: body
+          required: true
+          description: |
+            The schema for the custom fields definition.
+
+            The schema must be the complete custom fields definition that includes all Usage custom fields.
+
+            The schema must conform to the [JSON Schema](http://json-schema.org/specification.html) specification.
+
+            If the value of the `type` path parameter is `Usage`, the schema must have `"type": "object"`. Each property in the schema must not have `"type": "object"` or `"type": "array"`.
+          schema:
+            $ref: '#/definitions/UpdateCustomFieldsDefinitionRequestNoNamespace'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            format: uri
+          examples:
+            application/json:
+              "/fields/definitions/Usage"
+        '400':
+          description: Bad Request
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonErrorResponse'
+          examples:
+            application/json:
+              {
+                "code": 400,
+                "message": "Bad Request"
+              }
+        '412':
+          description: Precondition Failed
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonErrorResponse'
+          examples:
+            application/json:
+              {
+                "code": 412,
+                "message": "Precondition Failed"
+              }
+
+# DELETE SCHEMA OF USAGE CUSTOM FIELD DEFINITION
+    delete:
+      summary: Delete schema of Usage custom field definition
+      description: |
+        **Note:** This operation is available only if Active Rating and Custom Fields services are enabled. The Custom Fields service is in **Limited Availability** and Active Rating is in development. If you wish to have access to the services, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+        Before calling this operation, you must delete all data stored in the custom fields. To delete all data stored in custom fields that are part of Active Rating, use [Delete usage record](/api-reference/#operation/DELETE_UsageRecord).
+
+        When you delete the schema of a custom fields definition, Zuora sets `"schema": {}` and `"type": "_internal"` for the custom fields definition.
+      operationId: DELETE_CustomFieldsDefinitionInGlobalNamespace
+      tags:
+        - Usage (with Active Rating)
+      parameters:
+        - $ref: '#/parameters/GLOBAL_HEADER_Authorization_OAuth'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Entity_Ids_Single'
+        - $ref: '#/parameters/GLOBAL_HEADER_Zuora_Track_Id'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            type: string
+            format: uri
+          examples:
+            application/json:
+              "/fields/definitions/Usage"
+        '400':
+          description: Bad Request
+          headers:
+            Zuora-Request-Id:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: |
+                The Zuora internal identifier of the API call. You cannot control the value of this header.
+            Zuora-Track-Id:
+              type: string
+              maxLength: 64
+              description: |
+                A custom identifier for tracing the API call. If you specified a tracing identifier in the request headers, Zuora returns the same tracing identifier. Otherwise, Zuora does not set this header.
+          schema:
+            $ref: '#/definitions/CommonErrorResponse'
+          examples:
+            application/json:
+              {
+                "code": 400,
+                "message": "Cannot delete definition that has data"
+              }
+
+## END OF USAGE (WITH ACTIVE RATING)
+
+
+
+
+
+definitions:
+
+  POSTUsageRecordRequestType:
+    example:
+        {
+              "data":[
+                {
+                   "accountNumber": "A00002689",
+                   "tag" : "AccountNumber:A00002689",
+                   "quantity" : "15",
+                   "unitOfMeasure" : "Each",
+                   "startDateTime" : "2017-01-14T21:32:00+08:00",
+                   "description" : "Disk usage for A00002689",
+                   "groupId": "Group A"
+                },
+                {
+                   "accountNumber": "A00002689",
+                   "tag" : "AccountNumber:A00002689",
+                   "quantity" : "15",
+                   "unitOfMeasure" : "Each",
+                   "startDateTime" : "2017-01-14T21:32:00+08:00",
+                   "description" : "Disk usage for A00002689",
+                   "groupId": "Group B"
+                }
+              ]
+       }
+    type: object
+    properties:
+      data:
+        description: |
+          (Conditional) This field is only used for creating multiple usage records. If you create a single usage record, you do not need to specify the `data` field in the request.
+
+          An array of usage records information.
+        type: array
+        items:
+          $ref: '#/definitions/POSTUsageType'
+
+
+
+  POSTUsageType:
+    title: data
+    type: object
+    required:
+      - accountNumber
+      - quantity
+      - startDateTime
+      - tag
+      - unitOfMeasure
+    properties:
+      accountNumber:
+        type: string
+        maxLength: 70
+        description: |
+          The account number associated with the usage record. The customer account must be the subscription owner.
+
+          The account number must be valid, and the account must be active.
+      customFields:
+        $ref: '#/definitions/CustomFields'
+      description:
+        type: string
+        maxLength: 200
+        description: |
+          The description of the usage record.
+      quantity:
+        type: number
+        format: double
+        description: |
+          The number of units the usage record is used.
+      uniqueKey:
+        type: string
+        maxLength: 50
+        description: |
+          A unique key of the usage record. You can define the unique key for each usage record.
+      startDateTime:
+        type: string
+        format: date-time
+        description: |
+          The start date and time when the usage is consumed.
+
+
+          See [supported date and time format](https://knowledgecenter.zuora.com/CB_Billing/WA_Dates_in_Zuora/A_Date_and_dateTime_Format#section_2).
+      tag:
+        type: string
+        maxLength: 255
+        description: |
+          Specifies which subscription, charge, or account the usage record is related to.
+
+          The value of this field must be in the following formats:
+
+          - SubscriptionNumber:*value*
+          - ChargeNumber:*value*
+          - AccountNumber:*value*
+
+          For example, ChargeNumber:C-00000002
+
+          If the value of this field is in AccountNumber:*value* format, the value must be the same as the value of the `accountNumber` field.
+
+          If the value of this field is in the ChargeNumber:*value* format, the value must be the same as the value of the `unitOfMeasure` field corresponding to the usage charge.
+
+          The subscription number, charge number, and account number must be active, and the subscription cannot be in Draft status.
+
+          The customer account must be the subscription and charge owner.
+
+      unitOfMeasure:
+        type: string
+        maxLength: 50
+        description: |
+          The unit used to measure the usage.
+
+          The value of this field is case insensitive.
+      groupId:
+        type: string
+        maxLength: 50
+        description: |
+          The group ID used for [usage rating by group](https://knowledgecenter.zuora.com/CB_Billing/J_Billing_Operations/Usage/Usage_Rating_by_Group). Zuora groups the usage records based on the group ID when you choose the Custom Group option for usage rating.
+
+
+          **Note:** The Usage Rating by Group feature is in **Limited Availability**. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+
+
+
+  PUTUsageType:
+    type: object
+    example:
+        {
+         "quantity" : "15",
+         "unitOfMeasure" : "Each",
+         "startDateTime" : "2017-01-14T21:00:00+08:00",
+         "description" : "Disk usage for A00002689"
+       }
+    properties:
+      customFields:
+        $ref: '#/definitions/CustomFields'
+      description:
+        type: string
+        maxLength: 200
+        description: |
+          The description of the usage record.
+
+      quantity:
+        type: number
+        format: double
+        description: |
+          The number of units the usage record is used.
+
+      startDateTime:
+        type: string
+        format: date-time
+        description: |
+          The start date and time when the usage is consumed. See [supported date and time format](https://knowledgecenter.zuora.com/CB_Billing/WA_Dates_in_Zuora/A_Date_and_dateTime_Format#section_2).
+
+      unitOfMeasure:
+        type: string
+        maxLength: 50
+        description: |
+          The definable unit used to measure consumed usage.
+
+
+
+  QueryUsageResponseType:
+    type: object
+    properties:
+      data:
+        type: array
+        description: |
+          An array of usage records information.
+        items:
+          $ref: '#/definitions/GETUsageResponseType'
+
+
+
+  GETUsageResponseType:
+    type: object
+    title: data
+    properties:
+      accountNumber:
+        type: string
+        maxLength: 70
+        description: |
+          The account number associated with this usage record.
+      createdBy:
+        type: string
+        maxLength: 36
+        description: |
+          The ID of the user who created this usage record.
+      createdOn:
+        type: string
+        format: date-time
+        description: |
+          The start date and time when this usage record is created.
+      customFields:
+        $ref: '#/definitions/CustomFields'
+      description:
+        type: string
+        maxLength: 200
+        description: |
+          The description of this usage record.
+      fileName:
+        type: string
+        maxLength: 50
+        description: |
+          The name of the import file when the usage record is imported from the file.
+      groupId:
+        type: "string"
+        maxLength: 50
+        description: |
+          The group ID used for [usage rating by group](https://knowledgecenter.zuora.com/CB_Billing/J_Billing_Operations/Usage/Usage_Rating_by_Group). Zuora groups the usage records based on the group ID when you choose the Custom Group option for usage rating.
+
+            **Note:** The Usage Rating by Group feature is in **Limited Availability**. If you wish to have access to the feature, submit a request at [Zuora Global Support](http://support.zuora.com/).
+      id:
+        type: string
+        maxLength: 36
+        description: |
+          The ID of this usage record.
+      importId:
+        type: string
+        maxLength: 36
+        description: |
+          The ID of the usage import if this usage record is imported through a usage file.
+      quantity:
+        type: number
+        format: double
+        description: |
+          The number of units this usage record is used.
+      startDateTime:
+        type: string
+        format: date-time
+        description: |
+          The start date and time when this usage is consumed.
+      status:
+        type: string
+        enum:
+          - Pending
+          - Rated
+          - Processed
+        description: |
+          The status of this usage record.
+      tag:
+        type: string
+        maxLength: 50
+        description: |
+          Specifies which subscription, charge, or account this usage record is related to.
+      uniqueKey:
+        type: string
+        maxLength: 50
+        description: |
+          A unique key of this usage record. You can define the unique key for each usage record.
+      unitOfMeasure:
+        type: "string"
+        maxLength: 50
+        description: |
+          The unit used to measure the usage.
+      updatedBy:
+        type: string
+        maxLength: 36
+        description: |
+          The ID of the user who last updated this usage record.
+      updatedOn:
+        type: string
+        format: date-time
+        description: |
+          The date and time when this usage record is last updated.
+
+
+
+  POSTUsageRecordResponseType:
+    type: object
+    properties:
+      data:
+        description: |
+          (Conditional) This field is only returned in the response if you create multiple usage records. If you create a single usage record, this field will not be returned in the response.
+
+          An array of usage record IDs you created.
+        type: array
+        items:
+          type: object
+          title: data
+          properties:
+            id:
+              type: string
+              description: |
+                The ID of the usage record.
+
+
+
+  PUTUpdateUsageResponseType:
+    type: object
+    properties:
+      id:
+        type: string
+        description: |
+          The ID of the usage record that is updated.
+
+
+
+  DELETEUsageResponseType:
+    type: object
+    properties:
+      success:
+        type: boolean
+        description: |
+          Indicates whether the call succeeded.
+
+  CustomFields:
+    type: object
+    title: customFields
+    description: |
+      Container for custom fields.
+    additionalProperties:
+      description: |
+        Custom fields. Custom field names are case sensitive. For more information about custom fields, see [Custom Fields](/active-rating-api/#tag/Custom-Fields).
+
+  CommonUsageErrorResponse:
+    type: object
+    properties:
+      error:
+        type: object
+        description: |
+          Container for the error information.
+        properties:
+          message:
+            description: |
+              The error message that is returned. If multiple errors occurred, the first error message is returned in this field.
+            type: string
+          errors:
+            type: array
+            description: |
+              Container for the information about detailed errors.
+            items:
+              type: object
+              title: errors
+              properties:
+                objectName:
+                  description: |
+                    The object where the error occurred.
+                  type: string
+                field:
+                  description: |
+                    The field where the error occurred.
+                  type: string
+                reason:
+                  description: |
+                    The reason for the error.
+                  type: string
+                message:
+                  description: |
+                    The error message that is returned.
+                  type: string
+
+
+
+
+
+
+
+
+  POSTUsageImportResponseType:
+    type: object
+    properties:
+      id:
+        type: string
+        description: |
+          The ID of the usage import.
+      status:
+        type: string
+        maxLength: 32
+        description: |
+          The processing status of the usage import file.
+
+          Possible values:
+          - `PENDING`: The usage import file is waiting to be processed.
+          - `PROCESSING`: The usage import file is being processed.
+          - `COMPLETED`: The processing of the usage import file is completed successfully.
+          - `VALIDATION_FAILED`: The processing of the usage import file is completed with validation errors. If a validation error occurs in one usage record, no usage records will be imported from the usage import file.
+          - `IMPORTED_WITH_ERRORS`: The usage import file is imported with errors because of some exceptions. Not all usage records are imported from the usage import file. If this status is displayed, contact [Zuora Global Support](http://support.zuora.com/) for help.
+          - `FAILED`: The usage import file fails to be processed.
+        enum:
+          - PENDING
+          - PROCESSING
+          - COMPLETED
+          - VALIDATION_FAILED
+          - IMPORTED_WITH_ERRORS
+          - FAILED
+
+
+
+  UsageImports:
+    type: object
+    properties:
+      data:
+        type: array
+        description: |
+          An array of usage imports information.
+        items:
+          $ref: '#/definitions/UsageImport'
+
+
+  UsageImport:
+    type: object
+    title: data
+    properties:
+      id:
+        type: string
+        maxLength: 36
+        description: |
+          The ID of the usage import.
+      name:
+        type: string
+        maxLength: 50
+        description: |
+          The name of the import file.
+      description:
+        type: string
+        maxLength: 255
+        description: |
+          The description of the import file.
+
+          You can add some comments about the import file in this field. For example, `This import file contains 50 usage records related to four customer accounts.`
+      status:
+        type: string
+        maxLength: 32
+        description: |
+          The processing status of the usage import file.
+
+          Possible values:
+          - `PENDING`: The usage import file is waiting to be processed.
+          - `PROCESSING`: The usage import file is being processed.
+          - `COMPLETED`: The processing of the usage import file is completed successfully.
+          - `VALIDATION_FAILED`: The processing of the usage import file is completed with validation errors. If a validation error occurs in one usage record, no usage records will be imported from the usage import file.
+          - `IMPORTED_WITH_ERRORS`: The usage import file is imported with errors because of some exceptions. Not all usage records are imported from the usage import file. If this status is displayed, contact [Zuora Global Support](http://support.zuora.com/) for help.
+          - `FAILED`: The usage import file fails to be processed.
+        enum:
+          - PENDING
+          - PROCESSING
+          - COMPLETED
+          - VALIDATION_FAILED
+          - IMPORTED_WITH_ERRORS
+          - FAILED
+      error:
+        type: string
+        description: |
+          The error message of the usage import failure.
+
+          The value of this field is the detailed error message if the usage import status is `FAILED`. Otherwise, the value of this field is `null`.
+      processStart:
+        type: string
+        format: date-time
+        description: |
+          The date and time when the file processing is started.
+      processEnd:
+        type: string
+        format: date-time
+        description: |
+          The date and time when the file processing is completed.
+      totalCount:
+        type: number
+        format: long
+        description: |
+          The total number of usage records that are validated.
+      errorCount:
+        type: number
+        format: long
+        description: |
+          The number of usage records with validation errors.
+
+          If a validation error occurs in any usage record, no usage records will be imported from the usage import file.
+      importedCount:
+        type: number
+        format: long
+        description: |
+          The number of usage records that are imported successfully.
+      createdBy:
+        type: string
+        maxLength: 32
+        description: |
+          The ID of the user who imported this usage file.
+      createdOn:
+        type: string
+        format: date-time
+        description: |
+          The date and time when you submit the request for importing the usage file.
+      updatedBy:
+        type: string
+        maxLength: 32
+        description: |
+          The ID of the user who updated the usage import file.
+      updatedOn:
+        type: string
+        format: date-time
+        description: |
+          The date and time when the progress of the file processing is updated.
+
+
+
+  GetUsageDetailResponseType:
+    type: object
+    properties:
+      id:
+        type: string
+        maxLength: 36
+        description: |
+          The ID of the usage import.
+      name:
+        type: string
+        maxLength: 50
+        description: |
+          The name of the usage import file.
+      description:
+        type: string
+        maxLength: 255
+        description: |
+          The description of the import file.
+
+          You can add some comments about the import file in this field. For example, `This import file contains 50 usage records related to four customer accounts.`
+      status:
+        type: string
+        maxLength: 32
+        description: |
+          The processing status of the usage import file.
+
+          Possible values:
+          - `PENDING`: The usage import file is waiting to be processed.
+          - `PROCESSING`: The usage import file is being processed.
+          - `COMPLETED`: The processing of the usage import file is completed successfully.
+          - `VALIDATION_FAILED`: The processing of the usage import file is completed with validation errors. If a validation error occurs in one usage record, no usage records will be imported from the usage import file.
+          - `IMPORTED_WITH_ERRORS`: The usage import file is imported with errors because of some exceptions. Not all usage records are imported from the usage import file. If this status is displayed, contact [Zuora Global Support](http://support.zuora.com/) for help.
+          - `FAILED`: The usage import file fails to be processed.
+        enum:
+          - PENDING
+          - PROCESSING
+          - COMPLETED
+          - VALIDATION_FAILED
+          - IMPORTED_WITH_ERRORS
+          - FAILED
+      error:
+        type: string
+        description: |
+          The error message of the usage import failure.
+
+          The value of this field is the detailed error message if the usage import status is `FAILED`. Otherwise, the value of this field is `null`.
+      processStart:
+        type: string
+        format: date-time
+        description: |
+          The date and time when the file processing is started.
+      processEnd:
+        type: string
+        format: date-time
+        description: |
+          The date and time when the file processing is completed.
+      totalCount:
+        type: number
+        format: long
+        description: |
+          The total number of usage records that are validated.
+      errorCount:
+        type: number
+        format: long
+        description: |
+          The number of usage records with validation errors.
+
+          If a validation error occurs in any usage record, no usage records will be imported from the usage import file.
+      importedCount:
+        type: number
+        format: long
+        description: |
+          The number of usage records that are imported successfully.
+      createdBy:
+        type: string
+        maxLength: 32
+        description: |
+          The ID of the user who imported this usage file.
+      createdOn:
+        type: string
+        format: date-time
+        description: |
+          The date and time when you submit the request of importing the usage file.
+      updatedBy:
+        type: string
+        maxLength: 32
+        description: |
+          The ID of the user who updated the import file.
+      updatedOn:
+        type: string
+        format: date-time
+        description: |
+          The date and time when the progress of the file processing is updated.
+
+
+
+  GETUsageImportStatusResponseType:
+    type: object
+    properties:
+      status:
+        type: string
+        maxLength: 32
+        description: |
+          The processing status of the usage import file.
+
+          Possible values:
+          - `PENDING`: The usage import file is waiting to be processed.
+          - `PROCESSING`: The usage import file is being processed.
+          - `COMPLETED`: The processing of the usage import file is completed successfully.
+          - `VALIDATION_FAILED`: The processing of the usage import file is completed with validation errors. If a validation error occurs in one usage record, no usage records will be imported from the usage import file.
+          - `IMPORTED_WITH_ERRORS`: The usage import file is imported with errors because of some exceptions. Not all usage records are imported from the usage import file. If this status is displayed, contact [Zuora Global Support](http://support.zuora.com/) for help.
+          - `FAILED`: The usage import file fails to be processed.
+        enum:
+          - PENDING
+          - PROCESSING
+          - COMPLETED
+          - VALIDATION_FAILED
+          - IMPORTED_WITH_ERRORS
+          - FAILED
+
+
+
+  CommonUsageImportsErrorResponse:
+    type: object
+    properties:
+      error:
+        type: object
+        description: |
+          Container for the error information.
+        properties:
+          message:
+            description: |
+              The error message that is returned. If multiple errors occurred, the first error message is returned in this field.
+            type: string
+          errors:
+            type: array
+            description: |
+              Container for the information about detailed errors.
+            items:
+              type: object
+              title: errors
+              properties:
+                objectName:
+                  description: |
+                    The object where the error occurred.
+                  type: string
+                rejectedValue:
+                  description: |
+                    The value that was rejected.
+                  type: string
+                reason:
+                  description: |
+                    The reason for the error.
+                  type: string
+                message:
+                  description: |
+                    The error message that is returned.
+                  type: string
+
+
+
+
+
+
+
+  GetRatedResultsType:
+    type: object
+    properties:
+      dataSet:
+        type: array
+        items:
+          $ref: '#/definitions/GETARatedResultType'
+      cursor:
+        type: string
+        description: |
+          The cursor indicator of the next page of data.
+
+          You can pass in the value of the `cursor` field as the cursor parameter for a subsequent call to get the next page of data. If there is no data after the current page, the cursor returns `null`.
+      count:
+        type: integer
+        description: |
+          The number of data sets in the returned page of the response.
+      hasMore:
+        type: boolean
+        description: |
+          Whether the query results have more data after the current page.
+
+
+
+
+  GETARatedResultType:
+    title: dataSet
+    properties:
+      id:
+        type: string
+        description: |
+          The unique ID of the rating result item.
+      startDate:
+        type: string
+        format: date
+        description: |
+          The start date of the rating result.
+      endDate:
+        type: string
+        format: date
+        description: |
+          The end date of the rating result.
+      amount:
+        type: number
+        format: double
+        description: |
+          The rating amount of the charge.
+      currency:
+        type: string
+        description: |
+          The type of the currency used in the charge.
+      additionalInfo:
+        type: object
+        properties:
+          quantity:
+            type: number
+            format: double
+            description: |
+              The number of units that the charge consumed.
+          uom:
+            type: string
+            description: |
+              The unit used to measure usage consumption.
+          isOverage:
+            type: boolean
+            description: |
+              Whether this usage is using the overage charge model. This field is only returned in the response if you are using the overage charge model.
+          isCredit:
+            type: boolean
+            description: |
+              Whether this usage is using the smoothing charge model. This field is only returned in the response if you are using the overage smoothing charge model.
+
+      ratedTime:
+        type: string
+        format: datetime
+        description: |
+          The date and time when the charge is rated.
+      chargeNumber:
+        type: string
+        description: |
+          A unique number that identifies the charge.
+      subscriptionNumber:
+        type: string
+        description: |
+          A unique number that identifies the subscription.
+      accountNumber:
+        type: string
+        description: |
+          A unique number that identifies the account.
+    type: object
+
+
+
+  GetRatedUsageResultsType:
+    type: object
+    properties:
+      dataSet:
+        type: array
+        items:
+          $ref: '#/definitions/GetARatedUsageResultType'
+      cursor:
+        type: string
+        description: |
+          The cursor indicator of the next page of data.
+
+
+          Pass the value of this field in as the `cursor` parameter for a subsequent call to get the next page of data. If there is no data after the current page, the cursor returns null.
+      count:
+        type: integer
+        description: |
+          The number of data sets in the returned page of the response.
+      hasMore:
+        type: boolean
+        description: |
+          Whether the query results have more data after the current page.
+
+
+
+
+  GetARatedUsageResultType:
+    title: dataSet
+    type: object
+    properties:
+      id:
+        type: string
+        description: |
+          The unique ID of this rated usage.
+      startDate:
+        type: string
+        format: date
+        description: |
+          The start date when this usage is consumed. The date is returned in your tenant time zone.
+      quantity:
+        type: number
+        format: double
+        description: |
+          The number of units used.
+      unitOfMeasure:
+        type: string
+        description: |
+          The unit used to measure the usage.
+      amount:
+        type: number
+        format: double
+        description: |
+          The rating amount of this usage.
+      currency:
+        type: string
+        description: |
+          The type of the currency used in this usage.
+      accountNumber:
+        type: string
+        description: |
+          A unique number of the account that associated with this usage.
+      subscriptionNumber:
+        type: string
+        description: |
+          A unique number of the subscription that associated with this usage.
+      chargeNumber:
+        type: string
+        description: |
+          A unique number of the charge that associated with this usage.
+      usageId:
+        type: string
+        description: |
+          The unique ID of this usage.
+      ratedResultId:
+        type: string
+        description: |
+          The ID of the rated result that associated with this rated usage.
+
+
+
+
+
+
+
+  CommonRatingErrorResponse:
+    type: object
+    properties:
+      reasons:
+        type: array
+        description: |
+          Container for the error information.
+        items:
+          type: object
+          properties:
+            code:
+              description: |
+                The error code of the response.
+              type: string
+            message:
+              description: |
+                The error message that is returned.
+              type: string
+
+
+  UpdateCustomFieldsDefinitionRequestNoNamespace:
+    type: object
+    title: "Custom Fields Definition Schema"
+    additionalProperties: true
+    example:
+      {
+        "title": "Usage",
+        "type": "object",
+        "properties": {
+          "firstName__c": {
+            "type": "string"
+          },
+          "lastName__c": {
+            "type": "string"
+          },
+          "country__c": {
+            "type": "string"
+          },
+          "age__c": {
+            "description": "Age in years",
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "firstName__c",
+          "lastName__c"
+        ]
+      }
+  CommonErrorResponse:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+        description: |
+          The error code.
+      message:
+        type: string
+        description: |
+          The error message.
+
+  CustomFieldsDefinitionNoNamespace:
+    type: object
+    description: |
+      A custom fields definition.
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: |
+          The internal ID of the custom fields definition.
+      type:
+        type: string
+        description: |
+          The type of the custom fields definition. The type is unique within the global namespace.
+
+          The value `_internal` indicates that no schema has been set for the custom fields definition.
+      createdById:
+        type: string
+        description: |
+          The internal ID of the Zuora user who first set the schema.
+      updatedById:
+        type: string
+        description: |
+          The internal ID of the Zuora user who last set the schema.
+      createdDate:
+        type: string
+        format: date-time
+        description: |
+          The date and time when the schema was first set.
+      updatedDate:
+        type: string
+        format: date-time
+        description: |
+          The date and time when the schema was last set.
+      schema:
+        type: object
+        description: |
+          The schema of the custom fields definition. The schema conforms to the [JSON Schema](http://json-schema.org/specification.html) specification.

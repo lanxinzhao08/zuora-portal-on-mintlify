@@ -1,0 +1,596 @@
+{
+	"info": {
+		"_postman_id": "3d7199f6-fcf6-4a92-ab5b-4c41b192695c",
+		"name": "Post Acquisition Subscription Level Changes Flow",
+		"description": "**WARNING:** This Postman Collection builds on the '**New Customer Flow**' Collection, be sure to run that Collection first before working with this one. While any billing account with one or more subscriptions can be used in this Collection, we've assumed you are using a billing accounts created using the '**New Customer Flow**' and that the subscription has only one charge, a recurring per unit charge.\n\nThis Collection demonstrates four subscription lifecycle actions that customers may request post creation of their initial subscription. The examples in this collection focus on subscription actions for a customer. These actions are:\n\n- Subscription suspension\n    \n- Subscription resumption\n    \n- Subscription renewal\n    \n- Subscription cancellation\n    \n\nA companion Collection, 'Post Acquisition Subscription Changes Flow', is available that includes examples of update, add, remove and change rate plan order actions. Before running either Collection we recommend using 'New Customer Flow' to create a new billing account and subscription and you should use that new billing account when running the calls in this Collection.\n\n## Required Environment Variables\n\nSet up these variables in your Postman environment - you can use the same environment you created in the 'New Customer Flow' Collection:\n\n- `base_url`: For example: [https://rest.apisandbox.zuora.com](https://rest.zuora.com) but you must make sure to use YOUR sandbox URL. [This page lists our data centers](https://docs.zuora.com?resourceId=zuora-data-centers) and the associated REST root URLs, if you can login into a Zuora Billing tenant you can compare the root URL of the UI to identify the data center and associated sandbox tenant. DO NOT run this collection against a production tenant, only sandbox.\n    \n- `client_id`: Your OAuth client ID - if you don't have a client id and secret [here are the instructions](/docs/get-started/introduction/) on getting them\n    \n- `client_secret`: Your OAuth client secret\n    \n\n<img src=\"https://content.pstmn.io/288d4200-ed1f-4cdd-b641-2d02cf582cfb/U2NyZWVuc2hvdCAyMDI1LTEwLTAzIGF0IDMuMTMuMjfigK9QTS5wbmc=\">\n\n## Collection Variables\n\nThis collections includes a handful of Collection Variables, either as inputs to the Collection such as an account_number or as working variables set by one of the post-response scripts, e.g. 'access_token'. This variables are defined in the 'Variables' tab above this page. You MUST specify:\n\n- account_number: Your chosen customer billing account number, e.g. A00025051 that has a single subscription. The **Get Account Subscriptions** call will then set the subsciption name needed for the remaining calls in this Collection.\n    \n\nThe Collection also utilizes additional variables that include:\n\n- access_token: OAuth token set by '**1\\. Get Oauth Token**', expires after an hour.\n    \n- subscription: The subscription number to be modified. This is set automatically based on the account_number specified, e.g. A-S00024515, when '**2\\. Get Account Subscriptions**' is run.\n    \n- order_number: This changes as you run the different orders calls\n    \n- Four future dates, each a month apart, are captured in variables 'nextMonth', 'twoMonths', etc, these are used to space the orders a month apart for clarity. There's no Zuora requirement to do this, you can run all four orders for the same date if you wish, but that's not a likely customer driven scenario.\n    \n\n## Usage\n\n1. Create a new environment with the variables described above or reuse the environment you created for '**New Customer Flow**' Collection.\n    \n2. Run '**New Customer Flow**' and create a new account, capture the account number and set the Collection variable account_number using the Variables tab above.\n    \n3. Run \"**1\\. Get OAuth Token**\" first\n    \n4. Run the remaining requests in numbered order. YOU MUST run '**2\\. Get Account Subscriptions**' for the remaining calls in this collection to work\n    \n\nThe Postman console will display some basic information as the calls are run in sequence. This output can be enhanced by editing the post-response script.\n\nWhile not required it can be helpful to have a browser tab open with the Zuora UI displaying the account details of your specified account so you can view the subscription changes from order to order. While you can run multiple orders for the same subscription for the same day, you should instead combine the multiple order actions into a single order. There are some examples of this in our [Orders Tutorials](/docs/get-started/api-tutorials/orders-tutorials/order-basics/).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45708597",
+		"_collection_link": "https://gold-capsule-135956.postman.co/workspace/TEstTEST~520c99a1-2258-4633-a54f-e6e7fddedef5/collection/45708597-3d7199f6-fcf6-4a92-ab5b-4c41b192695c?action=share&source=collection_link&creator=45708597"
+	},
+	"item": [
+		{
+			"name": "1. Get OAuth Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    pm.collectionVariables.set('access_token', response.access_token);",
+							"    console.log('OAuth token set successfully');",
+							"} else {",
+							"    console.error('Failed to get OAuth token');",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "{{client_id}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/oauth/token",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Get OAuth access token using client credentials. This token will be automatically used by subsequent requests."
+			},
+			"response": []
+		},
+		{
+			"name": "2. Get Account Subscriptions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        pm.collectionVariables.set('subscription', response.subscriptions[0].subscriptionNumber);",
+							"        console.log('Retrieved subscription: ' + response.subscriptions[0].subscriptionNumber);",
+							"    } else {",
+							"        console.error('Failed to find specified account number ' + '{{accountNumber}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/subscriptions/accounts/{{account_number}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"subscriptions",
+						"accounts",
+						"{{account_number}}"
+					]
+				},
+				"description": "Create a new customer account with basic billing information."
+			},
+			"response": []
+		},
+		{
+			"name": "Sus1. Suspend Preview",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        console.log('suspend order preview complete for: ' + pm.variables.get(\"subscription\"));",
+							"    } else {",
+							"        console.error('Failed to preview suspension for subscription: ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{nextMonth}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"suspending {{subscription}}\",\n    \"previewOptions\": {\n        \"previewThruType\": \"NumberOfPeriods\",\n        \"previewNumberOfPeriods\": 1,\n        \"previewTypes\": [\"BillingDocs\", \"ChargeMetrics\", \"OrderDeltaMetrics\"]\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"Suspend\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{nextMonth}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{nextMonth}}\"}\n                    ],\n                    \"suspend\": {\n                        \"suspendPolicy\": \"EndOfLastInvoicePeriod\"\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders/preview",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders",
+						"preview"
+					]
+				},
+				"description": "Preview the order totals and billing documents before creating the order."
+			},
+			"response": []
+		},
+		{
+			"name": "Sus2. Suspend Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        pm.collectionVariables.set('order_number', response.orderNumber);",
+							"        console.log('Suspend order completed: ' + response.orderNumber);",
+							"    } else {",
+							"        console.error('Failed to suspend subscription: ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{nextMonth}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"suspend subscription\",\n    \"processingOptions\": {\n        \"runBilling\": true,\n        \"collectPayment\": false\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"Suspend\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{nextMonth}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{nextMonth}}\"}\n                    ],\n                    \"suspend\": {\n                        \"suspendPolicy\": \"EndOfLastInvoicePeriod\"\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders"
+					]
+				},
+				"description": "Create account and subscription and generate an invoice. Collect payment later."
+			},
+			"response": []
+		},
+		{
+			"name": "Res1. Resume Preview",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        console.log('resume order preview complete for: ' + pm.variables.get(\"subscription\"));",
+							"    } else {",
+							"        console.error('Failed to preview resume for subscription: ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{twoMonths}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"resume {{subscription}}\",\n    \"previewOptions\": {\n        \"previewThruType\": \"NumberOfPeriods\",\n        \"previewNumberOfPeriods\": 1,\n        \"previewTypes\": [\"BillingDocs\", \"ChargeMetrics\", \"OrderDeltaMetrics\"]\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"Resume\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{twoMonths}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{twoMonths}}\"}\n                    ],\n                    \"resume\": {\n                        \"resumePolicy\": \"SpecificDate\",\n                        \"resumeSpecificDate\": \"{{twoMonths}}\"\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders/preview",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders",
+						"preview"
+					]
+				},
+				"description": "Preview the order totals and billing documents before creating the order."
+			},
+			"response": []
+		},
+		{
+			"name": "Res2. Resume Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        pm.collectionVariables.set('order_number', response.orderNumber);",
+							"        console.log('resume order complete for: ' + pm.variables.get(\"subscription\"));",
+							"    } else {",
+							"        console.error('Failed to resume ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{twoMonths}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"resume {{subscription}}\",\n    \"processingOptions\": {\n        \"runBilling\": false,\n        \"collectPayment\": false\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"Resume\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{twoMonths}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{twoMonths}}\"}\n                    ],\n                    \"resume\": {\n                        \"resumePolicy\": \"SpecificDate\",\n                        \"resumeSpecificDate\": \"{{twoMonths}}\"\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders"
+					]
+				},
+				"description": "Create account and subscription and generate an invoice. Collect payment later."
+			},
+			"response": []
+		},
+		{
+			"name": "Ren1. Renewal Preview",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        console.log('Early renewal order preview complete for ' + pm.variables.get(\"subscription\"));",
+							"    } else {",
+							"        console.error('Failed to preview early renewal for ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{threeMonths}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"Early renewal preview for {{subscription}}\",\n    \"previewOptions\": {\n        \"previewThruType\": \"NumberOfPeriods\",\n        \"previewNumberOfPeriods\": 1,\n        \"previewTypes\": [\"BillingDocs\", \"ChargeMetrics\", \"OrderDeltaMetrics\"]\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"RenewSubscription\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{threeMonths}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{threeMonths}}\"}\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders/preview",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders",
+						"preview"
+					]
+				},
+				"description": "Preview the order totals and billing documents before creating the order."
+			},
+			"response": []
+		},
+		{
+			"name": "Ren2. Renewal Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        pm.collectionVariables.set('order_number', response.orderNumber);",
+							"        console.log('Renewal order ' + pm.variables.get(\"order_number\") + ' complete for: ' + pm.variables.get(\"subscription\"));",
+							"    } else {",
+							"        console.error('Failed to renew ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{threeMonths}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"Early Renewal of {{subscription}}\",\n    \"processingOptions\": {\n        \"runBilling\": false,\n        \"collectPayment\": false\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"RenewSubscription\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{threeMonths}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{threeMonths}}\"}\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders"
+					]
+				},
+				"description": "Create account and subscription and generate an invoice. Collect payment later."
+			},
+			"response": []
+		},
+		{
+			"name": "Can1. Cancellation Preview",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        console.log('Cancellation order preview complete for ' + pm.variables.get(\"subscription\"));",
+							"    } else {",
+							"        console.error('Failed to preview cancellation for ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{fourMonths}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"Early Cancellation of {{subscription}}\",\n    \"previewOptions\": {\n        \"previewThruType\": \"NumberOfPeriods\",\n        \"previewNumberOfPeriods\": 1,\n        \"previewTypes\": [\"BillingDocs\", \"ChargeMetrics\", \"OrderDeltaMetrics\"]\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"CancelSubscription\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{fourMonths}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{fourMonths}}\"}\n                    ],\n                    \"cancelSubscription\": {\n                        \"cancellationPolicy\": \"EndOfLastInvoicePeriod\"\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders/preview",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders",
+						"preview"
+					]
+				},
+				"description": "Preview the order totals and billing documents before creating the order."
+			},
+			"response": []
+		},
+		{
+			"name": "Can2. Cancellation Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        pm.collectionVariables.set('order_number', response.orderNumber);",
+							"        console.log('Cancellation order, ' + response.orderNumber + ', complete for: ' + pm.variables.get(\"subscription\"));",
+							"    } else {",
+							"        console.error('Failed to cancel ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{fourMonths}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"Early Cancellation of {{subscription}}\",\n    \"processingOptions\": {\n        \"runBilling\": false,\n        \"collectPayment\": false\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"CancelSubscription\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{fourMonths}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{fourMonths}}\"}\n                    ],\n                    \"cancelSubscription\": {\n                        \"cancellationPolicy\": \"EndOfLastInvoicePeriod\"\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders"
+					]
+				},
+				"description": "Create account and subscription and generate an invoice. Collect payment later."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					"const today = new Date(); // the date generated will be in UTC, not your local date",
+					"formattedDate = today.toISOString().split('T')[0];",
+					"pm.globals.set(\"todayDate\", formattedDate);",
+					"",
+					"// Javascript's nextMonth function has the uninituitive behavior that if today is the 31st ",
+					"// and next month doesn't have 31 days then you'll get an 'overflow' to the month over, e.g.",
+					"// if today is March 31st, nextMonth will return May 1st which is fine for this collection",
+					"// but can be confusing if you're not aware what's going on. Certainly did my head in.",
+					"// When this occurs you'll see proration automatically invoked to include the extra day(s).",
+					"//",
+					"function addMonths(start, months) {",
+					"    const result = new Date(start); ",
+					"    result.setMonth(result.getMonth() + months); ",
+					"    return result.toISOString().split('T')[0]; ",
+					"}",
+					"",
+					"pm.globals.set(\"nextMonth\", addMonths(today, 1));",
+					"pm.globals.set(\"twoMonths\", addMonths(today, 2));",
+					"pm.globals.set(\"threeMonths\", addMonths(today, 3));",
+					"pm.globals.set(\"fourMonths\", addMonths(today, 4)); ",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "account_number",
+			"value": ""
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		}
+	]
+}

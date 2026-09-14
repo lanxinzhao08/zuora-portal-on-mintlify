@@ -1,0 +1,648 @@
+{
+	"info": {
+		"_postman_id": "a7417cf9-7257-410e-acd3-e4b8cd3e0261",
+		"name": "Post Acquisition Rate Plan Changes Flow",
+		"description": "**WARNING:** This Postman Collection builds on the '**New Customer Flow**' Collection, be sure to run that Collection first before working with this one. While any billing account with one or more subscriptions can be used in this Collection, we've assumed you are using one of the billing accounts created using the '**New Customer Flow**' and that the subscription has only one charge, a recurring per unit charge.\n\nThis Collection demonstrates four subscription lifecycle actions that customers may request post creation of their initial subscriptin. The examples in this collection focus on modifying the rate plans on the customer's subscription. These actions are:\n\n- Adding on an additional rate plan to an existing subscription.\n    \n- Removing a rate plan.\n    \n- Replacing one rate plan for another, for example the customer wants to upgrade from Bronze to Silver and so there should be a replacement of one plan with another.\n    \n- Updating the price or quanity, or both, of a rate plan.\n    \n\nYou must specify the billing account number, e.g. A00025051 and you must identify a second product rate plan id that will be added or exchanged with the current rate plan. This Collection assumes this second rate plan also has a single recurring per unit charge.\n\nA second Collection, 'Post Acquisition Subscription Changes Flow', is available that includes examples of the Suspend, Resume, Renew and Cancel order actions.\n\n## Required Environment Variables\n\nSet up these variables in your Postman environment - you can use the same environment you created in the 'New Customer Flow' Collection:\n\n- `base_url`: For example: [https://rest.apisandbox.zuora.com](https://rest.zuora.com) but you must make sure to use YOUR sandbox URL. [This page lists our data centers](https://docs.zuora.com?resourceId=zuora-data-centers) and the associated REST root URLs, if you can login into a Zuora Billing tenant you can compare the root URL of the UI to identify the data center and associated sandbox tenant. DO NOT run this collection against a production tenant, only sandbox.\n    \n- `client_id`: Your OAuth client ID - if you don't have a client id and secret [here are the instructions](/docs/get-started/introduction/) on getting them\n    \n- `client_secret`: Your OAuth client secret\n    \n\n<img src=\"https://content.pstmn.io/288d4200-ed1f-4cdd-b641-2d02cf582cfb/U2NyZWVuc2hvdCAyMDI1LTEwLTAzIGF0IDMuMTMuMjfigK9QTS5wbmc=\">\n\n## Collection Variables\n\nThis collections includes a handful of Collection Variables, either as inputs to the Collection such as an account_number or as working variables set by one of the post-response scripts, e.g. 'access_token'. This variables are defined in the 'Variables' tab above this page. You MUST specify:\n\n- account_number: Your chosen customer billing account number, e.g. A00025051 that has a single subscription.\n    \n- add_productrateplanid: The rate plan id of the second recurring per unit rate plan.\n    \n- add_productrateplanchargeid: The rate plan charge id of the recurring per unit charge in the specified rate plan.\n    \n\nThe Collection also utilizes additional variables that include:\n\n- access_token: OAuth token set by '**1\\. Get Oauth Token**', expires after an hour.\n    \n- subscription: The subscription number to be modified. This is set automatically based on the account_number specified, e.g. A-S00024515, when '**2\\. Get Account Subscriptions**' is run.\n    \n- order_number: This changes as you run the different orders calls\n    \n- og_rateplan: The rate plan id of the rate plan in the subscription, also set when '**2\\. Get Account Subscriptions**' is run\n    \n- Four future dates, each a month apart, are captured in variables 'nextMonth', 'twoMonths', etc, these are used to space the orders a month apart for clarity. There's no Zuora requirement to do this, you can run all four orders for the same date if you wish, but that's not a likely customer driven scenario.\n    \n\nIf you don't already know of a suitable product rate plan id for add_productrateplanid, the object query in step **APXa. Per Unit Catalog Object Query** may be helpful. This will list all the recurring per unit charges and rate plans in your tenant so you can pick any suitable one. If the query returns only one record you will have to create a second one or ask your Zuora administrator to create one.\n\nThere is a companion Postman Collection in the same tutorial you found this collection, 'Zuora Catalog - Create Product, Rate Plan, Charge', with which you can create a per unit recurring charge product using our API.\n\nActual pricing does not matter, this collection will set it's own pricing. Use different rate plan and charge names than the one already in use to avoid confusion when viewing the results.\n\n## Usage\n\n1. Create a new environment with the variables described above or reuse the environment you created for '**New Customer Flow**' Collection.\n    \n2. Run \"Get OAuth Token\" first\n    \n3. Run the requests in order:\n    \n    1. BEFORE STARTING YOU MUST specify the second product rate plan id and charge id in the Variables tab in this collection. The requirements for these are in the '**Collection Variables**' section above.\n        \n    2. Run 'Get OAuth Token', remember that the tokens expire after an hour.\n        \n    3. YOU MUST run '**2\\. Get Account Subscriptions**' for the remaining calls in this collection to work.\n        \n    4. Run the remaining POST calls in the order indicated in their titles.\n        \n    5. For extra credit run **'2. Get Account Subscriptions'** again after first saving the JSON response payload of the first time you called it. Compare the two.\n        \n\nThe Postman console will display helpful information as the calls are run in sequence. The output can be enhanced by editing the post-response script.\n\nWhile not required it can be helpful to have a browser tab open with the Zuora UI displaying the account details of your specified account so you can view the subscription changes from order to order. While you can run multiple orders for the same subscription for the same day, you should try to combine the multiple order actions into a single order to take advantage of our transaction atomicity. There are some examples in our [Orders Tutorials](/docs/get-started/api-tutorials/orders-tutorials/order-basics/).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45708597",
+		"_collection_link": "https://gold-capsule-135956.postman.co/workspace/TEstTEST~520c99a1-2258-4633-a54f-e6e7fddedef5/collection/45708597-a7417cf9-7257-410e-acd3-e4b8cd3e0261?action=share&source=collection_link&creator=45708597"
+	},
+	"item": [
+		{
+			"name": "1. Get OAuth Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    pm.collectionVariables.set('access_token', response.access_token);",
+							"    console.log('OAuth token set successfully');",
+							"} else {",
+							"    console.error('Failed to get OAuth token');",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "{{client_id}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/oauth/token",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Get OAuth access token using client credentials. This token will be automatically used by subsequent requests."
+			},
+			"response": []
+		},
+		{
+			"name": "2. Get Account Subscriptions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        pm.collectionVariables.set('subscription', response.subscriptions[0].subscriptionNumber);",
+							"        pm.collectionVariables.set('og_rateplanid', response.subscriptions[0].ratePlans[0].id);",
+							"        pm.collectionVariables.set('og_rateplanchargeid', response.subscriptions[0].ratePlans[0].ratePlanCharges[0].id);",
+							"        pm.collectionVariables.set('og_rateplanchargenumber', response.subscriptions[0].ratePlans[0].ratePlanCharges[0].number);",
+							"        console.log('Retrived ids: ' + response.subscriptions[0].subscriptionNumber + ' : ' + response.subscriptions[0].ratePlans[0].id + ' : ' + response.subscriptions[0].ratePlans[0].ratePlanCharges[0].id  + ' : ' + response.subscriptions[0].ratePlans[0].ratePlanCharges[0].number);",
+							"    } else {",
+							"        console.error('Failed find specified account number ' + '{{accountNumber}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"        console.error('Did you set the account_number collection variable?');",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/subscriptions/accounts/{{account_number}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"subscriptions",
+						"accounts",
+						"{{account_number}}"
+					]
+				},
+				"description": "Create a new customer account with basic billing information."
+			},
+			"response": []
+		},
+		{
+			"name": "Up1. Update Quantity Preview",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        console.log('order preview complete for: ' + pm.variables.get(\"subscription\") + ', new mrr will be: ' + response.previewResult.chargeMetrics[0].charges[0].cmrr.regular);",
+							"    } else {",
+							"        console.error('Failed to preview update quantity for: ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{nextMonth}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"changing qty to 50\",\n    \"previewOptions\": {\n        \"previewThruType\": \"NumberOfPeriods\",\n        \"previewNumberOfPeriods\": 1,\n        \"previewTypes\": [\"BillingDocs\", \"ChargeMetrics\", \"OrderDeltaMetrics\"]\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"UpdateProduct\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{nextMonth}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{nextMonth}}\"}\n                    ],\n                    \"updateProduct\": {\n                        \"ratePlanId\": \"{{og_rateplanid}}\",\n                        \"chargeUpdates\": [\n                            {\n                                \"chargeNumber\": \"{{og_rateplanchargenumber}}\",\n                                \"pricing\": {\n                                    \"recurringPerUnit\": {\n                                        \"quantity\": 50\n                                    }\n                                }\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders/preview",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders",
+						"preview"
+					]
+				},
+				"description": "Preview the order totals and billing documents before creating the order."
+			},
+			"response": []
+		},
+		{
+			"name": "Up2. Update Quantity Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        console.log('Quantity updated successfully using order: ' + response.orderNumber + ' on ' + pm.variables.get(\"subscription\"));",
+							"    } else {",
+							"        console.error('Failed to update quantity for: ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{nextMonth}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"changing qty to 50\",\n    \"processingOptions\": {\n        \"runBilling\": true,\n        \"collectPayment\": false\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"UpdateProduct\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{nextMonth}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{nextMonth}}\"}\n                    ],\n                    \"updateProduct\": {\n                        \"ratePlanId\": \"{{og_rateplanid}}\",\n                        \"chargeUpdates\": [\n                            {\n                                \"chargeNumber\": \"{{og_rateplanchargenumber}}\",\n                                \"pricing\": {\n                                    \"recurringPerUnit\": {\n                                        \"quantity\": 50\n                                    }\n                                }\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders"
+					]
+				},
+				"description": "Create account and subscription and generate an invoice. Collect payment later."
+			},
+			"response": []
+		},
+		{
+			"name": "Add1. Add Rate Plan Preview",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        console.log('add product order preview complete for: ' + pm.variables.get(\"subscription\"));",
+							"    } else {",
+							"        console.error('Failed to preview add product for subscription: ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{twoMonths}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"adding second rate plan\",\n    \"previewOptions\": {\n        \"previewThruType\": \"NumberOfPeriods\",\n        \"previewNumberOfPeriods\": 1,\n        \"previewTypes\": [\"BillingDocs\", \"ChargeMetrics\", \"OrderDeltaMetrics\"]\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"AddProduct\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{twoMonths}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{twoMonths}}\"}\n                    ],\n                    \"addProduct\": {\n                        \"productRatePlanId\": \"{{add_productrateplanid}}\",\n                        \"chargeOverrides\": [\n                            {\n                                \"productRatePlanChargeId\": \"{{add_productrateplanchargeid}}\",\n                                \"pricing\": {\n                                    \"recurringPerUnit\": {\n                                        \"quantity\": 15,\n                                        \"listPrice\": 10\n                                    }\n                                }\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders/preview",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders",
+						"preview"
+					]
+				},
+				"description": "Preview the order totals and billing documents before creating the order."
+			},
+			"response": []
+		},
+		{
+			"name": "Add2. Add Rate Plan Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        pm.collectionVariables.set('order_number', response.orderNumber);",
+							"        console.log('Rate Plan added successfully using order: ' + response.orderNumber);",
+							"    } else {",
+							"        console.error('Failed to add second rate plan, error: ' + response.reasons[0].code + ' : ' + response.reasons[0].message);",
+							"    }",
+							"}",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{twoMonths}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"changing qty to 50\",\n    \"processingOptions\": {\n        \"runBilling\": true,\n        \"collectPayment\": false\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"AddProduct\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{twoMonths}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{twoMonths}}\"}\n                    ],\n                    \"addProduct\": {\n                        \"productRatePlanId\": \"{{add_productrateplanid}}\",\n                        \"chargeOverrides\": [\n                            {\n                                \"productRatePlanChargeId\": \"{{add_productrateplanchargeid}}\",\n                                \"pricing\": {\n                                    \"recurringPerUnit\": {\n                                        \"quantity\": 15,\n                                        \"listPrice\": 10\n                                    }\n                                }\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders"
+					]
+				},
+				"description": "Create account and subscription and generate an invoice. Collect payment later."
+			},
+			"response": []
+		},
+		{
+			"name": "Rem1. Remove Rate Plan Preview",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        console.log('remove product order preview complete for: ' + pm.variables.get(\"subscription\"));",
+							"    } else {",
+							"        console.error('Failed to preview remove product for subscription: ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{threeMonths}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"adding second rate plan\",\n    \"previewOptions\": {\n        \"previewThruType\": \"NumberOfPeriods\",\n        \"previewNumberOfPeriods\": 1,\n        \"previewTypes\": [\"BillingDocs\", \"ChargeMetrics\", \"OrderDeltaMetrics\"]\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"RemoveProduct\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{threeMonths}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{threeMonths}}\"}\n                    ],\n                    \"removeProduct\": {\n                        \"ratePlanId\": \"{{og_rateplanid}}\"\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders/preview",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders",
+						"preview"
+					]
+				},
+				"description": "Preview the order totals and billing documents before creating the order."
+			},
+			"response": []
+		},
+		{
+			"name": "Rem2. Remove Rate Plan Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        console.log('remove product order completed for: ' + pm.variables.get(\"subscription\"));",
+							"    } else {",
+							"        console.error('Failed to remove original product for subscription: ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{threeMonths}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"changing qty to 50\",\n    \"processingOptions\": {\n        \"runBilling\": true,\n        \"collectPayment\": false\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"RemoveProduct\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{threeMonths}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{threeMonths}}\"}\n                    ],\n                    \"removeProduct\": {\n                        \"ratePlanId\": \"{{og_rateplanid}}\"\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders"
+					]
+				},
+				"description": "Create account and subscription and generate an invoice. Collect payment later."
+			},
+			"response": []
+		},
+		{
+			"name": "Ex1. Exchange Rate Plan Preview",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        console.log('Exchange rate plan order preview complete for: ' + pm.variables.get(\"subscription\"));",
+							"    } else {",
+							"        console.error('Failed to preview exchange rate plan for subscription: ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{fourMonths}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"Replacing original rate plan with the add on rate plan\",\n    \"previewOptions\": {\n        \"previewThruType\": \"NumberOfPeriods\",\n        \"previewNumberOfPeriods\": 1,\n        \"previewTypes\": [\"BillingDocs\", \"ChargeMetrics\", \"OrderDeltaMetrics\"]\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"ChangePlan\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{fourMonths}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{fourMonths}}\"}\n                    ],\n                    \"changePlan\": {\n                        \"ratePlanId\": \"{{og_rateplanid}}\",\n                        \"newProductRatePlan\": {\n                            \"productRatePlanId\": \"{{add_productrateplanid}}\",\n                            \"chargeOverrides\": [\n                                {\n                                    \"productRatePlanChargeId\": \"{{add_productrateplanchargeid}}\",\n                                    \"pricing\": {\n                                        \"recurringPerUnit\": {\n                                            \"quantity\": 25,\n                                            \"listPrice\": 20\n                                        }\n                                    }\n                                }\n                            ]\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders/preview",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders",
+						"preview"
+					]
+				},
+				"description": "Preview the order totals and billing documents before creating the order."
+			},
+			"response": []
+		},
+		{
+			"name": "Ex2. Exchange Rate Plan Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        console.log('Exchange rate plan order completed for: ' + pm.variables.get(\"subscription\"));",
+							"    } else {",
+							"        console.error('Failed to exchange rate plan for subscription: ' + '{{subscription}}' + ' - Error: ' + response.reasons[0].code + ' ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{fourMonths}}\",\n    \"existingAccountNumber\": \"{{account_number}}\",\n    \"description\": \"changing qty to 50\",\n    \"processingOptions\": {\n        \"runBilling\": true,\n        \"collectPayment\": false\n    },\n    \"subscriptions\": [\n        {\n            \"subscriptionNumber\": \"{{subscription}}\",\n            \"orderActions\": [\n                {\n                    \"type\": \"ChangePlan\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{fourMonths}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{fourMonths}}\"}\n                    ],\n                    \"changePlan\": {\n                        \"ratePlanId\": \"{{og_rateplanid}}\",\n                        \"newProductRatePlan\": {\n                            \"productRatePlanId\": \"{{add_productrateplanid}}\",\n                            \"chargeOverrides\": [\n                                {\n                                    \"productRatePlanChargeId\": \"{{add_productrateplanchargeid}}\",\n                                    \"pricing\": {\n                                        \"recurringPerUnit\": {\n                                            \"quantity\": 25,\n                                            \"listPrice\": 20\n                                        }\n                                    }\n                                }\n                            ]\n                        }\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders"
+					]
+				},
+				"description": "Create account and subscription and generate an invoice. Collect payment later."
+			},
+			"response": []
+		},
+		{
+			"name": "APXa. Per Unit Catalog Object Query",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/object-query/product-rate-plan-charges?productrateplancharges.fields[]=name,id&expand[]=productrateplan&productrateplan.fields[]=name,id&filter[]=chargemodel.EQ:Per%20Unit%20Pricing&filter[]=chargetype.EQ:Recurring",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"object-query",
+						"product-rate-plan-charges"
+					],
+					"query": [
+						{
+							"key": "productrateplancharges.fields[]",
+							"value": "name,id"
+						},
+						{
+							"key": "expand[]",
+							"value": "productrateplan"
+						},
+						{
+							"key": "productrateplan.fields[]",
+							"value": "name,id"
+						},
+						{
+							"key": "filter[]",
+							"value": "chargemodel.EQ:Per%20Unit%20Pricing"
+						},
+						{
+							"key": "filter[]",
+							"value": "chargetype.EQ:Recurring"
+						}
+					]
+				},
+				"description": "Retrieve the full product catalog including product rate plans and charges."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					"const today = new Date(); // the date generated will be in UTC, not your local date",
+					"formattedDate = today.toISOString().split('T')[0];",
+					"pm.globals.set(\"todayDate\", formattedDate);",
+					"",
+					"// Javascript's nextMonth function has the uninituitive behavior that if today is the 31st ",
+					"// and next month doesn't have 31 days then you'll get an 'overflow' to the month over, e.g.",
+					"// if today is March 31st, nextMonth will return May 1st which is fine for this collection",
+					"// but can be confusing if you're not aware what's going on. Certainly did my head in.",
+					"// When this occurs you'll see proration automatically invoked to include the extra day(s).",
+					"//",
+					"function addMonths(start, months) {",
+					"    const result = new Date(start); ",
+					"    result.setMonth(result.getMonth() + months); ",
+					"    return result.toISOString().split('T')[0]; ",
+					"}",
+					"",
+					"pm.globals.set(\"nextMonth\", addMonths(today, 1));",
+					"pm.globals.set(\"twoMonths\", addMonths(today, 2));",
+					"pm.globals.set(\"threeMonths\", addMonths(today, 3));",
+					"pm.globals.set(\"fourMonths\", addMonths(today, 4)); ",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "account_number",
+			"value": ""
+		},
+		{
+			"key": "add_productrateplanid",
+			"value": ""
+		},
+		{
+			"key": "add_productrateplanchargeid",
+			"value": ""
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		}
+	]
+}

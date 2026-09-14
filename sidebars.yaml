@@ -1,0 +1,330 @@
+- label: Get Started
+  page: docs/get-started/introduction.md
+- label: Basics
+  page: docs/get-started/basics.md
+- group: AI & Agents 
+  expanded: false
+  items:
+    - label: MCP install
+      page: docs/ai/mcp-install.md
+    - label: Skills and agents
+      page: docs/ai/skills-agents.md
+- group: Tutorials
+  expanded: true
+  items:
+    - group: Business tutorials
+      page: docs/get-started/tutorials.md
+      expanded: false
+      items:
+        - label: Set up your product catalog
+          page: docs/get-started/tutorials/set-up-products.md
+        - label: Show your products to your customers
+          page: docs/get-started/tutorials/show-products.md
+        - label: Show specific product details
+          page: docs/get-started/tutorials/show-product-details.md
+        - label: Create a billing account
+          page: docs/get-started/tutorials/create-account.md
+        - label: Preview an order
+          page: docs/get-started/tutorials/preview-order.md
+        - group: Embed a payment form to your website
+          page: docs/get-started/tutorials/collect-payments.md
+          expanded: false
+          items:
+            - label: Collect payments with payment form
+              page: docs/get-started/tutorials/payment-form.md
+        - label: Place an order and pay
+          page: docs/get-started/tutorials/create-orders.md
+        - label: View the generated invoice
+          page: docs/get-started/tutorials/view-invoice.md
+        - group: Manage user account
+          expanded: false
+          items:
+            - label: Cancel subscriptions
+              page: docs/get-started/tutorials/cancel-subscription.md
+            - label: Check account details
+              page: docs/get-started/tutorials/check-account-details.md
+            - label: View all invoices on the account
+              page: docs/get-started/tutorials/view-all-invoices.md
+        - label: Manage subscription lifecycle
+          page: docs/get-started/tutorials/subscription-lifecycle-tutorial.md
+    - group: API tutorials
+      expanded: false
+      items:
+        - group: Orders API tutorials
+          page: docs/get-started/api-tutorials/orders-tutorials/order-basics.md
+          expanded: true
+          items:
+            - label: Create subscriptions
+              page: >-
+                docs/get-started/api-tutorials/orders-tutorials/create-subscriptions.md
+            - label: Modify subscriptions throughout subscription lifecycle
+              page: >-
+                docs/get-started/api-tutorials/orders-tutorials/modify-subscriptions.md
+    - group: Integration tutorials
+      page: quickstart-guides/integration-tutorials.md
+      expanded: false
+      items:
+        - label: Integrate ERP with Zuora Billing Summary GL pattern
+          page: quickstart-guides/integrate-erp-with-zuora-billing-summarygl.md
+        - label: Integrate ERP with Zuora Billing item level pattern
+          page: quickstart-guides/integrate-erp-with-zuora-billing-item-level.md
+        - label: Integrate ERP with Zuora Billing ERP Fulfillment pattern
+          page: quickstart-guides/integrate-erp-with-zuora-billing-erpfulfillment.md
+        - label: CRM Integration quickstart guide
+          page: quickstart-guides/crm-integration-quickstart-guide.md
+- group: Guides
+  expanded: false
+  items:
+    - label: Object model
+      page: v1-api-reference/object-model.md
+    - label: Authentication
+      page: docs/guides/authentication.md
+    - label: Pagination
+      page: docs/guides/pagination.md
+    - label: Object Query - Expand, filter, fields, and sort
+      page: docs/guides/expand-filter-fields-sort.md
+    - label: Error codes
+      page: docs/guides/error-codes.md
+    - label: Error handling
+      page: docs/guides/error-handling.md
+    - label: Idempotent requests
+      page: docs/guides/idempotent-requests.md
+    - label: Asynchronous requests
+      page: docs/guides/async-requests.md
+    - label: Rate limits
+      page: docs/guides/rate-limits.md
+    - label: Query options
+      page: docs/guides/query-guide.md
+    - label: Request and response compression
+      page: docs/guides/request-and-response-compression.md
+- group: Libraries
+  page: docs/guides/libraries.md
+  expanded: false
+  items:
+    - label: Java
+      page: sdk-references/java-sdk-reference.md
+    - label: Node.js
+      page: sdk-references/node-sdk-reference.md
+    - label: Python
+      page: sdk-references/python-sdk-reference.md
+    - label: C#
+      page: sdk-references/csharp-sdk-reference.md
+- label: Policies
+  page: docs/guides/api-policies.md
+- separator: ZEPHR
+- group: Libraries
+  expanded: false
+  page: zephr-docs/zephr-sdk/overview.md
+  items:
+    - page: zephr-docs/zephr-sdk/zephr-sdk-reference/javascript-sdk.md
+      label: JavaScript SDK
+    - page: zephr-docs/zephr-sdk/zephr-sdk-reference/browser-sdk.md
+      label: Browser SDK
+    - page: zephr-docs/zephr-sdk/zephr-sdk-reference/swift-sdk.md
+      label: Swift SDK
+    - page: zephr-docs/zephr-sdk/zephr-sdk-reference/php-sdk.md
+      label: PHP SDK
+- group: Guides
+  expanded: false
+  items:
+    - page: zephr-docs/zephr-api/zephr-api-tutorials/exporting-users.md
+      label: Exporting users
+    - page: zephr-docs/zephr-api/zephr-api-tutorials/foreign-keys.md
+      label: Foreign keys
+    - page: >-
+        zephr-docs/zephr-api/zephr-api-tutorials/hmac-request-signing-and-key-pair.md
+      label: HMAC request signing and key pair
+    - page: >-
+        zephr-docs/zephr-api/zephr-api-tutorials/oauth-on-android-using-the-public-api.md
+      label: OAuth on Android using the Public API
+    - page: >-
+        zephr-docs/zephr-api/zephr-api-tutorials/on-site-oauth-with-the-public-api.md
+      label: On-site OAuth with the Public API
+    - page: >-
+        zephr-docs/zephr-sdk/zephr-sdk-tutorials/server-side-integration-guide-using-zephr-javascript-sdk.md
+      label: Server-side integration guide using Zephr JavaScript SDK
+    - page: >-
+        zephr-docs/zephr-sdk/zephr-sdk-tutorials/oauth-on-ios-using-the-swift-sdk.md
+      label: OAuth on iOS using the Swift SDK
+    - page: zephr-docs/others/outbound-ip-from-zephr.md
+      label: Outbound IP addresses from Zephr
+    - page: zephr-docs/others/deliverability-of-emails.md
+      label: Deliverability of emails
+    - page: zephr-docs/others/form-pre-post-processing.md
+      label: Form pre/post processing
+    - page: zephr-docs/others/integrating-with-a-third-party-id.md
+      label: Integrating with a third-party identity system
+    - page: zephr-docs/others/integrating-with-amp-web-component.md
+      label: Integrating with AMP web component frameworks
+    - page: zephr-docs/others/single-sign-on-for-zephr-sites.md
+      label: Single sign-on for Zephr sites
+- separator: CHANGELOGS
+- group: API Changelogs
+  expanded: false
+  items:
+    - label: v1 API
+      page: docs/get-started/changelogs/v1-api-changelog.md
+    - label: Quickstart API
+      page: docs/get-started/changelogs/quickstart-api-changelog.md
+    - label: Zephr Admin API
+      page: docs/get-started/changelogs/admin-api-changelog.md
+    - label: Zephr Public API
+      page: docs/get-started/changelogs/public-api-changelog.md
+- group: SDK Changelogs
+  page: sdk-changelogs/changelog-overview.md
+  expanded: false
+  items:
+    - group: Java
+      expanded: false
+      items:
+        - label: 3.20.0
+          page: sdk-changelogs/java/changelog-3200.md
+        - label: 3.19.0
+          page: sdk-changelogs/java/changelog-3190.md
+        - label: 3.18.0
+          page: sdk-changelogs/java/changelog-3180.md
+        - label: 3.17.0
+          page: sdk-changelogs/java/changelog-3170.md
+        - label: 3.16.0
+          page: sdk-changelogs/java/changelog-3160.md
+        - label: 3.15.0
+          page: sdk-changelogs/java/changelog-3150.md
+        - label: 3.14.0
+          page: sdk-changelogs/java/changelog-3140.md
+        - label: 3.13.0
+          page: sdk-changelogs/java/changelog-3130.md
+        - label: 3.12.0
+          page: sdk-changelogs/java/changelog-3120.md
+        - label: 3.11.0
+          page: sdk-changelogs/java/changelog-3110.md
+        - label: 3.10.0
+          page: sdk-changelogs/java/changelog-3100.md
+        - label: 3.9.0
+          page: sdk-changelogs/java/changelog-390.md
+        - label: 3.8.0
+          page: sdk-changelogs/java/changelog-380.md
+        - label: 3.7.0
+          page: sdk-changelogs/java/changelog-370.md
+        - label: 3.6.0
+          page: sdk-changelogs/java/changelog-360.md
+        - label: 3.5.0
+          page: sdk-changelogs/java/changelog-350.md
+        - label: 3.4.0
+          page: sdk-changelogs/java/changelog-340.md
+        - label: 3.3.0
+          page: sdk-changelogs/java/changelog-330.md
+    - group: Node.js
+      expanded: false
+      items:
+        - label: 3.20.0
+          page: sdk-changelogs/nodejs/changelog-3200.md
+        - label: 3.19.0
+          page: sdk-changelogs/nodejs/changelog-3190.md
+        - label: 3.18.0
+          page: sdk-changelogs/nodejs/changelog-3180.md
+        - label: 3.17.0
+          page: sdk-changelogs/nodejs/changelog-3170.md
+        - label: 3.16.0
+          page: sdk-changelogs/nodejs/changelog-3160.md
+        - label: 3.15.0
+          page: sdk-changelogs/nodejs/changelog-3150.md
+        - label: 3.14.0
+          page: sdk-changelogs/nodejs/changelog-3140.md
+        - label: 3.13.0
+          page: sdk-changelogs/nodejs/changelog-3130.md
+        - label: 3.12.0
+          page: sdk-changelogs/nodejs/changelog-3120.md
+        - label: 3.11.0
+          page: sdk-changelogs/nodejs/changelog-3110.md
+        - label: 3.10.0
+          page: sdk-changelogs/nodejs/changelog-3100.md
+        - label: 3.9.0
+          page: sdk-changelogs/nodejs/changelog-390.md
+        - label: 3.8.0
+          page: sdk-changelogs/nodejs/changelog-380.md
+        - label: 3.7.0
+          page: sdk-changelogs/nodejs/changelog-370.md
+        - label: 3.6.0
+          page: sdk-changelogs/nodejs/changelog-360.md
+        - label: 3.5.0
+          page: sdk-changelogs/nodejs/changelog-350.md
+        - label: 3.4.0
+          page: sdk-changelogs/nodejs/changelog-340.md
+        - label: 3.3.0
+          page: sdk-changelogs/nodejs/changelog-330.md
+    - group: Python
+      expanded: false
+      items:
+        - label: 3.20.0
+          page: sdk-changelogs/python/changelog-3200.md
+        - label: 3.19.0
+          page: sdk-changelogs/python/changelog-3190.md
+        - label: 3.18.0
+          page: sdk-changelogs/python/changelog-3180.md
+        - label: 3.17.0
+          page: sdk-changelogs/python/changelog-3170.md
+        - label: 3.16.0
+          page: sdk-changelogs/python/changelog-3160.md
+        - label: 3.15.0
+          page: sdk-changelogs/python/changelog-3150.md
+        - label: 3.14.0
+          page: sdk-changelogs/python/changelog-3140.md
+        - label: 3.13.0
+          page: sdk-changelogs/python/changelog-3130.md
+        - label: 3.12.0
+          page: sdk-changelogs/python/changelog-3120.md
+        - label: 3.11.0
+          page: sdk-changelogs/python/changelog-3110.md
+        - label: 3.10.0
+          page: sdk-changelogs/python/changelog-3100.md
+        - label: 3.9.0
+          page: sdk-changelogs/python/changelog-390.md
+        - label: 3.8.0
+          page: sdk-changelogs/python/changelog-380.md
+        - label: 3.7.0
+          page: sdk-changelogs/python/changelog-370.md
+        - label: 3.6.0
+          page: sdk-changelogs/python/changelog-360.md
+        - label: 3.5.0
+          page: sdk-changelogs/python/changelog-350.md
+        - label: 3.4.0
+          page: sdk-changelogs/python/changelog-340.md
+        - label: 3.3.0
+          page: sdk-changelogs/python/changelog-330.md
+    - group: C#
+      expanded: false
+      items:
+        - label: 1.12.0
+          page: sdk-changelogs/csharp/changelog-1120.md
+        - label: 1.11.0
+          page: sdk-changelogs/csharp/changelog-1110.md
+        - label: 1.10.0
+          page: sdk-changelogs/csharp/changelog-1100.md
+        - label: 1.9.0
+          page: sdk-changelogs/csharp/changelog-190.md
+        - label: 1.8.0
+          page: sdk-changelogs/csharp/changelog-180.md
+        - label: 1.7.0
+          page: sdk-changelogs/csharp/changelog-170.md
+        - label: 1.6.0
+          page: sdk-changelogs/csharp/changelog-160.md
+        - label: 1.5.0
+          page: sdk-changelogs/csharp/changelog-150.md
+        - label: 1.4.0
+          page: sdk-changelogs/csharp/changelog-140.md
+        - label: 1.3.0
+          page: sdk-changelogs/csharp/changelog-130.md
+        - label: 1.2.0
+          page: sdk-changelogs/csharp/changelog-120.md
+        - label: 1.1.0
+          page: sdk-changelogs/csharp/changelog-110.md
+        - label: 1.0.0
+          page: sdk-changelogs/csharp/changelog-100.md
+        - label: 1.0.0-beta.6
+          page: sdk-changelogs/csharp/changelog-100beta6.md
+        - label: 1.0.0-beta.4
+          page: sdk-changelogs/csharp/changelog-100beta4.md
+        - label: 1.0.0-beta.3
+          page: sdk-changelogs/csharp/changelog-100beta3.md
+        - label: 1.0.0-beta.2
+          page: sdk-changelogs/csharp/changelog-100beta2.md

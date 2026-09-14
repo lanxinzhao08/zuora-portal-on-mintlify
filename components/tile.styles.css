@@ -1,0 +1,19 @@
+.thinTile:hover {
+    box-shadow: 0px 10px 30px 0px rgba(35, 35, 35, 0.1) !important;
+}
+
+.thinTile > div {
+  padding-top: 24px;
+  background: #00D2B9;
+}
+
+.thinTile > span {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.wideTile > div > span {
+    display: flex;
+    height: 100%;
+}

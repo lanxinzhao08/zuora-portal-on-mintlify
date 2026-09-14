@@ -1,0 +1,23 @@
+- separator: DEVELOPER BLOGS
+- label: Introduction
+  page: introduction.md
+- label: Zuora's Prompt-A-Thon 2025
+  page: 2025-9-10-Prompt-A-Thon.md
+- label: Latest AI Week at Zuora
+  page: 2025-8-31-LatestAIWeek.md
+- label: Unleashing developer innovation at Zuora's Partner Hackathon
+  page: 2025-8-19-ZuoraPartnerHackathon.md
+- label: Zuora's patent portforlio
+  page: 2025-6-3-ZuoraPatentPortfolio.md
+- label: Turning failures into gold
+  page: 2025-3-18-TurningFailureIntoGold.md
+- label: The evolution of Zuora's AI Copilot
+  page: 2025-3-6-ZuoraAICopilotEvolution.md
+- label: Rules and logic in Zuora
+  page: 2025-2-26-RulesAndLogicInZuora.md
+- label: How we built a reliable and secure AI based feature
+  page: 2025-2-5-CopilotForAnalytics.md
+- label: Zuora Q4 release complete
+  page: 2024-11-18-Q4-Release-Completed.md
+- label: Redesigned Developer Center
+  page: announcement.md

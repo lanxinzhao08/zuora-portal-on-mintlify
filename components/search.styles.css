@@ -1,0 +1,90 @@
+ul.search-results {
+  background: #ffffff;
+ /** max-width: 600px;**/
+  width: 600px;
+  border-radius: 0 0 8px 8px;
+  top: calc(100% + 8px);
+  left: 0;
+  box-shadow: none;
+  padding: 10px;
+  right: auto;
+  max-height: 600px !important;
+}
+
+ul.search-results div a {
+  cursor: pointer;
+  position: relative;
+  margin-top: 0;
+  display: flex;
+  text-decoration: none;
+  line-height: 16px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  font-weight: 400 !important;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  pointer-events: auto;
+  color: rgb(31, 41, 51);
+  margin-left: 8px;
+  padding: 8px 8px 8px 4px;
+  margin-bottom: 0;
+}
+
+
+ul.search-results div a {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  pointer-events: auto;
+  color: rgb(31, 41, 51);
+}
+
+ul.search-results div a div {
+  font-family: -apple-system, 'system-ui', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 14px;
+}
+
+ul.search-results div a:hover {
+  background-color: rgb(228, 231, 235);
+  color: rgb(31, 41, 51);
+  transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
+}
+
+ul.operation-type {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-size: 8px !important;
+  font-family: "Source Code Pro", monospace;
+  font-weight: 600 !important;
+  line-height: 15px !important;
+  color: rgb(245, 247, 250) !important;
+  border-radius: 16px !important;
+  width: 36px;
+  height: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-right: 6px;
+}
+
+.post,
+.put,
+.get,
+.patch,
+.delete {
+  font-size: 8px !important;
+}
+
+[data-cy="search-result-title"] {
+  color: rgb(31, 41, 51) !important;
+  background-color: rgb(255, 255, 3);
+  font-weight: 400px !important;
+}
+
+[data-cy="search-result-description"] {
+  margin-left: 42px;
+  font-size: 0.8em;
+  color: rgb(31, 41, 51) !important;
+}

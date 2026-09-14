@@ -1,0 +1,19 @@
+{
+  "name": "portal-template",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Redocly portal template repository",
+  "license": "MIT",
+  "scripts": {
+    "start": "npx @redocly/cli preview -p 4000"
+  },
+  "dependencies": {
+    "@redocly/redoc-revel": "0.133.0",
+    "prismjs": "^1.30.0",
+    "react-helmet": "^6.1.0",
+    "styled-components": "^5.3.5"
+  },
+  "resolutions": {
+    "cheerio": "1.0.0-rc.12"
+  }
+}

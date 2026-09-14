@@ -1,0 +1,109 @@
+# Project requires login by default. Remove the next line if you want it to be public.
+#requiresLogin: true
+
+# Force light theme by default (html class will be "light ready" instead of "dark ready")
+colorMode:
+  ignoreDetection: true
+  modes:
+    - light
+
+# Hide the "Mock server" item from the Servers section of the API reference
+mockServer:
+  position: off
+
+openapi:
+  codeSamples: 
+    languages: 
+      - lang: 'Payload'
+        label: 'Payload'
+      - lang: 'curl'
+        label: 'cURL'
+
+
+reunite:
+  ignoreMarkdocErrors: true
+  ignoreLinkChecker: true
+apis:
+  activeRatingApiv1:
+    root: archive/active-rating/active-rating-api/openapi.yaml
+    output: archive/active-rating/active-rating-api/active-rating-api.yaml
+  newQuickstartApi:
+    root: other-api/quickstart-api.yaml
+    output: other-api/quickstart-api/quickstart-api.yaml
+  revenueApi:
+    root: other-api/revenue.yaml
+    output: other-api/revenue/revenue.yaml
+  billingApiv1:
+    root: v1-api-reference/api.yaml
+    output: v1-api-reference/api/api.yaml
+  olderApi:
+    root: v1-api-reference/older-api.yaml
+    output: v1-api-reference/older-api/older-api.yaml
+  zephrAdminApi:
+    root: zephr-api-reference/zephr-admin-api.yaml
+    output: zephr-api-reference/zephr-admin-api/zephr-admin-api.yaml
+  zephrPublicApi:
+    root: zephr-api-reference/zephr-public-api.yaml
+    output: zephr-api-reference/zephr-public-api/zephr-public-api.yaml
+scripts:
+  head:
+    - src: ./static/mopinion.js
+    - src: ./static/assets/script/zuora-navigation.js
+      type: module
+  body:
+    - src: https://nav-assets.zuora.life/script/zuora-event-tracker.js
+    - src: https://nav-assets.zuora.life/script/zuora-event-tracker.com.js
+    - src: ./static/zendesk_verification.js
+
+analytics:
+  gtm:
+    trackingId: GTM-THG9TB
+# codeSnippet:
+#   copy:
+#     hide: false
+markdown:
+  lastUpdatedBlock:
+    hide: true
+  toc:
+    depth: 4
+logo:
+  link: /
+  image: ./images/logo.png
+  altText: Zuora Developer Center
+redirects:
+  $ref: redirects.yaml
+
+search:
+  engine: typesense
+
+aiAssistant:
+  hide: false
+  prompt: >
+    You are a helpful assistant that can help with Zuora API. When user asks a question related to Zuora API, you should use the following rules to answer the question:
+      - You should use the latest version of the v1-api-reference, sdk-changelogs, sdk-references, and docs folder as the primary source of truth.
+      - When the search keyword contains "zephr", you should use the latest version of the zephr-api-reference and zephr-docs folders as the primary source of truth.
+      - When the search keyword contains "Quickstart API", you should use the latest version of the other-api/quickstart-api.yaml file as the primary source of truth.
+      - If there is overlap between the v1-api-reference folder and the other-api/quickstart-api.yaml file, you should use the v1-api-reference folder as the primary source of truth.
+
+  suggestions:
+    - How to create a subscription while creating an account?
+    - How do I generate and post an invoice?
+    - What are the API changes in this month?
+    - What changes have been deployed to Java SDK in the last release?
+  trigger:
+    hide: false
+    inputType: button
+    inputIcon: sparkles
+# skills:
+#   hide: false
+#   excludeFiles: 
+#     - archive/*
+
+responseHeaders:
+  '**':
+    - name: 'Strict-Transport-Security'
+      value: 'max-age=31536000; includeSubDomains'
+    - name: 'X-Content-Type-Options'
+      value: 'nosniff'
+
+  

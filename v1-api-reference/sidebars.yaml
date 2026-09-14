@@ -1,0 +1,26 @@
+- separator: GET STARTED
+- page: introduction.md
+  label: Introduction
+- page: object-model.md
+  label: Zuora object model
+- page: cors-rest.md
+  label: CORS and Zuora v1 API
+- group: API versions
+  items:
+    - page: api-versions.md
+      label: Introduction to API versions
+    - label: API upgrades
+      page: api-upgrades.md
+    - label: API upgrade guide
+      page: api-upgrade-guide.md
+- page: api-object-names.md
+  label: API object names for Describe
+- separator: ENDPOINTS
+- group: v1 API
+  expanded: true
+  items:
+    - page: ./api.yaml
+- group: Legacy API Reference
+  expanded: false
+  items:
+    - page: ./older-api.yaml

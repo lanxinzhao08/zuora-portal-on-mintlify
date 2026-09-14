@@ -1,0 +1,14 @@
+- separator: QUICKSTART API
+- label: Introduction
+  page: quickstart-api-intro.md
+- label: Making requests
+  page: quickstart-api-requests.md
+- group: Quickstart API Reference
+  expanded: false
+  items:
+    - page: ./quickstart-api.yaml
+- separator: REVENUE
+- group: Revenue API Reference
+  expanded: false
+  items:
+    - page: ./revenue.yaml

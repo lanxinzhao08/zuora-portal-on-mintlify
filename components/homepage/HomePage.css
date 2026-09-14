@@ -1,0 +1,341 @@
+/* HomePage Component Styles - Redocly Portal Compatible */
+
+.homepage {
+  font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: #F8F9FB;
+  color: #333333;
+  line-height: 1.4;
+}
+
+.homepage .hero-section {
+  background-color: #E6F3F7;
+  padding: 120px 60px 60px 60px;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+  margin-bottom: 20px;
+  margin-top: -60px;
+}
+
+.homepage .hero-section h1 {
+  color: #000000;
+  font-size: 2.5em;
+  margin: 0 0 10px 0;
+  font-weight: bold;
+}
+
+.homepage .hero-section p {
+  font-size: 1.2em;
+  color: #555;
+  margin: 0;
+}
+
+.homepage .getting-started-section {
+  background: linear-gradient(to right, #02929C, #6383D3);
+  padding: 20px 0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  margin-top: -20px;
+}
+
+.homepage .explore-apis-section {
+  background-color: #E6F3F7;
+  padding: 20px 0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  margin-top: -20px;
+}
+
+.homepage .explore-sdks-section {
+  background-color: #E8EEF6;
+  padding: 20px 0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  margin-top: -20px;
+}
+
+.homepage .dev-resources-section {
+  background-color: #F8F9FB;
+  padding: 20px 0;
+  border-radius: 8px;
+  margin-top: -20px;
+}
+
+/* Toggle Button Styles */
+.homepage .toggle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  background: white;
+  border-radius: 8px;
+  padding: 4px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.homepage .toggle-btn {
+  background: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.homepage .toggle-btn:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.homepage .toggle-btn.active {
+  background: #E6F3F7;
+  color: #333;
+  font-weight: 600;
+}
+
+.homepage .toggle-btn:first-child {
+  margin-right: 2px;
+}
+
+.homepage .toggle-btn:last-child {
+  margin-left: 2px;
+}
+
+/* Card Grid Layout */
+.homepage .card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+.homepage .card {
+  background-color: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  padding: 10px 10px 5px 15px;
+  flex: 1;
+  min-width: 200px;
+  max-width: 220px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+}
+
+/* Special layout for API cards to fit 5 in one line */
+.homepage .explore-apis-section .card-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.homepage .explore-apis-section .card {
+  min-width: unset;
+  max-width: unset;
+  width: 100%;
+}
+
+.homepage .card h3, 
+.homepage .card h4 {
+  color: #000000;
+  margin-top: 0;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.homepage .explore-apis-section .card h4 {
+  font-size: 0.95em;
+  margin-bottom: 10px;
+}
+
+.homepage .card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.homepage .card ul li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.homepage .card ul li a {
+  color: #007079;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.homepage .explore-apis-section .card ul li a {
+  font-size: 0.85em;
+  line-height: 1.4;
+}
+
+.homepage .card ul li a:hover {
+  text-decoration: underline;
+  color: #005a61;
+}
+
+.homepage .icon {
+  font-size: 1.2em;
+  color: #007079;
+  flex-shrink: 0;
+}
+
+.homepage .icon img {
+  display: block;
+}
+
+/* Section headings */
+.homepage h2 {
+  color: #000000;
+  font-size: 2em;
+  margin: 0 0 20px 0;
+  font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 1240px) {
+  .homepage .explore-apis-section .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .homepage .explore-apis-section .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage .card-grid {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+  
+  .homepage .card {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+  }
+  
+  .homepage .explore-apis-section .card-grid {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+  
+  .homepage .hero-section h1 {
+    font-size: 2em;
+  }
+  
+  .homepage .hero-section {
+    padding: 30px 15px;
+  }
+  
+  .homepage .toggle-container {
+    flex-direction: row;
+    width: auto;
+    max-width: 300px;
+  }
+  
+  .homepage .toggle-btn {
+    flex: 1;
+    min-width: auto;
+  }
+  
+  .homepage .toggle-btn:first-child,
+  .homepage .toggle-btn:last-child {
+    margin: 0;
+  }
+  
+  .homepage h2 {
+    font-size: 1.7em;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage .hero-section {
+    padding: 20px 10px;
+  }
+  
+  .homepage .hero-section h1 {
+    font-size: 1.8em;
+  }
+  
+  .homepage .hero-section p {
+    font-size: 1em;
+  }
+  
+  .homepage .card {
+    padding: 15px;
+  }
+  
+  .homepage .card h3,
+  .homepage .card h4 {
+    font-size: 1em;
+  }
+  
+  .homepage h2 {
+    font-size: 1.5em;
+  }
+  
+  .homepage .toggle-container {
+    flex-direction: column;
+    width: 200px;
+  }
+  
+  .homepage .toggle-btn {
+    margin: 2px 0;
+  }
+}
+
+/* Ensure compatibility with existing portal styles */
+.homepage * {
+  box-sizing: border-box;
+}
+
+.homepage a {
+  color: inherit;
+}
+
+.homepage button {
+  font-family: inherit;
+}
+
+/* High specificity to override any portal defaults */
+.homepage .card ul li a[target="_blank"] {
+  color: #007079;
+}
+
+.homepage .card ul li a[target="_blank"]:hover {
+  color: #005a61;
+}
+
+.homepage .dev-resources-section .card h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.homepage .dev-resources-section .card ul li a {
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.homepage .dev-resources-section .card ul li {
+  font-size: 0.8em;
+  line-height: 1.6;
+}

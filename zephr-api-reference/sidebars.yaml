@@ -1,0 +1,12 @@
+- separator: GET STARTED
+- page: zephr-api-introduction.md
+  label: Introduction
+- separator: ENDPOINTS
+- group: Admin API reference
+  expanded: false
+  items:
+    - page: ./zephr-admin-api.yaml
+- group: Public API reference
+  expanded: false
+  items:
+    - page: ./zephr-public-api.yaml

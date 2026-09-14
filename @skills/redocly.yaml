@@ -1,0 +1,4 @@
+skills:
+  hide: false
+  excludeFiles: 
+    - archive/*

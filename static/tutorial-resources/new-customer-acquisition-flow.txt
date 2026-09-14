@@ -1,0 +1,33 @@
+title New Customer Acquisition Flow
+
+bottomparticipants
+participant Browser
+participant Portal
+participant Zuora
+
+abox over Browser,Zuora #D6E9FF ;0 :This is a simplified new customer order process. Details of payment gateway and tax \nintegrations have been intentionaly excluded for clarity. In this diagram the\n'Prospect' is your potential customer browsing at your website or portal. 'Portal' is  \nyour web site or application running on your server(s) where prospects or your sales \nteam can sign up for your services and products.
+
+Portal->Zuora: Query Catalog (cache instead maybe?)\n GET v1/catalog/products
+Browser->Portal: Browse Catalog
+Portal->Zuora: Order Preview (aka Quote)\n POST v1/orders/preview
+Zuora->Portal: Pricing incl. Total
+Browser->Portal: I'll Buy!
+Portal->Browser: How would you like to pay?
+
+abox over Browser,Zuora #D6E9FF ;0 :Individual details are ommitted here for clarity as are details on managing failed payments.
+
+Browser->Portal: Payment method details
+Portal->Zuora: Payment method details
+alt Immediate Payment Collected
+Portal->Zuora: Order incl. Account, Contact, \nSubscription, Pricing, Payment Details\nPOST v1/orders
+Zuora->Zuora: Create Account, \nOrder, Subscription, \nInvoice and Payment
+Zuora->Portal: Success (incl. Ids)
+Portal->Browser: Success Confirmation page
+Zuora-->Browser: Send email confirming order, include $0 balance Invoice PDF as receipt
+else Payment Collected Later
+Portal->Zuora: Order incl. Account, Contact, \nSubscription, Pricing Details\n POST v1/orders
+Zuora->Zuora: Create Account, \nOrder, Subscription \nand Invoice
+Zuora->Portal: Success (incl. Ids)
+Portal->Browser: Success Confirmation page
+Zuora-->Browser: Send email confirming order, include Invoice PDF for payment
+end

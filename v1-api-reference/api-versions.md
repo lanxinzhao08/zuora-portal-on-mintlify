@@ -1,15 +1,8 @@
 ---
-seo:
-  title: API versions
-  description: Introduction to the major version and minor version of the v1 API.
-markdown:
-  toc:
-    hide: false
+title: "Introduction to Zuora API Versions"
+sidebarTitle: "Introduction to API versions"
+description: "Introduction to the major version and minor version of the v1 API."
 ---
-
-
-# Introduction to Zuora API Versions
-
 The v1 API are version controlled. Versioning ensures that the v1 API changes are backward compatible. Zuora uses a major and minor version nomenclature to manage changes. By specifying a version in a REST request or setting the tenant-level API version, you can get expected responses regardless of future changes to the API.
 
 ## Major Version
@@ -57,13 +50,13 @@ The supported minor versions are not consecutive. You can use the following vers
 - 2025-08-12
 
 
-{% admonition type="info"%}
-  Not all versions include backward-incompatible changes. To understand all backward incompatible changes, see <a href="/v1-api-reference/api-upgrades/">API upgrades</a>.
-{% /admonition %}
+<Note>
+  Not all versions include backward-incompatible changes. To understand all backward incompatible changes, see <a href="/v1-api-reference/api-upgrades">API upgrades</a>.
+</Note>
 
 ### Scope of the API version
 
-The `Zuora-Version` header is only supported for the v1 API. It is not applicable to the API calls outside of the <a href="/v1-api-reference/api">v1 API Reference</a>.
+The `Zuora-Version` header is only supported for the v1 API. It is not applicable to the API calls outside of the <a href="/v1-api-reference/introduction">v1 API Reference</a>.
 
 
 ### Upgrade or rollback your tenant version
@@ -88,7 +81,7 @@ For example, you're currently on `2024-05-20`, and the latest version is `2025-0
 You can roll back to `186.0`. But from `186.0`, you can only upgrade to the latest version, `2025-08-12`, and cannot upgrade to the previous version, `2024-05-20`.
 
 <p>
-Before committing to an upgrade, you should review and incorporate any backward-incompatible changes that might affect your integration. For a list of all backward-incompatible changes between versions, see <a href="/v1-api-reference/api-upgrades/">API upgrades</a>.
+Before committing to an upgrade, you should review and incorporate any backward-incompatible changes that might affect your integration. For a list of all backward-incompatible changes between versions, see <a href="/v1-api-reference/api-upgrades">API upgrades</a>.
 <br />
-We recommend that you always keep up-to-date with the latest API version to take advantage of the latest Zuora capabilities. For instructions about upgrading the API version, see <a href="/v1-api-reference/api-upgrade-guide/">API upgrade guide</a>.
+We recommend that you always keep up-to-date with the latest API version to take advantage of the latest Zuora capabilities. For instructions about upgrading the API version, see <a href="/v1-api-reference/api-upgrade-guide">API upgrade guide</a>.
 </p>

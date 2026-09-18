@@ -1,22 +1,7 @@
 ---
-seo:
-  title: Get started with the Zuora API
-markdown:
-  toc:
-    hide: true
-redirects:
-  /quickstart-api/getting-started/: {}
-  /sdk/sdk-quickstart-intro/: {}
-  /sdk/java-sdk/sdk-quickstart-java/: {}
-  /sdk/node-sdk/sdk-quickstart-node/: {}
-  /api-reference-guide/: {}
-  /zephr-docs/zephr-api/zephr-api-tutorial/: {}
-  /zephr-docs/zephr-dev-doc-intro/: {}
-  /rest-api/api-guides/1-authentication/: {}
-  /rest-api/api-guides/3.1-create-account/: {}
+title: "Get started"
+sidebarTitle: "Get Started"
 ---
-# Get started
-
 This page and the "Tutorials" section in the left-hand menu provide code examples in either our REST API or the client libraries.
 
 Use this content as a guide to set up your local development environment and send your first API request. This content will guide you through:
@@ -25,7 +10,7 @@ Use this content as a guide to set up your local development environment and sen
 - Some basic concepts
 - How to send your first API request using cURL or Zuora client libraries
 
-<img src="../images/quickstart-tutorial-images/zuora-integration-diagram.png" alt="Zuora integration overview" style="width: 100%; height: auto;" />
+<img src="/docs/images/quickstart-tutorial-images/zuora-integration-diagram.png" alt="Zuora integration overview" style="width: 100%; height: auto;" />
 
 If you run into any issues or have questions, join our <a href="https://community.zuora.com/communities/community-home?communitykey=e2a932b4-50c4-4019-a3e8-362e38714df3" target="_blank">Developers Community</a> to find answers or raise your questions.
 
@@ -36,7 +21,7 @@ This tutorial assumes that you are using either a Zuora-provided test drive, or 
 
 The following diagram describes the workflow to make your first call with Zuora API:
 
-<img src="../images/quickstart-tutorial-images/make-first-call-workflow.png" alt="Make your first call workflow" style="width: 100%; height: auto;" />
+<img src="/docs/images/quickstart-tutorial-images/make-first-call-workflow.png" alt="Make your first call workflow" style="width: 100%; height: auto;" />
 
 
 ## OAuth client setup
@@ -49,7 +34,7 @@ For the step-by-step instructions on how to create an OAuth client, see the foll
 
 <iframe width="800" height="500" src="https://share.vidyard.com/watch/AzppuCPC6MF7BQ1kZF4EG4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-The text content for this video tutorial is also available [here](./oauth-client-setup-steps.md).
+The text content for this video tutorial is also available [here](/docs/get-started/oauth-client-setup-steps).
 
 Note that a different Client ID and Secret are needed for each tenant, for example, sandbox or production.
 
@@ -73,8 +58,8 @@ Our Production tenants are intentionally absent from this table.
 Select tool or language you want to use to get started.
 
 
-{% tabsComponent %}
-  {% tabComponent title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
 cURL is a popular command-line tool for transferring data using network protocols like HTTP and HTTPS. ​​It requires minimal setup but is less capable than fully-featured programming languages like Java or JavaScript.
 With cURL installed, you can enter the cURL commands in the Terminal or Command Prompt and see the response immediately.
@@ -84,7 +69,7 @@ With cURL installed, you can enter the cURL commands in the Terminal or Command 
 cURL is pre-installed on some operating systems by default, for example, MacOS or Linux.
 Check whether you have cURL installed by opening your Terminal or command line interface by entering the command:
 
-```bash {% title="terminal" %}
+```bash terminal
 curl / docs/get-started/introduction/ --compressed
 ```
 
@@ -104,7 +89,7 @@ After you confirm that cURL is installed, you can set up your credentials in you
 
 3. **Add your client credentials as environment variables**: In the editor, add the following lines to the profile file, replacing `your-client-id` with your client ID and `your-client-secret` with your client secret:
 
-  ```bash {% title="terminal" %}
+  ```bash terminal
   export ZUORA_CLIENT_ID='your-client-id'
   export ZUORA_CLIENT_SECRET='your-client-secret'
   ```
@@ -117,7 +102,7 @@ After you confirm that cURL is installed, you can set up your credentials in you
 
 7. **Create a bearer token**: Send a request to [Create an OAuth token](/v1-api-reference/api/oauth/createtoken) to generate an OAuth bearer token.
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request POST \
     --url https://rest.test.zuora.com/oauth/token \
     --header 'Accept: application/json' \
@@ -129,7 +114,7 @@ After you confirm that cURL is installed, you can set up your credentials in you
 
   **Response body**
 
-  ```json {% title="JSON" %}
+  ```json JSON
   {
       "access_token": "6447d349d8854f0d8d5535484b0b811b",
       "token_type": "bearer",
@@ -176,7 +161,7 @@ After you confirm that cURL is installed, you can set up your credentials in you
 
 4. **Create a bearer token**: Send a request to [Create an OAuth token](/v1-api-reference/api/oauth/createtoken) to generate an OAuth bearer token.
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request POST \
     --url https://rest.test.zuora.com/oauth/token \
     --header 'Accept: application/json' \
@@ -188,7 +173,7 @@ After you confirm that cURL is installed, you can set up your credentials in you
 
   **Response body**
 
-  ```json {% title="JSON" %}
+  ```json JSON
   {
       "access_token": "6234d349d8854f0d8d5535484b0b862b",
       "token_type": "bearer",
@@ -215,14 +200,14 @@ This is a topic you can explore in more depth in <a href="https://docs.zuora.com
 Note that you should replace `your-bearer-token` with the bearer token you generated in Step 2.
 
 
-```bash {% title="cURL" %}
+```bash cURL
 curl -L -X GET 'https://rest.test.zuora.com/object-query/accounts?pageSize=1' \
 -H 'Authorization: Bearer 6234d349d8854f0d8d5535484b0b862b'
 ```
 
 If your tenant has billing accounts, you will receive a response similar to the following sample response:
 
-```json {% title="JSON" %}
+```json JSON
 {
     "nextPage": "W3sidmFsdWUiOiIyMDI0LTA3LTI1VDAyOjQ2OjIwWiIsIm9yZGVyQnkiOnsiZmllbGQiOiJVcGRhdGVkRGF0ZSIsIm9yZGVyIjoiREVTQyJ9fSx7InZhbHVlIjoiOGE4YWEzYmM5MGM0ZjE2OTAxOTBlN2MyNTQ1ZjNjODYiLCJvcmRlckJ5Ijp7ImZpZWxkIjoiSWQiLCJvcmRlciI6IkRFU0MifX1d",
     "data": [
@@ -268,17 +253,17 @@ Congratulations! You’ve made your first request to Zuora throught the REST API
 
 ## Next steps
 
-We provide step-by-step tutorials for using the Zuora API and client libraries to complete typical business-to-consumer(B2C) business flows. Check our [Tutorials](tutorials.md) to learn more.
+We provide step-by-step tutorials for using the Zuora API and client libraries to complete typical business-to-consumer(B2C) business flows. Check our [Tutorials](/docs/get-started/tutorials) to learn more.
 
-  {% /tabComponent %}
+  </Tab>
 
-  {% tabComponent title="Java" %}
+  <Tab title="Java">
 
 Java is one of the world's most widely used programming languages. Zuora provides a custom Java library which makes working with the Zuora API in Java simple and efficient.
 
-{% admonition type="info" %}
+<Note>
   **Requirement**: Java 11 or a later version
-{% /admonition %}
+</Note>
 
 The sample codes in this tutorial are created based on a Java 17 environment.
 
@@ -288,7 +273,7 @@ The sample codes in this tutorial are created based on a Java 17 environment.
 
 Add the following `zuora-sdk-java` dependency to the dependencies in the `pom.xml` file of your project:
 
-```xml {% title="pom.xml" %}
+```xml pom.xml
 <dependency>
     <groupId>com.zuora.sdk</groupId>
     <artifactId>zuora-sdk-java</artifactId>
@@ -304,7 +289,7 @@ After adding the dependency, start building your project. Maven will automatical
 
 To install the Zuora Java SDK, add `zuora-sdk-java` to the dependencies block of your `build.gradle` file:
 
-```bash {% title="build.gradle" %}
+```bash build.gradle
 dependencies {
   implementation("com.zuora.sdk:zuora-sdk-java:$version")
   // ...
@@ -331,14 +316,14 @@ The main advantage of making your client id and secret accessible for all projec
 3. **Add environment variables**: In the editor, add the line below, replacing `your-client-id-here` with your client id:
 &nbsp;
 &nbsp;
-  ```bash {% title="terminal" %}
+  ```bash terminal
   export ZUORA_CLIENT_ID='your-client-id-here'
   ```
 &nbsp;
   In the editor, add the line below, replacing `your-client-secret-here` with your client secret:
 &nbsp;
 &nbsp;
-  ```bash {% title="terminal" %}
+  ```bash terminal
   export ZUORA_CLIENT_SECRET='your-client-secret-here'
   ```
 &nbsp;
@@ -398,7 +383,7 @@ This is a topic you can explore in more depth in <a href="https://docs.zuora.com
 
 &nbsp;
 
-```java {% title="Java" %}
+```java Java
 import com.zuora.ZuoraClient;
 import com.zuora.ApiException;
 import com.zuora.model.QueryAccountsResponse;
@@ -513,11 +498,11 @@ Congratulations! You’ve made your first request to Zuora with the Java client 
 
 ## Next steps
 
-We provide step-by-step tutorials for using the Zuora API and client libraries to complete typical business-to-consumer(B2C) business flows. Check our [Tutorials](tutorials.md) to learn more.
+We provide step-by-step tutorials for using the Zuora API and client libraries to complete typical business-to-consumer(B2C) business flows. Check our [Tutorials](/docs/get-started/tutorials) to learn more.
 
-  {% /tabComponent %}
+  </Tab>
 
-  {% tabComponent title="Node.js" %}
+  <Tab title="Node.js">
 
 Node.js is a popular JavaScript framework that is commonly used for web development. Zuora provides a custom Node.js library that makes working with the Zuora API in JavaScript simple and efficient.
 
@@ -550,7 +535,7 @@ For more information about Zuora Node.js libraries, check <a href="https://www.n
 
 Set the client ID and client secret in the `.env` file of your Node.js project. The following code snippet is a sample `.env` file:
 
-```bash {% title=".env" %}
+```bash .env
 ZUORA_CLIENT_ID=a0d49f9c-9f65-4e95-b55a-0b634f9d5348
 ZUORA_CLIENT_SECRET=v1thGTMRjffbRMJ6B3FvZgzY/Kf8VmG7WK4B142
 ```
@@ -569,7 +554,7 @@ Regardless of whether your customers are individuals or companies, the customer 
 This is a topic you can explore in more depth in <a href="https://docs.zuora.com?resourceId=billing-cusomer-accounts-management" target="_blank">Manage customer accounts</a> in our Knowledge Center.
 
 
-```javascript {% title="Node.js" %}
+```javascript Node.js
 const {ZuoraClient} = require("zuora-sdk-js");
 
 (async () => {
@@ -601,13 +586,13 @@ const {ZuoraClient} = require("zuora-sdk-js");
 
 Then run the following command in the terminal:
 
-```bash {% title="terminal" %}
+```bash terminal
 node --env-file=.env app.js
 ```
 
 If the request succeeds, you should get a response similar to the following snippet:
 
-```json {% title="JSON" %}
+```json JSON
 {
   "nextPage": "W3sib3JkZXJCeSI6eyJmaWVsZCI6IlVwZGF0ZWREYXRlIiwib3JkZXIiOiJERVNDIn0sInZhbHVlIjoiMjAyNC0wOC0xNFQxNzo1Nzo1OC0wNzowMCJ9LHsib3JkZXJCeSI6eyJmaWVsZCI6IklkIiwib3JkZXIiOiJERVNDIn0sInZhbHVlIjoiOGI0OGYxNThmZWMyZWFlOTQ5ZTVkNDVjNzgzNTFlNjIifV0=",
   "data": [
@@ -712,17 +697,17 @@ Congratulations! You’ve made your first request to Zuora with the Node.js clie
 
 ## Next steps
 
-We provide step-by-step tutorials for using the Zuora API and client libraries to complete typical business-to-consumer(B2C) business flows. Check our [Tutorials](tutorials.md) to learn more.
+We provide step-by-step tutorials for using the Zuora API and client libraries to complete typical business-to-consumer(B2C) business flows. Check our [Tutorials](/docs/get-started/tutorials) to learn more.
 
-  {% /tabComponent %}
+  </Tab>
 
-  {% tabComponent title="Python" %}
+  <Tab title="Python">
 
 ## Step 1: Install Python
 
-{% admonition type="info" %}
+<Note>
   **Requirement**: Python 3.9+, Pydantic 2.6+
-{% /admonition %}
+</Note>
 
 You can download and install Python by following the <a href="https://wiki.python.org/moin/BeginnersGuide/Download" target="_blank">Python official guide</a>.
 
@@ -730,7 +715,7 @@ You can download and install Python by following the <a href="https://wiki.pytho
 
 You can install the latest version of the Zuora's Python library via `pip`:
 
-```bash {% title="terminal" %}
+```bash terminal
 pip install zuora-sdk
 ```
 
@@ -748,7 +733,7 @@ If you do not want to install the latest version of Zuora's Python client librar
 
 2. Run the following command in the terminal:
 
-  ```bash {% title="terminal" %}
+  ```bash terminal
   pip install -r requirements.txt
   ```
 
@@ -818,7 +803,7 @@ Customer accounts capture your customers' billing and payment details.
 Regardless of whether your customers are individuals or companies, the customer account is where Zuora captures their name, their addresses for billing and tax purposes, their methods of payment, the orders they’ve placed for your products and services, and many other details.
 This is a topic you can explore in more depth in <a href="https://docs.zuora.com?resourceId=billing-cusomer-accounts-management" target="_blank">Manage customer accounts</a> in our Knowledge Center.
 
-```python {% title="Python" %}
+```python Python
 import os
 from zuora_sdk.zuora_client import ZuoraClient, ZuoraEnvironment
 from zuora_sdk.rest import ApiException
@@ -856,13 +841,13 @@ if __name__ == '__main__':
 
 Then run the following command in the terminal:
 
-```bash {% title="terminal" %}
+```bash terminal
 python SampleApp.py
 ```
 
 If the request succeeds, you should get a response similar to the following snippet:
 
-```json {% title="JSON" %}
+```json JSON
 [ExpandedAccount(id='8ad084db91a0cbe60191bbf9fabc069b',
 created_by_id='2c92c0f972a852360172bbe22ac551b6',
 created_date='2024-09-04T00:40:07-07:00',
@@ -877,20 +862,20 @@ Congratulations! You’ve made your first request to Zuora with the Python clien
 
 ## Next steps
 
-We provide step-by-step tutorials for using the Zuora API and client libraries to complete typical business-to-consumer(B2C) business flows. Check our [Tutorials](tutorials.md) to learn more.
+We provide step-by-step tutorials for using the Zuora API and client libraries to complete typical business-to-consumer(B2C) business flows. Check our [Tutorials](/docs/get-started/tutorials) to learn more.
 
-  {% /tabComponent %}
+  </Tab>
 
-  {% tabComponent title="C#" %}
+  <Tab title="C#">
 
 C# is a popular object-oriented programming language developed by Microsoft.
 .NET is a software framework that provides a runtime environment and a comprehensive set of libraries for building and running applications on Microsoft platforms.
 
 C# is often associated with .NET development as it is the primary language used for building .NET applications.
 
-{% admonition type="info" %}
+<Note>
   **Requirement**: C# 12+, .NET 8.0+
-{% /admonition %}
+</Note>
 
 ## Step 1: Create a .NET project
 
@@ -903,17 +888,17 @@ For detailed instructions of how to create a new .NET project, see <a href="http
 
 Add the Zuora client library to your .NET project by installing the NuGet package via your IDE or by running the following command in the .NET CLI:
 
-```shell {% title="terminal" %}
+```shell terminal
 dotnet add package ZuoraSDK
 ```
 
-For additional ways to install the Zuora C# library, see [Zuora client libraries](/docs/guides/libraries/).
+For additional ways to install the Zuora C# library, see [Zuora client libraries](/docs/guides/libraries).
 
 ## Step 3: Send your first API request
 
 Copy the following code snippet and add it to your entry point .cs file, such as the Program.cs file:
 
-```csharp {% title="C#" %}
+```csharp C#
 using ZuoraSDK.Client;
 using ZuoraSDK.Model;
 
@@ -943,7 +928,7 @@ class Program
 Note that each method has an async method with `Async` as a suffix.
 For example, you can choose to use `QueryAccounts()` or `QueryAccountsAsync()` when querying accounts. The following code snippet is an example using the asynchronous way to query accounts in the Program.cs file.
 
-```csharp {% title="C#" %}
+```csharp C#
 using ZuoraSDK.Client;
 using ZuoraSDK.Model;
 using Task = System.Threading.Tasks.Task;
@@ -974,7 +959,7 @@ class Program
 
 If the request succeeds, you should get a response similar to the following snippet:
 
-```json {% title="JSON" %}
+```json JSON
 {
   "nextPage": "W3sidmFsdWUiOiIyMDI1LTAxLTAxVDAyOjI3OjQ3LTA4OjAwIiwib3JkZXJCeSI6eyJmaWVsZCI6IlVwZGF0ZWREYXRlIiwib3JkZXIiOiJERVNDIn19LHsidmFsdWUiOiI4YWQwOTgwYzkzYmE0ZDFiMDE5NDIxNjgzZjJkNDc0YiIsIm9yZGVyQnkiOnsiZmllbGQiOiJJZCIsIm9yZGVyIjoiREVTQyJ9fV0=",
   "data": [
@@ -1033,8 +1018,8 @@ Congratulations! You’ve made your first request to Zuora with the C# client li
 
 ## Next steps
 
-We provide step-by-step tutorials for using the Zuora API and client libraries to complete typical business-to-consumer(B2C) business flows. Check our [Tutorials](tutorials.md) to learn more.
+We provide step-by-step tutorials for using the Zuora API and client libraries to complete typical business-to-consumer(B2C) business flows. Check our [Tutorials](/docs/get-started/tutorials) to learn more.
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>

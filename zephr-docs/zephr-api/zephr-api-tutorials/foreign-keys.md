@@ -1,10 +1,6 @@
 ---
-seo:
-  title: Foreign Keys
+title: "Foreign keys"
 ---
-
-# Foreign keys
-
 In many cases, Zephr Customers use a Foreign Key for a variety of integrations with Zephr. These are stored differently to User Schema Attributes, using Foreign Systems.
 
 This guide details how to set a Foreign Key in Zephr using the Public API and, once set, how to search for users using Foreign Key or email.

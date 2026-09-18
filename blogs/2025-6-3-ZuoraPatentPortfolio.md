@@ -1,15 +1,7 @@
 ---
-seo:
-  title: Zuora's patent portfolio - Zuora Developers Blog
-markdown:
-  toc:
-    hide: true
-disableLastModified: false
+title: "Zuora's patent portfolio"
+sidebarTitle: "Zuora's patent portforlio"
 ---
-
-
-# Zuora's patent portfolio
-
 There's a perspective around here that we do some cool things at Zuora, but no one knows about them. A goal is to shine light on these less well lit corners of Zuora. As of April 2025, [Zuora holds 49 issued U.S. patents](https://patents.google.com/?assignee=ZUORA%2c+INC.) and 8 issued foreign patents across our suite of products. We also have 20 U.S. patent applications and 5 foreign applications pending.
 
 Being a Zuora customer comes with benefits, and you can't get this sort of stuff elsewhere. Unless, of course, we've licensed you &#128522;

@@ -1,14 +1,7 @@
 ---
-seo:
-  title: Turning failures into gold - Zuora Developers Blog
-markdown:
-  toc:
-    hide: true
-disableLastModified: false
+title: "Turning failure into gold"
+sidebarTitle: "Turning failures into gold"
 ---
-
-# Turning failure into gold
-
 Our product processes millions of payments daily, and inevitably, some payments fail. Retrying these payments repeatedly seems logical, yet each retry may add costs without any increase in success rates. Enter our machine learning-driven **Smart Retry** feature.
 
 First introduced in 2021. **Smart Retry** doesn't retry payments blindly on some fixed repeating schedule, instead it predicts the optimal moment to retry a failed payment. The moment when there is the greatest likelihood of getting paid. By intelligently timing retries, "smart retry", our model reduces costs associated with retries while also increasing the amount of money collected.
@@ -35,6 +28,5 @@ If you'd like to explore **Smart Retry** or any other payment management feature
 
 Examples of Zuora’s other AI-based work:
 
-* [Building reliable and secure AI based features](/blogs/2025-2-copilotforanalytics/)
-* [Evolution of Zuora’s AI Copilot](/blogs/2025-3-6-zuoraaicopilotevolution/)
-
+* [Building reliable and secure AI based features](/blogs/2025-2-5-CopilotForAnalytics)
+* [Evolution of Zuora’s AI Copilot](/blogs/2025-3-6-ZuoraAICopilotEvolution)

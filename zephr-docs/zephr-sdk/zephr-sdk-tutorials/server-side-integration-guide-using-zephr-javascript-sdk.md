@@ -1,5 +1,6 @@
-# Server-side integration guide using Zephr JavaScript SDK
-
+---
+title: "Server-side integration guide using Zephr JavaScript SDK"
+---
 This document describes how to use the Zephr JavaScript SDK to add basic Identity and Access Management (IAM) to a CMS, CDN, etc. The pattern integrates server-side/edge-side into the Zephr Public APIs.
 
 Note: it is also possible to do the same integration against the Zephr Admin APIs.
@@ -93,7 +94,7 @@ An alternative approach for authorization is to use Zephr’s Request Rules to
 
 The following rule is a simple example which returns a 401 for unauthenticated users and a 200 for registered:
 
-![rule.jpeg](../../zephr-image/rule.jpeg)
+![rule.jpeg](/zephr-docs/zephr-image/rule.jpeg)
 
 Note that the path has been set as a condition for the rule (to /auth-check) and the priority is set to the highest. For a detailed explanation of why these settings are used and how Request Rules work, see Request Rules in the Classic User Guide.
 

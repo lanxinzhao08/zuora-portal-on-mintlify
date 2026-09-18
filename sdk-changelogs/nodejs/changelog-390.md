@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.9.0 changelog"
+sidebarTitle: "3.9.0"
 ---
-
-# Node.js client library 3.9.0 changelog
-
 ## ZuoraClient
 
 * Added automatic token refresh with configurable refresh intervals and retry logic.
@@ -168,4 +164,3 @@ markdown:
 ## VerifyPaymentMethodRequest
 
 * Added support for a new `cryptogram` field in the VerifyPaymentMethodRequest class. This field is a string that represents the cryptogram value supplied by the token provider if a DPAN or network scheme token is present.
-

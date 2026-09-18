@@ -1,13 +1,6 @@
 ---
-markdown:
-  toc:
-    hide: false
-redirects:
-  /payment-page/payment-page-tutorial/: {}
+title: "Capture card details"
 ---
-
-# Capture card details
-
 This tutorial provides a step-by-step guide to setting up a payment page hosted in Zuora. You will implement a payment method creation flow to collect your customers' payment method information and store it in Zuora in a PCI-compliant way. Checkout flow is not covered in this tutorial.
 
 
@@ -89,118 +82,7 @@ If you already have a Test Gateway instance, skip this step. If you have NOT set
 4. At the bottom of the page, select **Credit Card** from the **Type** list, and then click **Create New Hosted Page**.
 5. Configure the page-level settings for the hosted payment page. To complete this tutorial, use the value suggested in the **Value** column in the following table. To learn more about the settings, see [Configure Credit Card Type Payment Pages 2.0](https://docs.zuora.com?resourceId=payments-creditcard-paymentpage2.0-configuration).
 
-<table>
-<thead>
-  <tr>
-   <th>Section
-   </th>
-   <th>Setting
-   </th>
-   <th>Value
-   </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-   <td rowspan="3" >Basic Information
-   </td>
-   <td>Page Name
-   </td>
-   <td>Enter <code>My First Payment Page</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Hosted Domain
-   </td>
-   <td>Enter <code>http://localhost:3000</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Callback Path
-   </td>
-   <td>Enter <code>/payment_page/callback</code>
-   </td>
-  </tr>
-  <tr>
-   <td rowspan="3" >Security Information
-   </td>
-   <td>Google reCAPTCHA
-   </td>
-   <td rowspan="3" >Keep the default values for all settings.
-<p>
-Token Expiration will be enabled. Google reCAPTCHA or 3D Secure will not be enabled.
-   </td>
-  </tr>
-  <tr>
-   <td>Token Expiration
-   </td>
-  </tr>
-  <tr>
-   <td>3D Secure
-   </td>
-  </tr>
-  <tr>
-   <td>Payment Gateway
-   </td>
-   <td>Default Payment Gateway
-   </td>
-   <td>Select the test gateway instance.
-   </td>
-  </tr>
-  <tr>
-   <td rowspan="7" >Page Configuration
-   </td>
-   <td>Page Title
-   </td>
-   <td>Enter <code>Credit Card Payment</code>.
-<p>
-Keep <strong>Display</strong> selected.
-   </td>
-  </tr>
-  <tr>
-   <td>Page Description
-   </td>
-   <td>Enter <code>This card will be used in future payments.</code>
-<p>
-Keep <strong>Display</strong> selected.
-   </td>
-  </tr>
-  <tr>
-   <td>Page Fields
-   </td>
-   <td>Keep the default configuration.
-<p>
-The screenshot after this table shows an example.
-   </td>
-  </tr>
-  <tr>
-   <td>Submit Button
-   </td>
-   <td>Enter <code>Submit</code>.
-   </td>
-  </tr>
-  <tr>
-   <td>Client-Side Validation
-   </td>
-   <td>Keep <strong>Enable client-side validation</strong> selected.
-<p>
-Keep the default value for error messages.
-   </td>
-  </tr>
-  <tr>
-   <td>Credit Card Type Detection
-   </td>
-   <td>Keep <strong>Enable automatic credit card type detection</strong> selected.
-   </td>
-  </tr>
-  <tr>
-   <td>CSS
-   </td>
-   <td>Keep the default CSS.
-   </td>
-  </tr>
-</tbody>
-</table>
+<table> <thead> <tr> <th>Section</th> <th>Setting</th> <th>Value</th> </tr> </thead> <tbody> <tr> <td rowspan="3">Basic Information</td> <td>Page Name</td> <td>Enter <code>My First Payment Page</code></td> </tr> <tr> <td>Hosted Domain</td> <td>Enter <code>http://localhost:3000</code></td> </tr> <tr> <td>Callback Path</td> <td>Enter <code>/payment_page/callback</code></td> </tr> <tr> <td rowspan="3">Security Information</td> <td>Google reCAPTCHA</td> <td rowspan="3">Keep the default values for all settings. <p>Token Expiration will be enabled. Google reCAPTCHA or 3D Secure will not be enabled.</p> </td> </tr> <tr> <td>Token Expiration</td> </tr> <tr> <td>3D Secure</td> </tr> <tr> <td>Payment Gateway</td> <td>Default Payment Gateway</td> <td>Select the test gateway instance.</td> </tr> <tr> <td rowspan="7">Page Configuration</td> <td>Page Title</td> <td>Enter <code>Credit Card Payment</code>. <p>Keep <strong>Display</strong> selected.</p> </td> </tr> <tr> <td>Page Description</td> <td>Enter <code>This card will be used in future payments.</code> <p>Keep <strong>Display</strong> selected.</p> </td> </tr> <tr> <td>Page Fields</td> <td>Keep the default configuration. <p>The screenshot after this table shows an example.</p> </td> </tr> <tr> <td>Submit Button</td> <td>Enter <code>Submit</code>.</td> </tr> <tr> <td>Client-Side Validation</td> <td>Keep <strong>Enable client-side validation</strong> selected. <p>Keep the default value for error messages.</p> </td> </tr> <tr> <td>Credit Card Type Detection</td> <td>Keep <strong>Enable automatic credit card type detection</strong> selected.</td> </tr> <tr> <td>CSS</td> <td>Keep the default CSS.</td> </tr> </tbody> </table>
 
 ![Payment Page Form Configuration](../../static/images/HPM/HPM-form-fields.png "Payment Page Form Configuration")
 
@@ -217,7 +99,7 @@ After you save your hosted payment page, the Preview Hosted Payment Method Page 
 
 Your page will look like this:
 
-<img src="../../static/images/HPM/HPM-preview.png" width="500" alt="Payment Page Preview">
+<img src="/static/images/HPM/HPM-preview.png" width="500" alt="Payment Page Preview" />
 
 
 To retrieve the hosted page URL that will be passed as a parameter when you load the hosted payment page, check the information in the **Implementation Details** section and note down **Hosted Page URL**.
@@ -326,100 +208,7 @@ In the cloned `payment-page-samples` repository, the `/conf` folder stores multi
 Update the configuration for the `us_sandbox` block in the `/conf/config.json` file as below:
 
 
-<table>
-  <thead>
-  <tr>
-   <th>Field
-   </th>
-   <th>Description
-   </th>
-   <th>Value
-   </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-   <td>username
-   </td>
-   <td>It should be the username for a user with the <strong>API Write Access</strong> permission. It will be used to call the Zuora REST API.
-<p>
-You can also choose to leave it blank and specify <code>oauth_token</code> that you can get by calling the (Create an OAuth token)[/v1-api-reference/api/oauth/createtoken] API operation.
-   </td>
-   <td><code>{your_username}</code>
-   </td>
-  </tr>
-  <tr>
-   <td>password
-   </td>
-   <td>It should be the password for a user with the <strong>API Write Access</strong> permission. It will be used to call the Zuora REST API.
-<p>
-You can also choose to leave it blank and specify <code>oauth_token</code> that you can get by calling the (Create an OAuth token)[/api-references/api/operation/createToken/] API operation.
-   </td>
-   <td><code>{your_password}</code>
-   </td>
-  </tr>
-  <tr>
-   <td>oauth_token
-   </td>
-   <td>The OAuth token generated by calling the (Create an OAuth token)[/api-references/api/operation/createToken/] API operation.
-<p>
-If you specify this token, you do not need to specify the <code>username</code> and <code>password</code> fields.
-   </td>
-   <td><code>{Oauth_token}</code>
-   </td>
-  </tr>
-  <tr>
-   <td>rsa_signature
-   </td>
-   <td>The endpoint for the (Generate an RSA signature)[/api-references/api/operation/POST_RSASignatures/] API operation.
-   </td>
-   <td><code>/v1/rsa-signatures</code>
-   </td>
-  </tr>
-  <tr>
-   <td>zuora_base_url
-   </td>
-   <td>Base URL for the Zuora's RSA Signature API. Update it to the corresponding base URL if you are not using a US 2 API Sandbox tenant.
-   </td>
-   <td><code>https://rest.apisandbox.zuora.com</code> (for the US 2 Sandbox tenant)
-   </td>
-  </tr>
-  <tr>
-   <td>payment_page_url
-   </td>
-   <td>Zuora's Payment Page URL.
-   </td>
-   <td><code>https://apisandbox.zuora.com/apps/PublicHostedPageLite.do</code> (for the US 2 Sandbox tenant)
-   </td>
-  </tr>
-  <tr>
-   <td>pageId
-   </td>
-   <td>ID of the Payment Page you configured in your tenant. You can get this ID by navigating to <strong>Settings > Payments > Setup Payment Page and Payment Link > Page List > Show Page Id</strong>  in your US Cloud 2 API Sandbox tenant.
-   </td>
-   <td><code>{pageId_from_your_tenant}</code>
-   </td>
-  </tr>
-  <tr>
-   <td>accountId
-   </td>
-   <td>(Optional) The ID of the customer account present on the Zuora side. If any transaction is performed after a payment method is created, the transaction can be associated with an account through accountId.
-   </td>
-   <td>
-Specify the <code>{account_id}</code> of an account with which the payment method will be associated.
-</ul>
-   </td>
-  </tr>
-  <tr>
-   <td>publicKey
-   </td>
-   <td>The public key that you downloaded from your tenant.
-   </td>
-   <td><code>{public_key_from_tenant}</code>
-   </td>
-  </tr>
-  </tbody>
-</table>
+<table> <thead> <tr> <th>Field</th> <th>Description</th> <th>Value</th> </tr> </thead> <tbody> <tr> <td>username</td> <td>It should be the username for a user with the <strong>API Write Access</strong> permission. It will be used to call the Zuora REST API. <p>You can also choose to leave it blank and specify <code>oauth_token</code> that you can get by calling the (Create an OAuth token)[/v1-api-reference/api/oauth/createtoken] API operation.</p> </td> <td><code>{your_username}</code></td> </tr> <tr> <td>password</td> <td>It should be the password for a user with the <strong>API Write Access</strong> permission. It will be used to call the Zuora REST API. <p>You can also choose to leave it blank and specify <code>oauth_token</code> that you can get by calling the (Create an OAuth token)[/api-references/api/operation/createToken/] API operation.</p> </td> <td><code>{your_password}</code></td> </tr> <tr> <td>oauth_token</td> <td>The OAuth token generated by calling the (Create an OAuth token)[/api-references/api/operation/createToken/] API operation. <p>If you specify this token, you do not need to specify the <code>username</code> and <code>password</code> fields.</p> </td> <td><code>{Oauth_token}</code></td> </tr> <tr> <td>rsa_signature</td> <td>The endpoint for the (Generate an RSA signature)[/api-references/api/operation/POST_RSASignatures/] API operation.</td> <td><code>/v1/rsa-signatures</code></td> </tr> <tr> <td>zuora_base_url</td> <td>Base URL for the Zuora's RSA Signature API. Update it to the corresponding base URL if you are not using a US 2 API Sandbox tenant.</td> <td><code>https://rest.apisandbox.zuora.com</code> (for the US 2 Sandbox tenant)</td> </tr> <tr> <td>payment_page_url</td> <td>Zuora's Payment Page URL.</td> <td><code>https://apisandbox.zuora.com/apps/PublicHostedPageLite.do</code> (for the US 2 Sandbox tenant)</td> </tr> <tr> <td>pageId</td> <td>ID of the Payment Page you configured in your tenant. You can get this ID by navigating to <strong>Settings &gt; Payments &gt; Setup Payment Page and Payment Link &gt; Page List &gt; Show Page Id</strong> in your US Cloud 2 API Sandbox tenant.</td> <td><code>{pageId_from_your_tenant}</code></td> </tr> <tr> <td>accountId</td> <td>(Optional) The ID of the customer account present on the Zuora side. If any transaction is performed after a payment method is created, the transaction can be associated with an account through accountId.</td> <td>Specify the <code>{account_id}</code> of an account with which the payment method will be associated.</td> </tr> <tr> <td>publicKey</td> <td>The public key that you downloaded from your tenant.</td> <td><code>{public_key_from_tenant}</code></td> </tr> </tbody> </table>
 
 
 
@@ -483,68 +272,7 @@ On the Zuora Payment Pages 2.0 Integration Guide page, take the following steps 
 
    a. Configure the form as below:
 
-   <table>
-   <thead>
-   <tr>
-      <th>Form Field
-      </th>
-      <th>Value
-      </th>
-   </tr>
-   </thead>
-   <tbody>
-   <tr>
-      <td>Environment
-      </td>
-      <td>Select <strong>us_sandbox</strong>.
-      </td>
-   </tr>
-   <tr>
-      <td>PageId
-      </td>
-      <td>PageId is auto-populated from <code>/conf/config.json</code>.
-      </td>
-   </tr>
-   <tr>
-      <td>Page Type
-      </td>
-      <td>Select <strong>Button inside</strong>
-      </td>
-   </tr>
-   <tr>
-      <td>Payment Gateway
-      </td>
-      <td>Leave it blank.
-      <br />
-      If you specify this field, it will be used to override the default test gateway configured in the payment page form.
-      </td>
-   </tr>
-   <tr>
-      <td>Locale
-      </td>
-      <td>Leave the default selection unchanged.
-      </td>
-   </tr>
-   <tr>
-      <td>CIT/MIT Enabled
-      </td>
-      <td>Leave it unselected
-      </td>
-   </tr>
-   <tr>
-      <td>Integration Type
-      </td>
-      <td>Select <strong>Payment Method Creation</strong>
-      </td>
-   </tr>
-   <tr>
-      <td>Payment Gateway Options
-      </td>
-      <td>Leave it unchanged
-      </td>
-   </tr>
-   </tbody>
-   </table>
+   <table> <thead> <tr> <th>Form Field</th> <th>Value</th> </tr> </thead> <tbody> <tr> <td>Environment</td> <td>Select <strong>us_sandbox</strong>.</td> </tr> <tr> <td>PageId</td> <td>PageId is auto-populated from <code>/conf/config.json</code>.</td> </tr> <tr> <td>Page Type</td> <td>Select <strong>Button inside</strong></td> </tr> <tr> <td>Payment Gateway</td> <td>Leave it blank.<br /> If you specify this field, it will be used to override the default test gateway configured in the payment page form.</td> </tr> <tr> <td>Locale</td> <td>Leave the default selection unchanged.</td> </tr> <tr> <td>CIT/MIT Enabled</td> <td>Leave it unselected</td> </tr> <tr> <td>Integration Type</td> <td>Select <strong>Payment Method Creation</strong></td> </tr> <tr> <td>Payment Gateway Options</td> <td>Leave it unchanged</td> </tr> </tbody> </table>
 
 
     b. Click **Submit**. If the Payment Page is loaded, you can proceed to the next step; otherwise, you should troubleshoot based on the error message. For more information, see [Troubleshooting](#troubleshooting) for more information.
@@ -553,42 +281,7 @@ On the Zuora Payment Pages 2.0 Integration Guide page, take the following steps 
 
    a. Specify the following required fields in the Payment Page:
 
-   <table>
-   <thead>
-   <tr>
-      <th>Field
-      </th>
-      <th>Value
-      </th>
-   </tr>
-   </thead>
-   <tbody>
-   <tr>
-      <td>Card Number
-      </td>
-      <td>4111111111111111
-      </td>
-   </tr>
-   <tr>
-      <td>Expiration Date
-      </td>
-      <td>01/2034
-      </td>
-   </tr>
-   <tr>
-      <td>CVV
-      </td>
-      <td>737
-      </td>
-   </tr>
-   <tr>
-      <td>Cardholder Name
-      </td>
-      <td>Amy Lawrence
-      </td>
-   </tr>
-   </tbody>
-   </table>
+   <table> <thead> <tr> <th>Field</th> <th>Value</th> </tr> </thead> <tbody> <tr> <td>Card Number</td> <td>4111111111111111</td> </tr> <tr> <td>Expiration Date</td> <td>01/2034</td> </tr> <tr> <td>CVV</td> <td>737</td> </tr> <tr> <td>Cardholder Name</td> <td>Amy Lawrence</td> </tr> </tbody> </table>
 
    You can also specify values in invalid formats to verify if your customized error message takes effect. For example, setting the expiration date to a date in the past.
 
@@ -617,116 +310,4 @@ Now your sample payment page is all set. You can change the configuration to see
 The following table describes the most frequently encountered issues when integrating with your websites:
 
 
-<table>
- <thead>
-  <tr>
-   <th>Issue
-   </th>
-   <th>Possible root causes
-   </th>
-   <th>Solution
-   </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-   <td rowspan="4" >The payment page is not loaded to the intended webpage.
-   </td>
-   <td>The specified domain or port for the payment page configuration does not match the domain or port on which your server is running.
-   </td>
-   <td>
-In the Zuora UI, check the value specified in the <strong>Hosted Domain</strong> field for the payment page and ensure that the domain and port match your website's domain and port.
-   </td>
-  </tr>
-  <tr>
-   <td>The RSA signature or token is not generated successfully or not passed into the payment page properly.
-   </td>
-   <td>
-Check your code that calls the (Generate an RSA signature)[/api-references/api/operation/POST_RSASignatures/] operation and ensure that the request succeeds. For more instructions, see <a href="https://docs.zuora.com?resourceId=payments-paymentpage2.0-digitalsignature-generation">Generate and manage the Digital Signature and Token for Payment Pages 2.0</a>.
-   </td>
-  </tr>
-  <tr>
-   <td>
-The configuration in the <code>/conf/config.json</code> has conflicts. For example, the <code>pageId</code> does not exist for the specified environment.
-   </td>
-   <td>
-Check the configuration file to make sure that the payment page settings are correct.
-   </td>
-  </tr>
-  <tr>
-   <td>
-Zuora Javascript library is not imported to the intended web page.
-   </td>
-   <td>
-Check the client-side web page code to ensure that the Zuora JS library is imported into your web page.
-   </td>
-  </tr>
-  <tr>
-   <td>After submitting the payment page form with the required fields specified, the payment method is not created successfully or the payment transaction failed.
-   </td>
-   <td>
-Not all client parameters required by the gateway are submitted to the server.
-
-   </td>
-   <td>
-Check if all necessary client parameters are provided in the <code>loadPaymentPages</code> function.
-    <p>
-    For a full list of client parameters, see <a href="https://docs.zuora.com?resourceId=payments-clientparameters-for-paymentpage2.0">Client Parameters for Payment Pages 2.0</a>.
-    </p>
-   </td>
-  </tr>
-  <tr>
-   <td>After entering illegal values into the form fields, the custom error handling does not take effect.
-   </td>
-   <td>
-<ul>
-
-<li>The error handling functions are not working as expected.
-
-<li>The errorMessageCallback function is implemented but you used <code>Z.render()</code> instead of <code>Z.renderWithErrorHandler()</code>.
-</li>
-</ul>
-   </td>
-   <td>Check the <code>callback</code> and <code>errorMessageCallback</code> functions to ensure that they can work.
-
-   For more instructions, see the following pages:
-   <ul>
-
-   <li><a href="https://docs.zuora.com?resourceId=payments-errorhandling-for-paymentpages2.0">Error Handling for Payment Pages 2.0</a>
-
-   <li><a href="https://docs.zuora.com?resourceId=payments-errormessage-paymentpages2.0-customization">Customize Error Messages for Payment Pages 2.0</a>
-   </li>
-   </ul>
-   </td>
-  </tr>
-  <tr>
-   <td>Predefined credit card values are not prepopulated to the payment page.
-   </td>
-   <td>
-<ul>
-
-<li>The file that contains prepopulated values is invalid.
-
-<li>The prepopulated field values are handled incorrectly.
-</li>
-</ul>
-   </td>
-   <td>
-<ul>
-<li>Check the file that stores prepopulated values and ensure that this file is valid. </li>
-
-<li>Ensure that the prepopulating logic is working as intended. </li>
-</ul>
-   </td>
-  </tr>
-  <tr>
-   <td>The payment page is not displayed in the correct place.
-   </td>
-   <td>The <code>&lt;div id="zuora_payment" class="container container-center">&lt;/div></code> is not added to the correct place.
-   </td>
-   <td>Check the client-side webpage code and ensure that <code>&lt;div id="zuora_payment" class="container container-center">&lt;/div> </code>is added to the intended place.
-   </td>
-  </tr>
-  </tbody>
-</table>
-
+<table> <thead> <tr> <th>Issue</th> <th>Possible root causes</th> <th>Solution</th> </tr> </thead> <tbody> <tr> <td rowspan="4">The payment page is not loaded to the intended webpage.</td> <td>The specified domain or port for the payment page configuration does not match the domain or port on which your server is running.</td> <td>In the Zuora UI, check the value specified in the <strong>Hosted Domain</strong> field for the payment page and ensure that the domain and port match your website's domain and port.</td> </tr> <tr> <td>The RSA signature or token is not generated successfully or not passed into the payment page properly.</td> <td>Check your code that calls the (Generate an RSA signature)[/api-references/api/operation/POST_RSASignatures/] operation and ensure that the request succeeds. For more instructions, see <a href="https://docs.zuora.com?resourceId=payments-paymentpage2.0-digitalsignature-generation">Generate and manage the Digital Signature and Token for Payment Pages 2.0</a>.</td> </tr> <tr> <td>The configuration in the <code>/conf/config.json</code> has conflicts. For example, the <code>pageId</code> does not exist for the specified environment.</td> <td>Check the configuration file to make sure that the payment page settings are correct.</td> </tr> <tr> <td>Zuora Javascript library is not imported to the intended web page.</td> <td>Check the client-side web page code to ensure that the Zuora JS library is imported into your web page.</td> </tr> <tr> <td>After submitting the payment page form with the required fields specified, the payment method is not created successfully or the payment transaction failed.</td> <td>Not all client parameters required by the gateway are submitted to the server.</td> <td>Check if all necessary client parameters are provided in the <code>loadPaymentPages</code> function. <p>For a full list of client parameters, see <a href="https://docs.zuora.com?resourceId=payments-clientparameters-for-paymentpage2.0">Client Parameters for Payment Pages 2.0</a>.</p> </td> </tr> <tr> <td>After entering illegal values into the form fields, the custom error handling does not take effect.</td> <td> <ul> <li>The error handling functions are not working as expected.</li> <li>The errorMessageCallback function is implemented but you used <code>Z.render()</code> instead of <code>Z.renderWithErrorHandler()</code>.</li> </ul> </td> <td>Check the <code>callback</code> and <code>errorMessageCallback</code> functions to ensure that they can work. For more instructions, see the following pages: <ul> <li><a href="https://docs.zuora.com?resourceId=payments-errorhandling-for-paymentpages2.0">Error Handling for Payment Pages 2.0</a></li> <li><a href="https://docs.zuora.com?resourceId=payments-errormessage-paymentpages2.0-customization">Customize Error Messages for Payment Pages 2.0</a></li> </ul> </td> </tr> <tr> <td>Predefined credit card values are not prepopulated to the payment page.</td> <td> <ul> <li>The file that contains prepopulated values is invalid.</li> <li>The prepopulated field values are handled incorrectly.</li> </ul> </td> <td> <ul> <li>Check the file that stores prepopulated values and ensure that this file is valid.</li> <li>Ensure that the prepopulating logic is working as intended.</li> </ul> </td> </tr> <tr> <td>The payment page is not displayed in the correct place.</td> <td>The <code>&lt;div id="zuora_payment" className="container container-center"&gt;&lt;/div&gt;</code> is not added to the correct place.</td> <td>Check the client-side webpage code and ensure that <code>&lt;div id="zuora_payment" className="container container-center"&gt;&lt;/div&gt;</code> is added to the intended place.</td> </tr> </tbody> </table>

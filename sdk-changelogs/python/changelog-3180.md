@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.18.0 changelog"
+sidebarTitle: "3.18.0"
 ---
-
-# Python client library 3.18.0 changelog
-
 ## \_\_init\_\_
 
 * Added new class: CustomAmountConfig

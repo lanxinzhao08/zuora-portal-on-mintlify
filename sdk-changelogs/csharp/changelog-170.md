@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.7.0 changelog"
+sidebarTitle: "1.7.0"
 ---
-
-# C# client library 1.7.0 changelog
-
 ## ZuoraClient
 
 * Added BalanceTrackingApi to the ZuoraClient, allowing developers to access balance tracking functionalities.

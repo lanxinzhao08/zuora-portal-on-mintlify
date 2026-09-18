@@ -1,5 +1,6 @@
-# PHP SDK
-
+---
+title: "PHP SDK"
+---
 The Zephr PHP SDK is available to view in the [Zephr Bitbucket account](https://bitbucket.org/blaizeinc/blaize-php-sdk). If you have trouble accessing this page, please email [support@zuora.com](mailto:support@zuora.com).
 
 ## Client-side SDK

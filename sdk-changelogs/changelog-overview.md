@@ -1,15 +1,11 @@
 ---
-markdown:
-  toc:
-    hide: true
+title: "Changelog for Zuora client libraries"
+sidebarTitle: "SDK Changelogs"
 ---
-
-# Changelog for Zuora client libraries
-
 ## August 17, 2026
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.20.0`
 
@@ -33,10 +29,10 @@ Version: `3.20.0`
   - `shipToContact`
   - `soldToContact`
 
-For more detailed changes, see [Java client library changelog](java/changelog-3200.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-3200).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.20.0`
 
@@ -60,10 +56,10 @@ Version: `3.20.0`
   - `shipToContact`
   - `soldToContact`
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-3200.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-3200).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.20.0`
 
@@ -87,10 +83,10 @@ Version: `3.20.0`
   - `ship_to_contact`
   - `sold_to_contact`
 
-For more detailed changes, see [Python client library changelog](python/changelog-3200.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-3200).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.12.0`
 
@@ -114,16 +110,16 @@ Version: `1.12.0`
   - `ShipToContact`
   - `SoldToContact`
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-1120.md).
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-1120).
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 ## July 17, 2026
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.19.0`
 
@@ -161,10 +157,10 @@ Version: `3.19.0`
   - `totalContractValue`
 
 
-For more detailed changes, see [Java client library changelog](java/changelog-3190.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-3190).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.19.0`
 
@@ -201,10 +197,10 @@ Version: `3.19.0`
   - `totalEntitledQuantity`
   - `totalContractValue`
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-3190.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-3190).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.19.0`
 
@@ -240,10 +236,10 @@ Version: `3.19.0`
   - `total_entitled_quantity`
   - `total_contract_value`
 
-For more detailed changes, see [Python client library changelog](python/changelog-3190.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-3190).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.11.0`
 
@@ -279,20 +275,20 @@ Version: `1.11.0`
   - `TotalEntitledQuantity`
   - `TotalContractValue`
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-1110.md).
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-1110).
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 ## June 11, 2026
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.18.0`
 
-- In the ObjectQueriesApi class, added the ExpandedChildCommitment and QueryChildCommitmentsResponse models. 
+- In the ObjectQueriesApi class, added the ExpandedChildCommitment and QueryChildCommitmentsResponse models.
 
 - In the InvoicesApi class:
   - Added new method createInvoiceWriteOffAsync to asynchronously write off a posted invoice.
@@ -307,9 +303,9 @@ Version: `3.18.0`
   - RatePlanChargeSegmentInfo
   - CreateProductRatePlanChargeRequest
   - UpdateProductRatePlanChargeRequest
-  - GetProductRatePlanChargeResponse 
+  - GetProductRatePlanChargeResponse
 
-  Added the following fields and related enums: 
+  Added the following fields and related enums:
   - `commitmentLevel`
   - `vpAlignment`
   - `vpProrationOption`
@@ -332,10 +328,10 @@ Version: `3.18.0`
 - In the OverrideDiscountApplyDetail model, added the `productRatePlanNumber` and `productRatePlanChargeNumber` fields. The `productRatePlanId` and `productRatePlanChargeId` fields are no longer required.
 
 
-For more detailed changes, see [Java client library changelog](java/changelog-3180.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-3180).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.18.0`
 
@@ -386,7 +382,7 @@ Version: `3.18.0`
   - `RolloverFundPriority`
   - `RolloverEndDateType`
   - `FundSupportAccountHierarchy`
-  - `DrawdownPriority` 
+  - `DrawdownPriority`
 
 - In the UpsertUpdateCommitmentScheduleInput model, added the following properties:
   - `periodType`
@@ -398,10 +394,10 @@ Version: `3.18.0`
 
 - In the OverrideDiscountApplyDetail model, added the `productRatePlanNumber` and `productRatePlanChargeNumber` properties. The `productRatePlanId` and `productRatePlanChargeId` properties are no longer required.
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-3180.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-3180).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.18.0`
 
@@ -445,10 +441,10 @@ Version: `3.18.0`
 
 - In the OverrideDiscountApplyDetail model, added the `product_rate_plan_number` and `product_rate_plan_charge_number` fields. The `product_rate_plan_id` and `product_rate_plan_charge_id` fields are no longer required.
 
-For more detailed changes, see [Python client library changelog](python/changelog-3180.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-3180).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.10.0`
 
@@ -492,16 +488,16 @@ Version: `1.10.0`
 
 - In the OverrideDiscountApplyDetail class, added the `ProductRatePlanNumber` and `ProductRatePlanChargeNumber` properties. The `productRatePlanId` and `productRatePlanChargeId` constructor parameters are no longer required.
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-1100.md).
-  {% /tabComponent %}
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-1100).
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 
 ## May 8, 2026
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.17.0`
 
@@ -530,10 +526,10 @@ Version: `3.17.0`
   - UpsertUpdateCommitmentInput
   - UpsertUpdateCommitmentScheduleInput
 
-For more detailed changes, see [Java client library changelog](java/changelog-3170.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-3170).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.17.0`
 
@@ -562,10 +558,10 @@ Version: `3.17.0`
   - UpsertUpdateCommitmentInput
   - UpsertUpdateCommitmentScheduleInput
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-3170.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-3170).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.17.0`
 
@@ -594,10 +590,10 @@ Version: `3.17.0`
   - UpsertUpdateCommitmentInput
   - UpsertUpdateCommitmentScheduleInput
 
-For more detailed changes, see [Python client library changelog](python/changelog-3170.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-3170).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.9.0`
 
@@ -626,16 +622,16 @@ Version: `1.9.0`
   - UpsertUpdateCommitmentInput
   - UpsertUpdateCommitmentScheduleInput
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-190.md).
-  {% /tabComponent %}
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-190).
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 
 ## April 2, 2026
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.16.0`
 
@@ -651,10 +647,10 @@ Version: `3.16.0`
   - `invoice`
   - `creditMemo`
 
-For more detailed changes, see [Java client library changelog](java/changelog-3160.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-3160).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.16.0`
 
@@ -670,10 +666,10 @@ Version: `3.16.0`
   - `invoice`
   - `creditMemo`
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-3160.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-3160).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.16.0`
 
@@ -689,10 +685,10 @@ Version: `3.16.0`
   - `invoice`
   - `credit_memo`
 
-For more detailed changes, see [Python client library changelog](python/changelog-3160.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-3160).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.8.0`
 
@@ -708,16 +704,16 @@ Version: `1.8.0`
   - `invoice`
   - `creditMemo`
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-180.md).
-  {% /tabComponent %}
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-180).
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 
 ## March 10, 2026
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.15.0`
 
@@ -728,10 +724,10 @@ Version: `3.15.0`
   - RatePlanChargeSegment
   - RatePlanChargeSegmentInfo
 
-For more detailed changes, see [Java client library changelog](java/changelog-3150.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-3150).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.15.0`
 
@@ -742,10 +738,10 @@ Version: `3.15.0`
   - RatePlanChargeSegment
   - RatePlanChargeSegmentInfo
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-3150.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-3150).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.15.0`
 
@@ -756,10 +752,10 @@ Version: `3.15.0`
   - rate_plan_charge_segment
   - rate_plan_charge_segment_info
 
-For more detailed changes, see [Python client library changelog](python/changelog-3150.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-3150).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.7.0`
 
@@ -770,16 +766,16 @@ Version: `1.7.0`
   - RatePlanChargeSegment
   - RatePlanChargeSegmentInfo
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-170.md).
-  {% /tabComponent %}
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-170).
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 
 ## January 26, 2026
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.14.0`
 
@@ -813,10 +809,10 @@ Version: `3.14.0`
 
 - In the GetDataLabelingJobResponse class, changed the type of the `progress` field from GetDataLabelingJobResponseProgress to GetDataLabelingJobResponseAllOfProgress.
 
-For more detailed changes, see [Java client library changelog](java/changelog-3140.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-3140).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.14.0`
 
@@ -838,10 +834,10 @@ Version: `3.14.0`
 
 - In the GetDataLabelingJobResponse class, changed the type of the `progress` property from GetDataLabelingJobResponseProgress to GetDataLabelingJobResponseAllOfProgress.
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-3140.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-3140).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.14.0`
 
@@ -875,10 +871,10 @@ Version: `3.14.0`
 
 - In the GetDataLabelingJobResponse model, changed the type of the `progress` field from GetDataLabelingJobResponseProgress to GetDataLabelingJobResponseAllOfProgress.
 
-For more detailed changes, see [Python client library changelog](python/changelog-3140.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-3140).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.6.0`
 
@@ -912,16 +908,16 @@ Version: `1.6.0`
 
 - In the GetDataLabelingJobResponse class, changed the type of the `Progress` property from GetDataLabelingJobResponseProgress to GetDataLabelingJobResponseAllOfProgress.
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-160.md).
-  {% /tabComponent %}
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-160).
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 
 ## December 12, 2025
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.13.0`
 
@@ -945,10 +941,10 @@ Version: `3.13.0`
 
 - Removed the CommonRevenueAttributes class.
 
-For more detailed changes, see [Java client library changelog](java/changelog-3130.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-3130).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.13.0`
 
@@ -974,10 +970,10 @@ Version: `3.13.0`
   - GetCommitmentOutput
   - UpsertCreateCommitmentInput
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-3130.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-3130).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.13.0`
 
@@ -999,10 +995,10 @@ Version: `3.13.0`
   - GetCommitmentOutput
   - UpsertCreateCommitmentInput
 
-For more detailed changes, see [Python client library changelog](python/changelog-3130.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-3130).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.5.0`
 
@@ -1024,16 +1020,16 @@ Version: `1.5.0`
   - GetCommitmentOutput
   - UpsertCreateCommitmentInput
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-150.md).
-  {% /tabComponent %}
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-150).
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 
 ## November 12, 2025
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.12.0`
 
@@ -1047,10 +1043,10 @@ Version: `3.12.0`
 
 - In the ObjectQueriesApi class, removed support for querying bundles by key and querying bundles.
 
-For more detailed changes, see [Java client library changelog](java/changelog-3120.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-3120).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.12.0`
 
@@ -1064,10 +1060,10 @@ Version: `3.12.0`
 
 - In the ObjectQueriesApi class, removed methods related to querying Bundles, including queryBundleByKey and queryBundles.
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-3120.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-3120).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.12.0`
 
@@ -1081,10 +1077,10 @@ Version: `3.12.0`
 
 - In the ObjectQueriesApi model, removed methods related to querying bundles: `query_bundle_by_key`, `query_bundle_by_key_with_http_info`, `query_bundles`, and `query_bundles_with_http_info`.
 
-For more detailed changes, see [Python client library changelog](python/changelog-3120.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-3120).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.4.0`
 
@@ -1098,63 +1094,63 @@ Version: `1.4.0`
 
 - In the ObjectQueriesApi class, removed the QueryBundleByKey and QueryBundles methods along with their corresponding methods with HttpInfo.
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-140.md).
-  {% /tabComponent %}
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-140).
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 
 ## October 10, 2025
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.11.0`
 
 - Added `queryBundleByKey` and `queryBundles` methods to the ObjectQueriesApi class to support querying bundles.
 - Added a `soldToInfoId` field to the ExpandedOrderLineItem class, allowing developers to retrieve this information.
 
-For more detailed changes, see [Java client library changelog](java/changelog-3110.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-3110).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.11.0`
 
 - Added `queryBundleByKey` and `queryBundles` methods to the ObjectQueriesApi class to support querying bundles.
 - Added a `soldToInfoId` property to the ExpandedOrderLineItem class, allowing developers to handle additional information related to the `soldTo` entity.
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-3110.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-3110).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.11.0`
 
 - Added `query_bundle_by_key` and `query_bundles` methods to the ObjectQueriesApi model to support querying bundles.
 - Added a `sold_to_info_id` field to the ExpandedOrderLineItem model, allowing for more detailed information about the `sold to` entity.
 
-For more detailed changes, see [Python client library changelog](python/changelog-3110.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-3110).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.3.0`
 
 - Added `QueryBundleByKey` and `QueryBundles` methods to the ObjectQueriesApi class to support querying bundles.
 - Added a `SoldToInfoId` property to the ExpandedOrderLineItem class, allowing developers to retrieve this information.
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-130.md).
-  {% /tabComponent %}
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-130).
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 
 
 ## September 18, 2025
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.10.0`
 
@@ -1169,10 +1165,10 @@ Version: `3.10.0`
 - For the PaymentMethodsApi class, added support for specifying `bankAccountType` in the PAD (Pre-Authorized Debit) payment method.
 - Added a `skipTax` field to the PreviewOptions class, allowing developers to bypass tax calculation during order preview, which can improve performance for customers using external tax engines.
 
-For more detailed changes, see [Java client library changelog](java/changelog-3100.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-3100).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 Version: `3.10.0`
 
 - In the CommitmentInput class:
@@ -1188,10 +1184,10 @@ Version: `3.10.0`
 - Added a new property `skipTax` to the PreviewOptions class, allowing developers to bypass tax calculation during order preview. This can improve performance for customers using external tax engines.
 - In the ObjectQueriesApi class, renamed methods related to CommitmentCycle to CommitmentPeriod.
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-3100.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-3100).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.10.0`
 
@@ -1212,10 +1208,10 @@ Version: `3.10.0`
 - Added optional field `bankAccountType` to the CreatePADPaymentMethod model, allowing specification of the bank account type.
 - Added `skip_tax` field to PreviewOptions model, allowing developers to bypass tax calculation during order preview, which can improve performance.
 
-For more detailed changes, see [Python client library changelog](python/changelog-3100.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-3100).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.2.0`
 
@@ -1233,16 +1229,16 @@ Version: `1.2.0`
 - In the ObjectQueriesApi class, renamed methods and return types from `CommitmentCycle` to `CommitmentPeriod`. This affects methods such as QueryCommitmentCycleByKey, QueryCommitmentCycles, and their async counterparts.
 - Added a new optional parameter `skipTax` to the PreviewOptions constructor, allowing developers to specify whether to skip tax calculations.
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-120.md).
-  {% /tabComponent %}
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-120).
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 
 ## August 15, 2025
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.9.0`
 
@@ -1265,10 +1261,10 @@ Version: `3.9.0`
 
 - For the Quickstart API model, changed the `revenue_recognition_rule` field in Price, PricePatchRequest, and PriceCreateRequest classes from Enum to String type.
 
-For more detailed changes, see [Java client library changelog](java/changelog-390.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-390).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.9.0`
 
@@ -1289,10 +1285,10 @@ Version: `3.9.0`
   - CreatePaymentRequest
   - VerifyPaymentMethodRequest
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-390.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-390).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.9.0`
 
@@ -1313,10 +1309,10 @@ Version: `3.9.0`
   - CreatePaymentRequest
   - VerifyPaymentMethodRequest
 
-For more detailed changes, see [Python client library changelog](python/changelog-390.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-390).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.1.0`
 
@@ -1337,18 +1333,18 @@ Version: `1.1.0`
   - CreatePaymentRequest
   - VerifyPaymentMethodRequest
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-110.md).
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-110).
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 
 
 ## July 18, 2025
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.8.0`
 
@@ -1375,10 +1371,10 @@ Version: `3.8.0`
   ```
 
 
-For more detailed changes, see [Java client library changelog](java/changelog-380.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-380).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.8.0`
 
@@ -1404,10 +1400,10 @@ Version: `3.8.0`
   ...
   ```
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-380.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-380).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.8.0`
 
@@ -1435,10 +1431,10 @@ Version: `3.8.0`
   )
   ```
 
-For more detailed changes, see [Python client library changelog](python/changelog-380.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-380).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.0.0` and `1.0.0-beta.7`
 
@@ -1467,16 +1463,16 @@ Version: `1.0.0` and `1.0.0-beta.7`
   );
   ```
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-100.md).
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-100).
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 ## June 24, 2025
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.7.0`
 
@@ -1485,10 +1481,10 @@ Version: `3.7.0`
 * For the SubscriptionsApi class, added the `asOfDate` parameter for chargeDetail when `chargeDetail` is `SPECIFIC_SEGMENT`.
 * Added the `billToContactSnapshot`, `soldToContactSnapshot`, and `shipToContactSnapshot` fields to the ExpandedInvoice, ExpandedCreditMemo, and ExpandedDebitMemo classes, respectively.
 
-For more detailed changes, see [Java client library changelog](java/changelog-370.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-370).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.7.0`
 
@@ -1497,10 +1493,10 @@ Version: `3.7.0`
 * For the SubscriptionsApi class, added `as_of_date` parameter for charge-detail when `charge-detail` is `specific-segment`.
 * Added the `billToContactSnapshot`, `soldToContactSnapshot`, and `shipToContactSnapshot` fields of type ExpandedContactSnapshot to the ExpandedInvoice, ExpandedCreditMemo, and ExpandedDebitMemo classes, respectively.
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-370.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-370).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.7.0`
 
@@ -1509,10 +1505,10 @@ Version: `3.7.0`
 * For the subscriptions\_api class, added `as_of_date` parameter to multiple methods for specifying the date for charge-detail when `charge-detail` is `specific-segment`.
 * Added the `bill_to_contact_snapshot`, `sold_to_contact_snapshot`, and `ship_to_contact_snapshot` fields of type ExpandedContactSnapshot to the ExpandedInvoice, ExpandedCreditMemo, and ExpandedDebitMemo models, respectively.
 
-For more detailed changes, see [Python client library changelog](python/changelog-370.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-370).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.0.0-beta.6`
 
@@ -1521,17 +1517,17 @@ Version: `1.0.0-beta.6`
 * For the SubscriptionsApi class, added the `asOfDate` parameter for chargeDetail when `chargeDetail` is `SPECIFIC_SEGMENT`.
 * Added the `BillToContactSnapshot`, `SoldToContactSnapshot`, and `ShipToContactSnapshot` properties to the ExpandedInvoice, ExpandedCreditMemo, and ExpandedDebitMemo classes, respectively.
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-100beta6.md).
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-100beta6).
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 
 ## May 8, 2025
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.6.0`
 
@@ -1542,10 +1538,10 @@ Version: `3.6.0`
 * Changed the type of `productCategory` from `ProductCategory` to `String` for the GetSubscriptionRatePlanChargesWithAllSegments class. This change requires developers to update the code to handle `productCategory` as a String instead of a ProductCategory object.
 
 
-For more detailed changes, see [Java client library changelog](java/changelog-360.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-360).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.6.0`
 
@@ -1553,10 +1549,10 @@ Version: `3.6.0`
 * Added methods to retrieve async job status for applying and unapplying credit memos: `getApplyCreditMemoAsyncJob` and `getUnapplyCreditMemoAsyncJob` to the CreditMemosApi model.
 * Changed the `productCategory` field type from `ProductCategory` model to `String` for the GetSubscriptionRatePlanChargesWithAllSegments model. This may require developers to update the code to handle `productCategory` as a string instead of a model object.
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-360.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-360).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.6.0`
 
@@ -1564,10 +1560,10 @@ Version: `3.6.0`
 * Added methods to retrieve async job status: `get_apply_credit_memo_async_job`, `get_unapply_credit_memo_async_job` to the CreditMemosApi model.
 * Changed the `product_category` field type from `Optional[ProductCategory]` to `Optional[StrictStr]` for the GetSubscriptionRatePlanChargesWithAllSegments model. This change may require developers to update the code to handle `product_category` as a string instead of a `ProductCategory` object.
 
-For more detailed changes, see [Python client library changelog](python/changelog-360.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-360).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.0.0-beta.4`
 
@@ -1575,17 +1571,17 @@ Version: `1.0.0-beta.4`
 * Added methods to retrieve the status of asynchronous apply and unapply credit memo jobs by ID: GetApplyCreditMemoAsyncJob and GetUnapplyCreditMemoAsyncJob, along with their WithHttpInfo and Async variants to CreditMemosApi.
 * Changed the type of the `ProductCategory` property from `ProductCategory?` to `string` for the GetSubscriptionRatePlanChargesWithAllSegments model. This may require developers to update the code to handle the new type.
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-100beta4.md).
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-100beta4).
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 
 ## April 11, 2025
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.5.0`
 
@@ -1593,10 +1589,10 @@ Version: `3.5.0`
 * Added the `clearingExistingCommunicationProfile` field to allow clearing the existing communication profile at the subscription level. This field is mutually exclusive with `communicationProfileId`.
 * Added the `REVERSE` operation job type to the OperationJobType class.
 
-For more detailed changes, see [Java client library changelog](java/changelog-350.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-350).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.5.0`
 
@@ -1604,10 +1600,10 @@ Version: `3.5.0`
 * Added the `clearingExistingCommunicationProfile` field to clear the existing communication profile at the subscription level. This field is mutually exclusive with `communicationProfileId`.
 * Added the `Reverse` enum value to the OperationJobType class.
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-350.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-350).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.5.0`
 
@@ -1615,10 +1611,10 @@ Version: `3.5.0`
 * Added the `clearingExistingCommunicationProfile` field to clear the existing communication profile at the subscription level. This field is mutually exclusive with `communicationProfileId`.
 * Added the `REVERSE` operation job type to the OperationJobType enum.
 
-For more detailed changes, see [Python client library changelog](python/changelog-350.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-350).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.0.0-beta.3`
 
@@ -1626,17 +1622,17 @@ Version: `1.0.0-beta.3`
 * Added the `clearingExistingCommunicationProfile` parameter to multiple Order Action constructors, and the `clearingExistingCommunicationProfile` property to counterpart Order Action classes.
 * Added the `Reverse` enum value with an associated value of 4 to the OperationJobType class.
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-100beta3.md).
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-100beta3).
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 
 ## March 19, 2025
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.4.0`
 
@@ -1645,30 +1641,30 @@ Version: `3.4.0`
 - Added support for expanding `invoiceschedulebookings`, `invoiceschedulebookings.order`, and `invoiceschedulebookings.subscription` to the query methods for InvoiceSchedule.
 
 
-For more detailed changes, see [Java client library changelog](java/changelog-340.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-340).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.4.0`
 
 - Added support for expanding `invoiceschedulebookings`, `invoiceschedulebookings.order`, and `invoiceschedulebookings.subscription` to the Query InvoiceSchedule and Query InvoiceSchedules methods.
 - Changed the item type of the `relationships` field from `Object` to `CustomObjectDefinitionRelationship`, which may require developers to update the code to handle the new type.
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-340.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-340).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.4.0`
 
 - Added support for expanding `invoiceschedulebookings`, `invoiceschedulebookings.order`, and `invoiceschedulebookings.subscription` to the query_invoice_schedule_by_key and query_invoice_schedules methods.
 - Changed the `relationships` field type of custom_object_definition_schema from `List[Dict[str, Any]]` to `List[CustomObjectDefinitionRelationship]`.
 
-For more detailed changes, see [Python client library changelog](python/changelog-340.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-340).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.0.0-beta.2`
 
@@ -1676,16 +1672,16 @@ Version: `1.0.0-beta.2`
 - Changed the type of the `relationships` property of CustomObjectDefinitionSchema from `List<Object>` to `List<CustomObjectDefinitionRelationship>`.
 - Added support for expanding `invoiceschedulebookings`, `invoiceschedulebookings.order`, and `invoiceschedulebookings.subscription` to the query_invoice_schedule_by_key and query_invoice_schedules methods.
 
-For more detailed changes, see [C# client library changelog](csharp/changelog-100beta2.md).
+For more detailed changes, see [C# client library changelog](/sdk-changelogs/csharp/changelog-100beta2).
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>
 
 ## February 11, 2025
 
-{% tabsComponent %}
-  {% tabComponent title="Java" %}
+<Tabs>
+  <Tab title="Java">
 
 Version: `3.3.0`
 
@@ -1699,10 +1695,10 @@ Version: `3.3.0`
 - Fixed issue: The OrdersApi.previewOrderApi() method throws errors when high-volume concurrent requests are submitted.
 - Fixed issue: The UsageRecordsApi.createUsage() method could not parse response and throws exceptions.
 
-For more detailed changes, see [Java client library changelog](java/changelog-330.md).
+For more detailed changes, see [Java client library changelog](/sdk-changelogs/java/changelog-330).
 
-  {% /tabComponent %}
-  {% tabComponent title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
 Version: `3.3.0`
 
@@ -1713,10 +1709,10 @@ Version: `3.3.0`
 * Added the createPredebitNotification method to support triggering pre-debit notification for an invoice.
 * Added a new `condition` property of type `Condition` and the `objectType` property to the BillRunFilter model to support bill run advanced filters.
 
-For more detailed changes, see [Node.js client library changelog](nodejs/changelog-330.md).
+For more detailed changes, see [Node.js client library changelog](/sdk-changelogs/nodejs/changelog-330).
 
-  {% /tabComponent %}
-  {% tabComponent title="Python" %}
+  </Tab>
+  <Tab title="Python">
 
 Version: `3.3.0`
 
@@ -1727,19 +1723,19 @@ Version: `3.3.0`
 * Added create_predebit_notification method to support triggering a pre-debit notification for an invoice.
 * Added `condition` field to bill_run_filter to support bill run advanced filters.
 
-For more detailed changes, see [Python client library changelog](python/changelog-330.md).
+For more detailed changes, see [Python client library changelog](/sdk-changelogs/python/changelog-330).
 
-  {% /tabComponent %}
-  {% tabComponent title="C#" %}
+  </Tab>
+  <Tab title="C#">
 
 Version: `1.1.0-beta.1`
 
-\<Typography>
+
 We released the C# library <code>1.1.0-beta.1</code> as a beta version product.
 
 There is no changelog available for this release.
-</Typography>
 
-  {% /tabComponent %}
 
-{% /tabsComponent %}
+  </Tab>
+
+</Tabs>

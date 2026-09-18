@@ -1,0 +1,197 @@
+---
+title: Zuora Developer Center
+description: "Automate billing, manage subscriptions, and extend Zuora's capabilities."
+mode: custom
+---
+
+<div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-[#e6f3f7] px-6 py-20 text-center dark:bg-[#082f33] md:py-28">
+  <div className="mx-auto max-w-5xl">
+    <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#007079] dark:text-[#70d5dc]">Zuora Developer Center</p>
+    <h1 className="m-0 text-4xl font-bold tracking-tight text-black dark:text-white md:text-6xl">Welcome, Zuora Developers!</h1>
+    <p className="mx-auto mt-5 max-w-3xl text-lg text-slate-600 dark:text-slate-300 md:text-xl">Automate billing, manage subscriptions, and extend Zuora's capabilities.</p>
+  </div>
+</div>
+
+<div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-gradient-to-r from-[#02929c] to-[#6383d3] px-6 py-14">
+  <div className="mx-auto max-w-7xl">
+    <h2 className="mb-8 text-center text-3xl font-semibold text-white">Get started</h2>
+    <CardGroup cols={3}>
+      <Card title="Get Started & FAQs" icon="play-circle" href="/docs/get-started/introduction">
+        <ul>
+          <li><a href="/docs/get-started/introduction">Get started</a></li>
+          <li><a href="/docs/get-started/basics">Zuora Billing basics</a></li>
+          <li><a href="/faq/billing-faq">Billing FAQs</a></li>
+          <li><a href="/faq/payments-faq">Payments FAQs</a></li>
+        </ul>
+      </Card>
+      <Card title="Tutorials & Samples" icon="book-open" href="/docs/get-started/api-tutorials/orders-tutorials/order-basics">
+        <ul>
+          <li><a href="/docs/get-started/api-tutorials/orders-tutorials/order-basics">Orders tutorial</a></li>
+          <li><a href="/docs/get-started/tutorials">Shopping cart tutorial</a></li>
+          <li><a href="/docs/get-started/tutorials/collect-payments">Collect payments on a website</a></li>
+          <li><a href="/quickstart-guides/integration-tutorials">Integration tutorials</a></li>
+        </ul>
+      </Card>
+      <Card title="AI & Agents" icon="robot" href="/docs/ai/skills-agents">
+        <ul>
+          <li><a href="https://docs.zuora.com/en/zuora-platform/system-management/zuora-ai">Zuora AI overview</a></li>
+          <li><a href="https://docs.zuora.com/en/basics/use-of-ai-in-zuora/zuoras-approach-to-ai">Zuora's approach to AI</a></li>
+          <li><a href="https://docs.zuora.com/en/zuora-platform/system-management/zuora-ai/zuora-mcp-server">Zuora MCP overview</a></li>
+          <li><a href="/docs/ai/skills-agents">Skills for your agents</a></li>
+        </ul>
+      </Card>
+      <Card title="Important To Know" icon="books" href="/v1-api-reference/object-model">
+        <ul>
+          <li><a href="/v1-api-reference/object-model">Zuora Billing object model</a></li>
+          <li><a href="/docs/guides/rate-limits">Rate limits</a></li>
+          <li><a href="/v1-api-reference/introduction">OpenAPI specification & Postman</a></li>
+          <li><a href="/docs/guides/expand-filter-fields-sort">Object Query basics</a></li>
+        </ul>
+      </Card>
+      <Card title="Changelogs" icon="arrows-rotate" href="/docs/get-started/changelogs/v1-api-changelog">
+        <ul>
+          <li><a href="/docs/get-started/changelogs/v1-api-changelog">v1 API changelog</a></li>
+          <li><a href="/v1-api-reference/api-upgrades">v1 API upgrades changelog</a></li>
+          <li><a href="/docs/get-started/changelogs/public-api-changelog">Zephr public API changelog</a></li>
+          <li><a href="/docs/get-started/changelogs/admin-api-changelog">Zephr admin API changelog</a></li>
+        </ul>
+      </Card>
+    </CardGroup>
+  </div>
+</div>
+
+<div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-[#e6f3f7] px-6 py-16 dark:bg-[#0b2528]">
+  <div className="mx-auto max-w-7xl">
+    <h2 className="mb-8 text-center text-3xl font-semibold text-black dark:text-white">Explore the APIs</h2>
+    <Tabs>
+      <Tab title="Products">
+        <CardGroup cols={3}>
+          <Card title="Zuora Billing" icon="file-invoice" href="/v1-api-reference/introduction">
+            <ul>
+              <li><a href="/v1-api-reference/introduction">v1 API reference</a></li>
+              <li><a href="/v1-api-reference/introduction">OpenAPI specification & Postman</a></li>
+              <li><a href="/docs/get-started/introduction">Get an OAuth access token</a></li>
+            </ul>
+          </Card>
+          <Card title="Zuora Payments" icon="hand-holding-dollar" href="/docs/get-started/tutorials/collect-payments">
+            <ul>
+              <li><a href="/docs/get-started/tutorials/collect-payments">Embed a payment form in a site</a></li>
+              <li><a href="/docs/get-started/tutorials/create-orders">Place an order and collect payment</a></li>
+              <li><a href="/v1-api-reference/api/payments/post_createpayment">Create a payment</a></li>
+            </ul>
+          </Card>
+          <Card title="Zuora Platform" icon="wrench" href="/docs/guides/expand-filter-fields-sort">
+            <ul>
+              <li><a href="/docs/guides/expand-filter-fields-sort">Synchronous Object Query</a></li>
+              <li><a href="/v1-api-reference/api/data-queries/get_dataqueryjobs">Data Query (SQL) API</a></li>
+              <li><a href="/v1-api-reference/api/custom-object-definitions/post_customobjectdefinitions">Custom Objects API</a></li>
+              <li><a href="/v1-api-reference/api/workflows/delete_workflowversion">Workflow API</a></li>
+            </ul>
+          </Card>
+          <Card title="Zuora Revenue" icon="table" href="/other-api/quickstart-api-intro">
+            <ul>
+              <li><a href="/other-api/quickstart-api-intro#section/Introduction">Revenue API introduction</a></li>
+              <li><a href="/other-api/revenue/authentication/post_authenticate">Revenue API authentication</a></li>
+              <li><a href="/other-api/revenue/file-upload/get_fileuploadstatus">Upload an event or transaction file</a></li>
+            </ul>
+          </Card>
+          <Card title="Zephr" icon="sliders" href="/zephr-api-reference/zephr-api-introduction">
+            <ul>
+              <li><a href="/zephr-api-reference/zephr-api-introduction">Admin API reference</a></li>
+              <li><a href="/zephr-api-reference/zephr-api-introduction">Public API reference</a></li>
+            </ul>
+          </Card>
+        </CardGroup>
+      </Tab>
+      <Tab title="Use Cases">
+        <CardGroup cols={3}>
+          <Card title="Manage Subscriptions" icon="newspaper" href="/docs/get-started/api-tutorials/orders-tutorials/create-subscriptions">
+            <ul>
+              <li><a href="/docs/get-started/api-tutorials/orders-tutorials/create-subscriptions">Create subscriptions</a></li>
+              <li><a href="/v1-api-reference/api/subscriptions/get_subscriptionsbykey">Retrieve a subscription</a></li>
+              <li><a href="/v1-api-reference/api/subscriptions/get_subscriptionsbyaccount">List an account's subscriptions</a></li>
+            </ul>
+          </Card>
+          <Card title="Customer Accounts" icon="users" href="/v1-api-reference/api/accounts/post_account">
+            <ul>
+              <li><a href="/v1-api-reference/api/accounts/post_account">Create an account</a></li>
+              <li><a href="/v1-api-reference/api/accounts/put_account">Update an account</a></li>
+              <li><a href="/v1-api-reference/api/accounts/get_accountsummary">Retrieve an account summary</a></li>
+            </ul>
+          </Card>
+          <Card title="Invoicing" icon="file-invoice" href="/v1-api-reference/api/invoices/get_getinvoice">
+            <ul>
+              <li><a href="/v1-api-reference/api/invoices/get_getinvoice">Retrieve an invoice</a></li>
+              <li><a href="/v1-api-reference/api/invoices/put_updateinvoice">Update an invoice</a></li>
+              <li><a href="/v1-api-reference/api/invoices/put_reverseinvoice">Reverse an invoice</a></li>
+              <li><a href="/v1-api-reference/api/invoices/post_standaloneinvoice">Create a standalone invoice</a></li>
+            </ul>
+          </Card>
+          <Card title="Payments & Refunds" icon="hand-holding-dollar" href="/v1-api-reference/api/payments/post_createpayment">
+            <ul>
+              <li><a href="/v1-api-reference/api/payments/post_createpayment">Create a payment</a></li>
+              <li><a href="/v1-api-reference/api/payments/get_payment">Retrieve a payment</a></li>
+              <li><a href="/v1-api-reference/api/payments/post_refundpayment">Refund a payment</a></li>
+            </ul>
+          </Card>
+          <Card title="Querying" icon="magnifying-glass" href="/docs/guides/expand-filter-fields-sort">
+            <ul>
+              <li><a href="/docs/guides/expand-filter-fields-sort">Object Query API basics</a></li>
+              <li><a href="/v1-api-reference/api/data-queries/post_dataqueryjob">Submit a SQL query</a></li>
+              <li><a href="/v1-api-reference/api/data-queries/get_dataqueryjob">Retrieve SQL query results</a></li>
+            </ul>
+          </Card>
+          <Card title="Revenue Automation" icon="table" href="/other-api/quickstart-api-intro">
+            <ul>
+              <li><a href="/other-api/quickstart-api-intro#section/Introduction">Revenue API reference</a></li>
+              <li><a href="/other-api/revenue/authentication/post_authenticate">Revenue authentication</a></li>
+              <li><a href="/other-api/revenue/file-upload/get_fileuploadstatus">Upload an event or transaction file</a></li>
+            </ul>
+          </Card>
+          <Card title="Billing Authentication" icon="lock-open" href="/docs/get-started/introduction">
+            <ul>
+              <li><a href="/docs/get-started/introduction">Zuora Billing authentication</a></li>
+              <li><a href="/v1-api-reference/api/oauth/createtoken">Obtain an OAuth bearer token</a></li>
+            </ul>
+          </Card>
+        </CardGroup>
+      </Tab>
+    </Tabs>
+  </div>
+</div>
+
+<div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-[#e8eef6] px-6 py-16 dark:bg-[#111d2b]">
+  <div className="mx-auto max-w-5xl">
+    <h2 className="mb-8 text-center text-3xl font-semibold text-black dark:text-white">Explore the SDKs</h2>
+    <CardGroup cols={2}>
+      <Card title="Zuora Billing SDKs" icon="code" href="/docs/guides/libraries">
+        <ul>
+          <li><a href="/docs/guides/libraries">Access Zuora SDKs</a></li>
+          <li><a href="/sdk-references/java-sdk-reference">Java</a>, <a href="/sdk-references/node-sdk-reference">Node.js</a>, <a href="/sdk-references/python-sdk-reference">Python</a>, <a href="/sdk-references/csharp-sdk-reference">C#</a></li>
+          <li><a href="/sdk-changelogs/changelog-overview">SDK changelogs</a></li>
+        </ul>
+      </Card>
+      <Card title="Zephr SDKs" icon="code" href="/zephr-docs/zephr-sdk/zephr-sdk-reference/javascript-sdk">
+        <ul>
+          <li><a href="/zephr-docs/zephr-sdk/zephr-sdk-reference/javascript-sdk">JavaScript</a></li>
+          <li><a href="/zephr-docs/zephr-sdk/zephr-sdk-reference/browser-sdk">Browser</a></li>
+          <li><a href="/zephr-docs/zephr-sdk/zephr-sdk-reference/swift-sdk">Swift (iOS)</a></li>
+          <li><a href="/zephr-docs/zephr-sdk/zephr-sdk-reference/php-sdk">PHP</a></li>
+        </ul>
+      </Card>
+    </CardGroup>
+  </div>
+</div>
+
+<div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-white px-6 py-16 dark:bg-[#101314]">
+  <div className="mx-auto max-w-7xl">
+    <h2 className="mb-8 text-center text-3xl font-semibold text-black dark:text-white">Other Developer Resources</h2>
+    <CardGroup cols={3}>
+      <Card title="System Status" icon="signal" href="https://one.zuora.com/one-id/private-trust">Monitor the status, performance, and reliability of Zuora services. Login required.</Card>
+      <Card title="Developer Blog" icon="newspaper" href="/blogs/introduction">Read stories from our trenches and stay current with Zuora.</Card>
+      <Card title="What's New?" icon="bullhorn" href="https://community.zuora.com/communities/community-home?communitykey=e2a932b4-50c4-4019-a3e8-362e38714df3">See new developer features and updates in the Zuora community.</Card>
+      <Card title="Zuora University" icon="graduation-cap" href="https://university.zuora.com/">Find self-paced training, certification, and instructor-led classes.</Card>
+      <Card title="Support" icon="life-ring" href="https://support.zuora.com/">Get help from the Zuora Support Center.</Card>
+    </CardGroup>
+  </div>
+</div>

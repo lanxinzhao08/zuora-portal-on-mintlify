@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.16.0 changelog"
+sidebarTitle: "3.16.0"
 ---
-
-# Node.js client library 3.16.0 changelog
-
 ## ObjectQueriesApi
 
 * Changed supported expands for Query CommitmentAssociatedItem by key from `commitment,account` to `commitment,invoiceowner`.

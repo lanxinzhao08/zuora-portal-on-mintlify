@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.14.0 changelog"
+sidebarTitle: "3.14.0"
 ---
-
-# Python client library 3.14.0 changelog
-
-
 ## zuora\_sdk/\_\_init\_\_
 
 * Removed import for AssociationRule, ExpandedDailyConsumptionSummary, ExpandedInvoiceSchedule, ExpandedInvoiceScheduleBooking, ExpandedInvoiceScheduleItem, ExpandedPrepaidBalance, ExpandedPrepaidBalanceFund, ExpandedPrepaidBalanceTransaction, ExpandedValidityPeriodSummary, QueryDailyConsumptionSummarysResponse, QueryInvoiceSchedulesResponse, QueryPrepaidBalanceFundsResponse, QueryPrepaidBalanceTransactionsResponse, QueryPrepaidBalancesResponse, and QueryValidityPeriodSummarysResponse.

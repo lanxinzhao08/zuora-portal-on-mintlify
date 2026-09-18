@@ -1,14 +1,6 @@
 ---
-seo:
-  title: Unleashing developer innovation at Zuora's Partner Hackathon - Zuora Developers Blog
-markdown:
-  toc:
-    hide: true
-disableLastModified: false
+title: "Unleashing developer innovation at Zuora's Partner Hackathon"
 ---
-
-# Unleashing developer innovation at Zuora's Partner Hackathon
-
 Developers don't just solve problems - they create the solutions that shape the future. The Partner Hackathon gave developers a platform to solve real-world challenges in the subscription economy, and to do so using Zuora's most powerful extensibility tools. Here's a breakdown of what went down, how Zuora's tools played a critical role, and why you should be part of the next one.
 
 When you're building on Zuora's platform, you're not just working with pre-packaged solutions - you're extending and customizing those solutions to fit unique business needs. This hackathon gave developers the chance to take that flexibility even further, testing their skills and pushing the boundaries of what's possible with Zuora's Extension Studio, Workflows, and Rules Engine.

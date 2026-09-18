@@ -1,13 +1,8 @@
 ---
-seo:
-  title: Orders basics for developers - Orders API tutorial
-  description: 'Orders basics for developers before getting hands on the orders call'
-  keywords: 'order, subscription, api, create an order'
+title: "Orders basics for developers"
+sidebarTitle: "Orders API tutorials"
+description: "Orders basics for developers before getting hands on the orders call"
 ---
-
-# Orders basics for developers
-
-
 In Zuora, nearly every monetizable event such as sign‑ups, upsells, and renewals, ultimately routes through a single orchestrator: [Create an order](/v1-api-reference/api/orders/post_order)(POST /v1/orders). Master this call and you control account creation, subscription lifecycles, and revenue recognition with one payload.
 
 Orders makes these use cases easy:
@@ -26,7 +21,7 @@ Orders makes these use cases easy:
 - **Tax calculation**: Real-time tax engine integration
 - **Integration simplification**: Single webhook event for downstream systems
 
-We have a more extensive treatment of our [object model](/v1-api-reference/object-model/) but the essentials are:
+We have a more extensive treatment of our [object model](/v1-api-reference/object-model) but the essentials are:
 - An Order must either create a new billing account OR specify an existing billing account.
 - An Order captures products and services, along with pricing and quantities, requested by a customer, not just at the start of their contract but for all changes to a customer's portfolio of products and services over the entire time they are your customer.
 - Orders consist of either:
@@ -39,7 +34,7 @@ We have a more extensive treatment of our [object model](/v1-api-reference/objec
 
 Before starting, ensure you have the following:
 
-1. **API Access Credentials**: For both your ERP and Zuora Billing in both production and test/dev environments. Zuora’s Developer [Get Started tutorial](/docs/get-started/introduction/) explains how.
+1. **API Access Credentials**: For both your ERP and Zuora Billing in both production and test/dev environments. Zuora’s Developer [Get Started tutorial](/docs/get-started/introduction) explains how.
 2. **Access to a Zuora Billing Sandbox**: Use your sandbox for this tutorial. Contact your company's Zuora administrator if you don't already have access. **Do not run these examples in Production.**
 3. **Product Catalog Configuration**: This document assumes pricing is captured in Zuora Billing’s Product Catalog.
 
@@ -86,18 +81,18 @@ That simple order generated this response payload:
 
 Note that the returned ID is not the one supplied in the Order. A copy of the specified ProductRatePlanCharge object was made, the quantity on the copy was set to 5, and that copy's object ID is the one returned. You will see a lot of this 'copy' behavior with Orders. See the two diagrams below.
 
-The first tutorial, [Create subscriptions](/docs/get-started/api-tutorials/orders-tutorials/create-subscriptions/), focuses on some examples of creating subscriptions using Orders.
-The second tutorial gives examples of some of the post creation and [subscription lifecycle](/docs/get-started/api-tutorials/orders-tutorials/modify-subscriptions/) options. The [Create an order](/v1-api-reference/api/orders/post_order) call has links to examples of every order action.
+The first tutorial, [Create subscriptions](/docs/get-started/api-tutorials/orders-tutorials/create-subscriptions), focuses on some examples of creating subscriptions using Orders.
+The second tutorial gives examples of some of the post creation and [subscription lifecycle](/docs/get-started/api-tutorials/orders-tutorials/modify-subscriptions) options. The [Create an order](/v1-api-reference/api/orders/post_order) call has links to examples of every order action.
 
 If you're doing data migrations, don't miss the [Create an order asynchronously](/v1-api-reference/api/orders/post_createorderasynchronously) option that allows for 300 subscriptions to be created in a single call.
 
 This diagram attempts to show how product catalog items are invoked in Orders and copies are made specifically for the affected subscription so you can overwrite and capture order specific quantities and pricing:
 
-<img src="../../../images/tutorials-images/subscription-orders-explained.png" alt="Subscriptions in orders explained" style="max-width:90% !important"/>
+<img src="/docs/images/tutorials-images/subscription-orders-explained.png" alt="Subscriptions in orders explained" style="max-width:90% !important"/>
 
 The same diagram for physical goods orders is similar but slightly simpler as there's no requirement to have a subscription to capture the time based contractural information:
 
-<img src="../../../images/tutorials-images/order-line-items-explained.png" alt="Order line item explained" style="max-width:90% !important"/>
+<img src="/docs/images/tutorials-images/order-line-items-explained.png" alt="Order line item explained" style="max-width:90% !important"/>
 
 ## JSON payload construction
 
@@ -109,12 +104,12 @@ The same diagram for physical goods orders is similar but slightly simpler as th
 - Use object/array structure templates for consistency
 
 **Alternative solution:**
-- Don't use JSON payloads! [Use one of our SDKs instead, they're available for Java, node.js, Python and C#](/docs/guides/libraries/). The code samples in the other tutorials all include SDK code examples.
+- Don't use JSON payloads! [Use one of our SDKs instead, they're available for Java, node.js, Python and C#](/docs/guides/libraries). The code samples in the other tutorials all include SDK code examples.
 
 
 Since the `v1/orders` request payload can be tricky to read, understand, and construct. This graphic may help:
 
-<img src="../../../images/tutorials-images/anatomy-of-orders-payload.png" alt="Anatomy of orders payload" style="max-width:90% !important"/>
+<img src="/docs/images/tutorials-images/anatomy-of-orders-payload.png" alt="Anatomy of orders payload" style="max-width:90% !important"/>
 
 
 ## Check your knowledge

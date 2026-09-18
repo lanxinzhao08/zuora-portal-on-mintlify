@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.13.0 changelog"
+sidebarTitle: "3.13.0"
 ---
-
-# Node.js client library 3.13.0 changelog
-
-
 ## ObjectQueriesApi
 
 * Added support for expanding `invoiceschedule` and `invoicescheduleitem` in queries for CreditMemoItem and InvoiceItem.

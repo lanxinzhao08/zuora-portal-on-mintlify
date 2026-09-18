@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.20.0 changelog"
+sidebarTitle: "3.20.0"
 ---
-
-# Python client library 3.20.0 changelog
-
 ## account\_detail\_response
 
 * Added new field `e_reporting_profile`.

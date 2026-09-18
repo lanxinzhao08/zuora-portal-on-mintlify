@@ -1,15 +1,7 @@
 ---
-seo:
-  title: Evolution of Zuora's AI Copilot - Zuora Developers Blog
-markdown:
-  toc:
-    hide: true
-disableLastModified: false
+title: "The Evolution of Zuora’s AI Copilot"
+sidebarTitle: "The evolution of Zuora's AI Copilot"
 ---
-
-
-# The Evolution of Zuora’s AI Copilot
-
 OpenAI released ChatGPT in November of 2022, and the technology world collectively turned its attention to Generative AI. While we had embedded earlier generations of AI into our product, for example, Payments Smart Retry feature, we immediately began exploring how we could leverage these new large language models (LLMs) to enrich our products and customer experiences. This led us to build our first Generative AI application in Jan 2023, **Get-Help Copilot**, a chatbot designed to provide Zuora-specific knowledge in a conversational format.
 
 ## Why build a Get-Help Copilot?
@@ -35,7 +27,7 @@ Initially, **Get-Help Copilot** was a classic three-tier application:
 
 The **RAG** (Retrieval-Augmented Generation) flow would search the VectorDB to retrieve relevant documents, feed these into the LLM as context, and then produce an answer.
 
-<img src="images/ZuoraCopilotChatbot.png" alt="Zuora Copilot Chatbot" width="500px"/>
+<img src="/blogs/images/ZuoraCopilotChatbot.png" alt="Zuora Copilot Chatbot" width="500px"/>
 
 
 In this early prototype, we focused on:
@@ -63,7 +55,7 @@ As new requirements emerged, we realized we needed a more accessible interface f
    * Enabled teams to onboard their own domain-specific content. For instance, the Billing team could integrate specialized docs so they could delegate domain-specific Q\&A to the bot.
    * Teams simply pointed the framework at their documentation sources; the pipeline handled chunking, embedding, and indexing.
 
-<img src="images/ChatWithZbuddy.png" alt="Chat with Zbuddy" width="500px"/>
+<img src="/blogs/images/ChatWithZbuddy.png" alt="Chat with Zbuddy" width="500px"/>
 
 By June 2023, **zbuddy** went live. Many teams reached out to integrate their specialized knowledge bases, driving the evolution of the service.
 
@@ -104,5 +96,3 @@ Early feedback from internal pilots and select customers has been encouraging. O
 Senior Principal Software Engineer
 
 _Shoutout to my fellow colleagues — Sidi Zhu, Ming Li, Huaqiang He, Shanthi, Charles, and many others who all collaborated with me on these initiatives. This was really a team effort._
-
-

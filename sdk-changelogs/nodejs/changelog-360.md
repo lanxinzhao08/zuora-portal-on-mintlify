@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.6.0 changelog"
+sidebarTitle: "3.6.0"
 ---
-
-# Node.js client library 3.6.0 changelog
-
-
 ## CreditMemosApi
 
 * Added async methods for applying and unapplying credit memos: `applyCreditMemoAsync` and `unapplyCreditMemoAsync`.

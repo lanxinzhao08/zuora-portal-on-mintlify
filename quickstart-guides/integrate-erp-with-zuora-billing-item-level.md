@@ -1,13 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
-seo:
-  title: Integrate ERP with Zuora Billing item level pattern - quickstart guide for developers
+title: "Integrate your ERP system with Zuora Billing item level pattern"
+sidebarTitle: "Integrate ERP with Zuora Billing item level pattern"
 ---
-
-# Integrate your ERP system with Zuora Billing item level pattern
-
 ## Purpose
 
 This guide helps developers build a custom integration between Zuora Billing and your ERP system to synchronize the following financial documents:
@@ -27,11 +21,11 @@ Zuora provides a productized integration with NetSuite that includes this functi
 
 Before starting, ensure you have the following:
 
-- **API Access Credentials**: For both your ERP and Zuora Billing in both production and test or dev environments. Zuora’s Developer [Get started tutorial](/docs/get-started/introduction/) explains how.
+- **API Access Credentials**: For both your ERP and Zuora Billing in both production and test or dev environments. Zuora’s Developer [Get started tutorial](/docs/get-started/introduction) explains how.
 - **Access to a Zuora Billing Sandbox**: Use a Zuora sandbox environment. Do not run these examples against your production tenant without first testing in sandbox. Regardless of environment the oauth client you use must have the update transaction role assigned.
 - **ERP Knowledge**: Understand your ERP's API endpoints for creating or updating the relevant financial documents. Review and document the Zuora Billing and ERP data schemas and how you will map from one to the other.
 - **Assess the pre-built [integrations provided by Zuora.](https://docs.zuora.com?resourceId=platform-integration-hub)** Connectors exist to NetSuite, SAP and Workday and may support the same **Item** integration pattern described here. A pre-built connector will be cheaper and more reliable than the solutions detailed here.
-- This guide makes extensive use of the recent v1 synchronous Object Query feature. You will find [this detailed Object Query reference](/docs/guides/expand-filter-fields-sort/)  valuable.
+- This guide makes extensive use of the recent v1 synchronous Object Query feature. You will find [this detailed Object Query reference](/docs/guides/expand-filter-fields-sort)  valuable.
 
 
 
@@ -45,13 +39,13 @@ Three integration patterns are available for integrating with your ERP. You can 
 
 The three ERP integration patterns are:
 
-- [GL Summary integration](/quickstart-guides/integrate-erp-with-zuora-billing-summarygl/): Most common pattern. Zuora's Billing and Revenue products both support a close process that automatically generate GL entries for transfer and insertion. [We have several pre-built connectors that support this integration.](https://docs.zuora.com?resourceId=platform-integration-hub). But we've also created [a companion guide to this one that details a custom integration for this pattern](/quickstart-guides/integrate-erp-with-zuora-billing-summarygl/).
+- [GL Summary integration](/quickstart-guides/integrate-erp-with-zuora-billing-summarygl): Most common pattern. Zuora's Billing and Revenue products both support a close process that automatically generate GL entries for transfer and insertion. [We have several pre-built connectors that support this integration.](https://docs.zuora.com?resourceId=platform-integration-hub). But we've also created [a companion guide to this one that details a custom integration for this pattern](/quickstart-guides/integrate-erp-with-zuora-billing-summarygl).
 - [ERP item level integration](#integrate-erp-with-zuora-billing-item-level-pattern): You choose to centralize all your AR in your ERP even though Zuora's AR and collections abilities are superior to your ERP's capabilities.
-- [ERP Fulfillment integration](/quickstart-guides/integrate-erp-with-zuora-billing-erpfulfillment/) - Zuora Billing manages AR with this pattern. Your ERP manages the inventory, warehousing, and shipment of physical goods. Zuora bills for both digital (including subscription) items and physical goods.
+- [ERP Fulfillment integration](/quickstart-guides/integrate-erp-with-zuora-billing-erpfulfillment) - Zuora Billing manages AR with this pattern. Your ERP manages the inventory, warehousing, and shipment of physical goods. Zuora bills for both digital (including subscription) items and physical goods.
 
 This ERP item level pattern and the ERP fulfillment pattern are complementary. You will implement one or the other, but not both.
 
-Regardless of choice, it is common to also implement the GL Summary integration. Follow our [GL Summary pattern integration guide](/quickstart-guides/integrate-erp-with-zuora-billing-summarygl/) or use one of our [productized connectors](https://docs.zuora.com?resourceId=platform-integration-hub) for your integration. You can combine an out-of-the-box connector with this custom pattern.
+Regardless of choice, it is common to also implement the GL Summary integration. Follow our [GL Summary pattern integration guide](/quickstart-guides/integrate-erp-with-zuora-billing-summarygl) or use one of our [productized connectors](https://docs.zuora.com?resourceId=platform-integration-hub) for your integration. You can combine an out-of-the-box connector with this custom pattern.
 
 ### ERP item level integration approaches
 
@@ -108,7 +102,7 @@ curl -X GET \
   -H "Content-Type: application/json"
 ```
 
-**Note**: Use pagination (`cursor`) to handle large result sets. See [Object Query guides](/docs/guides/expand-filter-fields-sort/) for more information.
+**Note**: Use pagination (`cursor`) to handle large result sets. See [Object Query guides](/docs/guides/expand-filter-fields-sort) for more information.
 
 You can use the `fields[]` query parameter to specify exactly what fields you'd like returned. The following sample is the same basic query with specific fields listed:
 
@@ -191,22 +185,22 @@ Repeat the same query-and-forward pattern for each type:
 
 | Txn Type         | Object Query Endpoint       | Suggested Filters                   |
 | ------------ | --------------------------- | ---------------------------- |
-| Payments     | [`/object-query/payments`](/v1-api-reference/api/object-queries/querypayments)    | `status.EQ:Processed` <br>`updateddate.GT:<last_sync>` |
-| Refunds | [`/object-query/refunds`](/v1-api-reference/api/object-queries/queryrefunds)     | `status.EQ:Processed` <br>`updateddate.GT:<last_sync>` |
+| Payments     | [`/object-query/payments`](/v1-api-reference/api/object-queries/querypayments)    | `status.EQ:Processed` <br />`updateddate.GT:<last_sync>` |
+| Refunds | [`/object-query/refunds`](/v1-api-reference/api/object-queries/queryrefunds)     | `status.EQ:Processed` <br />`updateddate.GT:<last_sync>` |
 | Credit Memos | [`/object-query/credit-memos`](/v1-api-reference/api/object-queries/querycreditmemos) | `updateddate.GT:<last_sync>` |
 | Credit Memos Items| [`/object-query/credit-memo-items`](/v1-api-reference/api/object-queries/querycreditmemoitems) | `updateddate.GT:<last_sync>` |
-| Debit Memos  | [`/object-query/debit-memos`](/v1-api-reference/api/object-queries/querydebitmemos)  | `status.EQ:Posted` <br>`updateddate.GT:<last_sync>` |
-| Debit Memo Items  | [`/object-query/debit-memo-items`](/v1-api-reference/api/object-queries/querydebitmemoitems)  | `status.EQ:Posted` <br>`updateddate.GT:<last_sync>` |
+| Debit Memos  | [`/object-query/debit-memos`](/v1-api-reference/api/object-queries/querydebitmemos)  | `status.EQ:Posted` <br />`updateddate.GT:<last_sync>` |
+| Debit Memo Items  | [`/object-query/debit-memo-items`](/v1-api-reference/api/object-queries/querydebitmemoitems)  | `status.EQ:Posted` <br />`updateddate.GT:<last_sync>` |
 
 
 **Tip**: `filters[]` must be specified multiple times to combine conditions as an AND operator.
-`filter[]=status.EQ:Processed&filter[]=updateddate.GT:<last_sync>` defines the logic "status = Processed AND updateddate > \<last-sync>".
+`filter[]=status.EQ:Processed&filter[]=updateddate.GT:<last_sync>` defines the logic "status = Processed AND updateddate > &lt;last-sync>".
 
 
 
 ## 'Push' integration logic
 
-If you choose to implement a 'push' solution using Zuora's event notifications, consult the related [CRM integration quickstart guide](/quickstart-guides/crm-integration-quickstart-guide/#event-driven-details). This guide explains how to configure events and capture events. While the example in that document details syncing Account events, follow the same steps to define events for all the necessary transactions. This table will help guide your event definitions:
+If you choose to implement a 'push' solution using Zuora's event notifications, consult the related [CRM integration quickstart guide](/quickstart-guides/crm-integration-quickstart-guide#event-driven-details). This guide explains how to configure events and capture events. While the example in that document details syncing Account events, follow the same steps to define events for all the necessary transactions. This table will help guide your event definitions:
 
 | Txn Type     | Event       |
 | ------------ | --------------------------- |
@@ -226,7 +220,7 @@ If you choose to implement a 'push' solution using Zuora's event notifications, 
 * Use `fields[]` to limit data payloads to only the required fields.
 * Use `expand[]` to include related child records in one query.
 
-See our [Object Query API guide](/docs/guides/expand-filter-fields-sort/) for more details and examples on these last four suggestions.
+See our [Object Query API guide](/docs/guides/expand-filter-fields-sort) for more details and examples on these last four suggestions.
 
 
 ## Conclusion

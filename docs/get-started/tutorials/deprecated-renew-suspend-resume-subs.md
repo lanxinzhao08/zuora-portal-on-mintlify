@@ -1,14 +1,6 @@
 ---
-excludeFromSearch: true
-markdown:
-  toc:
-    hide: true
-redirects:
-  /rest-api/api-guides/6-renew-suspend-resume-subscription/: {}
+title: "Renew, suspend, or resume subscriptions"
 ---
-
-# Renew, suspend, or resume subscriptions
-
 When a subscription expires or before it expires, you can renew the subscription.
 
 If an end subscriber requests to suspend or pause a subscription, you can use the "Pause a subscription" operation to do it.
@@ -21,8 +13,8 @@ In this guide, you will learn:
 - How to suspend a subscription
 - How to resume a subscription
 
-{% tabsComponent %}
-  {% tabComponent title="Quickstart API" %}
+<Tabs>
+  <Tab title="Quickstart API">
 
 ## Renew a subscription
 
@@ -32,10 +24,10 @@ Note that only termed subscriptions can be renewed.
 
 The following code example renews the subscription (`id` = `8ad08f74803a5e3e01803f340e3c2148`) on 2023-01-01. The renewal term is 12 months.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl -X PATCH "https://rest.test.zuora.com/v2/subscriptions/8ad08f74803a5e3e01803f340e3c2148"
     -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3"
     -H "Content-Type: application/json"
@@ -55,9 +47,9 @@ The following code example renews the subscription (`id` = `8ad08f74803a5e3e0180
           }
         }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   LocalDate renewStartDate = LocalDate.of(2023,1,1);
   String subscriptionId = createdSubscription.getId();
 
@@ -78,9 +70,9 @@ The following code example renews the subscription (`id` = `8ad08f74803a5e3e0180
 
   Subscription updatedSubscription = zuoraClient.subscriptions().patchSubscription(subscriptionId,updateRequest);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const renewRequest = {
     description: 'Renew a subscription',
     renew:{
@@ -99,8 +91,8 @@ The following code example renews the subscription (`id` = `8ad08f74803a5e3e0180
 
   const renewSubscription = await zuoraClient.subscriptions.patchSubscription('8ad092478455c5f3018460fd67d9444c',renewRequest);
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ## Suspend a subscription
 
@@ -118,10 +110,10 @@ You can optionally specify the `resume_behavior` field to define the behavior wh
 
 The following example pauses an active subscription for one month at the end of the current billing period. Subsequently, when the subscription is resumed, the subscription term is automatically extended by one month.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request POST
       --url 'https://rest.test.zuora.com/v2/subscriptions/A-S00000035/pause'
       --header 'Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
@@ -136,9 +128,9 @@ The following example pauses an active subscription for one month at the end of 
                 }
 
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   String subscriptionId = createdSubscription.getId();
 
   PauseSubscriptionRequest pauseRequest = new PauseSubscriptionRequest()
@@ -149,9 +141,9 @@ The following example pauses an active subscription for one month at the end of 
 
   Subscription pausedSubscription = zuoraClient.subscriptions().pauseSubscription(subscriptionId, pauseRequest);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const pausedSubscription = await zuoraClient.subscriptions.pauseSubscription('8ad095b8844282ff0184528d63f3242f',
       {
         pause_date: '2022-12-20',
@@ -163,8 +155,8 @@ The following example pauses an active subscription for one month at the end of 
       }
   );
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ## Resume a subscription
 
@@ -174,10 +166,10 @@ The resume date cannot be earlier than the suspend date and cannot be later than
 
 The following example resumes the subscription that is suspended.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request POST
       --url 'https://rest.test.zuora.com/v2/subscriptions/8ad08f74803a5e3e01803f340e3c2148/resume'
       --header 'Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3'
@@ -188,18 +180,18 @@ The following example resumes the subscription that is suspended.
               }'
 
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   ResumeSubscriptionRequest resumeRequest = new ResumeSubscriptionRequest()
       .extendTerm(true)
       .resumeDate("2022-09-10");
 
   Subscription resumedSubscription = zuoraClient.subscriptions().resumeSubscription(pausedSubscription.getId(), resumeRequest);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const resumedSubscription = await zuoraClient.subscriptions.resumeSubscription('8ad08ccf80efe77c0180f1f5f80d39c9',
       {
         extend_term: true,
@@ -207,11 +199,11 @@ The following example resumes the subscription that is suspended.
       }
   );
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
-  {% /tabComponent %}
-  {% tabComponent title="v1 API" %}
+  </Tab>
+  <Tab title="v1 API">
 
 
 ## Renew a subscription
@@ -349,7 +341,7 @@ If you want to perform only one action on a single subscription for each request
 
 ### Renew a subscription
 
-You can use the [Renew a subscription](/v1-api-reference/api/subscriptions/put_renewsubscription/) to renew a subscription.
+You can use the [Renew a subscription](/v1-api-reference/api/subscriptions/put_renewsubscription) to renew a subscription.
 
 The following cURL code sample renews the subscription A-S00000272:
 
@@ -367,7 +359,7 @@ curl -i -X PUT \
 
 ### Suspend a subscription
 
-You can use the [Suspend a subscription](/v1-api-reference/api/subscriptions/put_suspendsubscription/) to suspend a subscription.
+You can use the [Suspend a subscription](/v1-api-reference/api/subscriptions/put_suspendsubscription) to suspend a subscription.
 
 The following cURL code sample suspends the subscription A-S00000272 in 10 days (starting from the day you make this request):
 
@@ -393,7 +385,7 @@ curl -i -X PUT \
 
 ### Resume a subscription
 
-You can use the [Resume a subscription](/v1-api-reference/api/subscriptions/put_resumesubscription/) to resume a suspended subscription.
+You can use the [Resume a subscription](/v1-api-reference/api/subscriptions/put_resumesubscription) to resume a suspended subscription.
 
 The following cURL code sample resumes the subscription A-S00000272 on 2022-10-01:
 
@@ -422,6 +414,6 @@ To verify the result through the Zuora UI, you can search the subscription by ID
 By clicking the subscription, you will be able to find the status of the subscription, which allows you to verify if the subscription has been suspended, resumed, or renewed.
 
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>

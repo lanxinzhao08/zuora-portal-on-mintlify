@@ -1,17 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: true
-seo:
-  title: Tutorials
-redirects:
-  /quickstart-api/tutorial/overview/: {}
-  /quickstart-api/tutorial/upload-usage-records/: {}
-  /rest-api/api-guides/overview/: {}
+title: "Tutorials"
+sidebarTitle: "Business tutorials"
 ---
-
-# Tutorials
-
 This tutorial walks you through the typical use cases for setting up the B2C checkout flow,
 and the corresponding sample codes of using the Zuora API or client libraries.
 
@@ -20,7 +10,7 @@ and the corresponding sample codes of using the Zuora API or client libraries.
 The following diagram illustrates the typical checkout flow for a B2C website.
 
 
-<img src="../../static/images/Tutorials/B2C-checkout-flow.svg" alt="B2C checkout flow" />
+<img src="/static/images/Tutorials/B2C-checkout-flow.svg" alt="B2C checkout flow" />
 
 The checkout flow consists of the following steps:
 
@@ -37,7 +27,7 @@ The checkout flow consists of the following steps:
 In this tutorial, we will use the Object Query API as the primary query method.
 The Object Query API contains GET operations that allow you to query objects in your Zuora tenant in an efficient, consistent, and flexible manner.
 With the `expand[]` and `filter[]` query parameters, you have the flexibility to retrieve related object information in a single call and define the returned response that best suits your needs.
-For more information, see [Object Queries](/v1-api-reference/api/object-queries/).
+For more information, see [Object Queries](/v1-api-reference/api/object-queries/queryaccounts).
 
 ## Scenario
 
@@ -66,10 +56,3 @@ You want to achieve the following business purposes with Zuora:
   - Cancel a specific subscription
   - Check account details
   - View all invoices they have received
-
-
-
-
-
-
-

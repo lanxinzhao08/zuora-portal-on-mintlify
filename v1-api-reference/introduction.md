@@ -1,19 +1,7 @@
 ---
-seo:
-  title: Introduction to the v1 API
-  description: Introduces the v1 API for Billing, Payments, and Central Platform
-  keywords: api, v1 api
-markdown:
-  toc:
-    hide: true
-redirects:
-  /api-references/api/overview/: {}
-  /rest-api/general-concepts/requests-and-responses/: {}
-  /rest-api/rest-api-introduction/: {}
+title: "Introduction"
+description: "Introduces the v1 API for Billing, Payments, and Central Platform"
 ---
-
-# Introduction
-
 The Zuora v1 API provides a broad set of operations and resources that:
 
 * Enable Web Storefront integration from your website.
@@ -21,8 +9,8 @@ The Zuora v1 API provides a broad set of operations and resources that:
 * Process revenue schedules through custom revenue rule models.
 * Enable manipulation of most objects in the Zuora object model.
 
-If you are new to the Zuora API, start with our [Get started](https://developer.zuora.com/docs/get-started/introduction) guide to make your first call. 
-To learn about the common use cases of the Zuora v1 API, check out the [API Tutorials](https://developer.zuora.com/docs/get-started/tutorials/).
+If you are new to the Zuora API, start with our [Get started](/docs/get-started/introduction) guide to make your first call.
+To learn about the common use cases of the Zuora v1 API, check out the [API Tutorials](/docs/get-started/tutorials).
 
 
 ## Base URL
@@ -43,7 +31,3 @@ Each environment uses a different base URL. Select the appropriate base URL belo
 |EU Production | [https://rest.eu.zuora.com](https://rest.eu.zuora.com) |
 |APAC Developer & Central Sandbox | [https://rest.test.ap.zuora.com](https://rest.test.ap.zuora.com) |
 |APAC Production | [https://rest.ap.zuora.com](https://rest.ap.zuora.com) |
-
-
-
-

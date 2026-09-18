@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.14.0 changelog"
+sidebarTitle: "3.14.0"
 ---
-
-# Java client library 3.14.0 changelog
-
-
 ## CreditMemosApi
 
 * Added a new parameter `shouldIncludeAcknowledged` to the method `updateCreditMemoInvokeSyncStatus` and its related methods. This parameter allows fetching notifications marked as acknowledged along with unacknowledged ones.

@@ -1,10 +1,7 @@
 ---
-seo:
-  title: Integrating with AMP Web Component Frameworks
+title: "Integrating with AMP Web Component Frameworks"
+sidebarTitle: "Integrating with AMP web component frameworks"
 ---
-
-# Integrating with AMP Web Component Frameworks
-
 This guide details the steps for teams to integrate Zephr SDK Features with AMP Web Component Framework sites.
 
 Full documentation for AMP is available [here](https://amp.dev/).
@@ -21,7 +18,7 @@ Navigate to Products > Features and then select the Feature from the list. Locat
 
 If you are creating a new Feature, navigate to Products > Features and click Add A Feature. Give your Feature a Title, and select SDK in the Type of Integration section, then click Continue. Your Developer Interface will open on the next screen.
 
-![img_1](../zephr-image/img_1_Integrating_with_AMP_Web_Component_Frameworks.png)
+![img_1](/zephr-docs/zephr-image/img_1_Integrating_with_AMP_Web_Component_Frameworks.png)
 
 For this example, we are using the slug `test-for-amp`.
 
@@ -29,7 +26,7 @@ For this example, we are using the slug `test-for-amp`.
 
 Your domain can be located by navigating to Delivery > Sites within your Zephr Admin Console, then clicking into the relevant site.
 
-![img_2](../zephr-image/img2_Integrating_with_AMP_Web_Component_Frameworks.png)
+![img_2](/zephr-docs/zephr-image/img2_Integrating_with_AMP_Web_Component_Frameworks.png)
 
 In this example, we are using `alexpereda-for-amp.cdn.demo.zephr.com`.
 
@@ -37,7 +34,7 @@ In this example, we are using `alexpereda-for-amp.cdn.demo.zephr.com`.
 
 Whilst locating your Domain, scroll down to the Browser Config section and add your site URL.
 
-![img_3](../zephr-image/img3_Integrating_with_AMP_Web_Component_Frameworks.png)
+![img_3](/zephr-docs/zephr-image/img3_Integrating_with_AMP_Web_Component_Frameworks.png)
 
 Remember to click Save once added.
 
@@ -90,7 +87,7 @@ Under Output, select the Enum type, then click Add Option.
 
 Enter a Title and Value for Allow, then click Add. Repeat the process for Deny.
 
-![img_4](../zephr-image/img4_Integrating_with_AMP_Web_Component_Frameworks.png)
+![img_4](/zephr-docs/zephr-image/img4_Integrating_with_AMP_Web_Component_Frameworks.png)
 
 When complete, click Update & Lock.
 
@@ -98,9 +95,9 @@ Now, on your Rules Canvas, you will see an Output option. Under this, you will s
 
 Drag these outputs onto your Rule Canvas and created the desired journey.
 
-![img_5](../zephr-image/img5_Integrating_with_AMP_Web_Component_Frameworks.png)
+![img_5](/zephr-docs/zephr-image/img5_Integrating_with_AMP_Web_Component_Frameworks.png)
 
-This rule will return the word `“allow”` to the AMP-Access component within your HTML code, using the following syntax: `<section amp-access=“outputValue = ‘allow’”>` where allow is the enum from the Zephr rule builder.
+This rule will return the word `“allow”` to the AMP-Access component within your HTML code, using the following syntax: `<section amp-access="outputValue = ‘allow’">` where allow is the enum from the Zephr rule builder.
 
 This is effectively granting permission for the user to go ahead to the next step of their journey. For example:
 
@@ -117,6 +114,6 @@ This is effectively granting permission for the user to go ahead to the next ste
 
 Once this has been achieved, evolve your journey into a more advanced use case like the example below, in which we are providing a Trial of 10 article views before the paywall is presented:
 
-![img_6](../zephr-image/img6_Integrating_with_AMP_Web_Component_Frameworks.png)
+![img_6](/zephr-docs/zephr-image/img6_Integrating_with_AMP_Web_Component_Frameworks.png)
 
 For more information on integrating with AMP, get in touch with your Zephr Technical Consultant, or email [support@zuora.com](mailto:support@zuora.com "support@zuora.com").

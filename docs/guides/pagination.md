@@ -1,27 +1,16 @@
 ---
-seo:
-  title: Pagination - Zuora
-  description: null
-  keywords: pagination, page size
-markdown:
-  toc:
-    hide: true
-redirects:
-  /api-references/quickstart-api/tag/Pagination/: {}
-  /rest-api/general-concepts/pagination/: {}
+title: "Pagination"
+description: "null"
 ---
-
-# Pagination
-
-{% tabsComponent %}
-  {% tabComponent title="v1 API" %}
+<Tabs>
+  <Tab title="v1 API">
 
 The following query parameters are used for pagination:
 
 * `pageSize`: The maximum number of results to return in a single page. If the specified `pageSize` is less than 1 or greater than 50, Zuora will return a 400 error.
 * `cursor`: A cursor for use in pagination. cursor defines the starting place in a list. For instance, if you make a list request and receive 100 objects ending with `next_page=W3sib3JkZXJ=`, your subsequent call can include `cursor=W3sib3JkZXJ=` in order to fetch the next page of the list.
 
-**Note**: These query parameter is applicable to partial v1 API operations. Check the [v1 API reference](/v1-api-reference/api). Operations that have the `pageSize` and `cursor` parameters are the ones that support pagination.
+**Note**: These query parameter is applicable to partial v1 API operations. Check the [v1 API reference](/v1-api-reference/introduction). Operations that have the `pageSize` and `cursor` parameters are the ones that support pagination.
 
 ## How pagination works for the Object Query API
 
@@ -50,8 +39,8 @@ If more rows are available, the response will include a `nextPage` element, whic
 
 For data items that are not paginated, the REST API supports arrays of up to 300 rows. Thus, for instance, repeated pagination can retrieve thousands of customer accounts, but within any account an array of no more than 300 rate plans is returned.
 
-  {% /tabComponent %}
-  {% tabComponent title="Quickstart API" %}
+  </Tab>
+  <Tab title="Quickstart API">
 
 All top-level Quickstart API resources have support for bulk fetches via the "List" API methods. For instance, you can list accounts, list subscriptions and list billing documents. These list API methods share a common structure - taking an optional cursor parameter.
 
@@ -88,6 +77,6 @@ The default `page_size` value for all "List" endpoints is 30.
 
 
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>

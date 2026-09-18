@@ -1,13 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
-seo:
-  title: CRM integration - quickstart guide for developers
+title: "CRM integration quickstart guide"
+sidebarTitle: "CRM Integration quickstart guide"
 ---
-
-# CRM integration quickstart guide
-
 ## Goal
 
 By the end of this guide you will have integrated your CRM with Zuora Billing using our APIs and empowered your CRM users to view customer billing data extracted from Zuora Billing. With this interface, your customer support staff will:
@@ -44,7 +38,7 @@ Agree with your business the Zuora Billing information that is critical. Adjust 
 
 A detailed map of source objects and fields to target objects and fields is essential.
 
-The code samples in this guide use our REST API end points, but [our client libraries](/docs/guides/libraries/) support the same calls so you can use Java, node.js, Python or C\# instead.
+The code samples in this guide use our REST API end points, but [our client libraries](/docs/guides/libraries) support the same calls so you can use Java, node.js, Python or C\# instead.
 
 ### Gather basics
 
@@ -56,7 +50,7 @@ Before you choose, determine the following vital information. These will help gu
 - Determine the additional costs for additional API calls into your CRM usage
 - Determine the additional costs for storage with your CRM.
 - Determine the restrictions on the number of outbound calls your CRM can make to another system.
-- Review [Zuora's concurrency and rate limits](/docs/guides/rate-limits/) to ensure your proposed integration will be compliant.
+- Review [Zuora's concurrency and rate limits](/docs/guides/rate-limits) to ensure your proposed integration will be compliant.
 - Complete the detailed field attribute mappings between Billing and CRM.
 
 ### Determine integration implementation choice
@@ -75,7 +69,7 @@ While we include examples of the Zuora Billing API calls and configuration neede
 Before getting started, ensure you have got:
 
 - **The implementation choice**: You must complete the tasks in the previous section and make a decision on which integration type to implement.
-- **API access credentials**: For both your CRM and Zuora Billing in both production and test/developer environments. Zuora’s Billing API [Get Started tutorial](/docs/get-started/introduction/) explains how to get the OAuth credentials needed for the Zuora Billing API.
+- **API access credentials**: For both your CRM and Zuora Billing in both production and test/developer environments. Zuora’s Billing API [Get Started tutorial](/docs/get-started/introduction) explains how to get the OAuth credentials needed for the Zuora Billing API.
 - **Basic understanding of REST API**: Familiarity with the REST API that uses JSON for requests and responses.
 - **Access to a Zuora Billing sandbox**: Every Zuora customer is issued at least one sandbox. If you need an additional one for this project you can request one for an additional charge from Zuora.
 - Determine which communication profiles are used by Zuora Billing. This
@@ -136,7 +130,7 @@ Despite their name these fields are not dates, they are datetimes of the format,
 
 Zuora Billing provides options for querying data from Zuora. In this guide we will use Zuora Billing’s v1 API Object Query. This provides synchronous queries for key Billing objects.
 
-Here is a detailed [tutorial on how to use Object Query](/docs/guides/expand-filter-fields-sort/), including code samples and JSON responses. Below we’ll describe the options chosen for our first query, consult the tutorial for further options.
+Here is a detailed [tutorial on how to use Object Query](/docs/guides/expand-filter-fields-sort), including code samples and JSON responses. Below we’ll describe the options chosen for our first query, consult the tutorial for further options.
 
 #### Polling query billing accounts
 
@@ -155,8 +149,8 @@ sort[]=updatedDate.asc" \
 | URL Component | Description |
 | :---- | :---- |
 | [https://rest.apisandbox.zuora.com/object-query/accounts](https://rest.apisandbox.zuora.com/object-query/accounts) | Object Query root URL. Here we're using a North American based API Sandbox tenant and running an object query on Accounts. You may need to modify this. Confirm your base URL by comparing the Tenant UI Login entries in the [Data Center documentation](https://docs.zuora.com?resourceId=zuora-data-centers) , and use the base URL in the ‘REST API’ entry when calling our REST API |
-| pageSize=99 | Return up to 99 accounts, if  there are more a cursor, a long alphanumeric string will be returned. You then resubmit your call including the cursor to retrieve the next 99 accounts. See the Pagination section in [Expand, Filter, Fields and Sort](/docs/guides/expand-filter-fields-sort/). |
-| account.fields\[\]=id,updatedDate,name,accountNumber,<br>balance,currency,autoPay,batch,billCycleDay,billToId,<br>creditBalance,lastInvoiceDate,mrr,<br>paymentTerm,CRMAccountId\_\_c | fields\[\] tells our server that we only want the listed fields. Add or remove fields to meet your needs. List of available fields is included in [each object's reference documentation](/v1-api-reference/api/object-queries/queryaccounts). |
+| pageSize=99 | Return up to 99 accounts, if  there are more a cursor, a long alphanumeric string will be returned. You then resubmit your call including the cursor to retrieve the next 99 accounts. See the Pagination section in [Expand, Filter, Fields and Sort](/docs/guides/expand-filter-fields-sort). |
+| account.fields\[\]=id,updatedDate,name,accountNumber,<br />balance,currency,autoPay,batch,billCycleDay,billToId,<br />creditBalance,lastInvoiceDate,mrr,<br />paymentTerm,CRMAccountId\_\_c | fields\[\] tells our server that we only want the listed fields. Add or remove fields to meet your needs. List of available fields is included in [each object's reference documentation](/v1-api-reference/api/object-queries/queryaccounts). |
 | filter\[\]=updatedDate.GT:2025-03-13T14:30:46-07:00 | High water mark filter that will ignore unmodified objects since the datetime specified. |
 | sort\[\]=updatedDate.asc | Sort on the updatedDate so you can pull the high water mark from the last account returned for the next scheduled query. |
 
@@ -247,7 +241,7 @@ Here we will create a custom event that will fire every time an Account is creat
     8. On the "Step 6: Finalize Notification Details" page, give your new notification a name, for example, `AccountChangeEventNotification`, and ensure that the **Active** toggle is switched on. Click **Next**.
     9. After reviewing the notification detail, click **Done**. On the **Notifications** tab, you should now see your new notification listed:
 
-      ![AccountChangeEventNotification](./images/AccountChangeEventNotification.png)
+      ![AccountChangeEventNotification](/quickstart-guides/images/AccountChangeEventNotification.png)
 
 4. Test your new notification is working by creating an order with an order line item for an account that has the correct communication profile. You can see a history of callouts for each account by scrolling to the bottom of the UI account detail screen. If no notifications fire, verify:
     * The right communication profile is enabled on the billing account being used in your testing. This is listed at the bottom of the billing account detail screen. If there is a red bell icon, the profile is muted and notifications are suppressed. If it’s active it’ll have a green bell.

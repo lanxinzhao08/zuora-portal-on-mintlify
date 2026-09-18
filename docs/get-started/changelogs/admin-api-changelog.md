@@ -1,4 +1,6 @@
-
+---
+title: "Zephr Admin API"
+---
 This changelog outlines the latest API updates and documentation updates in the Zephr Admin API Reference.
 
 ## June 12, 2026
@@ -25,7 +27,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 This section lists operations and fields that were added, changed, or removed.
 
-- In the "User Schema" section, added the following operations: 
+- In the "User Schema" section, added the following operations:
   - Save user attributes
   - Update user attributes
 
@@ -133,7 +135,7 @@ This section lists the documentation updates that were made in this version of t
 
 This section lists operations and fields that were added, changed, or removed.
 
-- [Dynamic Offer Promo-codes Redemptions](https://developer.zuora.com/zephr-api-reference/zephr-admin-api/operation/ProcessPromoCodeRedemptions/) - Added the "Process promo code redemptions" operation. This operation is used to redeem promo codes configured from the Zephr console.
+- [Dynamic Offer Promo-codes Redemptions](/zephr-api-reference/zephr-admin-api/dynamic-offer-promo-code-redemption/processpromocoderedemptions) - Added the "Process promo code redemptions" operation. This operation is used to redeem promo codes configured from the Zephr console.
 
 
 ## February 26, 2024
@@ -156,7 +158,7 @@ This section lists the documentation updates that were made in this version of t
 
 This section lists the documentation updates that were made in this version of the Zephr Admin API Reference.
 
-- [Promo Code Redemption](https://www.zuora.com/developer/api-references/zephr-admin-api/operation/Process_promo_code_redemptions/) - 
+- [Promo Code Redemption](https://www.zuora.com/developer/api-references/zephr-admin-api/operation/Process_promo_code_redemptions/) -
 
 ## February 8th, 2024
 
@@ -165,10 +167,10 @@ This section lists the documentation updates that were made in this version of t
 This section lists the documentation updates that were made in this version of the Zephr Admin API Reference.
 
 - Added a new endpoint `/v4/thumbnails/upload-url` for generating pre-signed URLs to securely upload thumbnail images to S3.
-Improved documentation for /v3/users/{userId}/grants
-Improved documentation for /v3/users/{userId}/attributes
-Improved documentation for  /v3/users/{user_id}/accounts
-Improved documentation for /v3/schema/users/{slug}
+Improved documentation for /v3/users/&#123;userId&#125;/grants
+Improved documentation for /v3/users/&#123;userId&#125;/attributes
+Improved documentation for  /v3/users/&#123;user_id&#125;/accounts
+Improved documentation for /v3/schema/users/&#123;slug&#125;
 
 ## December 14, 2023
 
@@ -187,7 +189,7 @@ This section lists the documentation updates that were made in this version of t
 
 ### Doc updates
 
-This section lists the documentation updates that were made in this version of the Zephr Admin API Reference. 
+This section lists the documentation updates that were made in this version of the Zephr Admin API Reference.
 
 - Revised the operation names and descriptions to improve consistency and avoid confusion.
 
@@ -197,12 +199,12 @@ This section lists the documentation updates that were made in this version of t
 
 ### Doc updates
 
-This section lists the documentation updates that were made in this version of the Zephr Admin API Reference. 
+This section lists the documentation updates that were made in this version of the Zephr Admin API Reference.
 
 - Made the following corrections to the “User and User Events Export” operation:
 
   - Updated the description of this operation to clarify how to specify the parameters.
-  
+
   - Added the following missing query parameters:
       - `appIdsRestrictive`
       - `registeredSince`
@@ -219,7 +221,7 @@ This section lists the documentation updates that were made in this version of t
 
 ### Doc updates
 
-This section lists the documentation updates that were made in this version of the Zephr Admin API Reference. 
+This section lists the documentation updates that were made in this version of the Zephr Admin API Reference.
 
 - Moved the "Upsert foreign key" operation from the Admin User section to the Users section to correct the grouping error.
 
@@ -227,7 +229,7 @@ This section lists the documentation updates that were made in this version of t
 
 ### Doc updates
 
-This section lists the documentation updates that were made in this version of the Zephr Admin API Reference. 
+This section lists the documentation updates that were made in this version of the Zephr Admin API Reference.
 
 - For the "Create new session under a given site" operation, corrected the `200` response code to `201`.
 
@@ -238,9 +240,9 @@ This section lists the documentation updates that were made in this version of t
 
 This section lists operations and fields that were added, changed, or removed.
 
-- [Users](https://developer.zuora.com/api-references/zephr-admin-api/tag/Users/) - Added the following operations to support bulk updating users:
+- [Users](/zephr-api-reference/zephr-admin-api/users/deleteuserbyprimaryorforeignkey) - Added the following operations to support bulk updating users:
   - Update users in bulk
-  - Retrieve a bulk user update job 
+  - Retrieve a bulk user update job
   - List all bulk user update jobs
 
 
@@ -250,9 +252,9 @@ This section lists operations and fields that were added, changed, or removed.
 
 This section lists operations and fields that were added, changed, or removed.
 
-- [User Export](https://developer.zuora.com/api-references/zephr-admin-api/operation/User_Export/) - Updated the "User and User Events Export" operation to support downloading user event data.
+- [User Export](/zephr-api-reference/zephr-admin-api/user-export/exportuserandeventscsv) - Updated the "User and User Events Export" operation to support downloading user event data.
 
-- [Users](https://developer.zuora.com/api-references/zephr-admin-api/tag/Users/) - Added the following operations to support user segmentation:
+- [Users](/zephr-api-reference/zephr-admin-api/users/deleteuserbyprimaryorforeignkey) - Added the following operations to support user segmentation:
   - Create a user segment
   - List all user segments
   - Retrieve a user segment
@@ -276,4 +278,4 @@ This section lists operations and fields that were added, changed, or removed.
 
 ### Doc updates
 
-This section lists the documentation updates that were made in this version of the Zephr Admin API Reference. 
+This section lists the documentation updates that were made in this version of the Zephr Admin API Reference.

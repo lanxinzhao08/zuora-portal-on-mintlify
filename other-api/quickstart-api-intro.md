@@ -1,21 +1,12 @@
 ---
-markdown:
-  toc:
-    hide: true
-    maxDepth: 2
-redirects:
-  /api-references/quickstart-api/tag/Introduction/: {}
-  /api-references/quickstart-api/tag/Request-Ids/: {}
-  /quickstart-api/quickstart-api-introduction/: {}
+title: "Introduction to the Quickstart API"
+sidebarTitle: "Introduction"
 ---
-
-# Introduction to the Quickstart API
-
-Zuora's Quickstart API represents a simplified programmatic experience with coverage for common eCommerce use cases only. Quickstart is NOT a replacement of the [v1 API](/v1-api-reference/api).
+Zuora's Quickstart API represents a simplified programmatic experience with coverage for common eCommerce use cases only. Quickstart is NOT a replacement of the [v1 API](/v1-api-reference/introduction).
 
 If you are starting new development, we recommend you use the v1 API for all your use cases. New features are only available in the v1 API. We no longer recommend Quickstart for new eCommerce development. We are not deprecating the Quickstart API and will continue to fix bugs, but we will not accept enhancement requests for the Quickstart API.
 
-You can interact with the v1 API through HTTP requests or through our official client libraries (SDKs). See [Libraries](../docs/guides/libraries.md) for more information.
+You can interact with the v1 API through HTTP requests or through our official client libraries (SDKs). See [Libraries](/docs/guides/libraries) for more information.
 
 **Base URL for the Quickstart API**
 
@@ -33,7 +24,3 @@ URL below that you need to use:
 |EU Production | [https://rest.eu.zuora.com](https://rest.eu.zuora.com) |
 |APAC Developer & Central Sandbox | [https://rest.test.ap.zuora.com](https://rest.test.ap.zuora.com) |
 |APAC Production | [https://rest.ap.zuora.com](https://rest.ap.zuora.com) |
-
-
-
-

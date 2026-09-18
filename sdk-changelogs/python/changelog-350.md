@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.5.0 changelog"
+sidebarTitle: "3.5.0"
 ---
-
-# Python client library 3.5.0 changelog
-
-
 ## bulk\_update\_order\_line\_item
 * Added a new optional field `communicationProfileId` to the `BulkUpdateOrderLineItem` model. This field allows updating the communication profile associated with the order line item when the sales OLI is in the `Executing`/`Booked`/`SentToBilling` state.
 

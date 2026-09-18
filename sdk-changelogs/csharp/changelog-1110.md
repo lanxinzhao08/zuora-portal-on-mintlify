@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.11.0 changelog"
+sidebarTitle: "1.11.0"
 ---
-
-# C# client library 1.11.0 changelog
-
 ## ObjectQueriesApi
 
 * Added new method QueryChildCommitmentLinkByKey with various optional parameters.

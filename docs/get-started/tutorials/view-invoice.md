@@ -1,16 +1,11 @@
 ---
-markdown:
-  toc:
-    hide: true
+title: "View the generated invoice"
 ---
-
-# View the generated invoice
-
 ## End-user flow
 
 Imagine you want to present a confirmation page similar to the one below:
 
-<img width="800px" src="../../../static/images/Tutorials/Generated-invoice.png" alt="Show the generated invoice" />
+<img width="800px" src="/static/images/Tutorials/Generated-invoice.png" alt="Show the generated invoice" />
 
 This step calls the [Retrieve an invoice](/v1-api-reference/api/object-queries/queryinvoicebykey) Object Query API, passing in the invoice number obtained from the [Create an order](/v1-api-reference/api/orders/post_order) call (INV00026831).
 
@@ -20,15 +15,15 @@ This step calls the [Retrieve an invoice](/v1-api-reference/api/object-queries/q
 The following sample code retrieves the detailed information for the invoice where the invoice number is `INV00026831`.
 
 Note that the account ID (`3A8b48f158e0b6af326c49d9b098a1db84`) can be obtained from the "Create an account" API call.
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl -L -g -X GET 'https://rest.test.zuora.com/object-query/invoices/INV00026831?expand[]=invoiceitems' \
 -H 'Authorization: Bearer df19194eb1d64153b71bff6af33c039a'
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 ExpandedInvoice invoice = zuoraClient.objectQueriesApi()
         .queryInvoiceByKeyApi("INV00026831")
         .expand(List.of("invoiceitems"))
@@ -36,18 +31,18 @@ ExpandedInvoice invoice = zuoraClient.objectQueriesApi()
 
 System.out.println(invoice);
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 const invoices = await zuoraClient.objectQueriesApi.queryInvoiceByKey('INV00026831',{
     expand: ['invoiceitems']
 });
 
 console.log(JSON.stringify(invoices, (k, v) => v ?? undefined, 2))
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 def query_invoice_by_number(invoice_number, client=None):
     if not client:
         client = get_client()
@@ -66,15 +61,15 @@ def query_invoice_by_number(invoice_number, client=None):
 if __name__ == '__main__':
     query_invoice_by_number('INV00026826')
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 ExpandedInvoice invoice = zuoraClient.ObjectQueriesApi.QueryInvoiceByKey("INV00147298",expand:["invoiceitems"]);
 
 Console.WriteLine(invoice.ToJson());
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 If the request succeeds, you will get a response similar to the following snippet:
@@ -160,4 +155,3 @@ If the request succeeds, you will get a response similar to the following snippe
     ]
 }
 ```
-

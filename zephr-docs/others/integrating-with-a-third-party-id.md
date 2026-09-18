@@ -1,10 +1,7 @@
 ---
-seo:
-  title: Integrating with a Third Party Identity System
+title: "Integrating with third party ID system"
+sidebarTitle: "Integrating with a third-party identity system"
 ---
-
-# Integrating with third party ID system
-
 This document describes what is required to integrate with Zephr when using a third party identity management system.
 
 ## Introduction to JSON Web Tokens
@@ -57,7 +54,7 @@ Navigate to a site you have running through Zephr, on a page where your anonymou
 
 Note: We suggest you use the Preview version of the Site. A link  to this can be found in your Zephr Admin Console under Delivery  > Sites.
 
- In a new, anonymous session, inspect the page. Click on the Console tab, then enter document.cookie = “blaize\_jwt={jwt cookie you generated above}” and click enter. 
+ In a new, anonymous session, inspect the page. Click on the Console tab, then enter document.cookie = “blaize\_jwt=&#123;jwt cookie you generated above&#125;” and click enter. 
 
 Once set, navigate to the Application tab. Under cookies, you will now see blaize\_jwt as a set cookie with the value you have added from jwt.io. 
 

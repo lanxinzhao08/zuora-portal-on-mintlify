@@ -1,14 +1,6 @@
 ---
-seo:
-  title: Zuora's Prompt-A-Thon 2025 - Zuora Developers Blog
-markdown:
-  toc:
-    hide: true
-disableLastModified: false
+title: "Zuora's Prompt-A-Thon 2025"
 ---
-
-# Zuora's Prompt-A-Thon 2025
-
 Zuora recently hosted Prompt-A-Thon 2025: The 10x Catalyst, an event that demonstrated the transformative power of Generative AI.
 
 Held across our Chennai and Bengaluru offices, the Prompt-A-Thon brought together over 190 participants from not just Zuora but also organizations such as Amazon, PayPal, Cisco, and Goldman Sachs. All focused on solving real problems using AI, on a Saturday.
@@ -42,4 +34,3 @@ These things are impossible without some hard judging, thanks to Anirudh Ravicha
 Our Prompt-A-Thon underscored Zuora's strategic commitment to embedding AI and LLMs deeply into our product offerings in <a href="https://docs.zuora.com/en/basics/use-of-ai-in-zuora/zuoras-approach-to-ai" target="_blank">a safe and secure manner</a>.
 
 Use the feedback button to let us know if you'd like to learn more about any of these projects.
-

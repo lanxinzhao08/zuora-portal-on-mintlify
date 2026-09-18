@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.10.0 changelog"
+sidebarTitle: "3.10.0"
 ---
-
-# Java client library 3.10.0 changelog
-
 ## ZuoraClient
 
 * Updated the client behavior when fetching an OAuth bearer token. Based on the existing HttpClient, a new ApiClient is now generated to fetch a bearer token. With this change, only the headers required by ApiClient are used while other headers are ignored.

@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.17.0 changelog"
+sidebarTitle: "3.17.0"
 ---
-
-# Node.js client library 3.17.0 changelog
-
 ## ZuoraClient
 
 * Removed method: get balanceTrackingApi
@@ -300,13 +296,13 @@ markdown:
 
 ## PreviewOrderChargeOverride
 
-* Description: Added new field `pricingAttributes` to the class `PreviewOrderChargeOverride`. This field is a container for pricing attributes used in dynamic pricing and requires the DynamicPricing permission to be accessible., Field_Type: Object.<String, Object>
-* Description: Added new field `negotiatedPriceTable` to the class `PreviewOrderChargeOverride`. This field is an array of negotiated price table information and requires the NegotiatedPriceTable permission to be enabled., Field_Type: Array.<Object.<String, Object>>
+* Description: Added new field `pricingAttributes` to the class `PreviewOrderChargeOverride`. This field is a container for pricing attributes used in dynamic pricing and requires the DynamicPricing permission to be accessible., Field_Type: Object.&lt;String, Object>
+* Description: Added new field `negotiatedPriceTable` to the class `PreviewOrderChargeOverride`. This field is an array of negotiated price table information and requires the NegotiatedPriceTable permission to be enabled., Field_Type: Array.&lt;Object.&lt;String, Object>>
 
 ## PreviewOrderChargeUpdate
 
-* Description: Added new field `pricingAttributes` to the class. This field is a container for pricing attributes used in dynamic pricing and requires the DynamicPricing permission to be accessible., Type: Object.<String, Object>
-* Description: Added new field `negotiatedPriceTable` to the class. This field is an array of negotiated price table information and requires the NegotiatedPriceTable permission to be enabled., Type: Array.<Object.<String, Object>>
+* Description: Added new field `pricingAttributes` to the class. This field is a container for pricing attributes used in dynamic pricing and requires the DynamicPricing permission to be accessible., Type: Object.&lt;String, Object>
+* Description: Added new field `negotiatedPriceTable` to the class. This field is an array of negotiated price table information and requires the NegotiatedPriceTable permission to be enabled., Type: Array.&lt;Object.&lt;String, Object>>
 
 ## PreviewSubscriptionRequest
 

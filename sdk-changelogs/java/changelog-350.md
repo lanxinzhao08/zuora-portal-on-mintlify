@@ -1,13 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.5.0 changelog"
+sidebarTitle: "3.5.0"
 ---
-
-# Java client library 3.5.0 changelog
-
-
-
 ## BulkUpdateOrderLineItem
 
 * Added the `communicationProfileId` field to the BulkUpdateOrderLineItem class, allowing developers to associate a communication profile with an order line item. This field can be updated only for a sales order line item in the `Executing`, `Booked`, or `SentToBilling` state.

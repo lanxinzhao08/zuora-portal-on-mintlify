@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.3.0 changelog"
+sidebarTitle: "1.3.0"
 ---
-
-# C# client library 1.3.0 changelog
-
-
 ## ObjectQueriesApi
 * Added new method QueryBundleByKey to query bundles using a key with optional parameters for idempotency, encoding, tracking, authorization, versioning, and pagination.
 * Added new method QueryBundles to query multiple bundles with optional parameters for idempotency, encoding, tracking, authorization, versioning, and pagination.

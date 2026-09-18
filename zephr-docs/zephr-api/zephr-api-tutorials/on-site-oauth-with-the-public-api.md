@@ -1,10 +1,6 @@
 ---
-seo:
-  title: On-site OAuth with the Public API
+title: "On-site OAuth with the Public API"
 ---
-
-# On-site OAuth with the Public API
-
 This guide describes how to use the Zephr Public API to add social sign-in to your site.
 
 The use-case for this guide is specifically where a front-end developer needs to integrate OAuth directly – without using the standard Zephr forms. If you use the Zephr CDN and forms powered by Zephr, you can turn on social sign-in without any code, see our [OAuth 2.0](https://docs.zuora.com/en/zephr/quickstart/introduction-to-zephr "OAuth 2.0") page for details.
@@ -43,9 +39,9 @@ In order to use social sign-in you must first get client credentials for the sit
 
 Make sure that you have set up the appropriate callback URLs, which need to be authorized. These are in the format:
 
-http://mysite.com/blaize/oauth/\<provider>/callback
+http://mysite.com/blaize/oauth/&lt;provider>/callback
 
-In the above, \<provider> is either “google”, “facebook” or “linkedin”.
+In the above, &lt;provider> is either “google”, “facebook” or “linkedin”.
 
 ## Implementation
 
@@ -63,7 +59,7 @@ window.open(
 
 That will create a pop-up like this:
 
-![Example modal for logging in with Google](../../zephr-image/img_Onsite_OAuth_with_Public_API.png)
+![Example modal for logging in with Google](/zephr-docs/zephr-image/img_Onsite_OAuth_with_Public_API.png)
 
 The second step is to listen for the callback at the end of the OAuth 2.0 flow, which must be implemented using JavaScript:
 

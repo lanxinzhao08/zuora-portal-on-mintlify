@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.6.0 changelog"
+sidebarTitle: "3.6.0"
 ---
-
-# Python client library 3.6.0 changelog
-
-
 ## credit\_memos\_api
 
 * Added async methods for applying and unapplying credit memos: `apply_credit_memo_async`, `unapply_credit_memo_async`.

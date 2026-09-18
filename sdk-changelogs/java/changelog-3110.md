@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.11.0 changelog"
+sidebarTitle: "3.11.0"
 ---
-
-# Java client library 3.11.0 changelog
-
-
 ## ObjectQueriesApi
 
 * Added new method `queryBundleByKey` to query a bundle by key with filters, expands, and sort capabilities.

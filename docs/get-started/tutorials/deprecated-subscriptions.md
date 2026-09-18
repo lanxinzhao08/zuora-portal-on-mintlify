@@ -1,19 +1,8 @@
 ---
-excludeFromSearch: true
-markdown:
-  toc:
-    hide: true
-redirects:
-  /quickstart-api/tutorial/update-subscriptions/: {}
-  /quickstart-api/tutorial/sign-up-subscribers/: {}
-  /rest-api/api-guides/3-signup/: {}
-  /rest-api/api-guides/3.3-create-subscription/: {}
+title: "Sign up subscribers"
 ---
-
-# Sign up subscribers
-
-{% tabsComponent %}
-  {% tabComponent title="Quickstart API" %}
+<Tabs>
+  <Tab title="Quickstart API">
 
 ## Create a subscription with a customer account
 
@@ -26,12 +15,12 @@ Suppose that a new customer wants to subscribe to a service offered by you. You 
 
 By default the payment method will be authorized with the payment gateway you have configured for your tenant.
 
-The following example shows how to create a subscription, passing the customer account and a reference to a plan. To learn about plans, see the [Plans](/other-api/quickstart-api/plans/) API operations.
+The following example shows how to create a subscription, passing the customer account and a reference to a plan. To learn about plans, see the [Plans](/other-api/quickstart-api/plans/getplan) API operations.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl -X POST "https://rest.test.zuora.com/v2/subscriptions"
       -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3"
       -H "Content-Type: application/json"
@@ -60,9 +49,9 @@ The following example shows how to create a subscription, passing the customer a
             }
           }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   AccountContactCreateRequest contactCreateRequest = new AccountContactCreateRequest()
       .firstName("Amy")
       .lastName("Lawrence")
@@ -97,9 +86,9 @@ The following example shows how to create a subscription, passing the customer a
 
   Subscription createdSubscription = zuoraClient.subscriptions().createSubscription(subscriptionCreateRequest);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const date = new Date();
   const todayDate = date.toISOString().split('T')[0];
   const planId = '8ad095b8813772670181383d05136860';
@@ -135,8 +124,8 @@ The following example shows how to create a subscription, passing the customer a
 
   const createdSubscription = await zuoraClient.subscriptions.createSubscription(subscriptionRequest);
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ## Preview a subscription
 
@@ -160,10 +149,10 @@ To preview a subscription, you must specify the following fields:
 
 The following example previews the billing document metrics for an evergreen subscription (subscription plan ID is `8ad09bce82aa84840182afab5e7b04fb`) where the ID of the associated account is `8ad09b7d8292b85d0182a4d6f875225a`:
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request POST
       --url 'https://rest.test.zuora.com/v2/subscriptions/preview'
       --header 'Authorization: Bearer 2e4e1763af7d4cf5aaca1b519dfa3200'
@@ -179,9 +168,9 @@ The following example previews the billing document metrics for an evergreen sub
           "metrics": ["billing_documents"]
         }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   LocalDate date = LocalDate.of(2022,11,30);
 
   SubscriptionPreviewRequest previewRequest = new SubscriptionPreviewRequest()
@@ -193,9 +182,9 @@ The following example previews the billing document metrics for an evergreen sub
   Map<String, Object> previewSubscription = zuoraClient.subscriptions().previewSubscription(previewRequest);
   System.out.println(previewSubscription);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const previewRequest = {
       account_id: '8ad09c4b84eac7870184ec0b170f1d87',
       subscription_plans: [
@@ -210,8 +199,8 @@ The following example previews the billing document metrics for an evergreen sub
   const previewSubscription = await zuoraClient.subscriptions.previewSubscription(previewRequest);
   console.log(previewSubscription);
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ## Update subscriptions
 
@@ -228,10 +217,10 @@ If you want to make changes to the subscription, you can use the [Update a subsc
 
 The following example provides an example of updating a subscription by adding a new plan to the created subscription.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl -X PATCH "https://rest.test.zuora.com/v2/subscriptions/8ad08f74803a5e3e01803f340e3c2148"
     -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3"
     -H "Content-Type: application/json"
@@ -252,9 +241,9 @@ The following example provides an example of updating a subscription by adding a
         }]
         }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
- ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+ ```java Java
   LocalDate date = LocalDate.of(2022,8,20);
   String oldSubscriptionId = subscription.getId();
 
@@ -276,9 +265,9 @@ The following example provides an example of updating a subscription by adding a
 
   Subscription updatedSubscription = zuoraClient.subscriptions().patchSubscription(oldSubscriptionId,updateRequest);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const updatedSubscription = await zuoraClient.subscriptions.patchSubscription('8ad08f74803a5e3e01803f340e3c2148',
     {
       description: 'Add a subscription plan',
@@ -296,8 +285,8 @@ The following example provides an example of updating a subscription by adding a
     }
   );
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ## Remove a subscription plan from a subscription
 
@@ -305,10 +294,10 @@ You can also remove a subscription plan from an existing subscription with the U
 
 The following code samples provide an example of removing a subscription plan from a created subscription:
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl -X PATCH "https://rest.test.zuora.com/v2/subscriptions/8ad08f74803a5e3e01803f340e3c2148"
       -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3"
       -H "Content-Type: application/json"
@@ -324,9 +313,9 @@ The following code samples provide an example of removing a subscription plan fr
               }]
           }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
- ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+ ```java Java
   LocalDate removePlanDate = LocalDate.of(2022,8,20);
   String oldSubscriptionId = createdSubscription.getId();
 
@@ -341,9 +330,9 @@ The following code samples provide an example of removing a subscription plan fr
 
   Subscription updatedSubscription = zuoraClient.subscriptions().patchSubscription(oldSubscriptionId,updateRequest);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const updatedSubscription = await zuoraClient.subscriptions.patchSubscription('8ad08f74803a5e3e01803f340e3c2148',
     {
       description: 'Remove a subscription plan',
@@ -356,8 +345,8 @@ The following code samples provide an example of removing a subscription plan fr
     }
   );
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ## Update the product quantity on a subscription
 
@@ -375,10 +364,10 @@ In this scenario, you need to specify the following fields in the `update_subscr
 
 The following example updates the `quantity` field of a subscription item to `25` and the `unit_amount` to `40`.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
     curl --request PATCH \
       --url 'https://rest.test.zuora.com/v2/subscriptions/A-S00013513' \
       --header 'Authorization: Bearer 2d152847628046fca3ff3c63540933e3' \
@@ -406,9 +395,9 @@ The following example updates the `quantity` field of a subscription item to `25
               ]
           }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   LocalDate date = LocalDate.of(2022,10,10);
   String subscriptionId = createdSubscription.getId();
 
@@ -438,9 +427,9 @@ The following example updates the `quantity` field of a subscription item to `25
 
   System.out.println(updatedSubscription);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const updatedSubscription = await zuoraClient.subscriptions.patchSubscription('8ad08e0183babdd00183c60285e970ca',
   {
     description: "Remove a subscription plan",
@@ -463,8 +452,8 @@ The following example updates the `quantity` field of a subscription item to `25
   }
   );
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 ## Cancel a subscription
@@ -489,10 +478,10 @@ When an end subscriber decides to terminate their subscription, there are three 
 
   The following code example demonstrates how to cancel a subscription at the end of billing period while specifying the processing option:
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request PATCH \
       --url 'https://rest.test.zuora.com/v2/subscriptions/​​A-S00000035/cancel' \
       --header 'Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3' \
@@ -505,9 +494,9 @@ When an end subscriber decides to terminate their subscription, there are three 
                   }
               }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   LocalDate documentDate = LocalDate.of(2022,9,1);
   String subscriptionNumber = "A-S00013446";
 
@@ -519,9 +508,9 @@ When an end subscriber decides to terminate their subscription, there are three 
 
   Subscription canceledSubscription = zuoraClient.subscriptions().cancelSubscription(subscriptionNumber,cancelRequest);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const canceledSubscription = await zuoraClient.subscriptions.cancelSubscription('8ad0950c8480aa70018482ce8706460f',
       {
         cancel_at: 'invoice_period_end',
@@ -532,8 +521,8 @@ When an end subscriber decides to terminate their subscription, there are three 
       }
   );
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ## Update contact information for an account
 
@@ -543,10 +532,10 @@ The bill-to contact determines where the invoice should be delivered, whereas th
 
 In this use case, we will update the sold-to contact information of an account using the [Update an account](/other-api/quickstart-api/accounts/updateaccount) operation.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request PATCH
       --url https://rest.test.zuora.com/v2/accounts/2c92c0f86a8dd422016a9e7a70116b0d
       --header 'Authorization: Bearer 06a297740b184fc384bc57cbe8a04e53'
@@ -564,9 +553,9 @@ In this use case, we will update the sold-to contact information of an account u
                   }
       }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   String accountId = "2c92c0f86a8dd422016a9e7a70116b0d";
 
   Address soldToAddress = new Address()
@@ -583,9 +572,9 @@ In this use case, we will update the sold-to contact information of an account u
 
   Account updatedAccount = zuoraClient.accounts().updateAccount(accountId,accountPatchRequest);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const accountId = '2c92c0f86a8dd422016a9e7a70116b0d';
 
   const accountPatchRequest = {
@@ -603,11 +592,11 @@ In this use case, we will update the sold-to contact information of an account u
 
   const updatedAccount = await zuoraClient.accounts.updateAccount(accountId, accountPatchRequest);
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
-  {% /tabComponent %}
-  {% tabComponent title="v1 API" %}
+  </Tab>
+  <Tab title="v1 API">
 
 Suppose that a new customer wants to subscribe to one of your products. This task includes the following sequential subtasks:
 
@@ -617,7 +606,7 @@ Suppose that a new customer wants to subscribe to one of your products. This tas
 4. Your site sends the request (account ID, customer details, payment reference code, contact, plan to subscribe) to Zuora.
 5. Zuora handles the subscription flow and returns the sign-up result to your site.
 
-Zuora offers a [Sign up](/api-references/api/operation/POST_SignUp/) operation that allows you to perform the following tasks in one call:
+Zuora offers a [Sign up](/v1-api-reference/api/sign-up/post_signup) operation that allows you to perform the following tasks in one call:
 - Create an account
 - Create a payment method
 - Create a subscription
@@ -735,6 +724,6 @@ After the sign-up process is done, you can verify the result in the Zuora UI or 
 To verify the result through the Zuora UI, you can find the created account displayed at the top of the All Customer Accounts page by navigating to **Customers** > **Customer Accounts** in the Zuora UI.
 
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>

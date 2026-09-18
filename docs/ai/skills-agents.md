@@ -1,15 +1,7 @@
 ---
-seo:
-  title: Skills and agents
-  description: Learn how to use Zuora AI skills and agents, including reusable SKILL.md files for Claude Code, Codex, Cursor, and other AI clients.
-  keywords: Zuora AI, Zuora agents, Zuora skills, SKILL.md, Claude Code, Codex, Cursor, AI agents, MCP, product catalog skill, orders skill, Zuora Coding Agent Plugin
-markdown:
-  toc:
-    hide: true
+title: "Skills and agents"
+description: "Learn how to use Zuora AI skills and agents, including reusable SKILL.md files for Claude Code, Codex, Cursor, and other AI clients."
 ---
-
-# Skills and agents
-
 <a href="https://docs.zuora.com/en/zuora-platform/system-management/zuora-ai" target="_blank">Zuora AI</a> provides a growing set of tools and reusable skills to help you automate common workflows and work more efficiently. For more information, see <a href="https://docs.zuora.com/en/basics/use-of-ai-in-zuora/zuoras-approach-to-ai" target="_blank">Zuora’s approach to AI and the commitments to you</a>.
 
 ## Prerequisites
@@ -42,7 +34,7 @@ Installation instructions are included for Claude Code, Codex, and Cursor. The r
 
 ## Product catalog skill
 
-<a class="download-button" href="/skills/z-product-catalog-SKILL.zip" download>Download Product Catalog SKILL.md</a>
+<a className="download-button" href="/skills/z-product-catalog-SKILL.zip" download>Download Product Catalog SKILL.md</a>
 
 The goal of this skill is to make it easier to add charges and rate plans to your product catalog.
 
@@ -53,10 +45,10 @@ After editing the file for your implementation, ask your AI client to install th
 
 ## Orders skill
 
-<a class="download-button" href="/skills/z-orders-SKILL.zip" download>Download Orders SKILL.md</a>
+<a className="download-button" href="/skills/z-orders-SKILL.zip" download>Download Orders SKILL.md</a>
 
 The Orders skill creates accurate Zuora Orders that create, modify, renew, cancel, or preview subscriptions.
 
-The defaults must be updated to match your Zuora implementation before the skill is used. Using the skill without modification may result in an order that fails or does not behave as expected. 
+The defaults must be updated to match your Zuora implementation before the skill is used. Using the skill without modification may result in an order that fails or does not behave as expected.
 
 After editing the file for your implementation, ask your AI client to install the skill.

@@ -1,13 +1,13 @@
-# API object names for Describe
-
-
+---
+title: "API object names for Describe"
+---
 You can use the
-[Describe](/v1-api-reference/api/describe/)
+[Describe](/v1-api-reference/api/describe/get_describe)
 operation to list the fields of each Zuora object that is available in your
 tenant. When you call the operation, you must specify the API name of the
 Zuora object.
 
-**Note**: We recommend that you use the [Object Queries](/v1-api-reference/api/object-queries/) or [Data Queries](/v1-api-reference/api/data-queries/) to query objects.
+**Note**: We recommend that you use the [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) or [Data Queries](/v1-api-reference/api/data-queries/get_dataqueryjobs) to query objects.
 
 
 The following table provides the API name of each Zuora object:
@@ -20,7 +20,7 @@ The following table provides the API name of each Zuora object:
 | Accounting Period                             | `AccountingPeriod`                         |
 | Amendment                                     | `Amendment`                                |
 | Application Group                             | `ApplicationGroup`                         |
-| Billing Run                                   | <p>`BillingRun` - API name used in the [Describe](/v1-api-reference/api/describe/) operation, Export ZOQL queries, and Data Query.</p> <p>`BillRun` - API name used in the [Actions](/v1-api-reference/api/actions/). See the CRUD oprations of [Bill Run](/v1-api-reference/api/bill-run/) for more information about the `BillRun` object. `BillingRun` and `BillRun` have different fields.</p> |
+| Billing Run                                   | <p>`BillingRun` - API name used in the [Describe](/v1-api-reference/api/describe/get_describe) operation, Export ZOQL queries, and Data Query.</p> <p>`BillRun` - API name used in the [Actions](/v1-api-reference/api/actions/action_postcreate). See the CRUD oprations of [Bill Run](/v1-api-reference/api/bill-run/post_createbillrun) for more information about the `BillRun` object. `BillingRun` and `BillRun` have different fields.</p> |
 | Billing Preview Run         | `BillingPreviewRun`                     |
 | Configuration Templates                       | `ConfigurationTemplates`                   |
 | Contact                                       | `Contact`                                  |

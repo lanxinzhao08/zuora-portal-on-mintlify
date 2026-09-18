@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.8.0 changelog"
+sidebarTitle: "1.8.0"
 ---
-
-# C# client library 1.8.0 changelog
-
 ## ObjectQueriesApi
 
 * Changed nullability of parameters in new methods to optional (e.g., string? idempotencyKey = default(string?)).

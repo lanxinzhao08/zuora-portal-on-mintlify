@@ -1,5 +1,6 @@
-# JavaScript SDK
-
+---
+title: "JavaScript SDK"
+---
 The Zephr JavaScript SDK is available as an NPM module. Contact [support@zuora.com](mailto:support@zuora.com) to arrange access.
 
 ```javascript
@@ -198,7 +199,7 @@ profile);
 
 ## Server-side SDK
 
-The server-side SDK is essentially a REST client which performs HMAC request signing for the API. This SDK requires the implementor to  
+The server-side SDK is essentially a REST client which performs HMAC request signing for the API. This SDK requires the implementor to
 specify the host, path, method, body, headers and query parameters for a request and returns the response as a JSON object or plain text.
 
 In order to make requests to the Admin API you will need to first create a keypair, which you can do in the Zephr Admin Console.

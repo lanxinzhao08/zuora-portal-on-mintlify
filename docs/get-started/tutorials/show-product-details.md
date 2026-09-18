@@ -1,17 +1,6 @@
 ---
-markdown:
-  toc:
-    hide: true
-redirects:
-  /quickstart-api/tutorial/update-contact-info/: {}
-  /quickstart-api/tutorial/create-products-and-prices/: {}
-  /quickstart-api/tutorial/list-products/: {}
-  /rest-api/api-guides/2-create-product/: {}
-  /docs/get-started/tutorials/products/: {}
+title: "Show specific product details"
 ---
-
-# Show specific product details
-
 ## End-user flow
 
 When your customers select a specific product, the product rate plans and product rate plan charges associated with this product are displayed.
@@ -23,15 +12,15 @@ The product ID can be obtained from the previous call.
 
 The response returns the product rate plans and product rate plan charge details for the SmartLearn Tablet product.
 
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl -L -g -X GET 'https://rest.test.zuora.com/object-query/product-rate-plans?expand[]=productrateplancharges%2Cproductrateplancharges.productrateplanchargetiers&filter[]=productId.EQ%8ad081dd90c4bafe0190ded235a71398' \
 -H 'Authorization: Bearer d427f8217d6c48de8ad3888a6bf55e9e'
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 QueryProductRatePlansResponse resp = zuoraClient.objectQueriesApi()
         .queryProductRatePlansApi()
         .filter(List.of("productId.EQ:" + productId))
@@ -60,9 +49,9 @@ System.out.println(String.format("Tier Acive: %s, Currency: %s, Price: %s",
 ...
 
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js"%}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 const resp = await zuoraClient.objectQueriesApi.queryProductRatePlans({
        filter: ["productId.EQ:" + productId],
        expand: ['productrateplancharges', 'productrateplancharges.productrateplanchargetiers']
@@ -70,9 +59,9 @@ const resp = await zuoraClient.objectQueriesApi.queryProductRatePlans({
 
 console.log(JSON.stringify(resp, (k, v) => v ?? undefined, 2));
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 def query_rate_plan_by_id(product_id: str = None, client=None):
     if client is None:
         client = get_client()
@@ -102,9 +91,9 @@ def query_rate_plan_by_id(product_id: str = None, client=None):
 if __name__ == '__main__':
     query_rate_plan_by_id('8ad081dd90c4bafe0190ded235a71398')
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 QueryProductRatePlansResponse productRatePlans = zuoraClient.ObjectQueriesApi.QueryProductRatePlans
 (
     expand:["productrateplancharges"],
@@ -114,8 +103,8 @@ QueryProductRatePlansResponse productRatePlans = zuoraClient.ObjectQueriesApi.Qu
 Console.WriteLine(productRatePlans.ToJson());
 
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 If the request succeeds, you will get a response similar to the following snippet:
@@ -213,4 +202,3 @@ If the request succeeds, you will get a response similar to the following snippe
     ]
 }
 ```
-

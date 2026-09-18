@@ -1,5 +1,6 @@
-# OAuth on iOS using the Swift SDK
-
+---
+title: "OAuth on iOS using the Swift SDK"
+---
 This guide is for an app developer who needs to integrate with Zephr’s OAuth social sign-in.
 
 ## Prerequisites

@@ -1,5 +1,6 @@
-# Browser SDK
-
+---
+title: "Browser SDK"
+---
 The Zephr Browser SDK is available to view in the [Zephr Bitbucket account](https://bitbucket.org/blaizeinc/browser-sdk/src/master/). If you have trouble accessing this page, please email [support@zuora.com](mailto:support@zuora.com "support@zuora.com").
 
 ## Installation
@@ -124,7 +125,7 @@ let user = {
         password: getPasswordFromForm()
     }
 };
-    
+
 BlaizeSDK.login(user, function(error, success) {
     if (error) {
         console.log(error);

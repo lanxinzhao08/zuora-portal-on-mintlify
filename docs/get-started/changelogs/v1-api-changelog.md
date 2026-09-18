@@ -1,19 +1,8 @@
 ---
-seo:
-  title: v1 API Changelog - Zuora
-  description: API changelog for Billing, Payments, and Central Platform
-  keywords: api, changelog, api changelog
-markdown:
-  toc:
-    hide: false
-    maxDepth: 2
-redirects:
-  /rest-api/changelog/2023-api-changelog/: {}
-  /rest-api/changelog/api-changelog/: {}
+title: "v1 API changelog"
+sidebarTitle: "v1 API"
+description: "API changelog for Billing, Payments, and Central Platform"
 ---
-
-# v1 API changelog
-
 This page summarizes the changes that are made to the API Reference for Billing, Payments, and Central Platform.
 
 For release notes for all Zuora products, see <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Latest release</a>.
@@ -27,17 +16,17 @@ This section lists operations and fields that were added, changed, or removed.
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q3.1.0</a>.
 
 
-- [Orders](https://developer.zuora.com/v1-api-reference/api/orders) - In the request body of each of the following operations, added the `subscriptions` > `orderActions` > `createSubscription` > `uniqueToken` field:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations, added the `subscriptions` > `orderActions` > `createSubscription` > `uniqueToken` field:
   - Create an order
   - Create an order asynchronously
   - Update an order
 
-- [Subscriptions](https://developer.zuora.com/v1-api-reference/api/tag/Subscriptions/) - In the response body of each of the following operations, added the `uniqueToken` field:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - In the response body of each of the following operations, added the `uniqueToken` field:
   - Retrieve a subscription by key
   - Retrieve a subscription by key and version
   - List subscriptions by account Key
 
-- [E-Invoicing](https://developer.zuora.com/v1-api-reference/api/e-invoicing) - Made the following updates:
+- [E-Invoicing](/v1-api-reference/api/e-invoicing/get_einvoicingserviceproviders) - Made the following updates:
 
   - Moved the following operations from the "E-Reporting" section:
     - List e-invoice business lifecycle status updates
@@ -47,12 +36,12 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
     - List e-invoice business lifecycle status updates
     - Retrieve an e-invoice business lifecycle status update by key
 
-- [E-Reporting](https://developer.zuora.com/v1-api-reference/api/e-reporting) - In the response body of each of the following operations, added the `businessStatus` and `authorityStatus` nested fields to the `requests` field:
+- [E-Reporting](/v1-api-reference/api/e-reporting/getereportingtemplates) - In the response body of each of the following operations, added the `businessStatus` and `authorityStatus` nested fields to the `requests` field:
   - List e-reporting requests
   - Retrieve an e-reporting request by key
 
 
-- [Payment Schedules](https://developer.zuora.com/v1-api-reference/api/payment-schedules) - In the request body of the "Update a payment schedule" operation, updated the description of the `periodStartDate` field for a system behavior change.
+- [Payment Schedules](/v1-api-reference/api/payment-schedules/post_retrypaymentscheduleitem) - In the request body of the "Update a payment schedule" operation, updated the description of the `periodStartDate` field for a system behavior change.
 
 
 ### Doc updates
@@ -66,16 +55,16 @@ This section lists the documentation updates that were made in this version of t
   - List e-reporting requests
   - Retrieve an e-reporting request by key
 
-- In the response body of each of the following operations: 
+- In the response body of each of the following operations:
   - Trigger an e-compliance request
   - Reconcile an e-compliance request
   - Regenerate an e-compliance request
-  
+
   Added the following missing fields:
-  - `processId` 
+  - `processId`
   - `reasons` > `code`
   - `reasons` > `message`
-  - `requestId` 
+  - `requestId`
   - `success`
   - `eReportingRequest` > `id`
   - `eReportingRequest` > `status`
@@ -107,7 +96,7 @@ This section lists the documentation updates that were made in this version of t
   - `eReportingRequest` > `createdDate`
   - `eReportingRequest` > `updatedDate`
   - `eReportingRequest` > `templateId`
-  - `lifecycleStatusUpdate` > `id` 
+  - `lifecycleStatusUpdate` > `id`
   - `lifecycleStatusUpdate` > `status`
   - `lifecycleStatusUpdate` > `requestedStatus`
   - `lifecycleStatusUpdate` > `createdOn`
@@ -137,14 +126,14 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q3.1.0</a>.
 
-- [Commitments](https://developer.zuora.com/v1-api-reference/api/Commitments/) - In the response body of the "List the change history for a commitment" operation, added the `commitmentChanges` > `associatedAccountChanges` field.
+- [Commitments](/v1-api-reference/api/commitments/getcommitments) - In the response body of the "List the change history for a commitment" operation, added the `commitmentChanges` > `associatedAccountChanges` field.
 
-- [Object Queries](https://developer.zuora.com/v1-api-reference/api/tag/Object-Queries/) - Made the following updates:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates:
 
   - In the request body of each of the following operations:
     - List invoices
     - Retrieve an invoice
-    
+
     Added the following enum values to the `expand` parameter:
     - `creditmemoparts`
     - `creditmemoapplications`
@@ -156,7 +145,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
     - `paymentapplications.payment`
 
 
-- [Custom Object Records](https://developer.zuora.com/v1-api-reference/api/custom-object-records) - Made the following updates to the "List records for a custom object" operation for the support of backward pagination:
+- [Custom Object Records](/v1-api-reference/api/custom-object-records/post_customobjectrecords) - Made the following updates to the "List records for a custom object" operation for the support of backward pagination:
   - Added the `before` query parameter.
   - Updated the description of each of the following query parameters:
     - `pageSize`
@@ -180,11 +169,11 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q3.0.0</a>.
 
-- [E-Invoicing](https://developer.zuora.com/v1-api-reference/api/e-invoicing) - Added the following operations:
+- [E-Invoicing](/v1-api-reference/api/e-invoicing/get_einvoicingserviceproviders) - Added the following operations:
   - Trigger an e-compliance request
   - Regenerate an e-compliance request
 
-- [E-Reporting](https://developer.zuora.com/v1-api-reference/api/e-reporting) - Added the following operations:
+- [E-Reporting](/v1-api-reference/api/e-reporting/getereportingtemplates) - Added the following operations:
   - Reconcile an e-compliance request
   - List all e-reporting templates
   - Create an e-reporting template
@@ -222,7 +211,7 @@ This section lists the documentation updates that were made in this version of t
   - Create an order
   - Create an order asynchronously
   - Update an order
- 
+
 - In the response body of each of the following operations, removed the unsupported `uniqueToken` field:
   - Retrieve a subscription by key
   - Retrieve a subscription by key and version
@@ -255,7 +244,7 @@ This section lists the documentation updates that were made in this version of t
 
 This section lists operations and fields that were added, changed, or removed.
 
-- [Commerce](https://developer.zuora.com/v1-api-reference/api/commerce) - Made the following updates:
+- [Commerce](/v1-api-reference/api/commerce/createproductrateplanchargewithdynamicpricing) - Made the following updates:
   - In the request body of each of the following operations:
     - Create a product rate plan charge with Dynamic Pricing
     - Update a product rate plan charge with Dynamic Pricing
@@ -278,7 +267,7 @@ This section lists operations and fields that were added, changed, or removed.
     - `drawdown` > `unitOfMeasure`
     - `drawdown` > `conversionRate`
 
-- [Product Rate Plan Charges](https://developer.zuora.com/v1-api-reference/api/product-rate-plan-charges) - Made the following updates:
+- [Product Rate Plan Charges](/v1-api-reference/api/product-rate-plan-charges/get_retrieveproductrateplancharge) - Made the following updates:
   - In the request body and response body of the following operations:
     - Create a product rate plan charge
     - Update a product rate plan charge
@@ -294,7 +283,7 @@ This section lists operations and fields that were added, changed, or removed.
     - `RolloverEndDateType`
     - `FundSupportAccountHierarchy`
     - `DrawdownPriority`
-   
+
   - In the response body of the "Retrieve a product rate plan charge" operation, added the following fields:
     - `PrepaymentUnitType`
     - `DrawdownScope`
@@ -308,41 +297,41 @@ This section lists operations and fields that were added, changed, or removed.
     - `DrawdownPriority`
 
 
-- [Commitments](https://developer.zuora.com/v1-api-reference/api/Commitments/) - Made the following updates:
+- [Commitments](/v1-api-reference/api/commitments/getcommitments) - Made the following updates:
   - In the response body of the "List commitments for an account" operation, added the `commitments` > `childCommitments` field.
   - In the response body of the "Retrieve a commitment" operation, added the `childCommitments` field.
   - In the response body of the "List the change history for a commitment" operation, added the `commitmentChanges` > `associatedItemChanges` field to provide per-item field-level changes for the associated items of the commitment in an order.
 
-- [Orders](https://developer.zuora.com/v1-api-reference/api/orders) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of the "Create an order" operation, added the `commitments` > `childCommitments` field only when `commitments` > `action` is either `create` or `update`.
-  
+
   - In the request body of each of the following operations, added the `subscriptions` > `orderActions` > `createSubscription` > `uniqueToken` field:
     - Create an order
     - Create an order asynchronously
     - Update an order
 
-- [Subscriptions](https://developer.zuora.com/v1-api-reference/api/tag/Subscriptions/) - In the response body of each of the following operations, added the `uniqueToken` field:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - In the response body of each of the following operations, added the `uniqueToken` field:
     - Retrieve a subscription by key
     - Retrieve a subscription by key and version
     - List the subscriptions by account Key
 
-- [Meters](https://developer.zuora.com/v1-api-reference/api/Meters/) - Made the following updates: 
+- [Meters](/v1-api-reference/api/meters/runspecificversionofmeter) - Made the following updates:
   - Added the "Stop a specific version of a meter" operation.
   - Added the optional `requestId` query parameter to the "Retrieve the list of export jobs for a meter" operation.
 
 
 
-  
+
 ### Doc updates
 
 This section lists the documentation updates that were made in this version of the API Reference.
 
 
-- In the request body of each of the following operations, updated the description of the `charge` > `prepayment` > `validityPeriod` field for better clarity: 
+- In the request body of each of the following operations, updated the description of the `charge` > `prepayment` > `validityPeriod` field for better clarity:
   - Create a product rate plan charge with Dynamic Pricing
   - Update a product rate plan charge with Dynamic Pricing
   - Query a product rate plan charge with Dynamic Pricing
-    
+
 
 - In the "Query legacy products from the Product Catalog" operation, made the following updates:
   - In the request body, added the missing `pagination` field and updated the corresponding request example.
@@ -368,7 +357,7 @@ This section lists the documentation updates that were made in this version of t
 
 This section lists operations and fields that were added, changed, or removed.
 
-- [Orders](https://developer.zuora.com/v1-api-reference/api/orders) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
     - Create an order
     - Create an order asynchronously
@@ -399,7 +388,7 @@ This section lists operations and fields that were added, changed, or removed.
     - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `specificValidityPeriodLength`
     - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `validityPeriodAlignment`
     - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `validityPeriodAnchorDate`
-    - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `validityPeriodProrationOption`   
+    - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `validityPeriodProrationOption`
     - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `drawdownPriority`
     - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `fundSupportAccountHierarchy`
     - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `ratingPropertiesOverride` > `prepaymentChargeProrationRule`
@@ -422,14 +411,14 @@ This section lists operations and fields that were added, changed, or removed.
     - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `validityPeriodAlignment`
     - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `validityPeriodAnchorDate`
     - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `validityPeriodProrationOption`
-     
+
   - In the response body of each of the following operations:
     - List orders
     - List orders of a subscription owner
     - List orders by subscription number
     - List orders of an invoice owner
     - List pending orders by subscription number
-    
+
     Added the following fields:
     - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `drawdownScope`
     - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `drawdownPriority`
@@ -443,8 +432,8 @@ This section lists operations and fields that were added, changed, or removed.
     - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `specificValidityPeriodLength`
     - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `validityPeriodAlignment`
     - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `validityPeriodAnchorDate`
-    - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `validityPeriodProrationOption`  
-    - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `drawdownScope` 
+    - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `validityPeriodProrationOption`
+    - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `drawdownScope`
     - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `drawdownPriority`
     - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `fundSupportAccountHierarchy`
     - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `prepaymentUnitType`
@@ -470,13 +459,13 @@ This section lists operations and fields that were added, changed, or removed.
     - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `validityPeriodAlignment`
     - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `validityPeriodAnchorDate`
     - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `validityPeriodProrationOption`
-  
-  - In the request body of each of the "Create an order" and "Create an order asynchronously" operations, added the `processingOptions` > `allowPaymentFailure` field. 
-  - In the response body of the "Create an order" operation, added the `paymentStatus` field.  
-  - In the description of each of the "Delete an order" and "Delete an order asynchronously" operations, removed the references of reverting an order details for a system behavior change. 
+
+  - In the request body of each of the "Create an order" and "Create an order asynchronously" operations, added the `processingOptions` > `allowPaymentFailure` field.
+  - In the response body of the "Create an order" operation, added the `paymentStatus` field.
+  - In the description of each of the "Delete an order" and "Delete an order asynchronously" operations, removed the references of reverting an order details for a system behavior change.
 
 
-- [Subscriptions](https://developer.zuora.com/v1-api-reference/api/tag/Subscriptions/) - Made the following updates:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Made the following updates:
   - In the response body of each of the following operations:
     - Retrieve a subscription by key
     - Retrieve a subscription by key and version
@@ -496,21 +485,21 @@ This section lists operations and fields that were added, changed, or removed.
     - `ratePlans` > `ratePlanCharges` > `validityPeriodAnchorDate`
     - `ratePlans` > `ratePlanCharges` > `validityPeriodProrationOption`
 
-- [E-Invoicing](https://developer.zuora.com/v1-api-reference/api/api/e-invoicing) - Added the following operations:
+- [E-Invoicing](/v1-api-reference/api/e-invoicing/get_einvoicingserviceproviders) - Added the following operations:
   - Create an e-invoice lifecycle status update
   - Reconcile an e-compliance request
-  
+
 ### Doc updates
 
 This section lists the documentation updates that were made in this version of the API Reference.
 
-- In the request body of each of the following operations: 
+- In the request body of each of the following operations:
   - Create an order
   - Create an order asynchronously
   - Update an order
   - Preview an order
   - Preview an order asynchronously
-  
+
   Updated the descriptions of the following fields for better clarity:
   - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `drawdownScope`
   - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `prepaymentUnitType`
@@ -534,7 +523,7 @@ This section lists the documentation updates that were made in this version of t
   - List the subscriptions by account key
 
   Updated the description of the following fields for better clarity:
-  - `ratePlans` > `ratePlanCharges` > `rolloverPeriodLength` 
+  - `ratePlans` > `ratePlanCharges` > `rolloverPeriodLength`
   - `ratePlans` > `ratePlanCharges` > `validityPeriodType`
 
 - In the request body of the "Write off an invoice" operation, removed the unsupported `taxAutoCalculation` field.
@@ -570,7 +559,7 @@ This section lists the documentation updates that were made in this version of t
 - In the request body of the "Create standalone invoices" operation, added the following missing fields to the Invoice object:
   - `communicationProfileId`
   - `invoiceItems` > `accountsReceivableAccountingCode`
-  - `invoiceItems` > `discountItems` > `accountsReceivableAccountingCode`  
+  - `invoiceItems` > `discountItems` > `accountsReceivableAccountingCode`
 - In the request body of the "Update invoices" and "Update an invoice" operations, added the following missing fields to the Invoice object:
   - `invoiceItems` > `accountsReceivableAccountingCode`
   - `invoiceItems` > `discountItems` > `accountsReceivableAccountingCode`
@@ -582,7 +571,7 @@ This section lists the documentation updates that were made in this version of t
 - In the response body of each of the following Object Query operations:
   - List payment methods
   - Retrieve a payment method
-  
+
   Updated the description of the `active` field to clarify that it indicates whether the payment method is system-loaded or customer-created.
 
 
@@ -594,10 +583,10 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q3.0.0</a>.
 
-- [Settings](https://developer.zuora.com/v1-api-reference/api/tag/settings/) - Added the `enableTaxCalculationForDraftDocument` field to the `BillingRules` setting.
-  
-  See [200 response sample in JSON format](https://developer.zuora.com/settings-api/ListAllSettingsResponseSample.json).
-  
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Added the `enableTaxCalculationForDraftDocument` field to the `BillingRules` setting.
+
+  See [200 response sample in JSON format](/settings-api/ListAllSettingsResponseSample.json).
+
 
 ## July 10, 2026
 
@@ -608,7 +597,7 @@ This section lists operations and fields that were added, changed, or removed.
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q2.2.1</a>.
 
 
-- [Audit Logs](https://developer.zuora.com/v1-api-reference/api/audit-logs) - Added a section called "Audit Logs", containing the following operations:
+- [Audit Logs](/v1-api-reference/api/audit-logs/searchgloballogins) - Added a section called "Audit Logs", containing the following operations:
     - Search global login events
     - Search global setting change events
     - Search tenant login events
@@ -616,7 +605,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
     - Search tenant object change events
 
 
-- [Admin Integrations](https://developer.zuora.com/v1-api-reference/api/admin-integrations) - Added a section called "Admin Integrations", containing the following operations:
+- [Admin Integrations](/v1-api-reference/api/admin-integrations/getglobalusersdata) - Added a section called "Admin Integrations", containing the following operations:
     - List global users
     - List global roles
     - List tenant-specific roles
@@ -633,7 +622,7 @@ This section lists the documentation updates that were made in this version of t
 
 - In the request body of the "Query product rate plans" operation in the "Commerce" section, updated the description to correct the `filters.field` field.
 
-- Updated the description of the "List all application parts of an invoice" operation to clarify that it returns only processed payments on Zuora version 341 or later. 
+- Updated the description of the "List all application parts of an invoice" operation to clarify that it returns only processed payments on Zuora version 341 or later.
 
 
 ## July 1, 2026
@@ -644,7 +633,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q2.2.0</a>.
 
-- [Orders](https://developer.zuora.com/v1-api-reference/api/orders) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
     - Create an order
     - Update an order
@@ -680,9 +669,9 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q2.1.2</a>.
 
-- [Invoices](https://developer.zuora.com/v1-api-reference/api/invoices) - Added the "Unpost an invoice" operation.
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Added the "Unpost an invoice" operation.
 
-- [Bulk Data](https://developer.zuora.com/v1-api-reference/api/bulk-data) - In the request body of the "Create a bulk job" operation, made the following updates to the supported enum values of the `objectType` field:
+- [Bulk Data](/v1-api-reference/api/bulk-data/createbulkjob) - In the request body of the "Create a bulk job" operation, made the following updates to the supported enum values of the `objectType` field:
 
   - Added the following values:
     - `account-legacy`
@@ -690,7 +679,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
     - `refund-legacy`
 
   - Removed the following values:
-    - `offer` 
+    - `offer`
     - `price-book-item`
 
 
@@ -706,7 +695,7 @@ This section lists the documentation updates that were made in this version of t
   - Retrieve an account
   - Retrieve a payment application
   - Retrieve a refund application
-  
+
   Made the following updates to the `source` field of the Payment object:
   - Added the missing `Checkout` enum value.
   - Updated the description to clarify that `Checkout` is automatically populated when a payment is created through an HPM flow such as UPI.
@@ -724,7 +713,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q2.1.2</a>.
 
-- [Orders](https://developer.zuora.com/v1-api-reference/api/orders) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
     - Create an order
     - Preview an order
@@ -735,7 +724,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
     Made the following updates:
 
     - Added the following fields:
-      - `subscriptions` > `orderActions` > `updateProduct` > `chargeOverrides` 
+      - `subscriptions` > `orderActions` > `updateProduct` > `chargeOverrides`
       - `subscriptions` > `orderActions` > `updateProduct` > `chargeRemovals`
 
     - Updated the description of each of the following fields:
@@ -752,14 +741,14 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
     - List pending orders by subscription number
 
     Added the following fields to the Order object:
-    - `subscriptions` > `orderActions` > `updateProduct` > `chargeOverrides` 
+    - `subscriptions` > `orderActions` > `updateProduct` > `chargeOverrides`
     - `subscriptions` > `orderActions` > `updateProduct` > `chargeRemovals`
 
-- [Subscriptions](https://developer.zuora.com/v1-api-reference/api/Subscriptions/) - In the response body of each of the following operations:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - In the response body of each of the following operations:
   - Retrieve a subscription by key
   - Retrieve a subscription by key and version
   - List subscriptions by account key
-  
+
   Added the following fields to the Subscription object:
   - `ratePlans` > `productRatePlanType`
   - `rateplans` > `ratePlanCharges` > `optional`
@@ -771,7 +760,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
 
 This section lists the documentation updates that were made in this version of the API Reference.
 
-- In the response body of each of the following operations: 
+- In the response body of each of the following operations:
   - Retrieve an order
   - List Orders
   - List orders of a subscription owner
@@ -807,7 +796,7 @@ This section lists the documentation updates that were made in this version of t
 - In the request body of each of the following operations:
   - Create an account
   - Update an account
-  
+
   Updated the description of the following fields to clarify that they support both the template ID and template number:
   - `creditMemoTemplateId`
   - `debitMemoTemplateId`
@@ -827,13 +816,13 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q2.1.1</a>.
 
-- [Commitments](https://developer.zuora.com/v1-api-reference/api/Commitments/) - Added the "List the change history for a commitment" operation.
+- [Commitments](/v1-api-reference/api/commitments/getcommitments) - Added the "List the change history for a commitment" operation.
 
-- [Invoices](https://developer.zuora.com/v1-api-reference/api/invoices) - Added the following operations:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Added the following operations:
   - Write off an invoice asynchronously
   - Retrieve an invoice write-off async job
 
-- [Credit Memos](https://developer.zuora.com/v1-api-reference/api/credit-memos/put_applycreditmemo) - In the request body of the "Apply a credit memo" operation, added the `applicationRule` field.
+- [Credit Memos](/v1-api-reference/api/credit-memos/put_applycreditmemo) - In the request body of the "Apply a credit memo" operation, added the `applicationRule` field.
 
 
 ### Doc updates
@@ -857,14 +846,14 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q2.1.0</a>.
 
-- [Commitments](https://developer.zuora.com/v1-api-reference/api/Commitments/) - Made the following updates:
+- [Commitments](/v1-api-reference/api/commitments/getcommitments) - Made the following updates:
   - Added the "Expire a commitment-linked prepayment" operation.
 
   - For the "Preview the balance for a commitment" operation, made the following updates:
     - Renamed the operation from "Retrieve the balance for a commitment" to "Preview the balance for a commitment" and updated the description.
 
     - Updated the endpoint of the operation from `/commitments/{commitmentId}/balance` to `/commitments/{commitmentId}/balancepreview`.
-  
+
     - In the response body of the operation, added the following fields:
       - `periods` > `trueUpAmount`
       - `periods` > `expiredAmount`
@@ -877,13 +866,13 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
     - `periods` > `billedTotalSpending`
 
 
-- [Orders](https://developer.zuora.com/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
 
   - In the request body of each of the following operations:
     - Create an order
     - Update an order
 
-    Added the following fields that are available only when `commitments` > `schedules` > `action` is `update`: 
+    Added the following fields that are available only when `commitments` > `schedules` > `action` is `update`:
     - `commitments` > `schedules` > `periodType`
     - `commitments` > `schedules` > `specificPeriodLength`
     - `commitments` > `schedules` > `startDate`
@@ -897,18 +886,18 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
     - Update an order
 
     Added the following fields:
-    - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `drawdownScope`  
+    - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `drawdownScope`
     - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `prepaymentUnitType`
-    - `subscriptions` > `orderActions` > `changeplan` > `newProductRatePlan` > `chargeOverrides` > `drawdownScope` 
-    - `subscriptions` > `orderActions` > `changeplan` > `newProductRatePlan` > `chargeOverrides` > `prepaymentUnitType` 
+    - `subscriptions` > `orderActions` > `changeplan` > `newProductRatePlan` > `chargeOverrides` > `drawdownScope`
+    - `subscriptions` > `orderActions` > `changeplan` > `newProductRatePlan` > `chargeOverrides` > `prepaymentUnitType`
     - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `drawdownScope`
     - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `prepaymentUnitType`
 
     Removed the following fields:
-    - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `commitmentType` 
-    - `subscriptions` > `orderActions` > `changeplan` > `newProductRatePlan` > `chargeOverrides` > `commitmentType`    
+    - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `commitmentType`
+    - `subscriptions` > `orderActions` > `changeplan` > `newProductRatePlan` > `chargeOverrides` > `commitmentType`
     - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `commitmentType`
-         
+
   - In the response body of each of the following operations:
     - List orders
     - List orders of a subscription owner
@@ -918,23 +907,23 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
     - Retrieve an order
 
     Added the following fields to the Order object:
-    - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `drawdownScope`  
+    - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `drawdownScope`
     - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `prepaymentUnitType`
-    - `subscriptions` > `orderActions` > `changeplan` > `newProductRatePlan` > `chargeOverrides` > `drawdownScope` 
-    - `subscriptions` > `orderActions` > `changeplan` > `newProductRatePlan` > `chargeOverrides` > `prepaymentUnitType` 
+    - `subscriptions` > `orderActions` > `changeplan` > `newProductRatePlan` > `chargeOverrides` > `drawdownScope`
+    - `subscriptions` > `orderActions` > `changeplan` > `newProductRatePlan` > `chargeOverrides` > `prepaymentUnitType`
     - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `drawdownScope`
     - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `prepaymentUnitType`
 
     Removed the following fields from the Order object:
-    - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `commitmentType` 
-    - `subscriptions` > `orderActions` > `changeplan` > `newProductRatePlan` > `chargeOverrides` > `commitmentType`    
+    - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `commitmentType`
+    - `subscriptions` > `orderActions` > `changeplan` > `newProductRatePlan` > `chargeOverrides` > `commitmentType`
     - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `commitmentType`
 
 ### Doc updates
 
 This section lists the documentation updates that were made in this version of the API Reference.
 
-- Updated the description of the "Usage" section to clarify that legacy Billing Usage APIs now support usage records associated with a dynamic pricing usage charge. 
+- Updated the description of the "Usage" section to clarify that legacy Billing Usage APIs now support usage records associated with a dynamic pricing usage charge.
 
 - For the "Update a custom object definition" operation, added request code samples demonstrating how to manage custom fields on standard and custom objects, including creating, updating, renaming, and deleting fields.
 
@@ -947,9 +936,9 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q2.0.2</a>.
 
-- [Billing Documents](https://developer.zuora.com/v1-api-reference/api/billing-documents) - In the request body of the "Generate billing documents by account ID" operation, added the `commitmentKeys` field and updated the corresponding request sample.
+- [Billing Documents](/v1-api-reference/api/billing-documents/get_billingdocuments) - In the request body of the "Generate billing documents by account ID" operation, added the `commitmentKeys` field and updated the corresponding request sample.
 
-- [E-Invoicing](https://developer.zuora.com/v1-api-reference/api/e-invoicing) - For each of the following operations, added the `transactionId` query parameter:
+- [E-Invoicing](/v1-api-reference/api/e-invoicing/get_einvoicingserviceproviders) - For each of the following operations, added the `transactionId` query parameter:
   - Sync the e-Invoice status of an invoice
   - Sync the e-Invoice status of a debit memo
   - Sync the e-Invoice status of a credit memo
@@ -967,7 +956,7 @@ This section lists the documentation updates that were made in this version of t
 	- `postedBy`
 	- `postedDate`
 	- `transferredToAccounting`
-	
+
 - In the response body of each of the following operations, added the missing nullable schema keyword to each of the `billToContactId` and `billToContactSnapshotId` fields on the Debit Memo object:
 	- Create debit memos
 	- Create a debit memo from an invoice
@@ -996,24 +985,24 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q2.0.2</a>.
 
-- [RSA Signatures](https://developer.zuora.com/v1-api-reference/api/rsa-signatures) - In the request body of the "Generate an RSA signature" operation, removed all unsupported fields and kept only the following supported fields:
+- [RSA Signatures](/v1-api-reference/api/rsa-signatures/post_rsasignatures) - In the request body of the "Generate an RSA signature" operation, removed all unsupported fields and kept only the following supported fields:
   - `accountId`
   - `authorizationAmount`
   - `method`
   - `pageId`
   - `uri`
 
-- [Custom Object Definitions](https://developer.zuora.com/v1-api-reference/api/custom-object-definitions) - Made the following updates to the "Update a custom object definition" operation for the support of request asynchronous processing:
+- [Custom Object Definitions](/v1-api-reference/api/custom-object-definitions/post_customobjectdefinitions) - Made the following updates to the "Update a custom object definition" operation for the support of request asynchronous processing:
   - Updated the operation description.
   - In the response body, added the `jobId` field.
 
-- [Metadata](https://developer.zuora.com/v1-api-reference/api/Metadata/) - Added the following operations:
+- [Metadata](/v1-api-reference/api/metadata/listmetadataobjects) - Added the following operations:
   - Retrieve metadata object schema
   - List available metadata objects
 
-- [Settings](https://developer.zuora.com/v1-api-reference/api/settings) - Added the `defaultTemplate` field to the POST method request body of the `AllSummaryStatementTemplates` setting.
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Added the `defaultTemplate` field to the POST method request body of the `AllSummaryStatementTemplates` setting.
 
-  See [200 response sample in JSON format](https://developer.zuora.com/settings-api/ListAllSettingsResponseSample.json).
+  See [200 response sample in JSON format](/settings-api/ListAllSettingsResponseSample.json).
 
 ### Doc updates
 
@@ -1040,9 +1029,9 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q2.0.1</a>.
 
-- [Invoices](https://developer.zuora.com/v1-api-reference/api/invoices/) - Added the "Cancel an invoice" operation.
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Added the "Cancel an invoice" operation.
 
-- [Sequence Sets](https://developer.zuora.com/v1-api-reference/api/sequence-sets) - In the request body of the "Create sequence sets" operation, added the `sequenceSets` > `sequenceSetNumber` field.
+- [Sequence Sets](/v1-api-reference/api/sequence-sets/get_sequencesets) - In the request body of the "Create sequence sets" operation, added the `sequenceSets` > `sequenceSetNumber` field.
 
 ### Doc updates
 
@@ -1063,11 +1052,11 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q2.0.0</a>.
 
-- [Meters](https://developer.zuora.com/v1-api-reference/api/meters/) - In the "Create a job to export audit trail data for a meter" operation, made the following updates:
+- [Meters](/v1-api-reference/api/meters/runspecificversionofmeter) - In the "Create a job to export audit trail data for a meter" operation, made the following updates:
   - Updated the `format` query parameter to support the `csv`, `parquet`, and `avro` formats.
   - Added the `compression` query parameter.
 
-- [Invoices](https://developer.zuora.com/v1-api-reference/api/invoices/) - Made the following updates:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Made the following updates:
   - Added the "Split an invoice" operation.
   - In the response body of the "Reverse an invoice" operation, added the `creditMemos` field for split invoice groups.
 
@@ -1137,18 +1126,18 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q2.0.0</a>.
 
-- [Orders](https://developer.zuora.com/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
       - Create an order
       - Create an order asynchronously
       - Preview an order
       - Preview an order asynchronously
       - Update an order
-      
+
       Added the following fields:
-      - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `pricing` > `discount` > `originalListDiscountAmount` 
+      - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `pricing` > `discount` > `originalListDiscountAmount`
       - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `pricing` > `discount` > `originalListDiscountAmount`
-      - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `pricing` > `discount` > `originalListDiscountAmount`  
+      - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `pricing` > `discount` > `originalListDiscountAmount`
       - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `pricing` > `discount` > `originalListDiscountPercentage`
       - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `pricing` > `discount` > `originalListDiscountPercentage`
       - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `pricing` > `discount` > `originalListDiscountPercentage`
@@ -1157,7 +1146,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
   - In the request body of each of the following operations:
       - Create an order
       - Update an order
-      
+
       Made the following updates:
       - Added the `cancel` enum value to the `commitments` > `action` field.
       - Added the following fields that are available only when `commitments` > `action` is `cancel`:
@@ -1173,50 +1162,50 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
       Made the following updates:
       - Added the `CancelledPendingEvaluation` enum value to following fields:
           - `commitments` > `status`
-          - `commitments` > `schedules` > `status` 
-      - Added the `Evaluated` enum value to the `commitments` > `status` field. 
+          - `commitments` > `schedules` > `status`
+      - Added the `Evaluated` enum value to the `commitments` > `status` field.
       - Renamed the enum value from `Canceled` to `Cancelled` in the `commitments` > `status` field.
-      - Renamed the enum value from `Canceled` to `Cancelled` in the `commitments` > `schedules` > `status` field.  
+      - Renamed the enum value from `Canceled` to `Cancelled` in the `commitments` > `schedules` > `status` field.
 
-  - In the response body of each of the following operations:  
+  - In the response body of each of the following operations:
       - List orders
       - List orders of a subscription owner
       - List orders by subscription number
       - List orders of an invoice owner
       - List pending orders by subscription number
       - Retrieve an order
-      
+
       Added the following fields to the Order object:
-      - `commitments` > `action` 
+      - `commitments` > `action`
       - `commitments` > `cancellationEffectiveDate`
       - `commitments` > `cancellationPolicyOverride`
       - `commitments` > `status`
-      - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `pricing` > `discount` >  `originalListDiscountAmount` 
+      - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `pricing` > `discount` >  `originalListDiscountAmount`
       - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `pricing` > `discount` > `originalListDiscountAmount`
-      - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `pricing` > `discount` > `originalListDiscountAmount`  
+      - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `pricing` > `discount` > `originalListDiscountAmount`
       - `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `pricing` > `discount` > `originalListDiscountPercentage`
       - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `pricing` > `discount` > `originalListDiscountPercentage`
       - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `pricing` > `discount` > `originalListDiscountPercentage`
       - `subscriptions` > `orderActions` > `updateProducts` > `chargeUpdates` > `pricing` > `discount` > `originalListDiscountPercentage`
 
-- [Subscriptions](https://developer.zuora.com/v1-api-reference/api/subscriptions/) - Made the following updates:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Made the following updates:
   - In the response body of each of the following operations:
       - Retrieve a subscription by key
       - Retrieve a subscription by key and version
-      
+
       Added the following fields:
       - `ratePlans` > `ratePlanCharges` > `originalListDiscountAmount`
-      - `ratePlans` > `ratePlanCharges` > `originalListDiscountPercentage`  
+      - `ratePlans` > `ratePlanCharges` > `originalListDiscountPercentage`
 
   - In the response body of the "List subscriptions by account key" operation, added the following fields:
       - `subscriptions` > `ratePlans` > `ratePlanCharges` > `originalListDiscountAmount`
-      - `subscriptions` > `ratePlans` > `ratePlanCharges` > `originalListDiscountPercentage`     
+      - `subscriptions` > `ratePlans` > `ratePlanCharges` > `originalListDiscountPercentage`
 
   - In the request body of each of the following operations, added the `skipTax` field:
       - Preview a subscription
-      - Preview a subscription by subscription key  
+      - Preview a subscription by subscription key
 
-- [Commitments](https://developer.zuora.com/v1-api-reference/api/Commitments/) - Made the following updates:
+- [Commitments](/v1-api-reference/api/commitments/getcommitments) - Made the following updates:
   - In the response body of the "List commitments for an account" operation, made the following updates:
       - Added the `commitments` > `cancellationEffectiveDate` and `commitments` > `cancellationPolicy` fields.
       - Added the `Evaluated` and `CancelledPendingEvaluation` enum values to the `commitments` > `status` field.
@@ -1237,13 +1226,13 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
 
   - In the response body of the "Retrieve the balance for a commitment" operation, added the `CANCELLED_PENDING_EVALUATION` enum value to the `periods` > `status` field.
 
-- [Summary Statements](https://developer.zuora.com/v1-api-reference/api/summary-statements/) - Added the "Delete a summary statement" operation.
+- [Summary Statements](/v1-api-reference/api/summary-statements/createsummarystatementrun) - Added the "Delete a summary statement" operation.
 
 ### Doc updates
 
 This section lists the documentation updates that were made in this version of the API Reference.
 
-- In the request body of each of the following operations: 
+- In the request body of each of the following operations:
   - Create an order
   - Create an order asynchronously
   - Update an order
@@ -1268,14 +1257,14 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q2.0.0</a>.
 
-- [Orders](https://developer.zuora.com/v1-api-reference/api/Orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
       - Create an order
       - Create an order asynchronously
       - Preview an order
       - Preview an order asynchronously
       - Update an order
-      
+
       Added the following fields:
       - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `pricing` > `recurringCalculated`
       - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `pricing` > `recurringCalculated`
@@ -1289,7 +1278,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
       - List orders of an invoice owner
       - List pending orders by subscription number
       - Retrieve an order
-      
+
       Added the following fields to the Order object:
       - `subscriptions` > `orderActions` > `addProduct` > `chargeOverrides` > `pricing` > `recurringCalculated`
       - `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `pricing` > `recurringCalculated`
@@ -1300,7 +1289,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
       - Preview an order
       - Preview an order asynchronously
 
-- [Subscriptions](https://developer.zuora.com/v1-api-reference/api/Subscriptions/) - Made the following updates:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Made the following updates:
   - In the response body of each of the following operations, added the `totalNumberOfChargeSegments` field:
       - Retrieve a subscription by key
       - Retrieve a subscription by key and version
@@ -1319,9 +1308,9 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
       - `ratePlans` > `ratePlanCharges` > `maximumAmount`
       - `ratePlans` > `ratePlanCharges` > `percentage`
 
-- [Payments](https://developer.zuora.com/v1-api-reference/api/payments) - In the request body of the "Transfer a payment" operation, added the `effectiveDate` field.
+- [Payments](/v1-api-reference/api/payments/get_retrieveallpayments) - In the request body of the "Transfer a payment" operation, added the `effectiveDate` field.
 
-- [Object Queries](https://developer.zuora.com/v1-api-reference/api/object-queries/) - Made the following updates:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates:
   - In each of the following operations:
       - List order line items
       - Retrieve an order line item
@@ -1347,9 +1336,9 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
       - `name`
       - `uom`
 
-- [Settings](https://developer.zuora.com/v1-api-reference/api/settings) - Added the `turnOffAmendmentsInTheUI` parameter to the `SubscriptionSettings` setting.
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Added the `turnOffAmendmentsInTheUI` parameter to the `SubscriptionSettings` setting.
 
-  See [200 response sample in JSON format](https://developer.zuora.com/settings-api/ListAllSettingsResponseSample.json).
+  See [200 response sample in JSON format](/settings-api/ListAllSettingsResponseSample.json).
 
 ### Doc updates
 
@@ -1381,7 +1370,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q1.2.1</a>.
 
-- [Meters](https://developer.zuora.com/v1-api-reference/api/Meters/) - Added the "Truncate all data from an event store" operation.
+- [Meters](/v1-api-reference/api/meters/runspecificversionofmeter) - Added the "Truncate all data from an event store" operation.
 
 ### Doc updates
 
@@ -1398,7 +1387,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q1.2.0</a>.
 
-- [Orders](https://developer.zuora.com/v1-api-reference/api/Orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
       - Create an order
       - Update an order
@@ -1414,7 +1403,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
       Added the following fields:
       - `commitments` > `prepaymentType`
       - `commitments` > `schedules` > `prepaymentDefinition`
-  
+
   - In the response body of each of the following operations:
       - List orders
       - List orders of a subscription owner
@@ -1422,7 +1411,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
       - List orders of an invoice owner
       - List pending orders by subscription number
       - Retrieve an order
-      
+
       Made the following updates to the Order object:
       - Added the following fields:
           - `commitments` > `prepaymentType`
@@ -1436,12 +1425,12 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
   - List change histories of subscriptions by order number
   - Retrieve a change history of a subscription by version
 
-- [Commitments](https://developer.zuora.com/v1-api-reference/api/Commitments/) - Made the following updates:
+- [Commitments](/v1-api-reference/api/commitments/getcommitments) - Made the following updates:
   - In the response body of the "List commitments for an account" operation, added the `commitments` > `prepaymentType` field.
   - In the response body of the "Retrieve a commitment" operation, added the `prepaymentType` field.
   - In the response body of the "List schedules for a commitment" operation, added the `schedules` > `prepaymentDefinition` field.
 
-- [Object Queries](https://developer.zuora.com/api-references/api/tag/Object-Queries) - In the response body of each of the following operations, removed the `isSingleVersioned` field from the Subscription object:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - In the response body of each of the following operations, removed the `isSingleVersioned` field from the Subscription object:
   - Retrieve a subscription
   - List subscriptions
 
@@ -1452,12 +1441,12 @@ This section lists the documentation updates that were made in this version of t
 - In the response body of each of the following Object Query operations:
   - Retrieve a rate plan
   - List rate plans
-  
+
   Removed the availability note from the description of each of the following fields on the Rate Plan object:
   - `amendmentId`
   - `amendementType`
   - `subscriptionOfferId`
-   
+
 - In the response body of each of the following Object Query operations:
   - Retrieve a subscription
   - List subscriptions
@@ -1501,21 +1490,21 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q1.1.2</a>.
 
-- [Payment Methods](https://developer.zuora.com/v1-api-reference/api/payment-methods) - Made the following updates: 
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - Made the following updates:
   - For the "List registered Apple Pay domains" operation, made the following updates:
       - Updated the operation name to "List registered domains".
       - Updated the endpoint from `/v1/payment-methods/apple-pay/domains` to `/v1/payment-methods/wallet/domains`.
       - Updated the operation description for better clarity.
       - Added the `walletType` query parameter.
       - In the response body, added the `domains` > `domainIdentifier` and `domains` > `walletType` fields.
-  
+
   - For the "Register an Apple Pay domain" operation, made the following updates:
       - Updated the operation name to "Register a wallet domain".
       - Updated the endpoint from `/v1/payment-methods/apple-pay/domains` to `/v1/payment-methods/wallet/domains`.
       - Updated the operation description for better clarity.
       - In the request body, added the `walletType` field.
       - In the response body, added the `domainIdentifier` and `walletType` fields.
-  
+
   - For the "Unregister an Apple Pay domain" operation, made the following updates:
       - Updated the operation name to "Unregister a wallet domain".
       - Updated the endpoint from `/v1/payment-methods/apple-pay/domains/{id}` to `/v1/payment-methods/wallet/domains/{id}`.
@@ -1538,7 +1527,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q1.1.1</a>.
 
-- [Meters](https://developer.zuora.com/v1-api-reference/api/Meters/) - Added the "List prefetch audit records" operation.
+- [Meters](/v1-api-reference/api/meters/runspecificversionofmeter) - Added the "List prefetch audit records" operation.
 
 ### Doc updates
 
@@ -1546,7 +1535,7 @@ This section lists the documentation updates that were made in this version of t
 
 - In the "Retrieve the audit trail entries for a meter" operation, updated the description of each of the following query parameters to clarify the required ISO 8601 timestamp format with a numeric timezone offset and also updated the example values to use the `+0000` UTC offset format instead of `Z`:
   - `queryFromTime`
-  - `queryToTime` 
+  - `queryToTime`
 
 
 ## March 6, 2026
@@ -1557,7 +1546,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q1.1.0</a>.
 
-- [Meters](https://developer.zuora.com/v1-api-reference/api/meters/) - In the request body of the "Run a specific version of a meter" operation, added the `runtimeSourceConfigs` field to support overriding source settings at execution time.
+- [Meters](/v1-api-reference/api/meters/runspecificversionofmeter) - In the request body of the "Run a specific version of a meter" operation, added the `runtimeSourceConfigs` field to support overriding source settings at execution time.
 
 ### Doc updates
 
@@ -1577,11 +1566,11 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q1.0.2</a>.
 
-- [Invoices](https://developer.zuora.com/v1-api-reference/api/invoices) - In the response body of each of the following operations, added the `Split` enum value to the `status` field:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - In the response body of each of the following operations, added the `Split` enum value to the `status` field:
   - Retrieve an invoice
   - Update an invoice
 
-- [Bill Run](https://developer.zuora.com/v1-api-reference/api/bill-run) - Made the following updates:
+- [Bill Run](/v1-api-reference/api/bill-run/post_createbillrun) - Made the following updates:
   - In the request body of the "Create a bill run" operation, updated the description of the `billRunFilters` > `condition` > `value` field to introduce the following built-in variables:
       - `Today`
       - `BillRunDate`
@@ -1603,7 +1592,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
       - `InvoiceDate`
       - `AsRunDay`
 
-- [Object Queries](https://developer.zuora.com/v1-api-reference/api/object-queries) - In the response body of each of the following operations, added the `Split` enum value to the `status` field of the Invoice object:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - In the response body of each of the following operations, added the `Split` enum value to the `status` field of the Invoice object:
   - List invoices
   - Retrieve an invoice
   - List invoice items
@@ -1621,7 +1610,7 @@ This section lists the documentation updates that were made in this version of t
   - List periods for a commitment
   - Retrieve the balance for a commitment
   - List schedules for a commitment
- 
+
 - We have reverted the API documentation updates in the "List all settings" operation published on February 20, 2026. These changes will be delivered in an upcoming release.
 
 
@@ -1633,7 +1622,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q1.0.2</a>.
 
-- [E-Invoicing](https://developer.zuora.com/v1-api-reference/api/tag/E-Invoicing/) - For each of the following operations:
+- [E-Invoicing](/v1-api-reference/api/e-invoicing/get_einvoicingserviceproviders) - For each of the following operations:
   - Sync the e-Invoice status of an invoice
   - Sync the e-Invoice status of a debit memo
   - Sync the e-Invoice status of a credit memo
@@ -1657,15 +1646,15 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q1.0.1</a>.
 
-- [Accounts](https://developer.zuora.com/v1-api-reference/api/tag/Accounts/) - Made the following updates:
+- [Accounts](/v1-api-reference/api/accounts/post_account) - Made the following updates:
   - In the response body of the "Retrieve an account" operation, added the `billingAndPayment` > `bcdSettingOption` field.
   - In the response body of the "Retrieve an account summary" operation, added the `basicInfo` > `bcdSettingOption` field.
 
-- [Commitments](https://developer.zuora.com/v1-api-reference/api/tag/Commitments/) - Made the following updates:
+- [Commitments](/v1-api-reference/api/commitments/getcommitments) - Made the following updates:
   - In the response body of the "List periods for a commitment" operation, added the `ActiveWithDrawdown` enum value to the `periods` > `status` field.
   - In the response body of the "Retrieve the balance for a commitment" operation, added the `ACTIVE_WITH_DRAWDOWN` enum value to the `periods` > `status` field.
 
-- [Invoice Schedules](https://developer.zuora.com/v1-api-reference/api/tag/Invoice-Schedules/) - In the response body of each of the following operations, added the `organizationLabel` field to the root level and to the Invoice Schedule Item object:
+- [Invoice Schedules](/v1-api-reference/api/invoice-schedules/post_createinvoiceschedule) - In the response body of each of the following operations, added the `organizationLabel` field to the root level and to the Invoice Schedule Item object:
   - Create an invoice schedule
   - Retrieve an invoice schedule
   - Update an invoice schedule
@@ -1732,20 +1721,20 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q1.0.0</a>.
 
-- [Commerce](https://developer.zuora.com/v1-api-reference/api/tag/Commerce/) - Made the following updates to the "Retrieve a product by key" operation:
+- [Commerce](/v1-api-reference/api/commerce/createproductrateplanchargewithdynamicpricing) - Made the following updates to the "Retrieve a product by key" operation:
   - Changed the HTTP method from `GET` to `POST` to support request body fields.
   - Added the `expand` field to the request body.
 
-- [Meters](https://developer.zuora.com/v1-api-reference/api/tag/Meters/) - Added the following operations:
+- [Meters](/v1-api-reference/api/meters/runspecificversionofmeter) - Added the following operations:
   - Submit an event store query
   - Retrieve the results for an event store query
 
-- [E-Invoicing](https://developer.zuora.com/v1-api-reference/api/tag/E-Invoicing/) - Updated the description of each of the following operations to clarify that the "E-invoicing with PEPPOL Extract" feature is now generally available:
+- [E-Invoicing](/v1-api-reference/api/e-invoicing/get_einvoicingserviceproviders) - Updated the description of each of the following operations to clarify that the "E-invoicing with PEPPOL Extract" feature is now generally available:
   - Generate an e-invoice file for an invoice
   - Generate an e-invoice file for a credit memo
   - Generate an e-invoice file for a debit memo
 
-- [Object Queries](https://developer.zuora.com/v1-api-reference/api/tag/Object-Queries/) - In the "List invoice items" Object Query operation, added the `serviceenddate` enum value to each of the following query parameters:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - In the "List invoice items" Object Query operation, added the `serviceenddate` enum value to each of the following query parameters:
   - `sort[]`
   - `filter[]`
 
@@ -1815,12 +1804,12 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2026.Q1.0.0</a>.
 
-- [Subscriptions](/v1-api-reference/api/subscriptions/) - In the response body of each of the following operations, added the `ramp` field to the Subscription object:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - In the response body of each of the following operations, added the `ramp` field to the Subscription object:
   - Retrieve a subscription by key
   - Retrieve a subscription by key and version
   - List subscriptions by account key
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Made the following updates:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates:
   - In each of the following operations, added the `soldtocontact` enum value to the `expand[]` query parameter:
       - List subscriptions
       - Retrieve a subscription
@@ -1830,7 +1819,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
       - `Concurrency-Limit-Limit`
       - `Concurrency-Limit-Remaining`
 
-- [Notifications](/v1-api-reference/api/notifications/) - Made the following updates:
+- [Notifications](/v1-api-reference/api/notifications/post_create_notification_definition) - Made the following updates:
   - In the request body of each of the following operations, added the `confirmSuccessFromResponseContent` field:
       - Create a callout template
       - Update a callout template
@@ -1912,7 +1901,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2025.Q4.1.1</a>.
 
-- [Commitments](/v1-api-reference/api/commitments/) - Made the following updates:
+- [Commitments](/v1-api-reference/api/commitments/getcommitments) - Made the following updates:
   - Added the "List schedules for a commitment" operation.
 
   - In the response body of the "List commitments for an account" operation, made the following updates to the `commitments` object:
@@ -1929,7 +1918,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
 
   - In the response body of the "List periods for a commitment" operation, added the `periods` > `isProrated` field.
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
       - Create an order
       - Update an order
@@ -2064,20 +2053,20 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2025.Q4.1.0</a>.
 
-- [Meters](/v1-api-reference/api/meters/) - Added the following operations:
+- [Meters](/v1-api-reference/api/meters/runspecificversionofmeter) - Added the following operations:
   - Retrieve summary data for a meter
   - Retrieve the audit trail entries for a meter
   - Retrieve the list of export jobs for a meter
   - Create a job to export audit trail data for a meter
   - Retrieve the presigned URL for an export job
 
-- [Commerce](/v1-api-reference/api/commerce/) - Made the following updates:
+- [Commerce](/v1-api-reference/api/commerce/createproductrateplanchargewithdynamicpricing) - Made the following updates:
   - In the request body of the "Create a product rate plan charge with Dynamic Pricing" operation, added the `charge` > `specificListPriceBase` nested field.
   - In the response body of the "Create a product rate plan charge with Dynamic Pricing" operation, added the `specificListPriceBase` field.
   - Added a corresponding request example.
 
 ### Payment Forms (zuora.js) updates
-This section lists updates to the Payment Forms (zuora.js) JavaScript client that are relevant for API-integrated merchants. For more information, see [Collect payments with payment form](https://developer.zuora.com/docs/get-started/tutorials/payment-form/).
+This section lists updates to the Payment Forms (zuora.js) JavaScript client that are relevant for API-integrated merchants. For more information, see [Collect payments with payment form](/docs/get-started/tutorials/payment-form).
 
 The following updates are available as of Zuora Release 2025.Q4.1.0.
 
@@ -2098,11 +2087,11 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release/overview" target="_blank">Zuora Release 2025.Q4.0.1</a>.
 
-- [Product Rate Plan Charges](/v1-api-reference/api/product-rate-plan-charges/) - Made the following updates:
+- [Product Rate Plan Charges](/v1-api-reference/api/product-rate-plan-charges/get_retrieveproductrateplancharge) - Made the following updates:
   - In the request body of the "CRUD: Create a product rate plan charge" operation, updated the maximum value of the `SpecificListPriceBase` field from `200` to `120`.
   - Added a corresponding request example.
 
-- [Configuration Templates](/v1-api-reference/api/configuration-templates/) - In the response body of the "List all detais of source components" operation, added the following fields:
+- [Configuration Templates](/v1-api-reference/api/configuration-templates/get_downloaddeploymenttemplate) - In the response body of the "List all detais of source components" operation, added the following fields:
   - `dataQuery`
   - `multiOrg`
   - `organizationHierarchy`
@@ -2116,12 +2105,12 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release/overview" target="_blank">Zuora Release 2025.Q4.0.1</a>.
 
-- [Commitments](/v1-api-reference/api/commitments/) - Made the following updates:
+- [Commitments](/v1-api-reference/api/commitments/getcommitments) - Made the following updates:
 
   - In the response body of the "List commitments for an account" operation, added the `commitments` > `status` field.
   - In the response body of the "Retrieve a commitment" operation, added the `status` field.
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
       - Create an order
       - Update an order
@@ -2173,7 +2162,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
       - `subscriptions` > `orderActions` > `termsandConditions` > `clearingExistingShipToContact`
       - `subscriptions` > `orderActions` > `termsandConditions` > `shipToContactId`
 
-- [Settings](/v1-api-reference/api/settings/) - Added the `instant` parameter to the `CustomObjectMigration` setting.
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Added the `instant` parameter to the `CustomObjectMigration` setting.
 
   See [200 response sample in JSON format](/settings-api/ListAllSettingsResponseSample.json).
 
@@ -2194,12 +2183,12 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release/overview" target="_blank">Zuora Release 2025.Q4.0.0</a>.
 
-- [Invoices](/v1-api-reference/api/invoices/) - In the response body of the "List all items of an invoice" operation, added the following fields:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - In the response body of the "List all items of an invoice" operation, added the following fields:
   - `invoiceItems` > `commitmentId`
   - `invoiceItems` > `commitmentPeriodId`
 
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - Made the following updates:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Made the following updates:
   - In the response body of the "List credit memo items" operation, added the following fields:
       - `items` > `commitmentId`
       - `items` > `commitmentPeriodId`
@@ -2277,13 +2266,13 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
 
 The following items are the API updates specific to the character limit changes for the Contact object fields.
 
-- [Contacts](/v1-api-reference/api/contacts/) - In the request body of each of the "Create a contact" and "Update a contact" operations, updated the character limit for the following fields:
+- [Contacts](/v1-api-reference/api/contacts/post_createcontact) - In the request body of each of the "Create a contact" and "Update a contact" operations, updated the character limit for the following fields:
   - `city`
   - `county`
   - `state`
   - `taxRegion`
 
-- [Accounts](/v1-api-reference/api/accounts/) - In the request body of each of the "Create an account" and "Update an account" operations, updated the character limit for the following fields:
+- [Accounts](/v1-api-reference/api/accounts/post_account) - In the request body of each of the "Create an account" and "Update an account" operations, updated the character limit for the following fields:
   - `billToContact` > `city`
   - `billToContact` > `county`
   - `billToContact` > `state`
@@ -2297,7 +2286,7 @@ The following items are the API updates specific to the character limit changes 
   - `soldToContact` > `state`
   - `soldToContact` > `taxRegion`
 
-- [Omnichannel subscriptions](/v1-api-reference/api/omnichannel-subscriptions/) - In the request body of the "Create an omnichannel subscription" operation, updated the character limit for the following fields:
+- [Omnichannel subscriptions](/v1-api-reference/api/omnichannel-subscriptions/postomnichannelsubscription) - In the request body of the "Create an omnichannel subscription" operation, updated the character limit for the following fields:
    - `accountData` > `billToContact` > `city`
    - `accountData` > `billToContact` > `county`
    - `accountData` > `billToContact` > `state`
@@ -2307,7 +2296,7 @@ The following items are the API updates specific to the character limit changes 
    - `accountData` > `soldToContact` > `state`
    - `accountData` > `soldToContact` > `taxRegion`
 
-- [Sign up](/v1-api-reference/api/sign-up/) - In the request body of the "Sign up" operation, updated the character limit for the following fields:
+- [Sign up](/v1-api-reference/api/sign-up/post_signup) - In the request body of the "Sign up" operation, updated the character limit for the following fields:
    - `accountData` > `billToContact` > `city`
    - `accountData` > `billToContact` > `county`
    - `accountData` > `billToContact` > `state`
@@ -2321,7 +2310,7 @@ The following items are the API updates specific to the character limit changes 
    - `accountData` > `soldToContact` > `state`
    - `accountData` > `soldToContact` > `taxRegion`
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of the "Create an order" and "Create an order asynchronously" operations updated the character limit for each of the following fields:
       - `newAccount` > `billToContact` > `city`
       - `newAccount` > `billToContact` > `county`
@@ -2372,9 +2361,9 @@ The following items are the API updates specific to the character limit changes 
 
 #### Other API updates
 
-- [Commerce](/v1-api-reference/api/commerce/) - Added the "Query purchase options by PRP ID" operation.
+- [Commerce](/v1-api-reference/api/commerce/createproductrateplanchargewithdynamicpricing) - Added the "Query purchase options by PRP ID" operation.
 
-- [E-Invoicing](/v1-api-reference/api/e-invoicing/) - Made the following updates:
+- [E-Invoicing](/v1-api-reference/api/e-invoicing/get_einvoicingserviceproviders) - Made the following updates:
   - Added the "Cancel the e-invoice file for an invoice" operation.
   - Added the `use_certificate` field to the request body and the sample payload of each of the following operations:
       - Create an e-invoicing service provider
@@ -2386,7 +2375,7 @@ The following items are the API updates specific to the character limit changes 
       - Retrieve an e-invoicing service provider
       - List e-invoicing service providers
 
-- [Billing Preview Run](/v1-api-reference/api/billing-preview-run/) - In the request body of the "Create a billing preview run" operation, added the `filters` field.
+- [Billing Preview Run](/v1-api-reference/api/billing-preview-run/post_billingpreviewrun) - In the request body of the "Create a billing preview run" operation, added the `filters` field.
 
 
 
@@ -2457,7 +2446,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Zuora Release 2025.Q4.0.0</a>.
 
-- [Commerce](/v1-api-reference/api/commerce/) - Added the following operations:
+- [Commerce](/v1-api-reference/api/commerce/createproductrateplanchargewithdynamicpricing) - Added the following operations:
   - Query legacy products from the Product Catalog
   - Update a product rate plan
   - Query product rate plans
@@ -2465,7 +2454,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
   - Update a product rate plan charge tier
 
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
 
   - In the request body of each of the "Create an order" and "Update an order" operations, made the following updates:
       - Added the following nested fields to the `commitments` field:
@@ -2497,7 +2486,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
          - `associatedAccounts`
          - `version`
 
-- [Commitments](/v1-api-reference/api/commitments/) - Made the following updates:
+- [Commitments](/v1-api-reference/api/commitments/getcommitments) - Made the following updates:
   - Added the "Retrieve the balance for a commitment" operation.
 
   - In the 200 response body of the "List commitments for an account" operation, made the following updates:
@@ -2560,7 +2549,7 @@ This section lists operations and fields that were added, changed, or removed.
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/latest-release/billing" target="_blank">Zuora Release 2025.Q4.0.0</a>.
 
 
-- [Commerce](/v1-api-reference/api/commerce/) - Added the following operations:
+- [Commerce](/v1-api-reference/api/commerce/createproductrateplanchargewithdynamicpricing) - Added the following operations:
   - Create a product rate plan
   - Create a product with plans and charges
   - Query product rate plans
@@ -2568,7 +2557,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
   - Retrieve a product by key
 
 
-- [Orders](/v1-api-reference/api/orders/) - In the request body of each of the following operations:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations:
   - Preview an order
   - Preview an order asynchronously
 
@@ -2577,11 +2566,11 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
   - `previewAccountInfo` > `soldToContact` > `address2`
   - `previewOptions` > `skipTax`
 
-- [Subscriptions](/v1-api-reference/api/subscriptions/) - In the 200 response body of the "Preview a subscription by subscription key" operation, added the following fields:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - In the 200 response body of the "Preview a subscription by subscription key" operation, added the following fields:
   - `creditMemos` > `creditMemoItems` > `discountDetails` > `serviceStartDate`
   - `creditMemos` > `creditMemoItems` > `discountDetails` > `serviceEndDate`
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Made the following updates:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates:
   - Renamed the following endpoints for better consistency and usability. Note that the legacy endpoints are still supported for backward compatibility:
       - Renamed `/object-query/delivery-adjustment` to `/object-query/delivery-adjustments`
       - Renamed `/object-query/delivery-adjustment/{key}` to `/object-query/delivery-adjustments/{key}`
@@ -2604,12 +2593,12 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com/en/release-notes/previous-release-notes/previous-release-notes" target="_blank">Zuora Release 2025.Q3.2.1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com/en/release-notes/latest-release" target="_blank">Latest release</a>.
 
-- [Commerce](/v1-api-reference/api/commerce/) - Added the following operations:
+- [Commerce](/v1-api-reference/api/commerce/createproductrateplanchargewithdynamicpricing) - Added the following operations:
   - Create a product rate plan charge with Dynamic Pricing
   - Update a product rate plan charge with Dynamic Pricing
   - Query a product rate plan charge with Dynamic Pricing
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
       - Create an order
       - Create an order asynchronously
@@ -2689,7 +2678,7 @@ The following API updates are available as of <a href="https://docs.zuora.com/en
       - `orders` > `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `pricing` > `usageTieredWithOverage` > `originalListPrice`
       - `orders` > `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `pricing` > `usageTieredWithOverage` > `tiers` > `originalListPrice`
 
-- [Subscriptions](/v1-api-reference/api/subscriptions/) - Made the following updates:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Made the following updates:
   - In the 200 response body of each of the following operations:
       - Retrieve a subscription by key
       - Retrieve a subscription by key and version
@@ -2806,7 +2795,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q3.1.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
 
   - In the request body of each of the following operations:
       - Create an order
@@ -2851,7 +2840,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q3.1.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the "Create an order" and "Update an order" operations, made the following updates:
       - Added the following fields:
           - `commitments` > `accountReceivableAccountingCode`
@@ -2893,7 +2882,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - Preview an order
       - Preview an order asynchronously
 
-- [Commitments](/v1-api-reference/api/commitments/) - Made the following updates:
+- [Commitments](/v1-api-reference/api/commitments/getcommitments) - Made the following updates:
   - In the response body of the "List commitments for an account" operation, made the following updates:
       - Added the following fields:
           - `commitments` > `accountReceivableAccoutingCode`
@@ -2910,7 +2899,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - Removed the `periods` field.
       - Updated the data type of the `customFields` field from array to object.
 
-- [Subscriptions](/v1-api-reference/api/subscriptions/) - In the request body of each of the following operations, updated the maximum length of the `notes` field to 1000 from 500:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - In the request body of each of the following operations, updated the maximum length of the `notes` field to 1000 from 500:
   - Create a subscription
   - Update a subscription
   - Preview a subscription
@@ -2931,7 +2920,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q3.0.2</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the "Create an order" and "Update an order" operations:
       - Added the following fields:
           - `commitments` > `revenueAmortizationMethod`
@@ -2948,7 +2937,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - `commitments` > `endDate`
       - `commitments` > `amount`
 
-- [Commitments](/v1-api-reference/api/commitments/)- Made the following updates:
+- [Commitments](/v1-api-reference/api/commitments/getcommitments)- Made the following updates:
   - In the response body of the "List commitments for an account" operation, added the `commitments` > `excludeItemBookingFromRevenueAccounting` field.
 
   - In the response body of the "Retrieve a commitment" operation, added the `excludeItemBookingFromRevenueAccounting` field.
@@ -2966,7 +2955,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to the Commitment feature.
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
 
   - In the request body of each of the "Create an order" and "Update an order" operations, made the following updates:
       - Added `commitments` > `periods` field.
@@ -3003,7 +2992,7 @@ The following items are the API updates specific to the Commitment feature.
           - `prorationOption`
 
 
-- [Commitments](/v1-api-reference/api/commitments/) - Made the following updates:
+- [Commitments](/v1-api-reference/api/commitments/getcommitments) - Made the following updates:
   - Removed the following operations:
       - List commitment cycles
       - List all segments of a commitment
@@ -3065,7 +3054,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q3.0.1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of the "Create an order" operation, added the `mitTransactionSource` nested field to the `processingOptions` > `electronicPaymentOptions` field.
   - In the request body of each of the following operations, added the `communicationProfileId` and `clearingExistingCommunicationProfile` nested fields to the `subscriptions > orderActions > termsAndConditions` field:
       - Preview an order
@@ -3081,21 +3070,21 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - List orders of an invoice owner
       - List pending orders by subscription number
 
-- [Order Line Items](/v1-api-reference/api/order-line-items/) - In the response body of each of the following operations, added the `communicationProfileId` field to the Order Line Item object:
+- [Order Line Items](/v1-api-reference/api/order-line-items/get_orderlineitem) - In the response body of each of the following operations, added the `communicationProfileId` field to the Order Line Item object:
   - Retrieve an order line item
   - Update order line items
 
-- [Invoices](/v1-api-reference/api/invoices/) - In the response body of each of the following operations, added the `communicationProfileId` field to the Invoice object:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - In the response body of each of the following operations, added the `communicationProfileId` field to the Invoice object:
   - Create a standalone invoice
   - Create standalone invoices
   - Retrieve an invoice
 
-- [Subscriptions](/v1-api-reference/api/subscriptions/) - In the response body of each of the following operations, added the `communicationProfileId` field to the Subscription object:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - In the response body of each of the following operations, added the `communicationProfileId` field to the Subscription object:
   - List subscriptions by account key
   - Retrieve a subscription by key
   - Retrieve a subscription by key and version
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - In the response body of each of the following operations, added the `communicationProfileId` field to the Credit Memo object:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - In the response body of each of the following operations, added the `communicationProfileId` field to the Credit Memo object:
   - List credit memos
   - Create a credit memo from a charge
   - Create credit memos
@@ -3108,7 +3097,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - Unapply a credit memo
   - Unpost a credit memo
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - In the response body of each of the following operations, added the `communicationProfileId` field to the Debit Memo object:
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - In the response body of each of the following operations, added the `communicationProfileId` field to the Debit Memo object:
   - List debit memos
   - Create a debit memo from a charge
   - Create debit memos
@@ -3120,7 +3109,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - Unpost a credit memo
   - Create a debit memo from an invoice
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Made the following updates:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates:
   - In the response body of each of the following operations, added the  `communicationProfileId` and `clearingExistingCommunicationProfile` fields to the Order Action object:
       - List order actions
       - Retrieve an order action
@@ -3134,12 +3123,12 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - List accounts
       - Retrieve an account
 
-- [Accounting Codes](/v1-api-reference/api/accounting-codes/) - Made the following updates:
+- [Accounting Codes](/v1-api-reference/api/accounting-codes/get_allaccountingcodes) - Made the following updates:
   - In the response body of the "List all accounting codes" operation, added the `accountingCodes` > `segmentConstantValues` field.
   - In the request body of each of the "Create an accounting code" and "Update an accounting code" operations, added the `segmentConstantValues` field.
   - In the response body of the "Retrieve an accounting code" operation, added the `segmentConstantValues` field.
 
-- [Accounting Periods](/v1-api-reference/api/accounting-periods/) - Made the following updates:
+- [Accounting Periods](/v1-api-reference/api/accounting-periods/get_allaccountingperiods) - Made the following updates:
   - In the request body of the "Create an accounting period" operation, made the following updates:
       - Updated the data type of the `fiscalYear` field from string to integer.
       - Renamed the `fiscal_quarter` field to `fiscalQuarter`, updated the data type from string to integer, and added a description.
@@ -3203,13 +3192,13 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to the Commitment feature.
 
-- [Commitments](/v1-api-reference/api/commitments/) - Added a "Commitments" section that contains the following operations:
+- [Commitments](/v1-api-reference/api/commitments/getcommitments) - Added a "Commitments" section that contains the following operations:
   - List commitment cycles
   - List commitments for an account
   - Retrieve a commitment
   - List all segments of a commitment
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body and 200 response body of each of the following operations, added the `commitments` field:
       - Create an order
       - Update an order
@@ -3231,7 +3220,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q3.0.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [E-Invoicing](/v1-api-reference/api/e-invoicing/) - Made the following updates:
+- [E-Invoicing](/v1-api-reference/api/e-invoicing/get_einvoicingserviceproviders) - Made the following updates:
   - Added the following operations:
       - List mandates for downloading files
       - Retrieve a mandate for downloading a file
@@ -3249,14 +3238,14 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - List e-invoicing business regions
       - Retrieve an e-invoicing business region
 
-- [Invoices](/v1-api-reference/api/invoices/) - Added the `RetrieveTimeOut` enum value to the `einvoiceStatus` field of the Invoice object of each of the following operations:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Added the `RetrieveTimeOut` enum value to the `einvoiceStatus` field of the Invoice object of each of the following operations:
 
   - Create a standalone invoice
   - Create standalone invoices
   - Retrieve an invoice
 
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - Added the `RetrieveTimeOut` enum value to the `einvoiceStatus` field of the Credit Memos object of each of the following operations:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Added the `RetrieveTimeOut` enum value to the `einvoiceStatus` field of the Credit Memos object of each of the following operations:
 
   - List credit memos
   - Create a credit memo from a charge
@@ -3271,7 +3260,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - Unpost a credit memo
   - Create a credit memo from an invoice
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - Added the `RetrieveTimeOut` enum value to the `einvoiceStatus` field of the Debit Memos object of each of the following operations:
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Added the `RetrieveTimeOut` enum value to the `einvoiceStatus` field of the Debit Memos object of each of the following operations:
 
   - List debit memos
   - Create a debit memo from a charge
@@ -3282,7 +3271,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - Cancel a debit memo
 
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Added the `RetrieveTimeOut` enum value to the `einvoiceStatus` field of the Invoice object of each of the following operations:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Added the `RetrieveTimeOut` enum value to the `einvoiceStatus` field of the Invoice object of each of the following operations:
 
   - List accounts
   - Retrieve an account
@@ -3294,7 +3283,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - Retrieve an invoice item
 
 
-- [Settings](/v1-api-reference/api/settings/) - Added the `Per_Validity_Period` enum value to the `listPriceBase` parameter of the `BillingListPriceBase` setting.
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Added the `Per_Validity_Period` enum value to the `listPriceBase` parameter of the `BillingListPriceBase` setting.
 
   See [200 response sample in JSON format](/settings-api/ListAllSettingsResponseSample.json).
 
@@ -3320,14 +3309,14 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q3.0.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Orders](/v1-api-reference/api/orders/) - In the request body of each of the following operations, added the `existingAccountId` field:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations, added the `existingAccountId` field:
   - Preview an order
   - Preview an order asynchronously
   - Create an order
   - Create an order asynchronously
   - Update an order
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - Made the following updates:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Made the following updates:
   - In the response body of each of the following operations, added the `Voided` enum value to the `taxStatus` field and updated the field description:
       - Create a credit memo from a charge
       - Create a credit memo from an invoice
@@ -3345,7 +3334,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
   - In the response body of the "List credit memos" operation, added the `Voided` enum value to the `creditmemos` > `taxStatus` field and updated the field description.
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - Made the following updates:
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Made the following updates:
   - In the response body of each of the following operations, added the `Voided` enum value to the `taxStatus` field and updated the field description:
       - Create a debit memo from a charge
       - Create a debit memo from an invoice
@@ -3361,13 +3350,13 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
   - In the response body of the "List debit memos" operation, added the `Voided` enum value to the `debitmemos` > `taxStatus` field and updated the field description.
 
-- [Invoices](/v1-api-reference/api/invoices/) - Made the following updates:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Made the following updates:
   - In the response body of each of the following operations, added the `Voided` enum value to the `taxStatus` field and updated the field description:
       - Create a standalone invoice
       - Retrieve an invoice
   - In the response body of the "Create standalone invoices" operation, added the `Voided` enum value to the `invoices` > `taxStatus` field and updated the field description.
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Made the following updates:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates:
   - In the response body of each of the following operations, added the `Voided` enum value to the `taxStatus` field of the Credit Memo object and updated the description for clarity:
       - List credit memos
       - Retrieve a credit memo
@@ -3385,7 +3374,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - List accounts
       - Retrieve an account
 
-- [Settings](/v1-api-reference/api/settings/) - In the description of the "List all settings" operation, updated the setting name from "Avalara Tax Engine" to "Direct Integration Tax Engine" to reflect support for all Direct Integration tax engines.
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - In the description of the "List all settings" operation, updated the setting name from "Avalara Tax Engine" to "Direct Integration Tax Engine" to reflect support for all Direct Integration tax engines.
 
 ### Doc updates
 
@@ -3461,7 +3450,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q3.0.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Added the following operations:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Added the following operations:
   - List delivery adjustments
   - Retrieve a delivery adjustment
   - List fulfillments
@@ -3492,7 +3481,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q3.0.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
       - Preview an order
       - Preview an order asynchronously
@@ -3527,14 +3516,14 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
   - In the 200 response body of the "Retrieve an order" operation, added the `notes` field to the `order` > `subscriptions` nested field.
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Made the following updates to each operation for the release of the new `2025-08-12` version:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates to each operation for the release of the new `2025-08-12` version:
   - Added the `Zuora-Version` header parameter.
   - Added the 500 error response.
   - Consolidated the 400, 401, and 403 errors into a 4XX error, and updated its schema and example.
 
   Note that the error response changes are applicable only if you have upgraded the API version in your tenant to `2025-08-12`, or have specified `Zuora-Version` to `2025-08-12` in the request.
 
-- [Bulk Data](/v1-api-reference/api/bulk-data/) - Renamed the following endpoints for better consistency and usability:
+- [Bulk Data](/v1-api-reference/api/bulk-data/createbulkjob) - Renamed the following endpoints for better consistency and usability:
   - Renamed `/bulk-jobs` to `/bulk-data/bulk-jobs`
   - Renamed `/bulk-jobs/{id}/submissions` to `/bulk-data/bulk-jobs/{id}/submissions`
   - Renamed `/bulk-jobs/{id}/summary` to `/bulk-data/bulk-jobs/{id}/summary`
@@ -3544,17 +3533,17 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - Renamed `/bulk-jobs/summaries` to `/bulk-data/bulk-jobs/summaries`
   - Renamed `/bulk-jobs/{id}/mappings` to `/bulk-data/bulk-jobs/{id}/mappings`
 
-- [Test Environments](/v1-api-reference/api/test-environments/) - Added a "Test Environments" section that contains the following operations:
+- [Test Environments](/v1-api-reference/api/test-environments/getalltestenvironments) - Added a "Test Environments" section that contains the following operations:
   - List all test environments
   - Retrieve a test environment response
 
-- [Test Environment Jobs](/v1-api-reference/api/test-environment-jobs/) - Added a "Test Environment Jobs" section that contains the following operations:
+- [Test Environment Jobs](/v1-api-reference/api/test-environment-jobs/createtestenvironmentjob) - Added a "Test Environment Jobs" section that contains the following operations:
   - Create a Test Environment job
   - List all jobs of a test environment
   - Retrieve a job of a test environment
   - Perform an action on a test environment job
 
-- [Test Environment Notifications](/v1-api-reference/api/test-environment-notifications/) - Added a "Test Environment Notifications" section that contains the following operations:
+- [Test Environment Notifications](/v1-api-reference/api/test-environment-notifications/createtestenvironmentnotification) - Added a "Test Environment Notifications" section that contains the following operations:
   - Create a test environment notification
   - List all email notifications of a test environment
   - Retrieve a notification response of a test environment
@@ -3653,7 +3642,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q2.2.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Added the following operations:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Added the following operations:
   - List rating details
   - Retrieve a rating detail
 
@@ -3680,9 +3669,9 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q2.2.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Contacts](/v1-api-reference/api/contacts/) - Added the "Transfer a contact" operation.
+- [Contacts](/v1-api-reference/api/contacts/post_createcontact) - Added the "Transfer a contact" operation.
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - In each operation, added the `includeNullFields` query parameter.
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - In each operation, added the `includeNullFields` query parameter.
 
 
 ### Doc updates
@@ -3716,7 +3705,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q2.1.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Configuration Templates](/v1-api-reference/api/configuration-templates/) - Added an operation called "Sync a deployment template with latest changes".
+- [Configuration Templates](/v1-api-reference/api/configuration-templates/get_downloaddeploymenttemplate) - Added an operation called "Sync a deployment template with latest changes".
 
 
 ### Doc updates
@@ -3734,7 +3723,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q2.1.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Settings](/v1-api-reference/api/settings/) - Added the `useOriginalExchangeRateForCredits` parameter to the `AccountingRules` setting.
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Added the `useOriginalExchangeRateForCredits` parameter to the `AccountingRules` setting.
 
   See [200 response sample in JSON format](/settings-api/ListAllSettingsResponseSample.json).
 
@@ -3763,17 +3752,17 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q2.1.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Invoices](/v1-api-reference/api/invoices/) - In the request body of each of the following operations, added the `templateId` field:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - In the request body of each of the following operations, added the `templateId` field:
   - Update an invoice
   - Update invoices
 
-- [Settings](/v1-api-reference/api/settings/) - Updated the `requestTemplate` parameter in each of the following settings to add support for the `null` value:
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Updated the `requestTemplate` parameter in each of the following settings to add support for the `null` value:
   - `TaxEngines`
   - `AllTaxEngines`
 
   See [200 response sample in JSON format](/settings-api/ListAllSettingsResponseSample.json).
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Made the following updates:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates:
   - Added the following operations:
       - List contact snapshots
       - Retrieve a contact snapshot
@@ -3810,7 +3799,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q2.0.2</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Product Rate Plan Charge Tiers](/v1-api-reference/api/product-rate-plan-charge-tiers/) - In the request body of the "CRUD: Update a product rate plan charge tier" operation, added the following fields:
+- [Product Rate Plan Charge Tiers](/v1-api-reference/api/product-rate-plan-charge-tiers/object_getproductrateplanchargetier) - In the request body of the "CRUD: Update a product rate plan charge tier" operation, added the following fields:
   - `PriceFormat`
   - `DiscountPercentage`
   - `DiscountAmount`
@@ -3867,7 +3856,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 #### API updates for the Pending Subscription Processing feature
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
       - Create an order
       - Create an order asynchronously
@@ -3902,7 +3891,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - `order` > `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `estimatedStartDate`
       - `order` > `subscriptions` > `orderActions` > `updateProduct` > `chargeUpdates` > `estimatedStartDate`
 
-- [Subscriptions](/v1-api-reference/api/subscriptions/) - Made the following updates:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Made the following updates:
 
   - In the 200 response body of each of the "Retrieve a subscription by key" and "Retrieve a subscription by key and version" operations, added the following fields:
       - `ratePlans` > `ratePlanCharges` > `estimatedStartDate`
@@ -3912,7 +3901,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - `subscriptions` > `ratePlans` > `ratePlanCharges` > `estimatedStartDate`
       - `subscriptions` > `ratePlans` > `ratePlanCharges` > `estimatedEndDate`
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - In the 200 response body of each of the "List rate plan charges" and "Retrieve a rate plan charge" operations, added the following fields to the Rate Plan Charge object:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - In the 200 response body of each of the "List rate plan charges" and "Retrieve a rate plan charge" operations, added the following fields to the Rate Plan Charge object:
   - `estimatedStartDate`
   - `estimatedEndDate`
 
@@ -3938,9 +3927,9 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q2.0.1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Payment Authorization](/v1-api-reference/api/payment-authorization/) - In the request body of the "Create authorization" operation, updated the description the `paymentGatewayId` field.
+- [Payment Authorization](/v1-api-reference/api/payment-authorization/post_createauthorization) - In the request body of the "Create authorization" operation, updated the description the `paymentGatewayId` field.
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) -  Made the following updates:
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) -  Made the following updates:
   - In the request body of the each of the following operations, updated the description of the `authGateway` field:
       - Create a payment method
       - Update a payment method
@@ -3952,7 +3941,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following changes are applicable to the Older API Reference:
 
-- [Reporting](/v1-api-reference/older-api/reporting) - Added an operation called "Transfer report ownership".
+- [Reporting](/v1-api-reference/older-api/reporting/get_reportrun) - Added an operation called "Transfer report ownership".
 
 ### Doc updates
 
@@ -3982,7 +3971,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to the Ship-To Contact feature.
 
-- [Accounts](/v1-api-reference/api/accounts/) - Made the following updates:
+- [Accounts](/v1-api-reference/api/accounts/post_account) - Made the following updates:
   - Updated the description of each of the following operations:
       - Create an account
       - Update an account
@@ -4006,7 +3995,7 @@ The following items are the API updates specific to the Ship-To Contact feature.
       - `soldToContact` > `asShipTo`
       - `soldToContact` > `asSoldTo`
 
-- [Contacts](/v1-api-reference/api/contacts/) - Made the following updates:
+- [Contacts](/v1-api-reference/api/contacts/post_createcontact) - Made the following updates:
   - In the request body of each of the following operations:
       - Create a contact
       - Update a contact
@@ -4025,14 +4014,14 @@ The following items are the API updates specific to the Ship-To Contact feature.
       - `asShipTo`
       - `asSoldTo`
 
-- [Contact Snapshots](/v1-api-reference/api/contact-snapshots/) - In the 200 response body of the "Retrieve a contact snapshot" operation, added the following fields:
+- [Contact Snapshots](/v1-api-reference/api/contact-snapshots/get_contactsnapshot) - In the 200 response body of the "Retrieve a contact snapshot" operation, added the following fields:
   - `asBillTo`
   - `asShipTo`
   - `asSoldTo`
 
-- [Sign Up](/v1-api-reference/api/sign-up/) - In the request body of the "Sign up" operation, added the `accountData` > `shipToContact` field.
+- [Sign Up](/v1-api-reference/api/sign-up/post_signup) - In the request body of the "Sign up" operation, added the `accountData` > `shipToContact` field.
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
       - Preview an order
       - Preview an order asynchronously
@@ -4104,7 +4093,7 @@ The following items are the API updates specific to the Ship-To Contact feature.
       - `orders` > `subscriptions` > `orderActions` > `termsAndConditions` > `clearingExistingShipToContact`
       - `orders` > `subscriptions` > `orderActions` > `termsAndConditions` > `shipToContactId`
 
-- [Order Line Items](/v1-api-reference/api/order-line-items/) - Made the following updates:
+- [Order Line Items](/v1-api-reference/api/order-line-items/get_orderlineitem) - Made the following updates:
   - In the request body of the "Update an order line item" operation, added the `shipTo` field.
   - In the request body of the "Update order line items" operation, added the `orderLineItems` > `shipTo` field.
   - In the 200 response body of each of the following operations:
@@ -4115,13 +4104,13 @@ The following items are the API updates specific to the Ship-To Contact feature.
       - `orderLineItem` > `shipTo`
       - `orderLineItem` > `shipToSnapshotId`
 
-- [Subscriptions](/v1-api-reference/api/subscriptions/) - Made the following updates:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Made the following updates:
   - In the 200 response body of the "List subscriptions by account key" operation, added the `subscriptions` > `shipToContact` field.
   - In the 200 response body of each of the following operations, added the `shipToContact` field:
       - Retrieve a subscription by key
       - Retrieve a subscription by key and version
 
-- [Invoices](/v1-api-reference/api/invoices/) - Made the following updates:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Made the following updates:
   - In the request body of the "Create a standalone invoice" operation, added the following fields:
       - `shipToContact`
       - `shipToContactId`
@@ -4142,15 +4131,15 @@ The following items are the API updates specific to the Ship-To Contact feature.
       - `invoices` > `shipToContactSnapshotId`
   - In the 200 response body of the "List all items of an invoice" operation, added the `invoiceItems` > `shipToContactId` field.
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - Made the following updates:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Made the following updates:
   - In the 200 response body of the "List credit memo items" operation, added the `items` > `shipToContactId` field.
   - In the 200 response body of the "Retrieve a credit memo item" operation, added the `shipToContactId` field.
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - Made the following updates:
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Made the following updates:
   - In the 200 response body of the "List debit memo items" operation, added the `items` > `shipToContactId` field.
   - In the 200 response body of the "Retrieve a debit memo item" operation, added the `shipToContactId` field.
 
-- [Notifications](/v1-api-reference/api/notifications/) - Made the following updates:
+- [Notifications](/v1-api-reference/api/notifications/post_create_notification_definition) - Made the following updates:
   - In the request body of the "Create or update email templates" operation, made the following updates:
       - Updated the description of each of the following fields:
           - `emailTemplates` > `ccEmailType`
@@ -4181,7 +4170,7 @@ The following items are the API updates specific to the Ship-To Contact feature.
       - `data` > `ccEmailType`
       - `data` > `toEmailType`
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Made the following updates:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates:
   - In each of the "List accounts" and "Retrieve an account" operations, made the following updates:
       - Added the `shipto` enum value to the `expand[]` query parameter.
       - In the 200 response body, added the `shipToId` and `shipTo` fields to the Account object.
@@ -4217,7 +4206,7 @@ The following items are the API updates specific to the Ship-To Contact feature.
 
 #### Other API updates
 
-- [Settings](/v1-api-reference/api/settings/) - Made the following updates:
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Made the following updates:
   - Added support for the GET, PUT, and DELETE methods to the `ReusableBlock` setting.
   - Added support for the GET and POST methods to the `AllReusableBlocks` setting.
   - Updated the description of the "List all settings" operation to add Knowledge Center tutorial links for the Reusable Block feature.
@@ -4283,7 +4272,7 @@ This section lists operations and fields that were added, changed, or removed.
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q2.0.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
 
-- [Orders](/v1-api-reference/api/orders/) - In the request body of each of the following operations:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations:
   - Preview an order
   - Preview an order asynchronously
   - Create an order
@@ -4293,7 +4282,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - `orderLineItems`
   - `orderLineItems` > `productRatePlanChargeId`
 
-- [Invoices](/v1-api-reference/api/invoices/) - Made the following updates to clarify the impacts of the new billing permissions for standalone invoices:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Made the following updates to clarify the impacts of the new billing permissions for standalone invoices:
   - Updated the description of each of the following operations:
       - Create a standalone invoice
       - Create standalone invoices
@@ -4304,24 +4293,24 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - `invoices` > `invoiceItems`
       - `invoices` > `invoiceItems` > `productRatePlanChargeId`
 
-- [Invoices](/v1-api-reference/api/invoices/) - Made the following updates to the "Reverse an invoice" operation for the support of asynchronous invoice reversal:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Made the following updates to the "Reverse an invoice" operation for the support of asynchronous invoice reversal:
   - Updated the operation description.
   - In the 200 response body, added the following fields:
       - `id`
       - `jobId`
       - `jobStatus`
 
-- [Operations](/v1-api-reference/api/operations/) - Made the following updates to the "Retrieve an operation job" operation for the support of asynchronous invoice reversal:
+- [Operations](/v1-api-reference/api/operations/post_billingpreview) - Made the following updates to the "Retrieve an operation job" operation for the support of asynchronous invoice reversal:
   - Updated the operation description.
   - In the 200 response body, added the `Reverse` enum value to the `operationType` field.
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/)- Added the following operations:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos)- Added the following operations:
   - Unapply a credit memo asynchronously
   - Apply a credit memo aysnchronously
   - Retrieve an async unapply credit memo job by ID
   - Retrieve an async apply credit memo job by ID
 
-- [Notifications](/v1-api-reference/api/notifications/) - Added the following operations:
+- [Notifications](/v1-api-reference/api/notifications/post_create_notification_definition) - Added the following operations:
   - Create or update reusable blocks
   - Create a reusable block
   - List reusable blocks
@@ -4352,26 +4341,26 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q2.0.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Accounts](/v1-api-reference/api/accounts/) - Made the following updates:
+- [Accounts](/v1-api-reference/api/accounts/post_account) - Made the following updates:
   - In the request body of each of the following operations, added the `gatewayRoutingEligible` field:
       - Create an account
       - Update an account
 
   - In the 200 response body of the "Retrieve an account" operation, added the `gatewayRoutingEligible` field.
 
-- [Subscriptions](/v1-api-reference/api/subscriptions/) - In the 200 response body of the "Preview a subscription by subscription key" operation, added the following fields:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - In the 200 response body of the "Preview a subscription by subscription key" operation, added the following fields:
   - `invoices` > `invoiceItems` > `discountDetails` > `discountChargeName`
   - `creditMemos` > `creditMemoItems` > `discountDetails` > `discountChargeName`
 
-- [Sign Up](/v1-api-reference/api/sign-up/) - In the request body of the "Sign up" operation, added the `accountData` > `organizationLabel` field.
+- [Sign Up](/v1-api-reference/api/sign-up/post_signup) - In the request body of the "Sign up" operation, added the `accountData` > `organizationLabel` field.
 
-- [Operations](/v1-api-reference/api/operations/) - In the request body of the "Export bulk PDF files" operation, added the `persistIndexFile` field.
+- [Operations](/v1-api-reference/api/operations/post_billingpreview) - In the request body of the "Export bulk PDF files" operation, added the `persistIndexFile` field.
 
-- [Invoices](/v1-api-reference/api/invoices/) - In the response body of each of the following operations, updated the description of the `einvoiceStatus` field and added the `ApprovedByAuthority` and `Rejected` enum values to this field:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - In the response body of each of the following operations, updated the description of the `einvoiceStatus` field and added the `ApprovedByAuthority` and `Rejected` enum values to this field:
   - Create a standalone invoice
   - Retrieve an invoice
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - In the response body of each of the following operations, updated the description of the `einvoiceStatus` field of the Credit Memo object and added the `ApprovedByAuthority` and `Rejected` enum values to this field:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - In the response body of each of the following operations, updated the description of the `einvoiceStatus` field of the Credit Memo object and added the `ApprovedByAuthority` and `Rejected` enum values to this field:
   - Apply a credit memo
   - Cancel a credit memo
   - Post a credit memo
@@ -4382,7 +4371,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - Create a credit memo from a charge
   - List credit memos
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - In the response body of each of the following operations, updated the description of the `einvoiceStatus` field of the Debit Memo object and added the `ApprovedByAuthority` and `Rejected` enum values to this field:
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - In the response body of each of the following operations, updated the description of the `einvoiceStatus` field of the Debit Memo object and added the `ApprovedByAuthority` and `Rejected` enum values to this field:
   - Cancel a debit memo
   - Post a debit memo
   - Unpost a debit memo
@@ -4392,7 +4381,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - Create a debit memo from a charge
   - List debit memos
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - In the response body of each of the following operations, updated the description of the `einvoiceStatus` field and added the `ApprovedByAuthority` and `Rejected` enum values to this field:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - In the response body of each of the following operations, updated the description of the `einvoiceStatus` field and added the `ApprovedByAuthority` and `Rejected` enum values to this field:
     - Retrieve a credit memo
     - List credit memos
     - Retrieve a debit memo
@@ -4400,7 +4389,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
     - Retrieve an invoice
     - List invoices
 
-- [Meters](/v1-api-reference/api/meters/) - Added the following operations:
+- [Meters](/v1-api-reference/api/meters/runspecificversionofmeter) - Added the following operations:
   - Bulk delete events from an event store
   - Retrieve the latest query job of a specific event store
 
@@ -4473,7 +4462,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q2.0.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Meters](/v1-api-reference/api/meters/) - Added a "Meters" section that contains the following operations:
+- [Meters](/v1-api-reference/api/meters/runspecificversionofmeter) - Added a "Meters" section that contains the following operations:
   - Run a meter
   - Run a specific version of a meter
   - Test a specific version of a meter
@@ -4484,24 +4473,24 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - Ingest usage events for a meter
 
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In each of the following operations, added the `summarizeInvoiceItem` query parameter:
       - Preview an order
       - Preview an order asynchronously
 
   - In the 200 response body of the "Preview an order" operation, added the `previewResult` > `invoices` > `invoiceItemSummary` field.
 
-- [Invoice Schedules](/v1-api-reference/api/invoice-schedules/) - Added the following operations:
+- [Invoice Schedules](/v1-api-reference/api/invoice-schedules/post_createinvoiceschedule) - Added the following operations:
   - Detach charges from an invoice schedule
   - Attach charges to an invoice schedule
 
-- [Invoices](/v1-api-reference/api/invoices/) - Added an operation called "Sync the e-Invoice status of an invoice".
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Added an operation called "Sync the e-Invoice status of an invoice".
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - Added an operation called "Update the e-Invoice status of a credit memo".
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Added an operation called "Update the e-Invoice status of a credit memo".
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - Added an operation called "Update the e-Invoice status of a debit memo".
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Added an operation called "Update the e-Invoice status of a debit memo".
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Added the following operations:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Added the following operations:
   - List invoice schedules
   - Retrieve an invoice schedule
 
@@ -4526,7 +4515,7 @@ This section lists operations and fields that were added, changed, or removed.
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q1.2.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
 
-- [Orders](/v1-api-reference/api/orders/) - In the request body of each of the following operations, updated the description of each of the `existingAccountNumber` and `subscriptions` fields:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations, updated the description of each of the `existingAccountNumber` and `subscriptions` fields:
   - Preview an order
   - Preview an order asynchronously
   - Create an order
@@ -4534,7 +4523,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - Update an order
 
 
-- [Settings](/v1-api-reference/api/settings/) - Made the following updates:
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Made the following updates:
   - Added the `calloutTemplate` parameter to the `AuditTrailSettings` setting.
   - Updated the `segmentConstantValues` parameter in each of the following settings to add the support of the `null` value:
       - `ChartOfAccounts`
@@ -4609,7 +4598,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q1.1.1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Invoices](/v1-api-reference/api/invoices/) - In the response body of the "Retrieve the PDF file generation status of invoices" operation, made the following updates to the `invoiceFiles > pdfGenerationStatus` field:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - In the response body of the "Retrieve the PDF file generation status of invoices" operation, made the following updates to the `invoiceFiles > pdfGenerationStatus` field:
   - Added the `Archived` enum value.
   - Updated the description of this field to explain the `Obsolete` and `Archived` enum values.
 
@@ -4689,7 +4678,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q1.1.1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Notifications](/v1-api-reference/api/notifications/) - Made the following updates:
+- [Notifications](/v1-api-reference/api/notifications/post_create_notification_definition) - Made the following updates:
   - In the request body of each of the following operations:
       - Create a callout template
       - Update a callout template
@@ -4749,7 +4738,7 @@ This section lists operations and fields that were added, changed, or removed.
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q1.1.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
 
-- [Accounts](/v1-api-reference/api/accounts) - Made the following updates:
+- [Accounts](/v1-api-reference/api/accounts/post_account) - Made the following updates:
   - In the request body of the "Create an account" operation, added the following fields:
       - `customerServiceRepName`
       - `purchaseOrderNumber`
@@ -4760,11 +4749,11 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - `accountVerificationService`
       - `accountVerificationStatus`
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - In the response body of the "Retrieve a payment method" operation, added the following fields:
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - In the response body of the "Retrieve a payment method" operation, added the following fields:
   - `accountVerificationService`
   - `accountVerificationStatus`
 
-- [Object Queries](/v1-api-reference/api/object-queries) - Made the following changes:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following changes:
   - In the response body of the "List payment methods" operation, added the following fields:
       - `data` > `accountVerificationService`
       - `data` > `accountVerificationStatus`
@@ -4772,11 +4761,11 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - `accountVerificationService`
       - `accountVerificationStatus`
 
-- [Billing Documents](/v1-api-reference/api/billing-documents/) - In the request body of the "Generate billing documents by account ID" operation, added the following fields:
+- [Billing Documents](/v1-api-reference/api/billing-documents/get_billingdocuments) - In the request body of the "Generate billing documents by account ID" operation, added the following fields:
   - `includeSubscriptions`
   - `includeOrderLineItems`
 
-- [Bill Run](/v1-api-reference/api/bill-run/) - Made the following updates:
+- [Bill Run](/v1-api-reference/api/bill-run/post_createbillrun) - Made the following updates:
   - In the request and response body of the "Create a bill run" operation, added the following fields:
       - `includeSubscriptions`
       - `includeOrderLineItems`
@@ -4784,12 +4773,12 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - `includeSubscriptions`
       - `includeOrderLineItems`
 
-- [Describe](/v1-api-reference/api/describe/) - In the "Describe an object" operation, made the following updates:
+- [Describe](/v1-api-reference/api/describe/get_describe) - In the "Describe an object" operation, made the following updates:
   - Added the `showRelationships` query parameter.
   - Added the missing 200 response schema.
   - Updated the description of this operation.
 
-- [Settings](/v1-api-reference/api/settings/) - Made the following updates:
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Made the following updates:
   - Added the `usedTheSameTransactionRuleAsDebitMemoItem` parameter to the `AllRevenueRecognitionRules` setting.
   - Added support for the GET, PUT, and DELETE methods to the `TaxEngines` setting.
   - Added support for the POST method to the `AllTaxEngines` setting.
@@ -4911,13 +4900,13 @@ The following items are the API updates for the renaming of endpoints in the "Pa
 
 #### Other API updates
 
-- [Payments](/v1-api-reference/api/payments/) - In the request body of the "Refund a payment with auto-unapplying" operation, added the `writeOffOptions` > `taxAutoCalculation` field.
+- [Payments](/v1-api-reference/api/payments/get_retrieveallpayments) - In the request body of the "Refund a payment with auto-unapplying" operation, added the `writeOffOptions` > `taxAutoCalculation` field.
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - In the request body of the "Write off a debit memo" operation, added the `taxAutoCalculation` field.
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - In the request body of the "Write off a debit memo" operation, added the `taxAutoCalculation` field.
 
-- [Invoices](/v1-api-reference/api/invoices/) - In the request body of the "Write off an invoice" operation, added the `taxAutoCalculation` field.
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - In the request body of the "Write off an invoice" operation, added the `taxAutoCalculation` field.
 
-- [Settings](/v1-api-reference/api/settings/) - Made the following updates:
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Made the following updates:
   - Added the `createJournalEntriesForPendingPayments` parameter to the `AccountingRules` setting.
   - Added the `segmentConstantValues` parameter to each of the following settings:
       - `ChartOfAccounts`
@@ -4982,16 +4971,16 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 #### API updates for System Health enhancements
 
-- [Tax Health](/v1-api-reference/api/tax-health/) -  Added a "Tax Health" section that contains the following operation:
+- [Tax Health](/v1-api-reference/api/tax-health/getsystemhealthtaxrecords) -  Added a "Tax Health" section that contains the following operation:
   - List tax system health records
 
-- [API Health](/v1-api-reference/api/api-health/) - Added the "List API usage detail records" operation.
+- [API Health](/v1-api-reference/api/api-health/get_systemhealthapivolumesummary) - Added the "List API usage detail records" operation.
 
-- [Electronic Payments Health](/v1-api-reference/api/electronic-payments-health/) - Added the "List payment system health records" operation.
+- [Electronic Payments Health](/v1-api-reference/api/electronic-payments-health/get_systemhealthpaymentvolumesummary) - Added the "List payment system health records" operation.
 
 #### Other API updates
 
-- [Payments](/v1-api-reference/api/payments/) - For the "Refund a payment with auto-unapplying" operation, made the following updates:
+- [Payments](/v1-api-reference/api/payments/get_retrieveallpayments) - For the "Refund a payment with auto-unapplying" operation, made the following updates:
   - In the description of this operation, added a note to clarify the availability permission required to use this operation.
   - In the request body, updated the description of the `debitMemos` > `debitMemoId` and `invoices` > `invoiceId` fields.
 
@@ -5051,7 +5040,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 #### API updates for Data Loader feature
 
-- [Bulk Jobs](/v1-api-reference/api/bulk-data) - Added a "Bulk Jobs" section that contains the following operations:
+- [Bulk Jobs](/v1-api-reference/api/bulk-data/createbulkjob) - Added a "Bulk Jobs" section that contains the following operations:
   - Create a bulk job
   - Submit a bulk job for processing
   - Retrieve the summary of a bulk job
@@ -5064,14 +5053,14 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 #### Other API updates
 
-- [Invoices](/v1-api-reference/api/invoices/) - Made the following updates:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Made the following updates:
   - In the response body of each of the following operations, updated the description of the `einvoiceStatus` field and added the `ConditionalSuccess` enum value:
       - Create a standalone invoice
       - Retrieve an invoice
 
   - In the response body of the "Create standalone invoices" operation, updated the description of the `invoices` > `einvoiceStatus` field and added the `ConditionalSuccess` enum value.
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - Made the following updates:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Made the following updates:
   - In the response body of each of the following operations, updated the description of the `memos` > `einvoiceStatus` field and added the `ConditionalSuccess` enum value:
       - Create credit memos
       - Update credit memos
@@ -5089,7 +5078,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
   - In the response body of the "List credit memos" operation, updated the description of the `creditmemos` > `einvoiceStatus` field and added the `ConditionalSuccess` enum value.
 
--  [Debit Memos](/v1-api-reference/api/debit-memos/) - Made the following updates:
+-  [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Made the following updates:
   - In the response body of each of the following operations, updated the description of the `memos` > `einvoiceStatus` field and added the `ConditionalSuccess` enum value:
       - Create debit memos
       - Update debit memos
@@ -5107,12 +5096,12 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - In the response body of the "List debit memos" operation, updated the description of the `debitmemos` > `einvoiceStatus` field and added the `ConditionalSuccess` enum value.
 
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - In the request body of the "Create an Apple Pay payment method" operation, updated the description of each of the following fields for the newly introduced support for Worldpay 1.4 payment gateway integrations:
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - In the request body of the "Create an Apple Pay payment method" operation, updated the description of each of the following fields for the newly introduced support for Worldpay 1.4 payment gateway integrations:
   - `mitConsentAgreementSrc`
   - `mitProfileAction`
   - `mitProfileType`
 
-- [Accounting Periods](/v1-api-reference/api/accounting-periods/) - In the "Retrieve an accounting period" operation, added the `fileIds` > `accountsReceivableDebitMemoAgingDetailExportFileId` field to the response body and updated the corresponding sample code.
+- [Accounting Periods](/v1-api-reference/api/accounting-periods/get_allaccountingperiods) - In the "Retrieve an accounting period" operation, added the `fileIds` > `accountsReceivableDebitMemoAgingDetailExportFileId` field to the response body and updated the corresponding sample code.
 
 
 
@@ -5161,19 +5150,19 @@ The following items are the API updates for the renaming of endpoints in the "Bi
   - From `debitmemos` to `debit-memos`
   - From `taxationitems` to `taxation-items`
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - Made the following updates:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Made the following updates:
   - Updated the endpoint of the "Generate an e-invoice file for a credit memo" operation from `/v1/creditmemos/{creditMemoKey}/einvoice/generate` to `/v1/credit-memos/{creditMemoKey}/e-invoice/generate`.
   - Updated the endpoint of the "Refund a credit memo" operation from `/v1/creditmemos/{creditMemoKey}/refunds` to `/v1/credit-memos/{creditMemoKey}/refund`.
   - Updated the endpoint of the "Create a credit memo from an invoice" operation from `/v1/invoices/{invoiceKey}/creditmemos` to `/v1/credit-memos/invoice/{invoiceKey}`.
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - Made the following updates:
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Made the following updates:
   - Updated the endpoint of the "Generate an e-invoice file for a debit memo" operation from `/v1/debitmemos/{debitMemoKey}/einvoice/generate` to `/v1/debit-memos/{debitMemoKey}/e-invoice/generate`.
   - Updated the endpoint of the "Create a debit memo from an invoice" operation from `/v1/invoices/{invoiceKey}/debitmemos` to `/v1/debit-memos/invoice/{invoiceKey}`.
 
 
 #### Other API updates
 
-- [E-Invoicing](/v1-api-reference/api/e-invoicing/) - Made the following updates:
+- [E-Invoicing](/v1-api-reference/api/e-invoicing/get_einvoicingserviceproviders) - Made the following updates:
   - In the request and reponse body of each of the following operations:
       - Create an e-invoicing business region
       - Update an e-invoicing business region
@@ -5192,7 +5181,7 @@ The following items are the API updates for the renaming of endpoints in the "Bi
       - `creditMemoFilters`
       - `debitMemoFilters`
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Made the following updates:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates:
 
   - In each of the following Object Query operations, added the `subscriptionowner` enum value to the `expand[]` query parameter, and the `subscriptionowner` expanded object to the response:
       - List credit memo items
@@ -5211,7 +5200,7 @@ The following items are the API updates for the renaming of endpoints in the "Bi
       - Retrieve a debit memo item
 
 
-- [Notifications](/v1-api-reference/api/notifications/) - Made the following updates:
+- [Notifications](/v1-api-reference/api/notifications/post_create_notification_definition) - Made the following updates:
   - In the request body of each of the following operations, added the `certificate` field:
       - Create a callout template
       - Update a callout template
@@ -5226,7 +5215,7 @@ The following items are the API updates for the renaming of endpoints in the "Bi
   - In the 200 response body of the "List callout templates" operation, added the `data` > `certificate` field.
 
 
-- [Settings](/v1-api-reference/api/settings/) - Added the `invoicePastTermEndWhenChargeEndDateOnOrBeforeTermEndDate` parameter to the `BillingRules` setting.
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Added the `invoicePastTermEndWhenChargeEndDateOnOrBeforeTermEndDate` parameter to the `BillingRules` setting.
 
   See [200 response sample in JSON format](/settings-api/ListAllSettingsResponseSample.json).
 
@@ -5310,7 +5299,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2025.Q1.0.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
 
   - Added the "Delete an order asynchronously" operation.
 
@@ -5430,7 +5419,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
   - Updated the description of the "Preview an order" operation to clarify that you can skip the accounting period validation.
 
-- [Bill Run](/v1-api-reference/api/bill-run/) - Made the following updates:
+- [Bill Run](/v1-api-reference/api/bill-run/post_createbillrun) - Made the following updates:
 
   - Updated the description of the "Create a bill run" operation.
 
@@ -5451,14 +5440,14 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - Updated the description of each of the `billRunFilters` field and its nested field `filterType`.
 
 
-- [Operations](/v1-api-reference/api/operations/) - Made the following updates to the "Export bulk PDF files" operation:
+- [Operations](/v1-api-reference/api/operations/post_billingpreview) - Made the following updates to the "Export bulk PDF files" operation:
   - In the request body, added the `ignoreArchivedFiles` field.
   - Updated the 200 response example.
   - Added a `skippedDocuments` field in the 200 response example.
 
-- [Payment Gateways](/v1-api-reference/api/payment-gateways/) - Added the "Trigger a pre-debit notification" operation.
+- [Payment Gateways](/v1-api-reference/api/payment-gateways/get_paymentgateways) - Added the "Trigger a pre-debit notification" operation.
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - Made the following updates:
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - Made the following updates:
   - In the request body of the "Create a payment method" operation, for the `ACH` payment method type, updated the description of each of the following fields for ACH tokenization support:
       - `bankAccountNumber`
       - `bankAccountMaskNumber`
@@ -5471,7 +5460,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - `mitProfileType`
 
 
-- [Settings](/v1-api-reference/api/settings/) - Added the `rateSetName` parameter to the `FxCurrency` setting.
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Added the `rateSetName` parameter to the `FxCurrency` setting.
 
   See [200 response sample in JSON format](/settings-api/ListAllSettingsResponseSample.json).
 
@@ -5511,7 +5500,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.Q4.0.3</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>
 
-- [Rate Plans](/v1-api-reference/api/rate-plans/) - Updated the description of the "Retrieve a rate plan" operation to clarify that the returned objects may be different since amendment, order, and order action are generated asynchronously.
+- [Rate Plans](/v1-api-reference/api/rate-plans/get_rateplan) - Updated the description of the "Retrieve a rate plan" operation to clarify that the returned objects may be different since amendment, order, and order action are generated asynchronously.
 
 
 ### Doc updates
@@ -5550,11 +5539,11 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of a hotfix released to sandbox on Dec 12, 2024. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Rate Plans](/v1-api-reference/api/rate-plans/) - In the response body of the "Retrieve a rate plan" operation, added the `customFields` nested field to the following fields:
+- [Rate Plans](/v1-api-reference/api/rate-plans/get_rateplan) - In the response body of the "Retrieve a rate plan" operation, added the `customFields` nested field to the following fields:
   - `order` > `orderActions`
   - `amendment`
 
-- [Custom Payment Method Types](/v1-api-reference/api/custom-payment-method-types/) - In the request body of each of the following operations, added the `isSupportAsyncPayment` field:
+- [Custom Payment Method Types](/v1-api-reference/api/custom-payment-method-types/post_createdraftopenpaymentmethodtype) - In the request body of each of the following operations, added the `isSupportAsyncPayment` field:
   - Create a draft custom payment method type
   - Update a custom payment method type
 
@@ -5595,7 +5584,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 #### API updates for deprecation of `overageRatedQuantity` and `overageRatedAmount` fields of Validity Period Summary object
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Made the following updates:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates:
 
   - In the 200 response body of the "List prepaid balance funds" operation, added a deprecation note for each of the following fields:
       - `data` > `vpSummary` > `overageRatedAmount`
@@ -5615,9 +5604,9 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 #### Other API updates
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - In the request body of the "Create a payment session" operation, updated the description of the `accountId` field for a system behavior change.
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - In the request body of the "Create a payment session" operation, updated the description of the `accountId` field for a system behavior change.
 
-- [Custom Object Definitions](/v1-api-reference/api/custom-object-definitions/) - Updated the description of the "Update a custom object definition" operation to add a note about the bulk deletion of custom fields being temporarily unavailable.
+- [Custom Object Definitions](/v1-api-reference/api/custom-object-definitions/post_customobjectdefinitions) - Updated the description of the "Update a custom object definition" operation to add a note about the bulk deletion of custom fields being temporarily unavailable.
 
 
 
@@ -5794,7 +5783,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.Q4.0.1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Custom Exchange Rates](/v1-api-reference/api/custom-exchange-rates/) - In the "List custom exchange rates by currency" operation, added the `rateSetName` field to the response body and updated the corresponding sample code.
+- [Custom Exchange Rates](/v1-api-reference/api/custom-exchange-rates/get_customexchangerates) - In the "List custom exchange rates by currency" operation, added the `rateSetName` field to the response body and updated the corresponding sample code.
 
 
 ### Doc updates
@@ -5826,7 +5815,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.Q4.0.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Orders](/v1-api-reference/api/orders/) - In the request body of each of the following operations, added the `paymentOptions` nested field to the `subscriptions` > `orderActions` > `createSubscription` field:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations, added the `paymentOptions` nested field to the `subscriptions` > `orderActions` > `createSubscription` field:
   - Create an order
   - Create an order asynchronously
   - Update an order
@@ -5913,13 +5902,13 @@ This section lists operations and fields that were added, changed, or removed.
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.Q4.0.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
 
-- [Omnichannel Subscriptions](/v1-api-reference/api/omnichannel-subscriptions/) - Added the "Omnichannel Subscriptions" section that contains the following operations:
+- [Omnichannel Subscriptions](/v1-api-reference/api/omnichannel-subscriptions/postomnichannelsubscription) - Added the "Omnichannel Subscriptions" section that contains the following operations:
   - Create an omnichannel subscription
   - Retrieve an omnichannel subscription
   - Delete an omnichannel subscription
 
 
-- [Payment Schedules](/v1-api-reference/api/payment-schedules/) - Made the following updates:
+- [Payment Schedules](/v1-api-reference/api/payment-schedules/post_retrypaymentscheduleitem) - Made the following updates:
 
   - Added the following operations:
       - Delete a payment schedule item
@@ -5938,7 +5927,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - In the request body, updated the description of the `items` > ` currency` field for multi-currency characeteristics.
 
 
-- [Custom Object Definitions](/v1-api-reference/api/custom-object-definitions/) - Made the following updates:
+- [Custom Object Definitions](/v1-api-reference/api/custom-object-definitions/post_customobjectdefinitions) - Made the following updates:
   - In the request body of the "Create custom object definitions" operation, added the following fields:
       - `definitions` > _`property name*`_ > `masked`
       - `definitions` > _`property name*`_ > `properties` > _`property name*`_ > `maskedFieldLength`
@@ -5959,7 +5948,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - `schema` > `masked`
       - `schema` > `properties` > _`property name*`_ > `maskedFieldLength`
 
-- [Settings](/v1-api-reference/api/settings/) - Added the `stackedDiscountClassApplyRule` parameter to the `BillingRules` setting.
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Added the `stackedDiscountClassApplyRule` parameter to the `BillingRules` setting.
 
   See [200 response sample in JSON format](/settings-api/ListAllSettingsResponseSample.json).
 
@@ -5991,7 +5980,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.Q4.0.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Invoices](/v1-api-reference/api/invoices/) - Made the following updates:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Made the following updates:
   - In the request body of the "Reverse an invoice" operation, added the following fields:
       - `comment`
       - `reasonCode`
@@ -6002,7 +5991,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
   - In the request body of each of the "Update an invoice" and "Update invoices" operations, updated the description of the `invoices` > `invoiceItems` > `id` field for better clarity.
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - Made the following updates:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Made the following updates:
   - In the request body of the "Reverse a credit memo" operation, added the following fields:
       - `comment`
       - `reasonCode`
@@ -6013,7 +6002,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
   - In the request body of each of the "Update a credit memo" and "Update credit memos" operations, changed the `memos` > `items` > `id` field from required to optional and updated the field description for better clarity.
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - Made the following updates:
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Made the following updates:
   - In the request body of each of the "Update a debit memo" and "Update debit memos" operations, added the following fields:
       - `memos` > `items` > `delete`
       - `memos` > `items` > `productRatePlanChargeId`
@@ -6029,17 +6018,17 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - `soldToContactSnapshotId`
 
 
-- [Summary Statements](/v1-api-reference/api/summary-statements/) - Added a "Summary Statements" section that contains the following operation:
+- [Summary Statements](/v1-api-reference/api/summary-statements/createsummarystatementrun) - Added a "Summary Statements" section that contains the following operation:
   - Create a summary statement run
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Added the following operations:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Added the following operations:
   - List summary statement runs
   - Retrieve a summary statement run
   - List summary statements
   - Retrieve a summary statement
 
 
-- [Notifications](/v1-api-reference/api/notifications/) - Made the following updates:
+- [Notifications](/v1-api-reference/api/notifications/post_create_notification_definition) - Made the following updates:
   - In the request body of each of the following operations:
       - Create a notification definition
       - Update a notification definition
@@ -6143,12 +6132,12 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.Q4.0.0</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Product Rate Plan Charges](/v1-api-reference/api/product-rate-plan-charges/) - Made the following updates:
+- [Product Rate Plan Charges](/v1-api-reference/api/product-rate-plan-charges/get_retrieveproductrateplancharge) - Made the following updates:
   - In the request body of the "CRUD: Create a product rate plan charge" operation, added the `ReflectDiscountInNetAmount` field.
   - In the 200 response body of the "CRUD: Retrieve a product rate plan charge" operation, added the `ReflectDiscountInNetAmount` field.
   - In the 200 response body of the "Retrieve a product rate plan charge" operation, added the `reflectDiscountInNetAmount` field.
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of the "Create an order" operation, added the following nested fields to the `subscriptions` > `orderActions` > `termsAndConditions` field:
       - `scheduledCancelDate`
       - `scheduledSuspendDate`
@@ -6177,7 +6166,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - In the request body of the "Revert an order" operation, added the `orderDate` field.
 
 
-- [Subscriptions](/v1-api-reference/api/subscriptions/) - Made the following updates:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Made the following updates:
   - Added a new operation called "List subscriptions metrics by subscription numbers".
 
   - In the response body of each of the following operations:
@@ -6213,7 +6202,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
   - In the response body of the "List subscriptions by account key" operation, added the `originalListPrice` nested field to the `subscriptions` > `ratePlans` > `ratePlanCharges` field.
 
-- [Invoices](/v1-api-reference/api/invoices) - Made the following updates:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Made the following updates:
   - In the 200 response body of the "List all items of an invoice" operation, added the `invoiceItems` > `reflectDiscountInNetAmount` field.
   - Made the following updates to the "Retrieve the PDF file generation status of invoices" operation:
       - Updated the description of the `invoiceKeys` query parameter.
@@ -6224,7 +6213,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - In the response body, removed the `Archived` status from the `invoiceFiles > pdfGenerationStatus` field.
       - Updated the response sample.
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - Made the following updates:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Made the following updates:
   - In the 200 response body of the "List credit memo items" operation, added the `items` > `reflectDiscountInNetAmount` field.
   - In the 200 response body of the "Retrieve a credit memo item" operation, added the `reflectDiscountInNetAmount` field.
   - Made the following updates to the "Retrieve the PDF file generation status of credit memos" operation:
@@ -6236,7 +6225,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - In the response body, removed the `Archived` status from the `creditMemoFiles > pdfGenerationStatus` field.
       - Updated the response sample.
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - Made the following updates:
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Made the following updates:
   - In the 200 response body of the "List debit memo items" operation, added the `items` > `reflectDiscountInNetAmount` field.
   - In the 200 response body of the "Retrieve a credit memo item" operation, added the `reflectDiscountInNetAmount` field.
   - Made the following updates to the "Retrieve the PDF file generation status of debit memos" operation:
@@ -6248,17 +6237,17 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - In the response body, removed the `Archived` status from the `debitMemoFiles > pdfGenerationStatus` field.
       - Updated the response sample.
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - Made the following updates:
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - Made the following updates:
   - In the request body of the "Update a payment method" operation, added the following fields:
       - `maxConsecutivePaymentFailures`
       - `paymentRetryWindow`
       - `useDefaultRetryRule`
   - In the response body of the "Retrieve a payment method" operation, added the `cardBinInfo` field.
 
-- [Payment Runs](/v1-api-reference/api/payment-runs/) - In the request body and response body of the "Create a payment run" operation, added the `useCustomPaymentMethods` field.
+- [Payment Runs](/v1-api-reference/api/payment-runs/get_paymentruns) - In the request body and response body of the "Create a payment run" operation, added the `useCustomPaymentMethods` field.
 
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Made the following updates:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates:
 
   - Added the `reflectDiscountInNetAmount` field to the Credit Memo Item object. You can access these fields through the following operations:
       - Retrieve a rate plan charge
@@ -6368,7 +6357,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.08.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - Added a "Retrieve the balance of a bank account" operation.
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - Added a "Retrieve the balance of a bank account" operation.
 
 
 ## September 23, 2024
@@ -6389,7 +6378,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.08.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Invoices](/v1-api-reference/api/invoices/) - Made the following updates to the "Retrieve the PDF file generation status of invoices" operation:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Made the following updates to the "Retrieve the PDF file generation status of invoices" operation:
   - Updated the description of the `invoiceKeys` query parameter.
   - In the `invoiceFiles` field of the response body, added the following nested fields:
       - `pdfFileURL`
@@ -6398,7 +6387,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - In the response body, removed the `Archived` status from the `invoiceFiles > pdfGenerationStatus` field.
   - Updated the response sample.
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - Made the following updates to the "Retrieve the PDF file generation status of credit memos" operation:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Made the following updates to the "Retrieve the PDF file generation status of credit memos" operation:
   - Updated the description of the `creditMemoKeys` query parameter.
   - In the `creditMemoFiles` field of the response body, added the following nested fields:
       - `pdfFileURL`
@@ -6407,7 +6396,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - In the response body, removed the `Archived` status from the `creditMemoFiles > pdfGenerationStatus` field.
   - Updated the response sample.
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - Made the following updates to the "Retrieve the PDF file generation status of debit memos" operation:
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Made the following updates to the "Retrieve the PDF file generation status of debit memos" operation:
   - Updated the description of the `debitMemoKeys` query parameter.
   - In the `debitMemoFiles` field of the response body, added the following nested fields:
       - `pdfFileURL`
@@ -6442,7 +6431,7 @@ This section lists operations and fields that were added, changed, or removed.
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.08.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
       - Create an order
       - Create an order asynchronously
@@ -6455,14 +6444,14 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
   - In the request body of the "Update an order" operation, added the `productRatePlanChargeNumber` and `productRatePlanChargeId` nested fields to the `subscriptions` > `orderActions` > `updateProduct` > `chargeUpdates` field.
 
-- [Product Charge Definitions](/v1-api-reference/api/product-charge-definitions/) - In the response body of the "Create product charge definitions" operation, made the following updates:
+- [Product Charge Definitions](/v1-api-reference/api/product-charge-definitions/post_createproductchargedefinition) - In the response body of the "Create product charge definitions" operation, made the following updates:
   - Removed the `productChargeDefinitions` field.
   - Added the following fields:
       - `results`
       - `success`
       - `summary`
 
-- [Settings](/v1-api-reference/api/settings/) - Made the following updates:
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - Made the following updates:
   - Added the `Delivery` enum value to the `chargeModels` parameter of the `ChargeModels` setting.
   - Added the `taxGroupingRule` parameter to the `BillingRules` setting.
 
@@ -6519,7 +6508,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to the Single Version Subscription feature.
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - Added the "Revert an order" operation.
   - In the description of the "Delete an order" operation, updated information about the reverted order.
   - In the response body of each of the following operations, updated the description of the `orders` > `status` field for reverted orders:
@@ -6534,7 +6523,7 @@ The following items are the API updates specific to the Single Version Subscript
   - List change histories of subscriptions by order number
   - Retrieve a change history of a subscription by version
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Made the following updates:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates:
   - In the response body of each of the "List accounts" and "Retrieve an account" operations, updated the description of each of the following fields on the Subscription object to clarify that these fields are not available for single version subscriptions:
       - `subscriptions` > `creatorAccountId`
       - `subscriptions` > `creatorInvoiceOwnerId`
@@ -6591,7 +6580,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following API updates are specific to the enhancements of the <a href="https://docs.zuora.com?resourceId=billing-attributes-for-flexible-billing" target="_blank">flexible billing attributes</a> on the <a href="https://docs.zuora.com?resourceId=billing-order-line-items" target="_blank">order line items</a>.
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations，added the `paymentTerm` and `invoiceTemplateId` nested fields to the `orderLineItems` field:
       - Preview an order
       - Preview an order asynchronously
@@ -6607,7 +6596,7 @@ The following API updates are specific to the enhancements of the <a href="https
 
   - In the response body of the "Retrieve an order" operation, added the `paymentTerm` and `invoiceTemplateId` nested fields to the `order` > `orderLineItems` field.
 
-- [Order Line Items](/v1-api-reference/api/order-line-items) - Made the following updates:
+- [Order Line Items](/v1-api-reference/api/order-line-items/get_orderlineitem) - Made the following updates:
   - In the request body of the "Update order line item" operation，added the `paymentTerm` and `invoiceTemplateId` fields.
 
   - In the request body of the "Update order line items" operation，added the `paymentTerm` and `invoiceTemplateId` nested fields to the `orderLineItems` field.
@@ -6618,7 +6607,7 @@ The following API updates are specific to the enhancements of the <a href="https
 
 The following items are other API updates included in this release:
 
-- [Scim](/v1-api-reference/api/scim/) - Added the "Scim" section that contains the following operations:
+- [Scim](/v1-api-reference/api/scim/getlistgroups) - Added the "Scim" section that contains the following operations:
   - List groups
   - Create a group
   - Bulk create groups
@@ -6643,9 +6632,9 @@ The following items are other API updates included in this release:
   - Delete a user
   - Partially update a user
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - Added a "Write off a debit memo" operation.
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Added a "Write off a debit memo" operation.
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - Made the following updates for a system behavior change for orphan payment methods:
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - Made the following updates for a system behavior change for orphan payment methods:
   - Updated the description of the "Create a payment method" operation.
   - In the request body of the "Create a payment method" operation, updated the description of the `accountKey` field.
   - In the request body of the "Create an Apple Pay payment method" operation, updated the description of the `accountID` field.
@@ -6659,7 +6648,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.08.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [API Health](/v1-api-reference/api/api-health/) - Added a "List API Failure records" operation.
+- [API Health](/v1-api-reference/api/api-health/get_systemhealthapivolumesummary) - Added a "List API Failure records" operation.
 
 
 ### Doc updates
@@ -6710,7 +6699,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.08.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Accounts](/v1-api-reference/api/accounts/) - Made the following updates:
+- [Accounts](/v1-api-reference/api/accounts/post_account) - Made the following updates:
   - In the request body of each of the following operations, added a nested custom field to the `einvoiceProfile` field:
       - Create an account
       - Update an account
@@ -6822,11 +6811,11 @@ This section lists operations and fields that were added, changed, or removed.
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.08.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
 
-- [Accounts](/v1-api-reference/api/accounts/) - In the request body of each of the following operations, added the `summaryStatementTemplateId` field :
+- [Accounts](/v1-api-reference/api/accounts/post_account) - In the request body of each of the following operations, added the `summaryStatementTemplateId` field :
   - Create an account
   - Update an account
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - In the request body of the "Create a payment method" operation, made the following updates for the support of payment method tokenization:
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - In the request body of the "Create a payment method" operation, made the following updates for the support of payment method tokenization:
   - For the `PayPalCP` payment method type, added the following fields:
       - `tokenize`
       - `tokens`
@@ -6876,19 +6865,19 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following API updates are specific to the <a href="https://docs.zuora.com?resourceId=billing-dynamic-usage-charges" target="_blank">Dynamic Usage Charges</a> feature.
 
-- [Usage](/v1-api-reference/api/usage/) - Made the following updates:
+- [Usage](/v1-api-reference/api/usage/post_usage) - Made the following updates:
   - In the request body of the "CRUD: Create a usage record" operation, added the `ProductRatePlanChargeNumber` field.
   - In the response body of the "CRUD: Retrieve a usage record" operation, added the `ProductRatePlanChargeNumber` field.
   - In the response body of the "Retrieve a usage record" operation, added the `usage` > `productRatePlanChargeNumber` field.
   - In the template usage file that is uploaded by the "Upload a usage file" operation, added the `PRODUCT_RATE_PLAN_CHARGE_ID` column.
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Added the `productRatePlanChargeId` field to the Usage Record object. You can access this field through the following Object Queries operations:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Added the `productRatePlanChargeId` field to the Usage Record object. You can access this field through the following Object Queries operations:
   - Retrieve a usage record
   - List usage records
   - Retrieve an account
   - List accounts
 
-- [Regenerate](/v1-api-reference/api/regenerate/) - In the request body of the "Regenerate booking transactions" operation, made the following updates:
+- [Regenerate](/v1-api-reference/api/regenerate/post_regeneratebookingtransaction) - In the request body of the "Regenerate booking transactions" operation, made the following updates:
   - Added the `ratePlanChargeId` field
   - Added the `chargeNumber` field
   - Added the `DynamicUsageCharge` enum value to the `type` field
@@ -6898,7 +6887,7 @@ The following API updates are specific to the <a href="https://docs.zuora.com?re
 
 The following API updates are specific to the enhancements of the <a href="https://docs.zuora.com?resourceId=billing-charge-level-proration-option-for-a-recurring-charge" target="_blank">Charge Level Proration</a> feature.
 
-- [Orders](/v1-api-reference/api/orders/) - In the request body of each of the following operations:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations:
   - Create an order
   - Create an order asynchronously
   - Update an order
@@ -6975,13 +6964,13 @@ The following API updates are specific to the enhancements of the <a href="https
 
 The following items are other API updates included in this release:
 
-- [Orders](/v1-api-reference/api/orders/) - In the request body of each of the following operations, updated the description of the `subscriptions` field for the support of creating an order that contains multiple subscriptions with different invoice owner accounts:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations, updated the description of the `subscriptions` field for the support of creating an order that contains multiple subscriptions with different invoice owner accounts:
   - Create an order
   - Create an order asynchronously
 
-- [Operations](/v1-api-reference/api/operations/) - In the request body of the "Export bulk PDF files" operation, added the `FailedDocuments` field.
+- [Operations](/v1-api-reference/api/operations/post_billingpreview) - In the request body of the "Export bulk PDF files" operation, added the `FailedDocuments` field.
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - In the request body of the "Create a payment method" operation, made the following updates for the support of payment method tokenization:
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - In the request body of the "Create a payment method" operation, made the following updates for the support of payment method tokenization:
   - For the `ACH` payment method type, made the following changes:
       - Added the `tokenize` field.
       - Updated the description of the `bankName` field.
@@ -7129,17 +7118,17 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.07.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - In the request body of each of the following operations, updated the description of the `customRates` field for a behavior change:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - In the request body of each of the following operations, updated the description of the `customRates` field for a behavior change:
   - Create a credit memo from a charge
   - Refund a credit memo
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - In the request body of the "Create a debit memo from a charge" operation, updated the description of the `customRates` field for a behavior change.
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - In the request body of the "Create a debit memo from a charge" operation, updated the description of the `customRates` field for a behavior change.
 
-- [Invoices](/v1-api-reference/api/invoices/) - In the request body of each of the following operations, updated the description of the `customRates` field of the Invoice object for a behavior change:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - In the request body of each of the following operations, updated the description of the `customRates` field of the Invoice object for a behavior change:
   - Create a standalone invoice
   - Create standalone invoices
 
-- [Payments](/v1-api-reference/api/payments/) - In the request body of each of the following operations, updated the description of the `customRates` field for a behavior change:
+- [Payments](/v1-api-reference/api/payments/get_retrieveallpayments) - In the request body of each of the following operations, updated the description of the `customRates` field for a behavior change:
   - Create a payment
   - Refund a payment
 
@@ -7205,7 +7194,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.07.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Settings](/v1-api-reference/api/settings) - For each of the following settings:
+- [Settings](/v1-api-reference/api/settings/post_processsettingsbatchrequest) - For each of the following settings:
   - `AllTaxEngines`
   - `CreateGlobalTaxHubTaxEngine`
   - `GlobalTaxHubTaxEngine`
@@ -7317,7 +7306,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.07.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Notifications](/v1-api-reference/api/notifications/) - Added the following operations:
+- [Notifications](/v1-api-reference/api/notifications/post_create_notification_definition) - Added the following operations:
   - Create or update callout templates
   - Create a callout template
   - List callout templates
@@ -7345,7 +7334,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.07.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - In the request body of the "Create a payment session" operation, made the following updates for support of Payment Form implementation:
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - In the request body of the "Create a payment session" operation, made the following updates for support of Payment Form implementation:
   - Added the following fields:
       - `storePaymentMethod`
       - `invoices`
@@ -7375,7 +7364,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to the enhancements of the Standalone Orders feature.
 
-- [Orders](/v1-api-reference/api/orders/) - In the request body of each of the following operations:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations:
   - Create an order
   - Create an order asynchronously
   - Update an order
@@ -7393,11 +7382,11 @@ The following items are the API updates specific to the enhancements of the Stan
 
 #### API updates for availability permission change in Advanced Consumption Billing feature
 
-- [Usage](/v1-api-reference/api/usage/) - Made the following updates:
+- [Usage](/v1-api-reference/api/usage/post_usage) - Made the following updates:
   - In the request body of the "CRUD: Create a usage record" operation, changed the availability permission required to use the `UniqueKey` field.
   - In the response body of the "Retrieve a usage record" operation, changed the availability permission required to use the `usage` > `uniqueKey` field.
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Changed the availability permission required to use the `uniqueKey` field of the Usage Record object. You can access this field through the following operations:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Changed the availability permission required to use the `uniqueKey` field of the Usage Record object. You can access this field through the following operations:
   - Retrieve a usage record
   - List usage records
   - Retrieve an account
@@ -7407,7 +7396,7 @@ The following items are the API updates specific to the enhancements of the Stan
 
 The following items are specific to the <a href="https://docs.zuora.com?resourceId=payments-payment-schedules" target="_blank">Payment Schedules</a> feature:
 
-- [Payment Schedules](/v1-api-reference/api/payment-schedules/) - Made the following updates:
+- [Payment Schedules](/v1-api-reference/api/payment-schedules/post_retrypaymentscheduleitem) - Made the following updates:
 
   - In the request body of the "Create a payment schedule" operations, added the `billingDocuments` field.
 
@@ -7423,19 +7412,19 @@ The following items are specific to the <a href="https://docs.zuora.com?resource
 
 The following items are other API updates included in this release:
 
-- [Orders](/v1-api-reference/api/orders) - In the request body of each of the following operations, added the `processingOptions` > `electronicPaymentOptions` > `gatewayOptions` nested field:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations, added the `processingOptions` > `electronicPaymentOptions` > `gatewayOptions` nested field:
   - Create an order
   - Create an order asynchronously
   - Update an order
 
 
-- [Payment Authorization](/v1-api-reference/api/payment-authorization/) - In the request body of the "Cancel authorization" operation, updated the description of each of the following fields for a system behavior change:
+- [Payment Authorization](/v1-api-reference/api/payment-authorization/post_createauthorization) - In the request body of the "Cancel authorization" operation, updated the description of each of the following fields for a system behavior change:
   - `accountId`
   - `accountNumber`
   - `paymentGatewayId`
 
 
-- [Payment Profiles](/v1-api-reference/api/payment-profiles/) - Added the "Payment Profiles" section that contains the following operation:
+- [Payment Profiles](/v1-api-reference/api/payment-profiles/upsertpaymentprofiles) - Added the "Payment Profiles" section that contains the following operation:
   - Create or update payment profiles in bulk
 
 ### Doc updates
@@ -7472,18 +7461,18 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to <a href="https://docs.zuora.com?resourceId=payments-create-tokenized-payment-methods" target="_blank">payment method tokenization</a> on certain integrations requested through the <a href="https://docs.zuora.com?resourceId=payments-specialized-payment-connections" target="_blank">Specialized Payment Connections</a> service.
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - In the request body of the "Create a payment method" operation, added the following fields for the `CreditCard` payment method type:
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - In the request body of the "Create a payment method" operation, added the following fields for the `CreditCard` payment method type:
   - `cardMaskNumber`
   - `tokenize`
   - `tokens`
 
-- [Accounts](/v1-api-reference/api/accounts) - In the request body of the "Create an account" operation, added the following fields for the `CreditCard` payment method type:
+- [Accounts](/v1-api-reference/api/accounts/post_account) - In the request body of the "Create an account" operation, added the following fields for the `CreditCard` payment method type:
   - `paymentMethod` > `cardMaskNumber`
   - `paymentMethod` > `tokenize`
   - `paymentMethod` > `tokens`
 
 
-- [Orders](/v1-api-reference/api/orders) - In the request body of each of the following operations:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations:
   - Create an order
   - Create an order asynchronously
 
@@ -7567,7 +7556,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to the <a href="https://docs.zuora.com?resourceId=billing-e-invoicing-overview" target="_blank">E-Invoicing</a> feature.
 
-- [E-Invoicing](/v1-api-reference/api/e-invoicing/) - Made the following updates:
+- [E-Invoicing](/v1-api-reference/api/e-invoicing/get_einvoicingserviceproviders) - Made the following updates:
 
   - In the request body of the "Create an e-invoicing business region" operation, added the following fields:
       - `processType`
@@ -7622,14 +7611,14 @@ The following items are the API updates specific to the <a href="https://docs.zu
 
 #### Other API updates
 
-- [Subscriptions](/v1-api-reference/api/subscriptions/) - Made the following updates:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Made the following updates:
   - In the response body of each of the following operations, added the `salesPrice` nested field to the `ratePlans` > `ratePlanCharges` field:
       - Retrieve a subscription by key
       - Retrieve a subscription by key and version
 
   - In the response body of the "List subscriptions by account key" operation, added the `salesPrice` nested field to the `subscriptions` > `ratePlans` > `ratePlanCharges` field.
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Made the following updates:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates:
   - Added the `salesPrice` field to the Rate Plan Charge object. You can access this field through the following operations:
       - Retrieve a rate plan
       - List rate plans
@@ -7650,7 +7639,7 @@ The following items are the API updates specific to the <a href="https://docs.zu
       - Retrieve a subscription
       - List subscriptions
 
-- [Notifications](/v1-api-reference/api/notifications/) - Made the following updates:
+- [Notifications](/v1-api-reference/api/notifications/post_create_notification_definition) - Made the following updates:
   - In the request body and 200 response body of each of the following operations, added the `PATCH` enum value to the `callout` > `httpMethod` field:
       - Create a notification definition
       - Update a notification definition
@@ -7688,18 +7677,18 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to the new API versioning scheme.
 
-- Moved the "API Verisons" section from this API Reference to a separate page called [API versions](/v1-api-reference/api-versions/).
+- Moved the "API Verisons" section from this API Reference to a separate page called [API versions](/v1-api-reference/api-versions).
 
-- Removed all version-controlled fields that are not available in the latest minor verison, `2024-05-20`. For details about the fields are no longer available, see [API upgrades](/v1-api-reference/api-upgrades/).
+- Removed all version-controlled fields that are not available in the latest minor verison, `2024-05-20`. For details about the fields are no longer available, see [API upgrades](/v1-api-reference/api-upgrades).
 
-- Updated the description for each of the version-controlled fields that are available in the latest minor verison, `2024-05-20`. For details about the available version-controlled fields, see [API upgrades](/v1-api-reference/api-upgrades/).
+- Updated the description for each of the version-controlled fields that are available in the latest minor verison, `2024-05-20`. For details about the available version-controlled fields, see [API upgrades](/v1-api-reference/api-upgrades).
 
-- Added the 4XX and 500 responses to each of the operations with an endpoint prefixed with `/v1`, except for [Actions](/v1-api-reference/api/actions/) and CRUD operations.
+- Added the 4XX and 500 responses to each of the operations with an endpoint prefixed with `/v1`, except for [Actions](/v1-api-reference/api/actions/action_postcreate) and CRUD operations.
 
 
 For more information about the new API versioning scheme, see the following pages:
 
-- [API upgrade guide](/v1-api-reference/api-upgrade-guide/)
+- [API upgrade guide](/v1-api-reference/api-upgrade-guide)
 - [Release note: New Zuora v1 API versioning scheme](https://docs.zuora.com?resourceId=previous-release-notes)
 - [Community post: Announcing a new API versioning scheme](https://community.zuora.com/discussion/announcing-a-new-api-versioning-scheme)
 
@@ -7707,9 +7696,9 @@ For more information about the new API versioning scheme, see the following page
 
 The following items are other API updates included in this release:
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - Updated the description of the "List all application parts of a debit memo" operation.
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Updated the description of the "List all application parts of a debit memo" operation.
 
-- [Data Backfill](/v1-api-reference/api/data-backfill/) - Made the following updates:
+- [Data Backfill](/v1-api-reference/api/data-backfill/post_createbookingdatebackfilljob) - Made the following updates:
 
   - Added the following operations:
       - Create an auto backfill job
@@ -7768,7 +7757,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to the enhancements of the Standalone Orders feature.
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following changes to support using a standalone order to create a Minimum Commitment subscription:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following changes to support using a standalone order to create a Minimum Commitment subscription:
   - In the request body of each of the following operations:
       - Create an order
       - Create an order asynchronously
@@ -7837,14 +7826,14 @@ The following items are the API updates specific to the enhancements of the Stan
 
 The following items are the API updates for the retrieving account owner details from orders or subscriptions use case.
 
-- [Orders](/v1-api-reference/api/orders) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of the "Retrieve an order" operation,  added the `getAccountDetails` query parameter.
   - In the response body of the "Retrieve an order" operation, made the following changes:
       - Added the `existingAccountDetails` nested field to the `order` field.
       - Added the `subscriptionOwnerAccountDetails` nested field to the `order` > `subscriptions` field.
   - In the response body of the “Create an order” operation,  added the `subscriptionOwnerNumber` and `subscriptionOwnerID` fields.
 
-- [Subscriptions](/v1-api-reference/api/subscriptions) - Made the following updates:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Made the following updates:
   - In the request body of the "Retrieve a subscription by key" operation, added the `getSubscriptionOwnerDetails` and `getInvoiceOwnerDetails` query parameters.
   - In the response body of the "Retrieve a subscription by key" operation, made the following changes:
       - Added the `accountOwnerDetails` and `invoiceOwnerAccountDetails` fields.
@@ -7856,11 +7845,11 @@ The following items are the API updates for the retrieving account owner details
 
 The following items are other API updates included in this release:
 
-- [Files](/v1-api-reference/api/files) - Added the following operations:
+- [Files](/v1-api-reference/api/files/get_files) - Added the following operations:
   - Restore a file
   - Retrieve file status
 
-- [Subscriptions](/v1-api-reference/api/subscriptions) - Made the following updates:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Made the following updates:
   - In each of the following operations:
       - Retrieve a subscription by key
       - Retrieve a subscription by key and version
@@ -7894,7 +7883,7 @@ The following items are other API updates included in this release:
       - `subscriptions` > `ratePlans` > `asOfDayNetMrr`
 
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Made the following updates:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Made the following updates:
   - In the "List invoices" and "Retrieve an invoice" operations, added the following enum values to the `expand[]` query parameter:
       - `invoiceitems.subscription`
       - `invoiceitems.subscription.account`
@@ -7906,7 +7895,7 @@ The following items are other API updates included in this release:
       - `debitmemoitems.subscription.account`
 
 
-- [Custom Object Definitions](/v1-api-reference/api/custom-object-definitions/) - Made the following updates to add support for the Long Text custom field type:
+- [Custom Object Definitions](/v1-api-reference/api/custom-object-definitions/post_customobjectdefinitions) - Made the following updates to add support for the Long Text custom field type:
   - Updated the description of the "Create custom object definitions" operation.
 
   - In the request body of the "Create custom object definitions" operation, updated the description of the `definitions` > _`property name*`_ > `properties` > _`property name*`_ > `maxLength` field.
@@ -8015,7 +8004,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 #### API updates for deprecation of the Subscribe and Amend features
 
-- [Subscriptions](/v1-api-reference/api/subscriptions/) - In the description of the "Subscriptions" section and the description of each of the following operations, added a note for the deprecation of the Subscribe and Amend features:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - In the description of the "Subscriptions" section and the description of each of the following operations, added a note for the deprecation of the Subscribe and Amend features:
   - Preview a subscription
   - Preview a subscription by subscription key
   - Create a subscription
@@ -8030,45 +8019,45 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - Delete a subscription by number
   - Update subscription custom fields of a subscription version
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - In the description of each of the following operations, added a note for the deprecation of the Subscribe and Amend features:
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - In the description of each of the following operations, added a note for the deprecation of the Subscribe and Amend features:
   - List amendments
   - Retrieve an amendment
 
 The following changes apply to the Older API Reference:
 
-- [Subscriptions](/api-references/older-api/tag/Subscriptions/) - In the description of the "Subscriptions" section and the description of each of the following operations, added a note for the deprecation of the Subscribe and Amend features:
+- [Subscriptions](/v1-api-reference/older-api/subscriptions/object_getsubscription) - In the description of the "Subscriptions" section and the description of each of the following operations, added a note for the deprecation of the Subscribe and Amend features:
   - CRUD: Retrieve a subscription
   - CRUD: Update a subscription
   - CRUD: Delete a subscription
 
-- [Amendments](/api-references/older-api/tag/Amendments/) - In the description of the "Amendments" section and the description of each of the following operations, added a note for the deprecation of the Subscribe and Amend features:
+- [Amendments](/v1-api-reference/older-api/amendments/get_amendmentsbykey) - In the description of the "Amendments" section and the description of each of the following operations, added a note for the deprecation of the Subscribe and Amend features:
   - Retrieve an amendment
   - Retrieve the last amendment of a subscription
   - CRUD: Retrieve an amendment
   - CRUD: Update an amendment
   - CRUD: Delete an amendment
 
-- [Subscription Product Features](/api-references/older-api/tag/Subscription-Product-Features/) - In the description of the "Subscription Product Features" section and the description of each of the following operations, added a note for the deprecation of the Subscribe and Amend features:
+- [Subscription Product Features](/v1-api-reference/older-api/subscription-product-features/object_getsubscriptionproductfeature) - In the description of the "Subscription Product Features" section and the description of each of the following operations, added a note for the deprecation of the Subscribe and Amend features:
   - CRUD: Retrieve a subscription product feature
 
 #### API updates for deprecation of the Invoice Adjustments, Invoice Item Adjustments, and Credit Balance Adjustments features
 
 The following changes apply to the Older API Reference:
 
-- [Invoice Adjustments](/api-references/older-api/tag/Invoice-Adjustments/) - In the description of the "Invoice Adjustments" section and the description of each of the following operations, added a note for the deprecation of the Invoice Adjustment, Invoice Item Adjustment, and Credit Balance Adjustment features:
+- [Invoice Adjustments](/v1-api-reference/older-api/invoice-adjustments/object_postinvoiceadjustment) - In the description of the "Invoice Adjustments" section and the description of each of the following operations, added a note for the deprecation of the Invoice Adjustment, Invoice Item Adjustment, and Credit Balance Adjustment features:
   - CRUD: Create an invoice adjustment
   - CRUD: Retrieve an invoice adjustment
   - CRUD: Update an invoice adjustment
   - CRUD: Delete an invoice adjustment
 
 
-- [Invoice Item Adjustments](/api-references/older-api/tag/Invoice-Item-Adjustments/) - In the description of the "Invoice Item Adjustments" section and the description of each of the following operations, added a note for the deprecation of the Invoice Adjustment, Invoice Item Adjustment, and Credit Balance Adjustment features:
+- [Invoice Item Adjustments](/v1-api-reference/older-api/invoice-item-adjustments/object_postinvoiceitemadjustment) - In the description of the "Invoice Item Adjustments" section and the description of each of the following operations, added a note for the deprecation of the Invoice Adjustment, Invoice Item Adjustment, and Credit Balance Adjustment features:
   - CRUD: Create an invoice item adjustment
   - CRUD: Retrieve an invoice item adjustment
   - CRUD: Update an invoice item adjustment
   - CRUD: Delete an invoice item adjustment
 
-- [Credit Balance Adjustments](/api-references/older-api/tag/Credit-Balance-Adjustments/) - In the description of the "Credit Balance Adjustments" section and the description of each of the following operations, added a note for the deprecation of the Invoice Adjustment, Invoice Item Adjustment, and Credit Balance Adjustment features:
+- [Credit Balance Adjustments](/v1-api-reference/older-api/credit-balance-adjustments/object_postcreditbalanceadjustment) - In the description of the "Credit Balance Adjustments" section and the description of each of the following operations, added a note for the deprecation of the Invoice Adjustment, Invoice Item Adjustment, and Credit Balance Adjustment features:
   - CRUD: Create a credit balance adjustment
   - CRUD: Retrieve a credit balance adjustment
   - CRUD: Update a credit balance adjustment
@@ -8094,7 +8083,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.05.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Bill Run](/v1-api-reference/api/bill-run) - Made the following updates:
+- [Bill Run](/v1-api-reference/api/bill-run/post_createbillrun) - Made the following updates:
 
   - In the request body of the "Create a bill run" operation, added the following fields:
       - `invoiceDateMonthOffset`
@@ -8117,9 +8106,9 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - `targetDateDayOfMonth`
       - `schedule` > `monthlyOnEndOfMonth`
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - In the request body of the "Create a credit memo from a charge" operation, added the `number` field.
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - In the request body of the "Create a credit memo from a charge" operation, added the `number` field.
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - In the request body of the "Create a debit memo from a charge" operation, added the `number` field.
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - In the request body of the "Create a debit memo from a charge" operation, added the `number` field.
 
 
 ### Doc updates
@@ -8162,7 +8151,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.04.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Accounts](/v1-api-reference/api/accounts/) - Made the following updates:
+- [Accounts](/v1-api-reference/api/accounts/post_account) - Made the following updates:
   - Added the following operations:
       - Configure cascading payment methods for an account
       - Retrieve configuration of cascading payment methods for an account
@@ -8170,7 +8159,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - In the response body of the "Retrieve an account summary" operation, added the `basicInfo` > `paymentMethodCascadingConsent` nested field.
 
 
-- [E-Invoicing](/v1-api-reference/api/e-invoicing) - Made the following updates:
+- [E-Invoicing](/v1-api-reference/api/e-invoicing/get_einvoicingserviceproviders) - Made the following updates:
   - In the request body of each of the following operations, added the `responseMapping` field.
       - Create an e-invoicing business region
       - Update an e-invoicing business region
@@ -8244,7 +8233,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to the General Availability announcement of the <a href="https://docs.zuora.com?resourceId=billing-overview-of-delivery-based-billing" target="_blank"> Delivery-based Billing</a> feature.
 
-- [Subscriptions](/v1-api-reference/api/subscriptions/) - Made the following updates:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Made the following updates:
 
   - In the response body of the "List subscriptions by account key" operation, removed the availability note in the description of the `subscriptions` > `ratePlans` > `ratePlanCharges` > `numberOfDeliveries` field.
 
@@ -8252,7 +8241,7 @@ The following items are the API updates specific to the General Availability ann
       - Retrieve a subscription by key
       - Retrieve a subscription by key and version
 
-- [Orders](/v1-api-reference/api/orders) - Removed the availability note in each of the `recurringDelivery` and `recurringDeliveryBased` fields. The following operations are affected:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Removed the availability note in each of the `recurringDelivery` and `recurringDeliveryBased` fields. The following operations are affected:
   - Preview an order
   - Preview an order asynchronously
   - Create an order
@@ -8269,7 +8258,7 @@ The following items are the API updates specific to the General Availability ann
 
 The following items are the API updates specific to the <a href="https://docs.zuora.com?resourceId=billing-e-invoicing-overview" target="_blank">E-Invoicing</a> feature.
 
-- [E-Invoicing](/v1-api-reference/api/e-invoicing) - Made the following updates:
+- [E-Invoicing](/v1-api-reference/api/e-invoicing/get_einvoicingserviceproviders) - Made the following updates:
 
   - In the request body of each of the following operations:
       - Create an e-invoicing service provider
@@ -8296,7 +8285,7 @@ The following items are the API updates specific to the <a href="https://docs.zu
 
 The following items are other API updates included in this release:
 
-- [Notifications](/v1-api-reference/api/notifications/) - Made the following updates:
+- [Notifications](/v1-api-reference/api/notifications/post_create_notification_definition) - Made the following updates:
   - In the request body of the "Create or update email templates" operation, added the `emailHeaders` field to the `emailTemplates` field.
 
   - In the request body of each of the following operations, added the `emailHeaders` field:
@@ -8310,9 +8299,9 @@ The following items are other API updates included in this release:
 
   - In the 200 response body of the "List email templates" operation, added the `emailHeaders` field to the `data` field.
 
-- [Data Queries](/v1-api-reference/api/data-queries/) - In the "List data query jobs" operation, increased the number of records per page size in the `pageSize` query parameter from 100 to 1000.
+- [Data Queries](/v1-api-reference/api/data-queries/get_dataqueryjobs) - In the "List data query jobs" operation, increased the number of records per page size in the `pageSize` query parameter from 100 to 1000.
 
-- [AQuA](/v1-api-reference/api/aggregate-queries/) - Made the following updates:
+- [AQuA](/v1-api-reference/api/aggregate-queries/post_batchqueryjob) - Made the following updates:
 
 	- In the request body of the "Submit an aggregate query job" operation, deprecated the following field and field value:
 		  - The `warehouseSize` field
@@ -8330,10 +8319,10 @@ This section lists operations and fields that were added, changed, or removed.
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.04.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
 
-- [Object Queries](/v1-api-reference/api/object-queries/) - Added an "Object Queries" section that contains standardized GET methods to query Billing and Payments objects. For more information about Object Queries, see <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">2024.04.R1 Release Notes</a>.
+- [Object Queries](/v1-api-reference/api/object-queries/queryaccounts) - Added an "Object Queries" section that contains standardized GET methods to query Billing and Payments objects. For more information about Object Queries, see <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">2024.04.R1 Release Notes</a>.
 
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates to support the Tiered Pricing charge model for the <a href="https://docs.zuora.com?resourceId=billing-overview-standalone-orders" target="_blank">Standalone Orders</a> feature:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates to support the Tiered Pricing charge model for the <a href="https://docs.zuora.com?resourceId=billing-overview-standalone-orders" target="_blank">Standalone Orders</a> feature:
 
   - In the request body of each of the following operations:
       - Create an order
@@ -8362,7 +8351,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - `order` > `subscriptions` > `orderActions` > `createSubscription` > `subscribeToRatePlans` > `chargeOverrides` > `chargeModel`
       - `order` > `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `chargeModel`
 
-- [Orders](/v1-api-reference/api/orders) - In the request body of each of the following operations:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations:
   - Create an order
   - Create an order asynchronously
   - Update an order
@@ -8373,7 +8362,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - `subscriptions` > `orderActions` > `createSubscription` > `terms` > `initialTerm`
   - `subscriptions` > `orderActions` > `termsAndConditions` > `lastTerm`
 
-- [Usage](/v1-api-reference/api/usage/) - Made the following updates to support the Negative Quantity Usage feature:
+- [Usage](/v1-api-reference/api/usage/post_usage) - Made the following updates to support the Negative Quantity Usage feature:
   - In the request body of each of the following operations, enhanced the `Quantity` field to support negative values:
       - CRUD: Create a usage record
       - CRUD: Update a usage record
@@ -8384,20 +8373,20 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
   - In the response body of the "Retrieve usage rate detail for an invoice item" operation, enhanced the `data` > `quantity` field to support negative values.
 
-- [Billing Preview Run](/v1-api-reference/api/billing-preview-run/) - In the request body of the "Create a billing preview run" operation, added the `storeDifference` and `comparedBillingPreviewRunId` fields to support comparing the current billing preview run result with a specified billing preview run result and storing the difference in the database.
+- [Billing Preview Run](/v1-api-reference/api/billing-preview-run/post_billingpreviewrun) - In the request body of the "Create a billing preview run" operation, added the `storeDifference` and `comparedBillingPreviewRunId` fields to support comparing the current billing preview run result with a specified billing preview run result and storing the difference in the database.
 
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - In the description of the "Unpost a credit memo" operation, added information about preventing the unpost operation.
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - In the description of the "Unpost a credit memo" operation, added information about preventing the unpost operation.
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - In the description of the "Unpost a debit memo" operation, added information about preventing the unpost operation.
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - In the description of the "Unpost a debit memo" operation, added information about preventing the unpost operation.
 
 
-- [Payment Schedules](/v1-api-reference/api/payment-schedules/) - In the "Retrieve a payment schedule" operation, added the following fields to the response body and updated the corresponding sample values:
+- [Payment Schedules](/v1-api-reference/api/payment-schedules/post_retrypaymentscheduleitem) - In the "Retrieve a payment schedule" operation, added the following fields to the response body and updated the corresponding sample values:
   - `cancelledById`
   - `cancelledOn`
   - `cancelDate`
 
-- [Data Labeling](/v1-api-reference/api/data-labeling/) - In the request body of the "Submit a data labeling job" operation, updated the description of the following fields to support the use case of unlabeling objects:
+- [Data Labeling](/v1-api-reference/api/data-labeling/post_datalabelingjob) - In the request body of the "Submit a data labeling job" operation, updated the description of the following fields to support the use case of unlabeling objects:
   - `orgIds`
   - `orgs`
 
@@ -8473,15 +8462,15 @@ This section lists operations and fields that were added, changed, or removed.
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.03.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - In the request body of the "Create a payment method" operation, added the following fields for the `ACH` payment method type:
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - In the request body of the "Create a payment method" operation, added the following fields for the `ACH` payment method type:
   - `tokens`
   - `bankAccountMaskNumber`
 
-- [Accounts](/v1-api-reference/api/accounts) - In the request body of the "Create an account" operation, added the following fields for the `ACH` payment method type:
+- [Accounts](/v1-api-reference/api/accounts/post_account) - In the request body of the "Create an account" operation, added the following fields for the `ACH` payment method type:
   - `paymentMethod` > `tokens`
   - `paymentMethod` > `bankAccountMaskNumber`
 
-- [Orders](/v1-api-reference/api/orders) - In the request body of each of the following operations:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations:
   - Create an order
   - Create an order asynchronously
 
@@ -8540,7 +8529,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to the <a href="https://docs.zuora.com?resourceId=billing-e-invoicing-with-peppol-extract" target="_blank">E-invoicing with PEPPOL</a> feature.
 
-- [E-Invoicing](/v1-api-reference/api/e-invoicing) - Made the following updates:
+- [E-Invoicing](/v1-api-reference/api/e-invoicing/get_einvoicingserviceproviders) - Made the following updates:
   - In the request body of the "Create an e-invoicing service provider" operation, added the `PEPPOL` enum value to the `provider` field.
 
   - In the 200 response body of each of the following operations, added the `PEPPOL` enum value to the `provider` field:
@@ -8550,9 +8539,9 @@ The following items are the API updates specific to the <a href="https://docs.zu
 
   - In the 200 response body of the "List e-invoicing service providers" operation, added the `PEPPOL` enum value to the `serviceProviders` > `provider` field.
 
-- [Invoices](/v1-api-reference/api/invoices) - In the 200 response body of the "Retrieve an invoice" operation, added the `Generated` enum value to the `einvoiceStatus` field.
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - In the 200 response body of the "Retrieve an invoice" operation, added the `Generated` enum value to the `einvoiceStatus` field.
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - Made the following updates:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Made the following updates:
   - In the 200 response body of each of the following operations, added the `Generated` enum value to the `memos` > `einvoiceStatus` field.
       - Create credit memos
       - Update credit memos
@@ -8570,7 +8559,7 @@ The following items are the API updates specific to the <a href="https://docs.zu
 
   - In the 200 response body of the "List credit memos" operation, added the `Generated` enum value to the `creditmemos` > `einvoiceStatus` field.
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - Made the following updates:
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Made the following updates:
   - In the 200 response body of each of the following operations, added the `Generated` enum value to the `memos` > `einvoiceStatus` field.
       - Create debit memos
       - Update debit memos
@@ -8590,7 +8579,7 @@ The following items are the API updates specific to the <a href="https://docs.zu
 
 The following items are the API updates specific to adding support for the "Zuora custom event" event type in the Events and Notifications feature.
 
-- [Notifications](/v1-api-reference/api/notifications/) - Made the following updates:
+- [Notifications](/v1-api-reference/api/notifications/post_create_notification_definition) - Made the following updates:
   - Updated the description of each of the following operations:
       - Create a notification definition
       - List notification definitions
@@ -8623,7 +8612,7 @@ The following items are the API updates specific to adding support for the "Zuor
 The following items are other API updates included in this release:
 
 
-- [Subscriptions](/v1-api-reference/api/subscriptions) - Made the following updates:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Made the following updates:
   - In the response body of each of the following operations:
       - Retrieve a subscription by key
       - Retrieve a subscription by key and version
@@ -8638,7 +8627,7 @@ The following items are other API updates included in this release:
       - `subscriptions` >`ratePlans` > `ratePlanCharges` > `chargeFunction`
       - `subscriptions` >`ratePlans` > `ratePlanCharges` > `commitmentType`
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
       - Create an order
       - Create an order asynchronously
@@ -8670,12 +8659,12 @@ The following items are other API updates included in this release:
 
   - In the request body of the "Update an order" operation, deprecated the `newAccount` field.
 
-- [Order Line Items](/v1-api-reference/api/order-line-items) - Made the following updates:
+- [Order Line Items](/v1-api-reference/api/order-line-items/get_orderlineitem) - Made the following updates:
   - In the response body of each of the following operations, added the `orderLineItem` > `currency` field:
       - Retrieve an order line item
       - Update order line items
 
-- [Product Rate Plan Charges](/v1-api-reference/api/product-rate-plan-charges/) - Made the following updates:
+- [Product Rate Plan Charges](/v1-api-reference/api/product-rate-plan-charges/get_retrieveproductrateplancharge) - Made the following updates:
 
   - In the request body of each of the following operations:
       - CRUD: Create a product rate plan charge
@@ -8693,12 +8682,12 @@ The following items are other API updates included in this release:
       - `chargeFunction`
       - `commitmentType`
 
-- [Regenerate](/v1-api-reference/api/regenerate/) - In each of the following operations, added the `onlyReSend` query parameter:
+- [Regenerate](/v1-api-reference/api/regenerate/post_regeneratebookingtransaction) - In each of the following operations, added the `onlyReSend` query parameter:
   - Regenerate booking transactions
   - Regenerate billing transactions
 
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
       - Preview an order
       - Preview an order asynchronously
@@ -8714,15 +8703,15 @@ The following items are other API updates included in this release:
       - `previewResult` > `chargeMetrics` > `charges`
       - `previewResult` > `orderMetrics` > `orderActions` > `orderMetrics`
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - Added an operation called "List all files of a credit memo".
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Added an operation called "List all files of a credit memo".
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - Added an operation called "List all files of a debit memo".
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Added an operation called "List all files of a debit memo".
 
-- [Operations](/v1-api-reference/api/operations/) - Added the following operations:
+- [Operations](/v1-api-reference/api/operations/post_billingpreview) - Added the following operations:
   - Generate bulk PDF files
   - Retrieve information of a bulk PDF file generation job
 
-- [Invoices](/v1-api-reference/api/invoices) - Updated the description of the "List all application parts of an invoice" operation.
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Updated the description of the "List all application parts of an invoice" operation.
 
 
 
@@ -8787,7 +8776,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.03.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Subscriptions](/v1-api-reference/api/subscriptions) - Added a new operation called "Preview a subscription by subscription key".
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Added a new operation called "Preview a subscription by subscription key".
 
 
 ## March 1, 2024
@@ -8803,30 +8792,30 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to a system behavior change introduced by the support of passing the identity number in the creation of a Credit Card payment method.
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - Made the following updates:
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - Made the following updates:
   - In the request body of the "Create a payment method" operation, added the `identityNumber` field for the `CreditCard` payment method type.
   - In the response body of the "Retrieve a payment method" operation, updated the description of the `identityNumber` nested field.
 
-- [Accounts](/v1-api-reference/api/accounts) - Made the following updates:
+- [Accounts](/v1-api-reference/api/accounts/post_account) - Made the following updates:
   - In the request body of the "Create an account" operation, added the `paymentMethod` > `identityNumber` nested field for the `CreditCard` payment method type.
   - In the response body of the "List payment methods of an account" operation, updated the description of the `returnedPaymentMethodType` > `identityNumber` nested field.
   - In the response body of the "Retrieve the default payment method of an account" operation, updated the description of the `identityNumber` nested field.
 
-- [Orders](/v1-api-reference/api/orders) - In the request body of each of the following operations, added the `newAccount` > `paymentMethod` > `identityNumber` nested field for the `CreditCard` payment method type:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations, added the `newAccount` > `paymentMethod` > `identityNumber` nested field for the `CreditCard` payment method type:
   - Create an order
   - Create an order asynchronously
 
 ### API updates on currency field in response of billing document operations
 
-- [Billing Documents](/v1-api-reference/api/billing-documents/) - In the response body of the "List billing documents for an account" operation, added the `currency` field.
+- [Billing Documents](/v1-api-reference/api/billing-documents/get_billingdocuments) - In the response body of the "List billing documents for an account" operation, added the `currency` field.
 
-- [Invoices](/v1-api-reference/api/invoices) - In the response body of the "Retrieve an invoice" operation, updated the description of the `currency` field.
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - In the response body of the "Retrieve an invoice" operation, updated the description of the `currency` field.
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - Made the following updates:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Made the following updates:
   - In the response body of the "Retrieve a credit memo" operation, updated the description of the `currency` field.
   - In the response body of the "List credit memos" operation, updated the description of the `creditmemos` > `currency` field.
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - Made the following updates:
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Made the following updates:
   - In the response body of the "Retrieve a debit memo" operation, updated the description of the `currency` field.
   - In the response body of the "List debit memos" operation, updated the description of the `debitmemos` > `currency` field.
 
@@ -8834,7 +8823,7 @@ The following items are the API updates specific to a system behavior change int
 ### Other API updates
 
 
-- [Regenerate](/v1-api-reference/api/regenerate/) - Made the following updates:
+- [Regenerate](/v1-api-reference/api/regenerate/post_regeneratebookingtransaction) - Made the following updates:
   - Updated the API endpoint for each of the following operations:
       - Regenerate revenue recognition events transactions for Delivery Schedule
       - Regenerate revenue recognition events transactions for Daily Consumption
@@ -8842,7 +8831,7 @@ The following items are the API updates specific to a system behavior change int
       - Regenerate revenue recognition events transactions for Delivery Schedule
       - Regenerate revenue recognition events transactions for Daily Consumption
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
       - Create an order
       - Create an order asynchronously
@@ -8887,7 +8876,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.02.R2</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Payments](/v1-api-reference/api/payments/) - For the "Refund a payment with auto-unapplying" operation, made the following updates:
+- [Payments](/v1-api-reference/api/payments/get_retrieveallpayments) - For the "Refund a payment with auto-unapplying" operation, made the following updates:
   - In the request body, removed the availability note for each of the following fields because these fields are now generally available:
       - `writeOff`
       - `writeOffOptions`
@@ -8927,7 +8916,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.02.R1</a>.
 
-- [Data Backfill](/v1-api-reference/api/data-backfill/) - Added a section called "Data Backfill" that contains the following operations:
+- [Data Backfill](/v1-api-reference/api/data-backfill/post_createbookingdatebackfilljob) - Added a section called "Data Backfill" that contains the following operations:
 
   - Create a booking date backfill job
   - List all booking date backfill jobs
@@ -8939,9 +8928,9 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
   - List all data backfill jobs
   - Download a data backfill template file
 
-- [Prepaid with Drawdown](/v1-api-reference/api/prepaid-with-drawdown/) - Added an operation called "Deplete funds".
+- [Prepaid with Drawdown](/v1-api-reference/api/prepaid-with-drawdown/post_reverserollover) - Added an operation called "Deplete funds".
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following updates:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following updates:
   - In the request body of each of the following operations:
       - Create an order
       - Create an order asynchronously
@@ -8982,14 +8971,14 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - `order` > `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `revenueAmortizationMethod`
       - `order` > `subscriptions` > `orderActions` > `changePlan` > `newProductRatePlan` > `chargeOverrides` > `revenueRecognitionTiming`
 
-- [Order Line Items](/v1-api-reference/api/order-line-items) - Made the following updates:
+- [Order Line Items](/v1-api-reference/api/order-line-items/get_orderlineitem) - Made the following updates:
   - In the request body of the "Update an order line item" operation, added the `revenueAmortizationMethod` and `revenueRecognitionTiming` fields.
   - In the request body of the "Update order line items" operation, added the `revenueAmortizationMethod` and `revenueRecognitionTiming` nested fields to the `orderLineItems` field.
   - In the response body of each of the following operations, added the `revenueAmortizationMethod` and `revenueRecognitionTiming` nested fields to the `orderLineItem` field:
       - Retrieve an order line item
       - Update order line items
 
-- [Subscriptions](/v1-api-reference/api/subscriptions) - Made the following updates:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Made the following updates:
   - In the response body of each of the following operations:
       - Retrieve a subscription by key
       - Retrieve a subscription by key and version
@@ -9026,17 +9015,17 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to a system behavior change for duplication check on payment methods.
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - Made the following updates:
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - Made the following updates:
   - In the request body of each of the following operations, added the `processingOptions` field and its nested field:
       - Create a payment method
       - Update a payment method
   - In the request body of the "Create a payment method" operation, updated the description of the `checkDuplicated` field.
 
-- [Accounts](/v1-api-reference/api/accounts) - In the request body of the "Create an account" operation, made the following updates:
+- [Accounts](/v1-api-reference/api/accounts/post_account) - In the request body of the "Create an account" operation, made the following updates:
   - Added the `processingOptions` field and its nested field to the `paymentMethod` field.
   - Updated the description of the `paymentMethod` > `checkDuplicated` nested field.
 
-- [Orders](/v1-api-reference/api/orders) - In the request body of each of the following operations:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of each of the following operations:
   - Create an order
   - Create an order asynchronously
   - Update an order
@@ -9073,7 +9062,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to the <a href="https://docs.zuora.com?resourceId=billing-attributes-for-flexible-billing" target="_blank">Invoice Grouping</a> feature.
 
-- [Credit Memos](/v1-api-reference/api/credit-memos) - Made the following updates:
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Made the following updates:
   - In the response body of each of the following operations, added the `invoiceGroupNumber`  field:
       - Create a credit memo from a charge
       - Create a credit memo from an invoice
@@ -9089,7 +9078,7 @@ The following items are the API updates specific to the <a href="https://docs.zu
       - Update credit memos
   - In the response body of the "List credit memos" operation, added the `invoiceGroupNumber` nested field to the `creditmemos` field.
 
-- [Debit Memos](/v1-api-reference/api/debit-memos) - Made the following updates:
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Made the following updates:
   - In the response body of each of the following operations, added the `invoiceGroupNumber` field:
       - Create a debit memo from a charge
       - Create a debit memo from an invoice
@@ -9103,13 +9092,13 @@ The following items are the API updates specific to the <a href="https://docs.zu
       - Update debit memos
   - In the response body of the "List debit memos" operation, added the `invoiceGroupNumber` nested field to the `debitmemos` field.
 
-- [Invoices](/v1-api-reference/api/invoices) - Made the following updates:
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Made the following updates:
   - In the response body of each of the following operations, added the `invoiceGroupNumber` field:
       - Retrieve an invoice
       - Create a standalone invoice
   - In the response body of the "Create standalone invoices" operation, added the `invoiceGroupNumber` nested field to the` invoices` field.
 
-- [Orders](/v1-api-reference/api/orders/) - Made the following changes:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following changes:
   - In the request body of each of the following operations:
       - Create an order
       - Create an order asynchronously
@@ -9154,14 +9143,14 @@ The following items are the API updates specific to the <a href="https://docs.zu
       - `order` > `subscriptions` > `orderActions` > `termsAndConditions` > `invoiceGroupNumber`
       - `order` > `subscriptions` > `orderActions` > `termsAndConditions` > `clearingExistingInvoiceGroupNumber`
 
-- [Order Line Items](/v1-api-reference/api/order-line-items) - Made the following updates:
+- [Order Line Items](/v1-api-reference/api/order-line-items/get_orderlineitem) - Made the following updates:
   - In the request body of the "Update an order line item" operation, added the `invoiceGroupNumber` field.
   - In the request body of the "Update order line items" operation, added the `invoiceGroupNumber` nested field to the `orderLineItems` field.
   - In the response body of each of the following operations, added the `invoiceGroupNumber` nested field to the `orderLineItem` field:
       - Retrieve an order line item
       - Update order line items
 
-- [Subscriptions](/v1-api-reference/api/subscriptions) - Made the following updates:
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - Made the following updates:
   - In the response body of each of the following operations, added the `invoiceGroupNumber` field:
       - Retrieve a subscription by key
       - Retrieve a subscription by key and version
@@ -9173,7 +9162,7 @@ The following items are the API updates specific to the <a href="https://docs.zu
 
 The following items are other API updates included in this release:
 
-- [Notifications](/v1-api-reference/api/notifications/) - Made the following updates:
+- [Notifications](/v1-api-reference/api/notifications/post_create_notification_definition) - Made the following updates:
   - In the request body of each of the following operations:
       - Create an email template
       - Update an email template
@@ -9224,13 +9213,13 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.02.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Invoices](/v1-api-reference/api/invoices) - Added an operation called "Retrieve the PDF file generation status of invoices".
+- [Invoices](/v1-api-reference/api/invoices/post_standaloneinvoice) - Added an operation called "Retrieve the PDF file generation status of invoices".
 
-- [Credit Memos](/v1-api-reference/api/credit-memos/) - Added an operation called "Retrieve the PDF file generation status of credit memos".
+- [Credit Memos](/v1-api-reference/api/credit-memos/get_creditmemos) - Added an operation called "Retrieve the PDF file generation status of credit memos".
 
-- [Debit Memos](/v1-api-reference/api/debit-memos/) - Added an operation called "Retrieve the PDF file generation status of debit memos".
+- [Debit Memos](/v1-api-reference/api/debit-memos/get_debitmemos) - Added an operation called "Retrieve the PDF file generation status of debit memos".
 
-- [Orders](/v1-api-reference/api/orders) - Made the following changes:
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - Made the following changes:
   - In the response body of each of the following operations, added the `scheduledOrderActivationResponse` nested field to the `orders` field:
       - List orders
       - List orders of a subscription owner
@@ -9240,11 +9229,11 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
   - In the response body of the "Retrieve an order" operation, added the `scheduledOrderActivationResponse` nested field to the `order` field.
 
-- [Payment Gateway Reconciliation](/v1-api-reference/api/payment-gateway-reconciliation/) - Updated the description of each of the following operations for system behavior changes introduced by a Gateway Reconciliation enhancement:
+- [Payment Gateway Reconciliation](/v1-api-reference/api/payment-gateway-reconciliation/post_reversepayment) - Updated the description of each of the following operations for system behavior changes introduced by a Gateway Reconciliation enhancement:
   - Reject a payment
   - Reverse a payment
 
-- [Notifications](/v1-api-reference/api/notifications/) - Made the following changes:
+- [Notifications](/v1-api-reference/api/notifications/post_create_notification_definition) - Made the following changes:
   - Updated the description of each of the following operations for supporting notification definitions for standard events:
       - Create a notification definition
       - List notification definitions
@@ -9279,7 +9268,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
           - `data` > `eventTypeName`
           - `data` > `eventTypeNameSpace`
 
-- [E-Invoicing](/v1-api-reference/api/e-invoicing) - Made the following updates:
+- [E-Invoicing](/v1-api-reference/api/e-invoicing/get_einvoicingserviceproviders) - Made the following updates:
   - In the request body of each of the "Create an e-invoicing service provider" and "Update an e-invoicing service provider" operations:
       - Added the `companyIdentifier` field.
       - Removed the `apiKey` and `secretKey` fields.
@@ -9406,22 +9395,22 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
 
 The following items are the API updates specific to a system behavior change introduced by the <a href="https://docs.zuora.com?resourceId=payments-gateway-routing" target="_blank">Payment Gateway Routing</a> feature.
 
-- [Payments](/v1-api-reference/api/payments) - In the request body of the "Create a payment" operation, updated the description of the `gatewayId` field.
+- [Payments](/v1-api-reference/api/payments/get_retrieveallpayments) - In the request body of the "Create a payment" operation, updated the description of the `gatewayId` field.
 
-- [Orders](/v1-api-reference/api/orders) - In the request body of the "Create an order" operation, updated the description of the nested `processingOptions` > `electronicPaymentOptions` > `paymentGatewayId` field.
+- [Orders](/v1-api-reference/api/orders/post_previeworder) - In the request body of the "Create an order" operation, updated the description of the nested `processingOptions` > `electronicPaymentOptions` > `paymentGatewayId` field.
 
-- [Subscriptions](/v1-api-reference/api/subscriptions) - In the request body of the "Create a subscription" operation, updated the description of the `gatewayId` field.
+- [Subscriptions](/v1-api-reference/api/subscriptions/post_previewsubscription) - In the request body of the "Create a subscription" operation, updated the description of the `gatewayId` field.
 
-- [Payment Runs](/v1-api-reference/api/payment-runs) - In the request body of the "Create a payment run" operation, updated the description of the nested `data` > `paymentGatewayId` field.
+- [Payment Runs](/v1-api-reference/api/payment-runs/get_paymentruns) - In the request body of the "Create a payment run" operation, updated the description of the nested `data` > `paymentGatewayId` field.
 
 
 #### Other API updates
 
 The following items are other API updates included in this release:
 
-- [Payment Methods](/v1-api-reference/api/payment-methods/) - In the request body of the "Create a payment method" operation, updated the description of the `tokenize` field for the newly supported BACS payment methods on Adyen Integration v2.0.
+- [Payment Methods](/v1-api-reference/api/payment-methods/post_paymentmethods) - In the request body of the "Create a payment method" operation, updated the description of the `tokenize` field for the newly supported BACS payment methods on Adyen Integration v2.0.
 
-- [Accounts](/v1-api-reference/api/accounts) - Made the following updates:
+- [Accounts](/v1-api-reference/api/accounts/post_account) - Made the following updates:
   - In the request body of each of the following operations, added the `businessCategory` nested field to the `einvoiceProfile` field:
       - Create an account
       - Update an account
@@ -9461,7 +9450,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of <a href="https://docs.zuora.com?resourceId=previous-release-notes" target="_blank">Zuora Release 2024.01.R1</a>. For release notes for all Zuora products, see <a href="https://docs.zuora.com?resourceId=latest-release" target="_blank">Latest releases</a>.
 
-- [Product Rate Plan Charges](/v1-api-reference/api/product-rate-plan-charges/) - Made the following updates:
+- [Product Rate Plan Charges](/v1-api-reference/api/product-rate-plan-charges/get_retrieveproductrateplancharge) - Made the following updates:
 
   - In the request body of each of the following operations:
       - CRUD: Create a product rate plan charge
@@ -9479,7 +9468,7 @@ The following API updates are available as of <a href="https://docs.zuora.com?re
       - `revenueRecognitionTiming`
       - `revenueAmortizationMethod`
 
-- [Product Charge Definitions](/v1-api-reference/api/product-charge-definitions/) - Made the following updates:
+- [Product Charge Definitions](/v1-api-reference/api/product-charge-definitions/post_createproductchargedefinition) - Made the following updates:
   - In the 200 response body of each of the "List product charge definitions" and "Update product charge definitions" operations, added the following fields:
       - `chargeDefinitions` > `revenueRecognitionTiming`
       - `chargeDefinitions` > `revenueAmortizationMethod`

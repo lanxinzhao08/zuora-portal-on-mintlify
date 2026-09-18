@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.13.0 changelog"
+sidebarTitle: "3.13.0"
 ---
-
-# Python client library 3.13.0 changelog
-
-
 ## \_\_init\_\_
 
 * Added new model imports: AmountBaseEnum, BaseRevenueAttributes, CommitmentOutputSchedulesInner, CommitmentScheduleAttributes, CommitmentScheduleInput, CommitmentScheduleOutput, CommitmentScheduleStatus, CommitmentScheduleStatusOutput, CommitmentStatusInput, CommitmentStatusOutput, CommonRevenueAttributesOutput, PeriodAlignmentOptionEnum, PeriodTypeEnum, UpsertCommitmentScheduleInput, UpsertCreateCommitmentInputAllOfSchedules, UpsertCreateCommitmentScheduleInput, UpsertUpdateCommitmentScheduleInput.

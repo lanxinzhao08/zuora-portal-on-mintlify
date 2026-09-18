@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.10.0 changelog"
+sidebarTitle: "3.10.0"
 ---
-
-# Python client library 3.10.0 changelog
-
 ## \_\_init\_\_
 
 * Removed imports related to commitment segments and cycles, such as CommitmentCycleAttributes, CommitmentOutputSegmentsInner, CommitmentSegmentAttributes, CommitmentSegmentBaseAttributes, CommitmentSegmentInput, ExpandedCommitmentCycle, ExpandedCommitmentSegment, QueryCommitmentCyclesResponse, QueryCommitmentSegmentsResponse, UpsertCommitmentSegmentInput, UpsertCreateCommitmentInputAllOfSegments, UpsertCreateCommitmentSegmentInput, and UpsertUpdateCommitmentSegmentInput.
@@ -128,4 +124,3 @@ markdown:
 
 * Removed `default_association_rule` field from UpsertUpdateCommitmentInput model.
 * Replaced `segments` field with `periods` field in UpsertUpdateCommitmentInput model.
-

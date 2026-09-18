@@ -1,13 +1,10 @@
 ---
-seo:
-  title: Basics of customer accounts, invoicing, and payments
+title: "Basics of customer accounts, invoicing, and payments"
+sidebarTitle: "Basics"
 ---
-
-# Basics of customer accounts, invoicing, and payments
-
 This guide covers the basics of creating a customer account, generating an invoice, and applying a payment using Zuora's API. Ensure you've completed the "Get Started" section to authenticate with Zuora. This tutorial is part of the Essential Skills Path.
 
-**Note**: This tutorial covers basic billing without recurring charges. For subscription billing, refer to the [advanced tutorials](/docs/get-started/tutorials/).
+**Note**: This tutorial covers basic billing without recurring charges. For subscription billing, refer to the [advanced tutorials](/docs/get-started/tutorials).
 
 <p>
 <strong>Estimated time to complete</strong>: 45 minutes
@@ -28,7 +25,7 @@ Ensure that you have met the following requirements:
 
 * You have a Zuora Billing sandbox tenant, and have created an OAuth client ID and secret.
 * Know how to [create an OAuth token](/v1-api-reference/api/oauth/createtoken) using your client ID and secret. Remember that each token is valid for an hour.
-* You have completed the [Get Started](/docs/get-started/introduction/) tutorial. Use the correct base URL for your assigned data center and environment. To confirm your base URL, compare your tenant URL with the **Tenant UI Login** entries in the [Data Center documentation](https://docs.zuora.com?resourceId=zuora-data-centers), and use the base URL in the **REST API** entry for the same environment when calling our REST API or use the corresponding **SDK enum value** when using our client libraries.
+* You have completed the [Get Started](/docs/get-started/introduction) tutorial. Use the correct base URL for your assigned data center and environment. To confirm your base URL, compare your tenant URL with the **Tenant UI Login** entries in the [Data Center documentation](https://docs.zuora.com?resourceId=zuora-data-centers), and use the base URL in the **REST API** entry for the same environment when calling our REST API or use the corresponding **SDK enum value** when using our client libraries.
 
 A Postman Collection is available for each of the API calls in this tutorial to use at your convenience. You can download the collection through <a href="/postman-collection/zuora_basics_tutorial_collection.json" title="Download" download>this link</a> and import into your Postman workspace. Check the video below for detailed walkthrough of how to import and run the collection.
 
@@ -38,7 +35,7 @@ A Postman Collection is available for each of the API calls in this tutorial to 
 ## Tutorial
 
 
-This tutorial assumes you are using either the [v1 API](/v1-api-reference/introduction/) or the [v3 or higher Zuora client libraries](/docs/guides/libraries/).
+This tutorial assumes you are using either the [v1 API](/v1-api-reference/introduction) or the [v3 or higher Zuora client libraries](/docs/guides/libraries).
 
 
 The samples in this guide use a Developer or Central Sandbox in one of our North American Data Centers. Use the correct base URL for your assigned data center and environment.
@@ -54,10 +51,10 @@ You'll start by capturing essential customer information. This example keeps it 
 
 We're only [creating an account](/v1-api-reference/api/accounts/post_account) here and not attempting to save an order or create a subscription. We'll use the [Create an account](/v1-api-reference/api/accounts/post_account) operation or its SDK equivalent. There are other operations where you can create a billing account as part of some larger transaction such as placing an order or creating a subscription.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request POST \
     --url https://rest.test.zuora.com/v1/accounts \
     --header 'Content-Type: application/json' \
@@ -75,9 +72,9 @@ We're only [creating an account](/v1-api-reference/api/accounts/post_account) he
         }
       }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   // Create a billing contact
   CreateAccountContact contact = new CreateAccountContact()
           .firstName("Amy")
@@ -96,9 +93,9 @@ We're only [creating an account](/v1-api-reference/api/accounts/post_account) he
   CreateAccountResponse account = zuoraClient.accountsApi().createAccountApi(request).execute();
   System.out.println("Account is created. Number: " + account.getAccountNumber());
   ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-  ```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+  ```javascript Node.js
   const accountsApi = zuoraClient.accountsApi;
 
   // Create contact and account request
@@ -122,9 +119,9 @@ We're only [creating an account](/v1-api-reference/api/accounts/post_account) he
   console.log("Account created successfully:", JSON.stringify(resp, null, 2));
   console.log("Account Number:", resp.accountNumber);
   ```
-  {% /tab %}
-  {% tab label="Python" %}
-  ```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+  ```python Python
   try:
     account = client.accounts_api().create_account(
         zclient.CreateAccountRequest(**{
@@ -145,9 +142,9 @@ We're only [creating an account](/v1-api-reference/api/accounts/post_account) he
       print("Exception: %s\n" % e)
 
   ```
-  {% /tab %}
-  {% tab label="C#" %}
-  ```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+  ```csharp C#
   CreateAccountContact contact = new CreateAccountContact
   (
       firstName: "Amy",
@@ -172,8 +169,8 @@ We're only [creating an account](/v1-api-reference/api/accounts/post_account) he
 
   Console.WriteLine(account.ToJson());
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 If the call succeeds, you should see an Account Number being returned in the response. Since we didn't specify an account number, Zuora automatically created a unique one. Account numbers must be unique, and you can specify one if you want.
@@ -191,10 +188,10 @@ The important Account fields that we haven't discussed include:
 
 To create an invoice you'll need the `accountNumber` from the account creation response in the previous section. For simplicity, this tutorial uses a fixed charge of $100.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl -i -X POST \
     https://rest.test.zuora.com/v1/invoices \
     -H 'Authorization: Bearer {your_token}' \
@@ -212,9 +209,9 @@ To create an invoice you'll need the `accountNumber` from the account creation r
             }]
       }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   // Create an invoice item
   CreateInvoiceItem invoiceItem1 = new CreateInvoiceItem()
           .amount(new BigDecimal(100))
@@ -238,9 +235,9 @@ To create an invoice you'll need the `accountNumber` from the account creation r
   System.out.println("Invoice is created. ID: " + invoice.getId());
   System.out.println("Number: " + invoice.getInvoiceNumber());
   ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-  ```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+  ```javascript Node.js
   // Access the InvoicesApi
   const invoicesApi = zuoraClient.invoicesApi;
 
@@ -260,9 +257,9 @@ To create an invoice you'll need the `accountNumber` from the account creation r
   const invoiceId = invoiceResponse.id;
 
   ```
-  {% /tab %}
-  {% tab label="Python" %}
-  ```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+  ```python Python
   try:
     invoice = client.invoices_api().create_standalone_invoice(
           zclient.CreateInvoiceRequest(**{
@@ -282,9 +279,9 @@ To create an invoice you'll need the `accountNumber` from the account creation r
   except Exception as e:
       print("Exception: %s\n" % e)
   ```
-  {% /tab %}
-  {% tab label="C#" %}
-  ```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+  ```csharp C#
   CreateInvoiceItem invoiceItem = new CreateInvoiceItem
   (
       amount: 100,
@@ -307,8 +304,8 @@ To create an invoice you'll need the `accountNumber` from the account creation r
 
   Console.WriteLine(invoice.ToJson());
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 Logging into the Zuora UI, you can search the returned invoice number, then you can see the created invoice.
 
@@ -318,10 +315,10 @@ Note that it is not how most invoices in Zuora are created. In most cases, a cus
 
 Assuming that you received a check payment for $100, this step shows how to apply the payment to the invoice created earlier. You’ll need the `accountNumber` and `invoiceId` from previous steps.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl -i -X POST \
     https://rest.test.zuora.com/v1/payments \
     -H 'Authorization: Bearer {your_token}' \
@@ -339,9 +336,9 @@ Assuming that you received a check payment for $100, this step shows how to appl
             }]
       }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   CreatePaymentInvoiceApplication invoice1 = new CreatePaymentInvoiceApplication()
           .amount(100.0)
           .invoiceId(invoice.getId());
@@ -361,9 +358,9 @@ Assuming that you received a check payment for $100, this step shows how to appl
   System.out.println("Payment is created. ID: " + payment.getId());
   System.out.println("Number: " + payment.getNumber());
   ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-  ```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+  ```javascript Node.js
   const paymentsApi = zuoraClient.paymentsApi;
   const paymentRequest = {
       accountNumber: accountNumber,
@@ -379,9 +376,9 @@ Assuming that you received a check payment for $100, this step shows how to appl
   console.log("Payment created successfully:", JSON.stringify(paymentResponse, null, 2));
 
   ```
-  {% /tab %}
-  {% tab label="Python" %}
-  ```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+  ```python Python
   try:
     payment = client.payments_api().create_payment(
         zclient.CreatePaymentRequest(**{
@@ -403,9 +400,9 @@ Assuming that you received a check payment for $100, this step shows how to appl
       error_msg = error_details["reasons"][0]["message"]
       print(f"Error: {error_code} : {error_msg}")
   ```
-  {% /tab %}
-  {% tab label="C#" %}
-  ```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+  ```csharp C#
   CreatePaymentInvoiceApplication invoiceApplication = new CreatePaymentInvoiceApplication
   (
       amount: 100,
@@ -428,13 +425,13 @@ Assuming that you received a check payment for $100, this step shows how to appl
 
   Console.WriteLine(payment.ToJson());
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 ### Generate an error
 
-In case you want to see what an API error looks like, run the "Create a payment" exercise a second time. Zuora will return errors when the request cannot be successfully processed, such as applying a second payment to an invoice that has already been paid and has a zero balance. To learn more about errors that might be returned and how to handle them, check the [Error codes](/docs/guides/error-codes/) article.
+In case you want to see what an API error looks like, run the "Create a payment" exercise a second time. Zuora will return errors when the request cannot be successfully processed, such as applying a second payment to an invoice that has already been paid and has a zero balance. To learn more about errors that might be returned and how to handle them, check the [Error codes](/docs/guides/error-codes) article.
 
 ## Troubleshooting
 
@@ -479,11 +476,11 @@ Supplemental materials for your consideration:
 
 ## Next Steps
 
-* In case you haven't created product catalog items, follow [this tutorial](/docs/get-started/tutorials/set-up-products/) on setting up one.
-* Review the [Billing FAQ](/faq/billing-faq/) and the [Payments FAQ](/faq/payments-faq/). A lot of questions are answered there.
-* [Preview a customer order](/docs/get-started/tutorials/preview-order/)
-* [Embed a payment form in your website](/docs/get-started/tutorials/collect-payments/)
-* [Place a subscription order, generate an invoice and collect payment](/docs/get-started/tutorials/create-orders/)
+* In case you haven't created product catalog items, follow [this tutorial](/docs/get-started/tutorials/set-up-products) on setting up one.
+* Review the [Billing FAQ](/faq/billing-faq) and the [Payments FAQ](/faq/payments-faq). A lot of questions are answered there.
+* [Preview a customer order](/docs/get-started/tutorials/preview-order)
+* [Embed a payment form in your website](/docs/get-started/tutorials/collect-payments)
+* [Place a subscription order, generate an invoice and collect payment](/docs/get-started/tutorials/create-orders)
 
 
 ## Quiz

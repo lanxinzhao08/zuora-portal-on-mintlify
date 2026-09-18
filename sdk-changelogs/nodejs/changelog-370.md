@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.7.0 changelog"
+sidebarTitle: "3.7.0"
 ---
-
-# Node.js client library 3.7.0 changelog
-
-
 ## CreditMemosApi
 
 * Added method `downloadEInvoiceFileForCreditMemo` to download E-Invoice files for credit memos.

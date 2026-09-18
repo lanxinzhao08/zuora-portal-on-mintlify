@@ -1,10 +1,6 @@
 ---
-seo:
-  title: OAuth on Android using the Public API
+title: "OAuth on Android using the Public API"
 ---
-
-# OAuth on Android using the Public API
-
 This guide is for an app developer who needs to integrate with Zephr’s OAuth social sign-in.
 
 ## Prerequisites

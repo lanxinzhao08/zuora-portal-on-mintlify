@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.18.0 changelog"
+sidebarTitle: "3.18.0"
 ---
-
-# Java client library 3.18.0 changelog
-
 ## CreditMemosApi
 
 * Added a new parameter `transactionId` to the method updateCreditMemoInvokeSyncStatusCall.
@@ -28,14 +24,14 @@ markdown:
 
 ## InvoicesApi
 
-* Added new method getInvoiceWriteOffAsyncJobCall to handle GET requests for invoice write-off async jobs. 
+* Added new method getInvoiceWriteOffAsyncJobCall to handle GET requests for invoice write-off async jobs.
 * Added new method getInvoiceWriteOffAsyncJobValidateBeforeCall to validate parameters before calling getInvoiceWriteOffAsyncJob.
 * Added new method getInvoiceWriteOffAsyncJob to retrieve information about a specific asynchronous invoice write-off job.
 * Added new method getInvoiceWriteOffAsyncJobWithHttpInfo to execute the GET request with HTTP info.
 * Added new method getInvoiceWriteOffAsyncJobAsync to execute the GET request asynchronously.
 * Added new class getInvoiceWriteOffAsyncJobApi to encapsulate the API call for getting invoice write-off async jobs.
 * Added new method createInvoiceWriteOffAsyncCall to handle POST requests for writing off invoices asynchronously.
-* Added new method createInvoiceWriteOffAsyncValidateBeforeCall to validate parameters before calling createInvoiceWriteOffAsync. 
+* Added new method createInvoiceWriteOffAsyncValidateBeforeCall to validate parameters before calling createInvoiceWriteOffAsync.
 * Added new method createInvoiceWriteOffAsyncApi to asynchronously write off a posted invoice.
 * Added new method createInvoiceWriteOffAsyncWithHttpInfo to execute the POST request with HTTP info.
 * Added new method createInvoiceWriteOffAsyncAsync to execute the POST request asynchronously.
@@ -138,7 +134,7 @@ markdown:
 
 ## CreateBillingPreviewRunRequest
 
-* Added a new field `organizationLabels` of type List<OrganizationLabel> to the CreateBillingPreviewRunRequest class.
+* Added a new field `organizationLabels` of type List&lt;OrganizationLabel> to the CreateBillingPreviewRunRequest class.
 * Added a new method organizationLabels to set the `organizationLabels` field in a fluent style.
 * Added a new method addOrganizationLabelsItem to add an item to the `organizationLabels` list.
 * Added a new getter method getOrganizationLabels for the `organizationLabels` field.
@@ -198,10 +194,10 @@ markdown:
 * Removed method: getOverlapDrawdownPolicy()
 * Removed method: setOverlapDrawdownPolicy(String `overlapDrawdownPolicy`)
 * Added new field: `childCommitments`
-* Added new method: childCommitments(List<ExpandedChildCommitment> `childCommitments`)
+* Added new method: childCommitments(List&lt;ExpandedChildCommitment> `childCommitments`)
 * Added new method: addChildCommitmentsItem(ExpandedChildCommitment `childCommitmentsItem`)
 * Added new method: getChildCommitments()
-* Added new method: setChildCommitments(List<ExpandedChildCommitment> `childCommitments`)
+* Added new method: setChildCommitments(List&lt;ExpandedChildCommitment> `childCommitments`)
 
 ## ExpandedCommitmentAssociatedItem
 
@@ -321,11 +317,11 @@ markdown:
 ## ListCommitmentScheduleOutput
 
 * Field `customAmount` changed to @Nullable.
-* Added new field `customAmount` of type Map<String, Object> to the class ListCommitmentScheduleOutput.
-* Added new method customAmount(Map<String, Object> `customAmount`) to set the `customAmount` field.
+* Added new field `customAmount` of type Map&lt;String, Object> to the class ListCommitmentScheduleOutput.
+* Added new method customAmount(Map&lt;String, Object> `customAmount`) to set the `customAmount` field.
 * Added new method putCustomAmountItem(String `key`, Object `customAmountItem`) to add items to the `customAmount` map.
 * Added new method getCustomAmount() to retrieve the `customAmount` field.
-* Added new method setCustomAmount(Map<String, Object> `customAmount`) to set the `customAmount` field.
+* Added new method setCustomAmount(Map&lt;String, Object> `customAmount`) to set the `customAmount` field.
 
 ## OverrideDiscountApplyDetail
 

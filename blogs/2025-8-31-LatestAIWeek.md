@@ -1,14 +1,6 @@
 ---
-seo:
-  title: Latest AI Week at Zuora - Zuora Developers Blog
-markdown:
-  toc:
-    hide: true
-disableLastModified: false
+title: "Latest AI Week at Zuora"
 ---
-
-# Latest AI Week at Zuora
-
 Once we heard about <a href="https://amplitude.com/blog/ai-week-recap" target="_blank">Amplitude's successful AI Week</a>, we knew we had to host our own for our Product & Engineering group. We even managed to get Wade from Amplitude to come talk to us.
 
 Our AI Week sessions included:
@@ -28,8 +20,8 @@ And we saw Windsurf, Claude Cursor, Gemini, Vercel, and Trupeer used in our AI W
 
 To learn more about these sessions, use the feedback link in the corner and tell us your interest.
 
-We're not new to the AI game. Zuora started leveraging machine learning long before ChatGPT's big debut. Back in 2021, we [leveraged our database of tens of millions of anonymized payments](/blogs/2025-3-18-turningfailureintogold/) across different card networks, countries, and payment gateways, to predict when the next payment retry should be attempted as that was the time the retry is likeliest to succeed. This became our Smart Retry feature and our customers measure Smart Retry's success using the additional dollars our 20% higher retry collection rates provide.
+We're not new to the AI game. Zuora started leveraging machine learning long before ChatGPT's big debut. Back in 2021, we [leveraged our database of tens of millions of anonymized payments](/blogs/2025-3-18-TurningFailureIntoGold) across different card networks, countries, and payment gateways, to predict when the next payment retry should be attempted as that was the time the retry is likeliest to succeed. This became our Smart Retry feature and our customers measure Smart Retry's success using the additional dollars our 20% higher retry collection rates provide.
 
-We've already shipped other AI-based features. From an [AI assistant](/blogs/2025-2-5-copilotforanalytics/) for querying metrics that doesn't necessitate sharing your tenant's data with the LLM to our Order Entry feature that accepts a PDF of a contract or signed quote and builds a Zuora Billing Order for you to review before invoicing.
+We've already shipped other AI-based features. From an [AI assistant](/blogs/2025-2-5-CopilotForAnalytics) for querying metrics that doesn't necessitate sharing your tenant's data with the LLM to our Order Entry feature that accepts a PDF of a contract or signed quote and builds a Zuora Billing Order for you to review before invoicing.
 
 **Reminder**: <a href="https://docs.zuora.com/en/basics/use-of-ai-in-zuora/zuoras-approach-to-ai" target="_blank">Our public AI policy document</a> guides all this work. We'll always be clear when we are using AI and we'll safeguard your data just as we always have. AI should augment and empower humans, not replace them.

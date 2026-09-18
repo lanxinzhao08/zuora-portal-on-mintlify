@@ -1,32 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: true
-redirects:
-  /quickstart-api/tutorial/create-orders/: {}
-  /quickstart-api/tutorial/preview-orders/: {}
-  /quickstart-api/tutorial/get-orders/: {}
-  /rest-api/api-guides/4-update-price/: {}
-  /rest-api/api-guides/5-cancel-subscription-with-refunds/: {}
-  /docs/get-started/tutorials/orders/: {}
-  /docs/get-started/tutorials/renew-suspend-resume-subs/: {}
-  /docs/get-started/tutorials/billing-documents/: {}
-  /quickstart-api/tutorial/create-billing-documents/: {}
-  /quickstart-api/tutorial/create-bill-runs/: {}
-  /quickstart-api/tutorial/view-billing-documents/: {}
-  /rest-api/api-guides/7-create-billing-document/: {}
-  /quickstart-api/tutorial/create-payment-methods/: {}
-  /quickstart-api/tutorial/create-payments/: {}
-  /quickstart-api/tutorial/create-payment-runs/: {}
-  /quickstart-api/tutorial/create-refunds/: {}
-  /rest-api/api-guides/8-create-payments/: {}
-  /rest-api/api-guides/3.2-create-paymentmethod/: {}
-  /docs/get-started/tutorials/payments/: {}
+title: "Place order and pay"
+sidebarTitle: "Place an order and pay"
 ---
-
-# Place order and pay
-
-
 ## End-user flow
 
 After end customers enter the payment method information in the Payment Form, the order is created when they click **Pay Now**.
@@ -46,9 +21,9 @@ The following sample code creates an order with the following information:
   - `collectPayment` : `true`. Collects the payment when the invoice is generated.
   - `targetDate`: the same as the `orderDate`. The invoice is generated and posted on the same day the order is created.
 
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl -L -X POST 'https://rest.test.zuora.com/v1/orders' \
 -H 'Authorization: Bearer 82db6bcc9b384c159a37262795f12a0a' \
 -H 'Content-Type: application/json' \
@@ -85,9 +60,9 @@ curl -L -X POST 'https://rest.test.zuora.com/v1/orders' \
     ]
 }'
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 InitialTerm initialTerm = new InitialTerm().periodType(null).termType(TermType.EVERGREEN);
 OrderActionCreateSubscriptionTerms terms = new OrderActionCreateSubscriptionTerms().renewalTerms(null).initialTerm(initialTerm);
 CreateOrderRatePlanOverride ratePlanOverride = new CreateOrderRatePlanOverride().productRatePlanNumber("PRP-00000180");
@@ -116,9 +91,9 @@ CreateOrderResponse createOrderResp = zuoraClient.ordersApi().createOrderApi(req
 System.out.print(createOrderResp);
 ```
 
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 const initialTerm = new InitialTerm();
 initialTerm.termType = 'EVERGREEN';
 const terms = new OrderActionCreateSubscriptionTerms(initialTerm, null);
@@ -157,9 +132,9 @@ request.processingOptions = processingOptions;
 const createOrderResp = await zuoraClient.ordersApi.createOrder(request);
 console.log(JSON.stringify(createOrderResp, (k, v) => v ?? undefined, 2));
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 from datetime import date
 from zuora_sdk import CreateOrderRequest, PreviewOrderRequest, PreviewOrderResponse, CreateOrderResponse, CreateOrderSubscription, \
     ProcessingOptionsWithDelayedCapturePayment
@@ -191,9 +166,9 @@ def create_order(client=None):
 if __name__ == '__main__':
     create_order()
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 CreateOrderResponse createOrderResponse = zuoraClient.OrdersApi.CreateOrder
 (
     new CreateOrderRequest
@@ -231,8 +206,8 @@ CreateOrderResponse createOrderResponse = zuoraClient.OrdersApi.CreateOrder
 
 Console.WriteLine(createOrderResponse.ToJson());
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 If the request succeeds, you will get a response similar to the following snippet:
@@ -255,4 +230,4 @@ If the request succeeds, you will get a response similar to the following snippe
 
 ## Next step
 
-[View the generated invoice](view-invoice.md)
+[View the generated invoice](/docs/get-started/tutorials/view-invoice)

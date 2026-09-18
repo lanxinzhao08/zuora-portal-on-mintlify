@@ -1,13 +1,6 @@
 ---
-markdown:
-  toc:
-    hide: true
+title: "View all invoices on the account"
 ---
-
-
-# View all invoices on the account
-
-
 ## End-user flow
 
 On the My Account page, they click the **My invoices** option to check all the invoices associated with their accounts.
@@ -20,15 +13,15 @@ The following sample code calls the [List invoices](/v1-api-reference/api/object
 
 Note that The account ID (`3A8b48f158e0b6af326c49d9b098a1db84`) can be obtained from the "Create an account" API call.
 
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl -L -g -X GET 'https://rest.apisandbox.zuora.com/object-query/invoices?expand[]=invoiceitems&filter[]=accountId.EQ%3A8b48f158e0b6af326c49d9b098a1db84' \
 -H 'Authorization: Bearer 42759df698e348528d5ec2a1df53f7ac'
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 QueryInvoicesResponse invoicesList = zuoraClient.objectQueriesApi()
             .queryInvoicesApi()
             .filter(List.of("accountId.EQ:3A8b48f158e0b6af326c49d9b098a1db84"))
@@ -36,9 +29,9 @@ QueryInvoicesResponse invoicesList = zuoraClient.objectQueriesApi()
 
 System.out.print(invoicesList);
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 const invoices = await zuoraClient.objectQueriesApi.queryInvoices({
     filter: ['accountId.EQ:3A8b48f158e0b6af326c49d9b098a1db84'],
 }
@@ -46,9 +39,9 @@ const invoices = await zuoraClient.objectQueriesApi.queryInvoices({
 
 console.log(JSON.stringify(invoices, (k, v) => v ?? undefined, 2))
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 def query_invoices_by_account(account_key, client=None):
     if not client:
         client = get_client()
@@ -62,9 +55,9 @@ def query_invoices_by_account(account_key, client=None):
 if __name__ == '__main__':
     query_invoices_by_account('3A8b48f158e0b6af326c49d9b098a1db84')
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 QueryInvoicesResponse invoices = zuoraClient.ObjectQueriesApi.QueryInvoices
 (
     expand:["invoiceitems"],
@@ -73,8 +66,8 @@ QueryInvoicesResponse invoices = zuoraClient.ObjectQueriesApi.QueryInvoices
 
 Console.WriteLine(invoices.ToJson());
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 
@@ -155,4 +148,3 @@ If the request succeeds, you will get a response similar to the following snippe
     ]
 }
 ```
-

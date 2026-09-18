@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.6.0 changelog"
+sidebarTitle: "1.6.0"
 ---
-
-# C# client library 1.6.0 changelog
-
-
 ## CreditMemosApi
 
 * Added a new optional parameter `shouldIncludeAcknowledged` to the methods UpdateCreditMemoInvokeSyncStatus, UpdateCreditMemoInvokeSyncStatusWithHttpInfo, UpdateCreditMemoInvokeSyncStatusAsync, and UpdateCreditMemoInvokeSyncStatusWithHttpInfoAsync.

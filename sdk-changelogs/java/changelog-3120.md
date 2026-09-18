@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.12.0 changelog"
+sidebarTitle: "3.12.0"
 ---
-
-# Java client library 3.12.0 changelog
-
-
 ## ContactSnapshotsApi
 
 * Removed pagination parameters `page` and `pageSize` from methods: getContactSnapshotCall, getContactSnapshotValidateBeforeCall, getContactSnapshot, getContactSnapshotWithHttpInfo, getContactSnapshotAsync, and related builder methods. This change requires developers to update their code if they were using pagination.

@@ -1,11 +1,6 @@
 ---
-markdown:
-  toc:
-    hide: true
+title: "Preview an order"
 ---
-
-# Preview an order
-
 ## End-user flow
 
 Below is a typical checkout page for a customer in the purchase process.
@@ -15,7 +10,7 @@ The previewed billing amounts are displayed on the left and a Credit Card or ACH
 The code below is a sample "Preview an order" call that obtains these billing amounts for you.
 
 
-<img width="800px" src="../../../static/images/Tutorials/Sample-checkout-page.png" alt="Preview the order" />
+<img width="800px" src="/static/images/Tutorials/Sample-checkout-page.png" alt="Preview the order" />
 
 
 The order summary part displays the total amount of the order, along with the selected product and product rate plan details.
@@ -26,14 +21,14 @@ The order summary part displays the total amount of the order, along with the se
 Assuming the subscription is set as an evergreen subscription, the following sample code calls the [Preview an order](/v1-api-reference/api/orders/post_previeworder) operation and submits the following information for preview:
 - `existingAccountNumber`: A00024362 (obtained from the previous call)
 - `subscribeToRatePlans`:
-  - `productRatePlanNumber`: PRP-00000180 (obtained from the [Show specific product details](show-product-details.md) section)
+  - `productRatePlanNumber`: PRP-00000180 (obtained from the [Show specific product details](/docs/get-started/tutorials/show-product-details) section)
 - `previewTypes`: BillingDocs, representing only the total amounts that will appear on the invoice.
 - `orderDate`: Today's date (assuming that today is 2025-01-01).
 - `terms` > `initialTerm` > `termType`: EVERGREEN
 
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl -L -X POST 'https://rest.test.zuora.com/v1/orders/preview' \
 -H 'zuora-version: 341' \
 -H 'Authorization: Bearer 68ec505613a94daeaa28aa4b44435696' \
@@ -65,9 +60,9 @@ curl -L -X POST 'https://rest.test.zuora.com/v1/orders/preview' \
  ]
 }'
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 InitialTerm  initialTerm = new InitialTerm().periodType(null).termType(TermType.EVERGREEN);
 PreviewOrderCreateSubscriptionTerms terms = new PreviewOrderCreateSubscriptionTerms().initialTerm(initialTerm);
 PreviewOrderRatePlanOverride ratePlanOverride = new PreviewOrderRatePlanOverride().productRatePlanNumber("PRP-00000180");
@@ -96,9 +91,9 @@ PreviewOrderResponse previewOrderResp = zuoraClient.ordersApi().previewOrderApi(
 System.out.print(previewOrderResp);
 
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 const initialTerm = new InitialTerm();
 initialTerm.termType = 'EVERGREEN';
 initialTerm.periodType = null;
@@ -136,9 +131,9 @@ const previewOrderResp = await zuoraClient.ordersApi.previewOrder(request);
 console.log(JSON.stringify(previewOrderResp, (k, v) => v ?? undefined, 2));
 
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 from datetime import date
 from zuora_sdk import CreateOrderRequest, PreviewOrderRequest, PreviewOrderResponse, CreateOrderResponse, CreateOrderSubscription, \
     ProcessingOptionsWithDelayedCapturePayment
@@ -172,9 +167,9 @@ def preview_order(client=None):
 if __name__ == '__main__':
     preview_order()
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 PreviewOrderResponse response = zuoraClient.OrdersApi.PreviewOrder
 (
     new PreviewOrderRequest
@@ -215,8 +210,8 @@ Console.WriteLine(response.ToJson());
 
 
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 If the request succeeds, you will get a response similar to the following snippet:
@@ -262,4 +257,4 @@ If the request succeeds, you will get a response similar to the following snippe
 
 ## Next step
 
-[Collect payments](./collect-payments.md)
+[Collect payments](/docs/get-started/tutorials/collect-payments)

@@ -1,25 +1,13 @@
 ---
-seo:
-  title: Error Codes
-  description: Explains how Zuora handles errors.
-  keywords: error handling, error codes
-markdown:
-  toc:
-    hide: true
-redirects:
-  /quickstart-api/tutorial/error-handling/: {}
-  /api-references/quickstart-api/tag/Errors/: {}
-  /quickstart-api/tutorial/payment-auth-errors/: {}
+title: "Error codes"
+description: "Explains how Zuora handles errors."
 ---
-
-# Error codes
-
-{% tabsComponent %}
-  {% tabComponent title="v1 API" %}
+<Tabs>
+  <Tab title="v1 API">
 
 
 If a request to Zuora API with an endpoint starting with `/v1`
-(except [Actions](/v1-api-reference/api/actions) and
+(except [Actions](/v1-api-reference/api/actions/action_postcreate) and
 CRUD operations) fails, the response will contain an eight-digit error code
 with a corresponding error message to indicate the details of the error.
 
@@ -121,13 +109,13 @@ resolution:
 | 50      | Locking contention          | This request cannot be processed because the objects this request is trying to modify are being modified by another API request, UI operation, or batch job process. | <p>Resubmit the request first to have another try.</p> <p>If this error still occurs, contact <a href="https://support.zuora.com" target="_blank">Zuora Global Support</a> with the returned `Zuora-Request-Id` value in the response header for assistance.</p> |
 | 60      | Internal error              | The server encounters an internal error. | Contact <a href="https://support.zuora.com" target="_blank">Zuora Global Support</a> with the returned `Zuora-Request-Id` value in the response header for assistance. |
 | 61      | Temporary error             | A temporary error occurs during request processing, for example, a database communication error. | <p>Resubmit the request first to have another try.</p> <p>If this error still occurs, contact <a href="https://support.zuora.com" target="_blank">Zuora Global Support</a> with the returned `Zuora-Request-Id` value in the response header for assistance. </p> |
-| 70      | Request exceeded limit      | The total number of concurrent requests exceeds the limit allowed by the system. | <p>Resubmit the request after the number of seconds specified by the `Retry-After` value in the response header.</p> <p>Check [Concurrent request limits](/rest-api/general-concepts/rate-concurrency-limits/) for details about Zuora’s concurrent request limit policy.</p> |
+| 70      | Request exceeded limit      | The total number of concurrent requests exceeds the limit allowed by the system. | <p>Resubmit the request after the number of seconds specified by the `Retry-After` value in the response header.</p> <p>Check [Concurrent request limits](/docs/guides/rate-limits) for details about Zuora’s concurrent request limit policy.</p> |
 | 90      | Malformed request           | The request cannot be processed due to JSON syntax errors. | Check the syntax error in the JSON request body and ensure that the request is in the correct JSON format. |
 | 99      | Integration error           | The server encounters an error when communicating with an external system, for example, payment gateway, tax engine provider. | Check the response message and take action accordingly. |
 
 
-  {% /tabComponent %}
-  {% tabComponent title="Quickstart API" %}
+  </Tab>
+  <Tab title="Quickstart API">
 
 Zuora uses conventional HTTP response codes to indicate the success or
 failure of an API request. In general: Codes in the 2xx range indicate
@@ -205,19 +193,19 @@ Below is a list of possible error codes, along with additional information about
 
 |Error code|Description|
 | ---- | -------- |
-|`invalid_parameter`|One or more of the parameters requires a value of a specific type, but the values provided were a different type. Make sure that only supported values are provided for each attribute. Refer to our [Quickstart API Reference](/other-api/quickstart-api/) to look up the type of data each attribute supports.|
-|`invalid_parameter_integer` | One or more of the parameters requires an integer, but the values provided were a different type. Make sure that only support values are provided for each attribute. Refer to our [Quickstart API Reference](/other-api/quickstart-api/) to look up the type of data each attribute supports.|
-|`invalid_parameter_number` | One or more of the parameters requires a number, but the values provided were a different type. Make sure that only support values are provided for each attribute. Refer to our [Quickstart API Reference](/other-api/quickstart-api/) to look up the type of data each attribute supports.|
-|`invalid_parameter_boolean` | One or more of the parameters requires a boolean, but the values provided were a different type. Make sure that only support values are provided for each attribute. Refer to our [Quickstart API Reference](/other-api/quickstart-api/) to look up the type of data each attribute supports.|
-|`invalid_parameter_string` | One or more of the parameters requires a string, but the values provided were a different type. Make sure that only support values are provided for each attribute. Refer to our [Quickstart API Reference](/other-api/quickstart-api/) to look up the type of data each attribute supports.|
+|`invalid_parameter`|One or more of the parameters requires a value of a specific type, but the values provided were a different type. Make sure that only supported values are provided for each attribute. Refer to our [Quickstart API Reference](/other-api/quickstart-api-intro) to look up the type of data each attribute supports.|
+|`invalid_parameter_integer` | One or more of the parameters requires an integer, but the values provided were a different type. Make sure that only support values are provided for each attribute. Refer to our [Quickstart API Reference](/other-api/quickstart-api-intro) to look up the type of data each attribute supports.|
+|`invalid_parameter_number` | One or more of the parameters requires a number, but the values provided were a different type. Make sure that only support values are provided for each attribute. Refer to our [Quickstart API Reference](/other-api/quickstart-api-intro) to look up the type of data each attribute supports.|
+|`invalid_parameter_boolean` | One or more of the parameters requires a boolean, but the values provided were a different type. Make sure that only support values are provided for each attribute. Refer to our [Quickstart API Reference](/other-api/quickstart-api-intro) to look up the type of data each attribute supports.|
+|`invalid_parameter_string` | One or more of the parameters requires a string, but the values provided were a different type. Make sure that only support values are provided for each attribute. Refer to our [Quickstart API Reference](/other-api/quickstart-api-intro) to look up the type of data each attribute supports.|
 |`unknown_parameter`|The request contains one or more unexpected parameters. Remove these parameters and try again.|
-|`missing_parameter`|One or more required values are missing. Check our [Quickstart API Reference](/other-api/quickstart-api/) to see which values are required to create or modify the specified resource.|
-|`parameters_exclusive`|Two or more mutually exclusive parameters were provided. Check our [Quickstart API Reference](/other-api/quickstart-api/) or the returned error message to see which values are permitted when creating or modifying the specified resource.|
-|`invalid_request`|The request could not be understood by the server due to malformed syntax. Check our [Quickstart API Reference](/other-api/quickstart-api/) to see how to create or modify the specified resource and modify your request accordingly.|
+|`missing_parameter`|One or more required values are missing. Check our [Quickstart API Reference](/other-api/quickstart-api-intro) to see which values are required to create or modify the specified resource.|
+|`parameters_exclusive`|Two or more mutually exclusive parameters were provided. Check our [Quickstart API Reference](/other-api/quickstart-api-intro) or the returned error message to see which values are permitted when creating or modifying the specified resource.|
+|`invalid_request`|The request could not be understood by the server due to malformed syntax. Check our [Quickstart API Reference](/other-api/quickstart-api-intro) to see how to create or modify the specified resource and modify your request accordingly.|
 |`not_found`|The requested resource does not exist.|
 |`card_error`|An error occurred while processing the card. Try again later or with a different payment method.|
 |`authorization_token_expired`|The authorization token provided has expired. Obtain a new authorization token and try again.|
-|`resource_not_found`|The resource identifier provided is not found.<br />**Note**: This error code applies to a resource referenced in a POST, PUT, or PATCH request. For example, when creating a payment method for an account by specifying either an `account_number` or `account_id` that does not exist. It will result in an error where the type is `bad_request` instead of `not_found`.|
+|`resource_not_found`|The resource identifier provided is not found.&lt;br />**Note**: This error code applies to a resource referenced in a POST, PUT, or PATCH request. For example, when creating a payment method for an account by specifying either an `account_number` or `account_id` that does not exist. It will result in an error where the type is `bad_request` instead of `not_found`.|
 |`in_use`|The resource cannot be deleted because it is being used.|
 |`invalid_value`| The values of one or more parameters you specified are invalid. Check the parameter values you specified, update them to valid values, then try again.|
 |`delete_not_allowed`|The specified order cannot be deleted. This error is specific to the "Delete an order" operation.|
@@ -274,9 +262,9 @@ The following table summarizes the payment authorization error responses returne
 ## Handling errors
 
 If you use the Zuora SDK, use the following template to handle errors:
-{% tabs %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+<Tabs>
+  <Tab title="Java">
+  ```java Java
   try {
 
     // Use Zuora's client library to make requests
@@ -295,9 +283,9 @@ If you use the Zuora SDK, use the following template to handle errors:
     // Something else happened, completely unrelated to Zuora
   }
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   (async () => {
     try {
 
@@ -309,10 +297,9 @@ If you use the Zuora SDK, use the following template to handle errors:
     }
   })();
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
-
+</Tabs>

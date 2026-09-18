@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.3.0 changelog"
+sidebarTitle: "3.3.0"
 ---
-
-# Node.js client library 3.3.0 changelog
-
 ## ZuoraClient
 
 * Added DataLabelingApi access method for data labeling functionalities.

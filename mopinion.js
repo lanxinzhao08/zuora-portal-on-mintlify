@@ -1,0 +1,1 @@
+(function(){var id="ly5w1pig7gnqe6indeltm48uya8ooe64nz1";var js=document.createElement("script");js.setAttribute("type","text/javascript");js.setAttribute("src","//deploy.mopinion.com/js/pastease.js");js.async=true;document.getElementsByTagName("head")[0].appendChild(js);var t=setInterval(function(){try{Pastease.load(id);clearInterval(t)}catch(e){}},50)})();

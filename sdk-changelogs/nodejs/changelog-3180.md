@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.18.0 changelog"
+sidebarTitle: "3.18.0"
 ---
-
-# Node.js client library 3.18.0 changelog
-
-
 ## CreditMemosApi
 
 * Added an optional parameter `transaction_id` to the method for Re-Sync operation. This parameter allows overriding the transaction ID stored from the last executed run.
@@ -54,7 +49,7 @@ markdown:
 
 ## BasePeriod
 
-* Added the `balance` field, indicating the remaining balance for this period (`committedAmount` - `billedTotalSpending` - `trueUpAmount` - `expiredAmount`). Balance is always non-negative. 
+* Added the `balance` field, indicating the remaining balance for this period (`committedAmount` - `billedTotalSpending` - `trueUpAmount` - `expiredAmount`). Balance is always non-negative.
 * Added the `trueUpAmount` field, indicating the total true-up amount for this commitment period. It will be null if it is a prepaid commitment or if it is not evaluated yet. This will be a non-negative number.
 * Added the `expiredAmount` field, indicating the total expired amount for this commitment period. It will be null if it is a postpaid commitment or if the period is not evaluated yet. This will be a non-negative number.
 * Added the `billedTotalSpending` field, indicating the sum of drawdown or drawdown reversal transactions.

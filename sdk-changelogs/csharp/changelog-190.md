@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.9.0 changelog"
+sidebarTitle: "1.9.0"
 ---
-
-# C# client library 1.9.0 changelog
-
 ## BalanceTrackingApi
 
 * The entire class BalanceTrackingApi and its associated interfaces and methods have been removed.

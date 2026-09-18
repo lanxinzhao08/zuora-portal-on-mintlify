@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.6.0 changelog"
+sidebarTitle: "3.6.0"
 ---
-
-# Java client library 3.6.0 changelog
-
-
 ## CreditMemosApi
 
 * Added asynchronous methods for applying credit memos with `applyCreditMemoAsync` and `ApplyCreditMemoAsyncApi`.
@@ -24,7 +19,7 @@ markdown:
 
 ## ExpandedInvoiceSchedule
 
-* Added a `ratePlanCharges` field of type List\<ExpandedRatePlanCharge> to the ExpandedInvoiceSchedule class.
+* Added a `ratePlanCharges` field of type List&lt;ExpandedRatePlanCharge> to the ExpandedInvoiceSchedule class.
 
 ## ExpandedProduct
 * Changed the type of `versionOrdinal` from String to Integer, which may require developers to update their code to handle the new type.

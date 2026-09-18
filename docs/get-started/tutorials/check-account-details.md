@@ -1,31 +1,25 @@
 ---
-markdown:
-  toc:
-    hide: true
+title: "Check account details"
 ---
-
-# Check account details
-
-
 ## End-user flow
 
 Imagine you want to create a "My Account Details" menu option or button. Your customers can confirm their bill-to address and view their account balances.
 
 ## Sample code
 
-The following sample code calls the [Retrieve an account](/v1-api-reference/api/object-queries/queryaccountbykey/) API, which returns their account details including the bill-to contact information.
+The following sample code calls the [Retrieve an account](/v1-api-reference/api/object-queries/queryaccountbykey) API, which returns their account details including the bill-to contact information.
 
 The account number can be obtained from the "Create a billing account" section.
 
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl -L -g -X GET 'https://rest.test.zuora.com/object-query/accounts/A00000029?expand[]=billto' \
 -H 'Authorization: Bearer 55969055e1804f139126a5890fc9ff84'
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 ExpandedAccount account = zuoraClient.objectQueriesApi()
             .queryAccountByKeyApi(accountKey)
             .expand(new ArrayList<>(Arrays.asList("billto")))
@@ -33,18 +27,18 @@ ExpandedAccount account = zuoraClient.objectQueriesApi()
 
 System.out.println(account);
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 const account = await zuoraClient.objectQueriesApi.queryAccountByKey('A00024294',{
      expand: ['billto']
 });
 
 console.log(JSON.stringify(account, (k, v) => v ?? undefined, 2));
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 def query_account_by_key(account_key, client=None):
     if not client:
         client = get_client()
@@ -64,9 +58,9 @@ def query_account_by_key(account_key, client=None):
 if __name__ == '__main__':
     query_account_by_key('A00024294')
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 ExpandedAccount accountDetailResponse = zuoraClient.ObjectQueriesApi.QueryAccountByKey
 (
     "8ad0980c93ba4d1b019421683f2d474b",
@@ -75,8 +69,8 @@ ExpandedAccount accountDetailResponse = zuoraClient.ObjectQueriesApi.QueryAccoun
 
 Console.WriteLine(accountDetailResponse.ToJson());
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 If the request succeeds, you will get a response similar to the following snippet:

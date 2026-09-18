@@ -1,16 +1,6 @@
 ---
-seo:
-  title: Zuora Copilot for Analytics - Zuora Developers Blog
-markdown:
-  toc:
-    hide: true
-disableLastModified: false
-redirects:
-  /blogs/2025-2-copilotforanalytics/: {}
+title: "How we built a reliable and secure AI based feature"
 ---
-
-# How we built a reliable and secure AI based feature
-
 AI hallucinates! AI steals all your data! So how can you build solid, performant, and reliable AI based features for your customers?
 
 Our engineers, **Siva Kumar Govindarajan** and **Duy Nguyen**, figured out how to use an LLM effectively while eliminating reliability and privacy concerns. We’re so happy with the results we wanted to share. If your organization is considering or is trying to create features using an LLM, here’s a successful example to reference.
@@ -26,7 +16,7 @@ Over the years since we first released Analytics, we observed that deriving the 
 
 Here is an example of a chart from a demo tenant showing the results of the first Net MRR question:
 
-![Zuora Copilot sample chart](images/NetMRRPast12Months.png)
+![Zuora Copilot sample chart](/blogs/images/NetMRRPast12Months.png)
 
 We all know the acronym, AI, has a high and contentious profile. I’ll explain later how we accomplish this, but know that NONE of your Zuora tenant data has been, nor will be, shipped out to a third party LLM. Nor do we hide our use of AI. Copilot is just one AI related feature and like all the others, clearly identifies itself as an AI driven feature. But in this post, we’re only focused on Copilot for Analytics. Please reach out to your Zuora Account Team if you have any questions or concerns about these features and how they work.
 

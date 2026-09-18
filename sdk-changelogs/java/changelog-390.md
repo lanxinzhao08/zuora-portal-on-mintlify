@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.9.0 changelog"
+sidebarTitle: "3.9.0"
 ---
-
-# Java client library 3.9.0 changelog
-
-
 ## ZuoraClient
 
 
@@ -26,7 +21,7 @@ markdown:
 
 ## ObjectQueriesApi
 
-* Changed the endpoint path for commitment segments from `/object-query/commitmentSegment` to `/object-query/commitment-segment`. <!--Commitments related APIs are not published yet. Do we need to announce it here? -->
+* Changed the endpoint path for commitment segments from `/object-query/commitmentSegment` to `/object-query/commitment-segment`.
 * Added new methods to query CommitmentCycle by key with various parameters such as filters, expands, sort capabilities.
 * Introduced new API methods to query multiple CommitmentCycles with similar capabilities.
 

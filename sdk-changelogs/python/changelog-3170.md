@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.17.0 changelog"
+sidebarTitle: "3.17.0"
 ---
-
-# Python client library 3.17.0 changelog
-
 ## \_\_init\_\_
 
 * Removed BalanceTrackingApi import

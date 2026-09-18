@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.5.0 changelog"
+sidebarTitle: "3.5.0"
 ---
-
-# Node.js client library 3.5.0 changelog
-
-
 ## BulkUpdateOrderLineItem
 
 * Added a new field `communicationProfileId` to the BulkUpdateOrderLineItem and UpdateOrderLineItem models. This field allows updating the communication profile associated with the order line item for sales OLIs in specific states (`Executing`, `Booked`, `SentToBilling`).

@@ -1,40 +1,36 @@
 ---
-seo:
-  title: Choose the right query option - Zuora
+title: "Choose the right query option"
+sidebarTitle: "Query options"
 ---
-
-
-# Choose the right query option
-
 For historical reasons, there are multiple ways to extract your data from Zuora Billing. Choosing the correct one for your use case can be tricky. Here is our decision table to guide you to the right choice every time.
 
-This tutorial assumes you are using either the [Zuora Billing v1 API](/v1-api-reference/introduction/) or the [v3 or higher SDK client libraries](/docs/guides/libraries/).
+This tutorial assumes you are using either the [Zuora Billing v1 API](/v1-api-reference/introduction) or the [v3 or higher SDK client libraries](/docs/guides/libraries).
 
 The choices for Zuora Revenue and Zephr are much simpler and do not require a guide.
 
 
 ## Query decision tree
 
-<a href="/static/images/Query-method-decision-tree.png" target="_blank"><img src="../../static/images/Query-method-decision-tree.png" alt="Which query option should I use?" width="760px"></a>
+<a href="/static/images/Query-method-decision-tree.png" target="_blank"><img src="/static/images/Query-method-decision-tree.png" alt="Which query option should I use?" width="760px" /></a>
 
 
 **Documentation in the decision tree**
 
-* [Object Query Tutorial](/docs/guides/expand-filter-fields-sort/)
+* [Object Query Tutorial](/docs/guides/expand-filter-fields-sort)
 * [Data Sources](https://docs.zuora.com?resourceId=platform-introduction-to-data-sources)
 * [Data Query (SQL)](https://docs.zuora.com?resourceId=platform-data-query-overview)
 * [Zuora UI Reporting Feature](https://docs.zuora.com?resourceId=platform-reporting-overview)
 * [AQUA](https://docs.zuora.com?resourceId=platform-aqua-api-introduction)
 
 ## Query option summary table
-|Categories| Object Query |Data Source Export<br>(Export ZOQL)|Data Query(SQL)|AQUA|
+|Categories| Object Query |Data Source Export&lt;br>(Export ZOQL)|Data Query(SQL)|AQUA|
 | :---     |    :----   |  :--- |  :--- |  :--- |
 |Type|Real-Time|Batch|Batch|Batch|
 |Synchronous Responses?|Yes|No|No|No|
 |Output Formats|JSON, CSV|CSV|JSON, CSV, DSV, TSV|CSV|
-|Main features|Synchronous access to all fields from core object as well as related objects. Expand, filter and sort options. Ideal for <100 records|Asychronous retrieval of data from multiple related objects. Easy UI reporting. Export ZOQL language for API use. Great for operational reporting involving thousands of records.|Custom SQL query statements, full SQL Select implementation, 200+ functions. Data Query UI feature for iterative SQL development prior to embedding in code. Must know SQL and our data model. Excellent for data transformations upon extract.|Asynchronous periodic bulk data extract option intended for custom data warehouse integration. We now have a collection of 12+ data warehouse connectors. To save time and money use an OOTB connector if available.|
+|Main features|Synchronous access to all fields from core object as well as related objects. Expand, filter and sort options. Ideal for &lt;100 records|Asychronous retrieval of data from multiple related objects. Easy UI reporting. Export ZOQL language for API use. Great for operational reporting involving thousands of records.|Custom SQL query statements, full SQL Select implementation, 200+ functions. Data Query UI feature for iterative SQL development prior to embedding in code. Must know SQL and our data model. Excellent for data transformations upon extract.|Asynchronous periodic bulk data extract option intended for custom data warehouse integration. We now have a collection of 12+ data warehouse connectors. To save time and money use an OOTB connector if available.|
 |Sample Use Cases|Retrieve Account data for this Invoice. Retrieve charges for this Billing Account. Retrieve charge data for the Invoice Items on this Invoice.|Operational reporting, see Data Sources and Reporting options in UI. Good for month end reporting and reconciliation. Reports can also be scheduled and distributed automatically without code but Export ZOQL created for API use.|Functional overlap with Data Sources only our SQL has many more functions and richer grouping and sorting than Export ZOQL. But you need to make sure the SQL joins are correct, so TEST.|Periodic bulk data extracts for your data warehouse.|
-|Documentation|[Object Query API](/v1-api-reference/api/object-queries/), [Object Query examples](/docs/guides/expand-filter-fields-sort/)|[Data Sources](https://docs.zuora.com?resourceId=platform-data-sources-and-exports), [API](/v1-api-reference/older-api/exports/)|[Data Query Overview](https://docs.zuora.com?resourceId=platform-data-query-overview), [Data Query API](/v1-api-reference/api/data-queries/)|[AQuA Introduction](https://docs.zuora.com?resourceId=platform-aqua-api-introduction), [AQuA API](/v1-api-reference/api/aggregate-queries/)|
+|Documentation|[Object Query API](/v1-api-reference/api/object-queries/queryaccounts), [Object Query examples](/docs/guides/expand-filter-fields-sort)|[Data Sources](https://docs.zuora.com?resourceId=platform-data-sources-and-exports), [API](/v1-api-reference/older-api/exports/object_postexport)|[Data Query Overview](https://docs.zuora.com?resourceId=platform-data-query-overview), [Data Query API](/v1-api-reference/api/data-queries/get_dataqueryjobs)|[AQuA Introduction](https://docs.zuora.com?resourceId=platform-aqua-api-introduction), [AQuA API](/v1-api-reference/api/aggregate-queries/post_batchqueryjob)|
 
 
 ## Why do we have so many query choices?
@@ -54,12 +50,11 @@ Many long standing customers have used [Action Query](/v1-api-reference/api/acti
 
 Supplemental material for your consideration:
 * Zuora University modules: [Zuora's Object Model](https://university.zuora.com/series/courses-by-topic/zuoras-object-model), [Standard Zuora Architecture](https://university.zuora.com/series/courses-by-topic/standard-zuora-architecture). While you need to register, all of these self paced modules are free for you to consume. Check to see if your organization purchased a Zuora University seat, which provides access to live, instructor led, training and the option to become officially certified.
-* [Object Query API documentation](/v1-api-reference/api/object-queries/)
-* [Extensive Object Query tutorial with code samples](/docs/guides/expand-filter-fields-sort/)
-* [Check account details](/docs/get-started/tutorials/check-account-details/)
-* [View all the invoices on an account](/docs/get-started/tutorials/view-all-invoices/)
+* [Object Query API documentation](/v1-api-reference/api/object-queries/queryaccounts)
+* [Extensive Object Query tutorial with code samples](/docs/guides/expand-filter-fields-sort)
+* [Check account details](/docs/get-started/tutorials/check-account-details)
+* [View all the invoices on an account](/docs/get-started/tutorials/view-all-invoices)
 * [Data Sources](https://docs.zuora.com?resourceId=platform-introduction-to-data-sources)
 * [Data Query (SQL)](https://docs.zuora.com?resourceId=platform-data-query-overview)
 * [Zuora UI Reporting feature](https://docs.zuora.com?resourceId=platform-reporting-overview)
 * [AQUA](https://docs.zuora.com?resourceId=platform-aqua-api-introduction)
-

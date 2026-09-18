@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.20.0 changelog"
+sidebarTitle: "3.20.0"
 ---
-
-# Node.js client library 3.20.0 changelog
-
 ## AccountDetailResponse
 
 * Added new field `eReportingProfile`.

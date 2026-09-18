@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.19.0 changelog"
+sidebarTitle: "3.19.0"
 ---
-
-# Node.js client library 3.19.0 changelog
-
 ## ObjectQueriesApi
 
 * Added import for ExpandedChildCommitmentLink.

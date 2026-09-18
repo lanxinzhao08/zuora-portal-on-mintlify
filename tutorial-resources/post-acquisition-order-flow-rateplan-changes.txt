@@ -1,0 +1,48 @@
+title Post Acquisition Order Flow (Rate Plan Changes)
+
+bottomparticipants
+participant Browser
+participant Portal
+participant Zuora
+
+abox over Browser,Zuora #D6E9FF ;0:General flow for product or service add ons, exchanges, upsells, removals, downsells.\nThere is a separate flow for suspension, resumption, renewal and cancellation.\nDetails of payment gateway and tax integrations have been intentionaly excluded \nfor clarity. In this diagram 'Portal' is your web site or application running on \nyour server(s) where prospects or your sales team can view the customer's existing\nsubscription as well as sign up for your services and products. Your customer or \nsales are sitting in front of 'Browser'.
+
+Browser->Portal: Authenticate
+Portal->Zuora: Query Account and Subscription(s)\n GET v1/subscriptions/accounts/{account-key}
+Portal->Browser: Account & Subscription Info \nand Options Menu
+alt Add On
+Portal->Zuora: Query Catalog (cache instead maybe?)\n GET v1/catalog/products
+Browser->Browser: Browse Catalog
+Browser->Portal: Rate Plan to Add with Quantity
+else Exchange
+Portal->Zuora: Query Catalog (cache instead maybe?)\n GET v1/catalog/products
+Browser->Browser: Browse Catalog
+Browser->Portal: Rate Plan to Remove, \n Rate Plan to Add & Quantity
+else Removal
+Browser->Portal: Rate Plan To Remove
+else Update - Change Quantity
+Browser->Portal: Rate Plan with new quantity
+end
+Portal->Zuora: Order Preview (aka Quote)\n POST v1/orders/preview
+Zuora->Portal: Pricing incl. Total
+Portal->Browser: Pricing incl. Total
+Browser->Portal: Confirm
+abox over Browser,Zuora #D6E9FF ;0 :Since they are already a customer asking how to pay may not be required. This flow \nassumes you invoice for any upsells immediately, our best practice. This isn't \nrequired by Zuora, Zuora will bill them on their regular billing day using their default \npayment method if runBilling is false on the order (the default).
+
+opt
+Portal->Browser: How would you like to pay?
+Browser->Zuora: Payment method details
+end
+
+Portal->Zuora: Order incl. Account Id, Subscription \nChanges, Pricing Details (if any)\n POST v1/orders
+alt Immediate Payment Collected
+Zuora->Zuora: Create Order, Update Subscription, \noptionally invoice and collect payment
+Zuora->Portal: Success (incl. Ids)
+Portal->Browser: Success Confirmation page
+Zuora-->Browser: Send email confirming order, include $0 balance Invoice PDF as receipt
+else Payment Collected Later
+Zuora->Zuora: Create Order, Update Subscription, \nOptionally Invoice
+Zuora->Portal: Success (incl. Ids)
+Portal->Browser: Success Confirmation page
+Zuora-->Browser: Send email confirming order, include Invoice PDF for payment
+end

@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.13.0 changelog"
+sidebarTitle: "3.13.0"
 ---
-
-# Java client library 3.13.0 changelog
-
-
 ## ObjectQueriesApi
 
 * Added support for expanding `invoiceschedule` and `invoicescheduleitem` in queries for CreditMemoItem and InvoiceItem.
@@ -76,4 +71,4 @@ markdown:
 ## UpsertUpdateCommitmentInput
 
 * Changed the type of the `status` field from CommitmentStatus to CommitmentStatusInput.
-* Added a new field `schedules` of type List\<UpsertCommitmentScheduleInput>.
+* Added a new field `schedules` of type List&lt;UpsertCommitmentScheduleInput>.

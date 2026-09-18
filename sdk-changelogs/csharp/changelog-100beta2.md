@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.0.0-beta.2 changelog"
+sidebarTitle: "1.0.0-beta.2"
 ---
-
-# C# client library 1.0.0-beta.2 changelog
-
 ## DeploymentApi
 * Added optional parameters to several methods: `zuoraVersion`, `zuoraOrgIds`, `acceptEncoding`, `contentEncoding`, `authorization`, and `zuoraTrackId`.
 
@@ -172,7 +168,7 @@ markdown:
 ## QueryDailyConsumptionSummarysResponse
 
 * The constructor parameter order has changed. `data` is now the first parameter, and `nextPage` is the second parameter. This change requires developers to update their code to match the new parameter order when instantiating QueryDailyConsumptionSummarysResponse.
-* Added a new property `AdditionalProperties` of type Dictionary<string, object> to store additional data.
+* Added a new property `AdditionalProperties` of type Dictionary&lt;string, object> to store additional data.
 
 ## QueryDebitMemoItemsResponse
 

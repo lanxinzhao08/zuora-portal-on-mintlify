@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.12.0 changelog"
+sidebarTitle: "1.12.0"
 ---
-
-# C# client library 1.12.0 changelog
-
 ## AccountDetailResponse
 
 * Added new property `EReportingProfile`.

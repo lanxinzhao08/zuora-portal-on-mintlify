@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.3.0 changelog"
+sidebarTitle: "3.3.0"
 ---
-
-# Python client library 3.3.0 changelog
-
 ## api/__init__
 
 * Added DataLabelingApi for handling data labeling operations.
@@ -340,4 +336,3 @@ markdown:
 
 ## write_off_invoice_request
 * Added a new optional field `tax_auto_calculation` of type `StrictBool` to the `WriteOffInvoiceRequest` model, allowing automatic tax calculation in the credit memo.
-

@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.7.0 changelog"
+sidebarTitle: "3.7.0"
 ---
-
-# Java client library 3.7.0 changelog
-
 ## CreditMemosApi
 * Added method `downloadEInvoiceFileForCreditMemo` to download E-Invoice files for credit memos.
 * Added method `getEInvoicingMandateForCreditMemo` to fetch Avalara Mandate for credit memos.

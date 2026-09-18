@@ -1,15 +1,8 @@
 ---
-seo:
-  title: Create a subscription - Orders API tutorial
-  description: 'Orders API tutorial to showcase how to create a subscription in different scenarios using cURL or Zuora client libraries'
-  keywords: 'order, subscription, api, create an order, create a subscription'
-markdown:
-  toc:
-    hide: false
+title: "Create a subscription"
+sidebarTitle: "Create subscriptions"
+description: "Orders API tutorial to showcase how to create a subscription in different scenarios using cURL or Zuora client libraries"
 ---
-
-# Create a subscription
-
 This section showcases the cURL examples for creating a subscription in different scenarios by calling the [Create an order](/v1-api-reference/api/orders/post_order) operation. The corresponding Zuora client libraries code examples are also provided.
 
 Note that we're using the US API Sandbox Cloud 2 environment [https://rest.apisandbox.zuora.com](https://rest.apisandbox.zuora.com) as the base URL. You need to substitiute it with your own environment URL.
@@ -20,10 +13,10 @@ Create an order subscribing to a Monthly recurring plan (`id`=`8ad08ea194da7ba00
 
 The invoice is generated immediately along with the order creation.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-```bash {% title="cURL" %}
+```bash cURL
 curl --location 'https://rest.apisandbox.zuora.com/v1/orders' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer $token' \
@@ -69,9 +62,9 @@ curl --location 'https://rest.apisandbox.zuora.com/v1/orders' \
     ]
 }'
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 // Define terms
 InitialTerm initialTerm = new InitialTerm()
         .periodType(TermPeriodType.MONTH)
@@ -115,9 +108,9 @@ CreateOrderRequest request = new CreateOrderRequest()
 CreateOrderResponse createOrderResp = zuoraClient.ordersApi().createOrderApi(request).execute();
 System.out.print(createOrderResp);
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 const orderDate = '2025-02-01';
 
 // Define terms
@@ -185,9 +178,9 @@ const request = {
 const response = await zuoraClient.ordersApi.createOrder(request);
 console.log('Order created:', response.orderNumber);
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-  ```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+  ```python Python
 # Define Initial and Renewal Terms
 initial_term = InitialTerm(
     period=12,
@@ -259,9 +252,9 @@ try:
 except Exception as e:
     print(f"Failed to create order: {e}")
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 var orderDate = new DateOnly(2025, 2, 1);
 
 // Define Initial and Renewal Terms
@@ -339,8 +332,8 @@ catch (ApiException ex)
 
 ```
 
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ## Create a subscription with tiered charges
 
@@ -355,10 +348,10 @@ The subscribed quantity is 15.
 
 The invoice is generated immediately along with the order creation.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-```bash {% title="cURL" %}
+```bash cURL
 curl -i -X POST "https://rest.apisandbox.zuora.com/v1/orders" \
   -H "Authorization: Bearer $token" \
   -H "Content-Type: application/json" \
@@ -439,9 +432,9 @@ curl -i -X POST "https://rest.apisandbox.zuora.com/v1/orders" \
     ]
 }'
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 // Define terms
 InitialTerm initialTerm = new InitialTerm()
         .periodType(TermPeriodType.MONTH)
@@ -511,9 +504,9 @@ CreateOrderRequest request = new CreateOrderRequest()
 CreateOrderResponse createOrderResp = zuoraClient.ordersApi().createOrderApi(request).execute();
 System.out.print(createOrderResp);
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 const subscription = {
     orderActions: [
         {
@@ -593,9 +586,9 @@ const orderRequest = {
 const createOrderResp = await zuoraClient.ordersApi.createOrder(orderRequest);
 console.log(JSON.stringify(createOrderResp, (k, v) => v ?? undefined, 2));
 ```
-  {% /tab %}
-  {% tab label="Python" %}
- ```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+ ```python Python
 # Define Initial and Renewal Terms
 initial_term = InitialTerm(
     period=12,
@@ -689,9 +682,9 @@ order_request = CreateOrderRequest(
 create_order_resp = client.orders_api().create_order(order_request)
 print(create_order_resp.to_json())
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 // Define Initial and Renewal Terms
 InitialTerm initialTerm = new InitialTerm(
   period:12,
@@ -797,8 +790,8 @@ catch (ApiException ex)
     Console.WriteLine($"Exception when calling OrdersApi: {ex.Message}");
 }
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ## Create a subscription with percentage discount override
 
@@ -824,9 +817,9 @@ The new account information is as follows:
 
 The invoice is generated immediately along with the order creation.
 
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl -i -X POST https://rest.apisandbox.zuora.com/v1/orders \
   -H "Authorization: Bearer $token" \
   -H "Content-Type: application/json" \
@@ -934,9 +927,9 @@ curl -i -X POST https://rest.apisandbox.zuora.com/v1/orders \
 }
 '
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 // Define terms
 InitialTerm initialTerm = new InitialTerm()
         .periodType(TermPeriodType.MONTH)
@@ -1018,9 +1011,9 @@ CreateOrderRequest request = new CreateOrderRequest()
 CreateOrderResponse createOrderResp = zuoraClient.ordersApi().createOrderApi(request).execute();
 System.out.print(createOrderResp);
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 const subscription = {
     orderActions: [
     {
@@ -1112,9 +1105,9 @@ const orderRequest = {
 const createOrderResp = await zuoraClient.ordersApi.createOrder(orderRequest);
 console.log(JSON.stringify(createOrderResp, (k, v) => v ?? undefined, 2));
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 # Define Initial and Renewal Terms
 initial_term = InitialTerm(
     period=12,
@@ -1221,9 +1214,9 @@ order_request = CreateOrderRequest(
 create_order_resp = client.orders_api().create_order(order_request)
 print(create_order_resp.to_json())
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 // Define Initial and Renewal Terms
 InitialTerm initialTerm = new InitialTerm(
     period: 12,
@@ -1349,8 +1342,8 @@ catch (ApiException ex)
     Console.WriteLine($"Error: {ex.Message}");
 }
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 
@@ -1363,9 +1356,9 @@ Create an order for a new subscription on an existing account (A00000135) that i
 
 The invoice is generated immediately along with the order creation.
 
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl -i  -X POST https://rest.apisandbox.zuora.com/v1/orders \
   -H "Authorization: Bearer $token" \
   -H "Content-Type: application/json" \
@@ -1446,9 +1439,9 @@ curl -i  -X POST https://rest.apisandbox.zuora.com/v1/orders \
     }
     '
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 // Define terms
 InitialTerm initialTerm = new InitialTerm()
         .periodType(TermPeriodType.MONTH)
@@ -1508,9 +1501,9 @@ CreateOrderRequest request = new CreateOrderRequest()
 CreateOrderResponse createOrderResp = zuoraClient.ordersApi().createOrderApi(request).execute();
 System.out.print(createOrderResp);
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 const initialTerm ={
     period: 12,
     periodType: "Month",
@@ -1597,9 +1590,9 @@ const orderRequest = {
 const createOrderResp = await zuoraClient.ordersApi.createOrder(orderRequest);
 console.log(JSON.stringify(createOrderResp, (k, v) => v ?? undefined, 2));
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 # Define subscription terms
 initial_term = InitialTerm(
     period=12,
@@ -1698,9 +1691,9 @@ request = CreateOrderRequest(
 create_order_resp = client.orders_api().create_order(request)
 print(create_order_resp.to_json())
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 InitialTerm initialTerm = new InitialTerm(
   period:12,
   periodType: TermPeriodType.Month,
@@ -1802,8 +1795,8 @@ CreateOrderRequest request = new CreateOrderRequest(
 CreateOrderResponse createOrderResp = zuoraClient.OrdersApi.CreateOrder(request);
 Console.WriteLine(createOrderResp.ToJson());
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 
@@ -1832,9 +1825,9 @@ The three order actions are as follows:
 
 The invoice is generated immediately along with the order creation.
 
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl -i  -X POST https://rest.apisandbox.zuora.com/v1/orders \
   -H "Authorization: Bearer $token" \
   -H "Content-Type: application/json" \
@@ -1952,9 +1945,9 @@ curl -i  -X POST https://rest.apisandbox.zuora.com/v1/orders \
     ]
     }'
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 // Define initial and renewal terms
 InitialTerm initialTerm = new InitialTerm()
         .termType(TermType.TERMED)
@@ -2062,9 +2055,9 @@ CreateOrderResponse response = zuoraClient.ordersApi().createOrderApi(request).e
 System.out.println("Order created: " + response.getOrderNumber());
 }
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 // Trigger Dates
 const triggerDatesFeb1 = [
     { name: 'ContractEffective', triggerDate: '2025-02-01' },
@@ -2176,9 +2169,9 @@ processingOptions,
 const createOrderResp = await zuoraClient.ordersApi.createOrder(createOrderRequest);
 console.log(JSON.stringify(createOrderResp, (k, v) => v ?? undefined, 2));
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 # Define terms
 initial_term = InitialTerm(
     term_type="TERMED",
@@ -2304,9 +2297,9 @@ order_request = CreateOrderRequest(
 create_order_resp = client.orders_api().create_order(order_request)
 print(f"Order created: {create_order_resp.order_number}")
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 var startDate = new DateOnly(2025, 2, 1);
 var switchDate = new DateOnly(2025, 2, 15);
 
@@ -2442,6 +2435,5 @@ catch (ApiException ex)
     Console.WriteLine($"Zuora API Error: {ex.Message}");
 }
 ```
-  {% /tab %}
-{% /tabs %}
-
+  </Tab>
+</Tabs>

@@ -1,0 +1,276 @@
+Setting Key,Context,Http Method,Http URL,Parameter description,Setting description
+AccountingRules,Entity,GET,/settings/accounting-rules,,Accounting Rules settings
+AccountingRules,Entity,PUT,/settings/accounting-rules,,Accounting Rules settings
+AgingBuckets,Entity,GET,/settings/aging-buckets,,Aging Buckets
+AgingBuckets,Entity,PUT,/settings/aging-buckets,,Aging Buckets
+ApplicationRules,Entity,GET,/settings/application-rules,,Application Rules settings
+ApplicationRules,Entity,PUT,/settings/application-rules,,Application Rules settings
+AuditTrail,Entity,GET,/settings/audit-trail,,Audit Trail Settings
+AuditTrail,Entity,PUT,/settings/audit-trail,,Audit Trail Settings
+AuditTrailSettings,Entity,GET,/settings/audit-trail-settings,,Audit Trail Settings
+AuditTrailSettings,Entity,PUT,/settings/audit-trail-settings,,Audit Trail Settings
+BatchAliases,Entity,GET,/settings/batch-aliases,,Customize Batch Names
+BatchAliases,Entity,PUT,/settings/batch-aliases,,Customize Batch Names
+BillingCycleType,Entity,GET,/settings/billing-cycle-types,,Define the billing day that your organization uses to charge for service.
+BillingCycleType,Entity,PUT,/settings/billing-cycle-types,,Define the billing day that your organization uses to charge for service.
+BillingListPriceBase,Entity,GET,/settings/billing-list-price-bases,,Define how your organization specifies list price (e.g. $5 / month  $20 / billing period).
+BillingListPriceBase,Entity,PUT,/settings/billing-list-price-bases,,Define how your organization specifies list price (e.g. $5 / month  $20 / billing period).
+BillingPeriodStart,Entity,GET,/settings/billing-period-starts,,Define which day in the month you allow your billing periods to start (applicable for billing periods that are integral number of month(s))
+BillingPeriodStart,Entity,PUT,/settings/billing-period-starts,,Define which day in the month you allow your billing periods to start (applicable for billing periods that are integral number of month(s))
+BillingPeriod,Entity,GET,/settings/billing-periods,,Define the Billing Periods that your organization uses to charge for service.
+BillingPeriod,Entity,PUT,/settings/billing-periods,,Define the Billing Periods that your organization uses to charge for service.
+BillingRules,Entity,GET,/settings/billing-rules,,Billing Rules settings
+BillingRules,Entity,PUT,/settings/billing-rules,,Billing Rules settings
+ChargeModels,Entity,GET,/settings/charge-models,,Setting for Charge Models
+ChargeModels,Entity,PUT,/settings/charge-models,,Setting for Charge Models
+ChargeType,Entity,GET,/settings/charge-types,,Setting for Charge Types
+ChargeType,Entity,PUT,/settings/charge-types,,Setting for Charge Types
+ChartOfAccounts,Entity,GET,/settings/chart-of-accounts,,Manage Finance Chart Of Accounts
+ChartOfAccounts,Entity,POST,/settings/chart-of-accounts,,Manage Finance Chart Of Accounts
+ChartOfAccountsItem,Entity,GET,/settings/chart-of-accounts/{id},id = Unique Id of the Chart of Account code,Manage Finance Chart Of Account
+ChartOfAccountsItem,Entity,PUT,/settings/chart-of-accounts/{id},id = Unique Id of the Chart of Account code,Manage Finance Chart Of Account
+ChartOfAccountsItem,Entity,DELETE,/settings/chart-of-accounts/{id},id = Unique Id of the Chart of Account code,Manage Finance Chart Of Account
+AllCommunicationProfiles,Entity,GET,/settings/communication-profiles,,Communication profile settings for Notifications and Callouts
+AllCommunicationProfiles,Entity,POST,/settings/communication-profiles,,Communication profile settings for Notifications and Callouts
+CommunicationProfileNotification,Entity,GET,/settings/communication-profiles/notifications/{id},id = Unique Id of the Notification,Settings to create/update/delete Notifications for events
+CommunicationProfileNotification,Entity,PUT,/settings/communication-profiles/notifications/{id},id = Unique Id of the Notification,Settings to create/update/delete Notifications for events
+CommunicationProfileNotification,Entity,DELETE,/settings/communication-profiles/notifications/{id},id = Unique Id of the Notification,Settings to create/update/delete Notifications for events
+CommunicationProfile,Entity,GET,/settings/communication-profiles/{id},id = Unique Id of the Communication Profile,Communication profile settings for Notifications and Callouts
+CommunicationProfile,Entity,PUT,/settings/communication-profiles/{id},id = Unique Id of the Communication Profile,Communication profile settings for Notifications and Callouts
+CommunicationProfile,Entity,DELETE,/settings/communication-profiles/{id},id = Unique Id of the Communication Profile,Communication profile settings for Notifications and Callouts
+AllCommunicationProfileNotifications,Entity,GET,/settings/communication-profiles/{id}/notifications,id = Unique Id of the Communication Profile,All notifications belonging to a Communication Profile
+AllCommunicationProfileNotifications,Entity,POST,/settings/communication-profiles/{id}/notifications,id = Unique Id of the Communication Profile,All notifications belonging to a Communication Profile
+ConfigurableUI,Tenant,GET,/settings/configurable-ui,,Feature flag to enable Configurable UI experience
+ConfigurableUI,Tenant,POST,/settings/configurable-ui,,Feature flag to enable Configurable UI experience
+ConfigurableUI,Tenant,PUT,/settings/configurable-ui,,Feature flag to enable Configurable UI experience
+ConfigurableUI,Tenant,DELETE,/settings/configurable-ui,,Feature flag to enable Configurable UI experience
+ConfigurableUISetting,Tenant,GET,/settings/configurable-ui-enabled,,Feature flag to enable Configurable UI experience
+ConfigurableUISetting,Tenant,POST,/settings/configurable-ui-enabled,,Feature flag to enable Configurable UI experience
+ConfigurableUISetting,Tenant,PUT,/settings/configurable-ui-enabled,,Feature flag to enable Configurable UI experience
+ConfigurableUISetting,Tenant,DELETE,/settings/configurable-ui-enabled,,Feature flag to enable Configurable UI experience
+ConfigurableUIHomepage,Tenant,GET,/settings/configurable-ui-homepage-enabled,,Feature flag to enable Configurable UI experience for Homepage
+ConfigurableUIHomepage,Tenant,POST,/settings/configurable-ui-homepage-enabled,,Feature flag to enable Configurable UI experience for Homepage
+ConfigurableUIHomepage,Tenant,PUT,/settings/configurable-ui-homepage-enabled,,Feature flag to enable Configurable UI experience for Homepage
+ConfigurableUIHomepage,Tenant,DELETE,/settings/configurable-ui-homepage-enabled,,Feature flag to enable Configurable UI experience for Homepage
+AllCreditMemoTemplates,Tenant,GET,/settings/credit-memo-templates,,Setting for all Credit Memo Templates
+AllCreditMemoTemplates,Tenant,POST,/settings/credit-memo-templates,,Setting for all Credit Memo Templates
+CreditMemoTemplate,Tenant,GET,/settings/credit-memo-templates/{id},id = Unique Id of the Credit Memo Template,Setting for Credit Memo Template
+CreditMemoTemplate,Tenant,PUT,/settings/credit-memo-templates/{id},id = Unique Id of the Credit Memo Template,Setting for Credit Memo Template
+CreditMemoTemplate,Tenant,DELETE,/settings/credit-memo-templates/{id},id = Unique Id of the Credit Memo Template,Setting for Credit Memo Template
+Currency,Entity,GET,/settings/currencies,,Setting for Currency
+Currency,Entity,PUT,/settings/currencies,,Setting for Currency
+AllCustomFields,Entity,GET,/settings/custom-fields/{namespace},namespace = Name of the custom field namespace,Murano custom fields (not legacy custom fields)
+CustomField,Entity,GET,/settings/custom-fields/{namespace}/{type},namespace = Namespace of the Custom Field:type = Type of Custom Field,Murano custom fields (not legacy custom fields) for given namespace
+CustomField,Entity,PUT,/settings/custom-fields/{namespace}/{type},namespace = Namespace of the Custom Field:type = Type of Custom Field,Murano custom fields (not legacy custom fields) for given namespace
+CustomObjectMigration,Entity,POST,/settings/objects/migrations,,Migration of custom object definitions
+AllCustomObjectNamespaces,Entity,GET,/settings/custom-object-namespaces,,Read/create namespaces for Custom Objects
+AllCustomObjectNamespaces,Entity,POST,/settings/custom-object-namespaces,,Read/create namespaces for Custom Objects
+CustomObjectNamespace,Entity,GET,/settings/custom-object-namespaces/{namespace},namespace = The name of the custom object namespace,Read/delete a namespace for Custom Objects
+CustomObjectNamespace,Entity,DELETE,/settings/custom-object-namespaces/{namespace},namespace = The name of the custom object namespace,Read/delete a namespace for Custom Objects
+AllCustomObjects,Entity,GET,/settings/custom-objects/{namespace},namespace = The name of the custom object namespace,Read/Create Custom Object definitions
+AllCustomObjects,Entity,POST,/settings/custom-objects/{namespace},namespace = The name of the custom object namespace,Read/Create Custom Object definitions
+CustomObject,Entity,GET,/settings/custom-objects/{namespace}/{type},namespace = The name of the custom object namespace:type = The type of the custom object definition,Read/Delete a Custom Object Definition
+CustomObject,Entity,DELETE,/settings/custom-objects/{namespace}/{type},namespace = The name of the custom object namespace:type = The type of the custom object definition,Read/Delete a Custom Object Definition
+DataAccessControl,Entity,GET,/settings/data-access-controls,,Manage hierarchies and control what users can access within your tenant.
+DataAccessInfo,Entity,GET,/settings/data-access-info,,Manage hierarchies info (Subset of DataAccess).
+DataAccessInfo,Entity,PUT,/settings/data-access-info,,Manage hierarchies info (Subset of DataAccess).
+DataAccessHierarchy,Entity,GET,/settings/data-access-tags,,Manage hierarchies definitions (Subset of DataAccess).
+DataAccessHierarchy,Entity,POST,/settings/data-access-tags,,Manage hierarchies definitions (Subset of DataAccess).
+DataAccessTag,Tenant,GET,/settings/data-access-tags/{id},id = Unique Id of the Hierarchy Definition,Manage hierarchies definitions (Subset of DataAccess).
+DataAccessTag,Tenant,PUT,/settings/data-access-tags/{id},id = Unique Id of the Hierarchy Definition,Manage hierarchies definitions (Subset of DataAccess).
+DataAccessTag,Tenant,DELETE,/settings/data-access-tags/{id},id = Unique Id of the Hierarchy Definition,Manage hierarchies definitions (Subset of DataAccess).
+AllDebitMemoTemplates,Tenant,GET,/settings/debit-memo-templates,,Setting for all Debit Memo Templates
+AllDebitMemoTemplates,Tenant,POST,/settings/debit-memo-templates,,Setting for all Debit Memo Templates
+DebitMemoTemplate,Tenant,GET,/settings/debit-memo-templates/{id},id = Unique Id of the Debit Memo Template,Setting for Debit Memo Template
+DebitMemoTemplate,Tenant,PUT,/settings/debit-memo-templates/{id},id = Unique Id of the Debit Memo Template,Setting for Debit Memo Template
+DebitMemoTemplate,Tenant,DELETE,/settings/debit-memo-templates/{id},id = Unique Id of the Debit Memo Template,Setting for Debit Memo Template
+DefaultAccountingCodes,Entity,GET,/settings/default-accounting-codes,,API for default rev rec rules and accounting codes
+DefaultAccountingCodes,Entity,PUT,/settings/default-accounting-codes,,API for default rev rec rules and accounting codes
+DefaultPaymentGateway,Entity,GET,/settings/default-payment-gateways,,Manage Payment Gateways
+DefaultPaymentGateway,Entity,PUT,/settings/default-payment-gateways,,Manage Payment Gateways
+AllDiscountSettings,Entity,GET,/settings/discount-settings,,List of all Discount settings
+AllDiscountSettings,Entity,POST,/settings/discount-settings,,List of all Discount settings
+DiscountSettings,Entity,GET,/settings/discount-settings/{id},id = Unique Id of the Discount setting,Setting for Discounts
+DiscountSettings,Entity,PUT,/settings/discount-settings/{id},id = Unique Id of the Discount setting,Setting for Discounts
+DiscountSettings,Entity,DELETE,/settings/discount-settings/{id},id = Unique Id of the Discount setting,Setting for Discounts
+DocPrefix,Entity,GET,/settings/doc-prefixes,,Settings for Document Prefix
+DocPrefix,Entity,PUT,/settings/doc-prefixes,,Settings for Document Prefix
+DocumentFilenamePatterns,Entity,GET,/settings/document-filename-patterns,,Setting for document filename patterns
+DocumentFilenamePatterns,Entity,PUT,/settings/document-filename-patterns,,Setting for document filename patterns
+DocumentGenerationSetting,Entity,PUT,/settings/document-generation-setting,,Setting to enable/disable OOTB document generation
+DocumentGenerationSetting,Entity,GET,/settings/document-generation-setting,,Setting to enable/disable OOTB document generation
+EmailTemplate,Entity,GET,/settings/email-templates,,List of all Email Templates
+EmailTemplate,Entity,POST,/settings/email-templates,,Create Email Templates
+AllEntityNodes,Tenant,GET,/settings/entity-nodes,,Setting for all Entity Nodes
+AllEntityNodes,Tenant,POST,/settings/entity-nodes,,Setting for all Entity Nodes
+EntityNode,Tenant,GET,/settings/entity-nodes/{entityId},entityId = Unique Id of the Entity to which the setting belongs,Setting for an Entity Node
+EntityNode,Tenant,PUT,/settings/entity-nodes/{entityId},entityId = Unique Id of the Entity to which the setting belongs,Setting for an Entity Node
+EntityNode,Tenant,DELETE,/settings/entity-nodes/{entityId},entityId = Unique Id of the Entity to which the setting belongs,Setting for an Entity Node
+EntityProfileAttachment,Entity,GET,/settings/entity-profile-attachments,,Setting for Getting Attachment Limits for Tenant/Entity
+EntityProfileChangeHistory,Entity,GET,/settings/entity-profile-change-history,,Setting for Getting change history for Tenant/Entity Profile
+EntityProfileInfo,Entity,GET,/settings/entity-profile-info,,Setting for Tenant/Entity Profile
+EntityProfileInfo,Entity,PUT,/settings/entity-profile-info,,Setting for Tenant/Entity Profile
+ExternalSmtp,Entity,GET,/settings/external-smtp,,Setting for an External SMTP
+ExternalSmtp,Entity,PUT,/settings/external-smtp,,Setting for an External SMTP
+AllFinanceSegmentationRules,Entity,GET,/settings/finance-segmentation-rules,,List or create Finance Segmentation Rule
+AllFinanceSegmentationRules,Entity,POST,/settings/finance-segmentation-rules,,List or create Finance Segmentation Rule
+FinanceSegmentationRule,Entity,GET,/settings/finance-segmentation-rules/{id},id = Unique Id of the segmentation rule,Finance segmentation rule
+FinanceSegmentationRule,Entity,PUT,/settings/finance-segmentation-rules/{id},id = Unique Id of the segmentation rule,Finance segmentation rule
+FinanceSegmentationRule,Entity,DELETE,/settings/finance-segmentation-rules/{id},id = Unique Id of the segmentation rule,Finance segmentation rule
+StandaloneOrders,Tenant,GET,/settings/finance/standalone-orders,,Setting API to configure rev rec rules and accounting codes for FNR Standalone Order setting
+StandaloneOrders,Tenant,PUT,/settings/finance/standalone-orders,,Setting API to configure rev rec rules and accounting codes for FNR Standalone Order setting
+FxCurrency,Entity,GET,/settings/fx-currencies,,Setting for an FX Currency
+FxCurrency,Entity,PUT,/settings/fx-currencies,,Setting for an FX Currency
+GLSegments,Entity,GET,/settings/gl-segments,,Setting for GL Segments
+GLSegments,Entity,PUT,/settings/gl-segments,,Setting for GL Segments
+AllHostedPaymentMethodPages,Tenant,GET,/settings/hosted-payment-method-pages,,All Hosted Payment Method Pages
+AllHostedPaymentMethodPages,Tenant,POST,/settings/hosted-payment-method-pages,,All Hosted Payment Method Pages
+HostedPaymentMethodPage,Tenant,GET,/settings/hosted-payment-method-pages/{id},id = Unique Id of the Hosted Payment Method page,Hosted Payment Method Page
+HostedPaymentMethodPage,Tenant,DELETE,/settings/hosted-payment-method-pages/{id},id = Unique Id of the Hosted Payment Method page,Hosted Payment Method Page
+AllInboundEntityConnections,Entity,GET,/settings/inbound-entity-connections,,Settings for All Inbound Entity Connections
+InboundEntityConnection,Entity,GET,/settings/inbound-entity-connections/{entityId},entityId = Unique Id of the Entity to which the setting belongs,Settings for an Inbound Entity Connection
+InboundEntityConnection,Entity,PUT,/settings/inbound-entity-connections/{entityId},entityId = Unique Id of the Entity to which the setting belongs,Settings for an Inbound Entity Connection
+InsightsConnection,Entity,GET,/settings/insights-connections,,Setting for Insights Connection
+InsightsConnection,Entity,PUT,/settings/insights-connections,,Setting for Insights Connection
+AllInvoiceTemplates,Tenant,GET,/settings/invoice-templates,,Setting for all Invoice Templates
+AllInvoiceTemplates,Tenant,POST,/settings/invoice-templates,,Setting for all Invoice Templates
+InvoiceTemplate,Tenant,GET,/settings/invoice-templates/{id},id = Unique Id of the Invoice Template,Setting for Invoice Template
+InvoiceTemplate,Tenant,PUT,/settings/invoice-templates/{id},id = Unique Id of the Invoice Template,Setting for Invoice Template
+InvoiceTemplate,Tenant,DELETE,/settings/invoice-templates/{id},id = Unique Id of the Invoice Template,Setting for Invoice Template
+NumberAndSku,Entity,GET,/settings/numbers-and-skus,,Setting for Number and SKU
+NumberAndSku,Entity,PUT,/settings/numbers-and-skus,,Setting for Number and SKU
+AllOutboundEntityConnections,Entity,GET,/settings/outbound-entity-connections,,Settings for All Outbound Entity Connections
+AllOutboundEntityConnections,Entity,POST,/settings/outbound-entity-connections,,Settings for All Outbound Entity Connections
+OutboundEntityConnection,Entity,GET,/settings/outbound-entity-connections/{entityId},entityId = Unique Id of the Entity to which the Setting belongs,Settings for an Outbound Entity Connection
+AllPaymentGateways,Entity,GET,/settings/payment-gateways,,Manage Payment Gateways
+AllPaymentGateways,Entity,POST,/settings/payment-gateways,,Manage Payment Gateways
+PaymentGateway,Entity,GET,/settings/payment-gateways/{id},id = Unique Id of the Payment Gateway,Manage Payment Gateways
+PaymentGateway,Entity,PUT,/settings/payment-gateways/{id},id = Unique Id of the Payment Gateway,Manage Payment Gateways
+PaymentMethods,Entity,GET,/settings/payment-methods,,Setting for Payment Methods
+PaymentMethods,Entity,PUT,/settings/payment-methods,,Setting for Payment Methods
+PaymentRetryRules,Tenant,GET,/settings/payment-retry-rules,,Setting for managing Payment Retry Rules
+PaymentRetryRules,Tenant,PUT,/settings/payment-retry-rules,,Setting for managing Payment Retry Rules
+PaymentRules,Entity,GET,/settings/payment-rules,,Payment Rules settings
+PaymentRules,Entity,PUT,/settings/payment-rules,,Payment Rules settings
+AllPaymentTerms,Entity,GET,/settings/payment-terms,,Setting to get All Payment Terms
+AllPaymentTerms,Entity,POST,/settings/payment-terms,,Setting to get All Payment Terms
+PaymentTerm,Entity,GET,/settings/payment-terms/{id},id = Unique Id of the Payment Term,Setting for Payment Term
+PaymentTerm,Entity,PUT,/settings/payment-terms/{id},id = Unique Id of the Payment Term,Setting for Payment Term
+PaymentTerm,Entity,DELETE,/settings/payment-terms/{id},id = Unique Id of the Payment Term,Setting for Payment Term
+ProductAttributesConfigurable,Tenant,GET,/settings/product-attribute-configurable,,Manage Product Attributes
+ProductAttributesConfigurable,Tenant,PUT,/settings/product-attribute-configurable,,Manage Product Attributes
+AllProductAttributes,Tenant,GET,/settings/product-attributes,,Manage Product Attributes
+AllProductAttributes,Tenant,PUT,/settings/product-attributes,,Manage Product Attributes
+ProductAttribute,Tenant,GET,/settings/product-attributes/{attribute},attribute = The product attribute key,Manage Product Attributes
+ProductAttribute,Tenant,PUT,/settings/product-attributes/{attribute},attribute = The product attribute key,Manage Product Attributes
+AllQuoteTemplates,Tenant,GET,/settings/quote-templates,,Setting for all Quote Templates
+AllQuoteTemplates,Tenant,POST,/settings/quote-templates,,Setting for all Quote Templates
+QuoteTemplate,Tenant,GET,/settings/quote-templates/{id},id = Unique Id of the Quote Template,Setting for Quote Template
+QuoteTemplate,Tenant,DELETE,/settings/quote-templates/{id},id = Unique Id of the Quote Template,Setting for Quote Template
+AllReasonCodes,Entity,GET,/settings/reason-codes,,Read All Reason Codes
+AllReasonCodes,Entity,POST,/settings/reason-codes,,Read All Reason Codes
+ReasonCode,Entity,GET,/settings/reason-codes/{id},id = Unique Id of the Reason code,Manage Reason Code
+ReasonCode,Entity,PUT,/settings/reason-codes/{id},id = Unique Id of the Reason code,Manage Reason Code
+AllReusableBlocks,Entity,GET,/settings/reusable-blocks,,List all Reusable Blocks
+AllReusableBlocks,Entity,POST,/settings/reusable-blocks,,Create or update Reusable Blocks
+ReusableBlock,Entity,GET,/settings/reusable-blocks/{key},key = Unique identifier of the Reusable Block,Retrieve a Reusable Block
+ReusableBlock,Entity,PUT,/settings/reusable-blocks/{key},key = Unique identifier of the Reusable Block,Update a Reusable Block
+ReusableBlock,Entity,DELETE,/settings/reusable-blocks/{key},key = Unique identifier of the Reusable Block,Delete a Reusable Block
+AllRevenueEventTypes,Entity,GET,/settings/revenue-event-types,,List and create Revenue Event Type
+AllRevenueEventTypes,Entity,POST,/settings/revenue-event-types,,List and create Revenue Event Type
+RevenueEventType,Entity,GET,/settings/revenue-event-types/{id},id = Unique Id of the Revenue Event Type,Revenue Event Type
+RevenueEventType,Entity,PUT,/settings/revenue-event-types/{id},id = Unique Id of the Revenue Event Type,Revenue Event Type
+RevenueRecognitionCodeStatus,Entity,GET,/settings/revenue-recognition-code-status,,Revenue Recognition Code Status
+RevenueRecognitionCodeStatus,Entity,PUT,/settings/revenue-recognition-code-status,,Revenue Recognition Code Status
+AllRevenueRecognitionCodes,Entity,GET,/settings/revenue-recognition-codes,,Revenue Recognition
+AllRevenueRecognitionCodes,Entity,POST,/settings/revenue-recognition-codes,,Revenue Recognition
+RevenueRecognitionCode,Entity,GET,/settings/revenue-recognition-codes/{id},id = Unique Id of the Revenue Event Type,Revenue Recognition
+RevenueRecognitionCode,Entity,PUT,/settings/revenue-recognition-codes/{id},id = Unique Id of the Revenue Event Type,Revenue Recognition
+RevenueRecognitionCode,Entity,DELETE,/settings/revenue-recognition-codes/{id},id = Unique Id of the Revenue Event Type,Revenue Recognition
+AllRevenueRecognitionModels,Entity,GET,/settings/revenue-recognition-models,,Revenue Recognition Models settings
+AllRevenueRecognitionModels,Entity,PUT,/settings/revenue-recognition-models,,Revenue Recognition Models settings
+AllRevenueRecognitionRules,Entity,GET,/settings/revenue-recognition-rules,,Manage Revenue Recognition Rules
+AllRevenueRecognitionRules,Entity,POST,/settings/revenue-recognition-rules,,Manage Revenue Recognition Rules
+RevenueRecognitionRule,Entity,GET,/settings/revenue-recognition-rules/{id},id = Unique Id of the revenue recognition rule,Revenue Recognition Rule
+RevenueRecognitionRule,Entity,PUT,/settings/revenue-recognition-rules/{id},id = Unique Id of the revenue recognition rule,Revenue Recognition Rule
+RevenueRecognitionRule,Entity,DELETE,/settings/revenue-recognition-rules/{id},id = Unique Id of the revenue recognition rule,Revenue Recognition Rule
+RevenueRecognitionRuleActivationStatus,Entity,PUT,/settings/revenue-recognition-rules/{id}/activation,id = Unique Id of the revenue recognition rule,activate Revenue Recognition Rule
+RevenueStartDate,Entity,GET,/settings/revenue-start-date,,Setting for Revenue Start Date
+RevenueStartDate,Entity,PUT,/settings/revenue-start-date,,Setting for Revenue Start Date
+SafeHtmlSetting,Entity,GET,/settings/safe-html-setting,,Setting to enable/disable safe HTML setting
+SafeHtmlSetting,Entity,PUT,/settings/safe-html-setting,,Setting to enable/disable safe HTML setting
+SecurityPolicy,Tenant,GET,/settings/security-policies,,Setting for Security Policy
+SecurityPolicy,Tenant,PUT,/settings/security-policies,,Setting for Security Policy
+SharingAttribute,Entity,GET,/settings/sharing-attributes,,Setting for Sharing Attribute
+SharingAttribute,Entity,PUT,/settings/sharing-attributes,,Setting for Sharing Attribute
+SubscriptionSettings,Entity,GET,/settings/subscription-settings,,Setting for Subscription
+SubscriptionSettings,Entity,PUT,/settings/subscription-settings,,Setting for Subscription
+AllSummaryStatementTemplates,Tenant,GET,/settings/summary-statement-templates,,Setting for Summary Statement Templates
+AllSummaryStatementTemplates,Tenant,POST,/settings/summary-statement-templates,,Setting for Summary Statement Templates
+SummaryStatementTemplatesReplacements,Entity,POST,/settings/summary-statement-templates-replacements,,Settings for Summary Statement Templates Replacements
+SummaryStatementTemplate,Tenant,GET,/settings/summary-statement-templates/{templateId},templateId = Unique Id of the Summary Statement Template,Setting for Summary Statement Template
+SummaryStatementTemplate,Tenant,PUT,/settings/summary-statement-templates/{templateId},templateId = Unique Id of the Summary Statement Template,Setting for Summary Statement Template
+SummaryStatementTemplate,Tenant,DELETE,/settings/summary-statement-templates/{templateId},templateId = Unique Id of the Summary Statement Template,Setting for Summary Statement Template
+AllTaxCode,Entity,GET,/settings/tax-codes,,Read all tax code
+CreateAvalaraTaxCode,Entity,POST,/settings/tax-codes/avalara,,Create tax code under Avalara Tax Engine
+AvalaraTaxCode,Entity,GET,/settings/tax-codes/avalara/{id},id = Unique Id of tax code,Setting for tax code under Avalara Tax Engine
+AvalaraTaxCode,Entity,PUT,/settings/tax-codes/avalara/{id},id = Unique Id of tax code,Setting for tax code under Avalara Tax Engine
+AvalaraTaxCode,Entity,DELETE,/settings/tax-codes/avalara/{id},id = Unique Id of tax code,Setting for tax code under Avalara Tax Engine
+CreateConnectorTaxCode,Entity,POST,/settings/tax-codes/connector,,Create tax code under Connector Tax Engine
+ConnectorTaxCode,Entity,GET,/settings/tax-codes/connector/{id},id = Unique Id of connector tax code,Setting for tax code under Connector Tax Engine
+ConnectorTaxCode,Entity,PUT,/settings/tax-codes/connector/{id},id = Unique Id of connector tax code,Setting for tax code under Connector Tax Engine
+ConnectorTaxCode,Entity,DELETE,/settings/tax-codes/connector/{id},id = Unique Id of connector tax code,Setting for tax code under Connector Tax Engine
+CreateGlobalTaxHubTaxCode,Entity,POST,/settings/tax-codes/global-tax-hub,,Create tax code under Global Tax Hub Tax Engine
+GlobalTaxHubTaxCode,Entity,GET,/settings/tax-codes/global-tax-hub/{id},id = Unique Id of Global Tax Hub tax code,Setting for tax code under Global Tax Hub Tax Engine
+GlobalTaxHubTaxCode,Entity,PUT,/settings/tax-codes/global-tax-hub/{id},id = Unique Id of Global Tax Hub tax code,Setting for tax code under Global Tax Hub Tax Engine
+GlobalTaxHubTaxCode,Entity,DELETE,/settings/tax-codes/global-tax-hub/{id},id = Unique Id of Global Tax Hub tax code,Setting for tax code under Global Tax Hub Tax Engine
+CreateZuoraTaxCode,Entity,POST,/settings/tax-codes/ztax,,Create tax code under Zuora Tax Engine
+ZuoraTaxCode,Entity,GET,/settings/tax-codes/ztax/{id},id = Unique Id of tax code,Setting for tax code under Zuora Tax Engine
+ZuoraTaxCode,Entity,PUT,/settings/tax-codes/ztax/{id},id = Unique Id of tax code,Setting for tax code under Zuora Tax Engine
+ZuoraTaxCode,Entity,DELETE,/settings/tax-codes/ztax/{id},id = Unique Id of tax code,Setting for tax code under Zuora Tax Engine
+TaxCompanies,Entity,GET,/settings/tax-companies,,get tax companies under one tax engine
+TaxCompanies,Entity,POST,/settings/tax-companies,,get tax companies under one tax engine
+TaxCompany,Entity,GET,/settings/tax-companies/{id},id = Unique Id of Tax Company,Setting for tax company
+TaxCompany,Entity,PUT,/settings/tax-companies/{id},id = Unique Id of Tax Company,Setting for tax company
+TaxCompany,Entity,DELETE,/settings/tax-companies/{id},id = Unique Id of Tax Company,Setting for tax company
+TaxEngines,Entity,GET,/settings/tax-engines/{id},id = Unique Id of tax engine,Setting for Tax Engine
+TaxEngines,Entity,PUT,/settings/tax-engines/{id},id = Unique Id of tax engine,Setting for Tax Engine
+TaxEngines,Entity,DELETE,/settings/tax-engines/{id},id = Unique Id of tax engine,Setting for Tax Engine
+AllTaxEngines,Entity,GET,/settings/tax-engines,,Setting for all Tax Engines
+AllTaxEngines,Entity,POST,/settings/tax-engines,,Setting for all Tax Engines
+CreateAvalaraTaxEngine,Entity,POST,/settings/tax-engines/avalara,,Setting for Avalara tax engine
+AvalaraTaxEngine,Entity,GET,/settings/tax-engines/avalara/{id},id = Unique Id of avalara tax engine,Setting for Avalara tax engine
+AvalaraTaxEngine,Entity,PUT,/settings/tax-engines/avalara/{id},id = Unique Id of avalara tax engine,Setting for Avalara tax engine
+CreateConnectorTaxEngine,Entity,POST,/settings/tax-engines/connector,,Setting for connector tax engine
+ConnectorTaxEngine,Entity,GET,/settings/tax-engines/connector/{id},id = Unique Id of connector tax engine,Setting for connector tax engine
+ConnectorTaxEngine,Entity,PUT,/settings/tax-engines/connector/{id},id = Unique Id of connector tax engine,Setting for connector tax engine
+ConnectorTaxEngine,Entity,DELETE,/settings/tax-engines/connector/{id},id = Unique Id of connector tax engine,Setting for connector tax engine
+CreateGlobalTaxHubTaxEngine,Entity,POST,/settings/tax-engines/global-tax-hub,,Setting for global tax hub tax engine
+GlobalTaxHubTaxEngine,Entity,GET,/settings/tax-engines/global-tax-hub/{id},id = Unique Id of global tax hub tax engine,Setting for global tax hub tax engine
+GlobalTaxHubTaxEngine,Entity,PUT,/settings/tax-engines/global-tax-hub/{id},id = Unique Id of global tax hub tax engine,Setting for global tax hub tax engine
+GlobalTaxHubTaxEngine,Entity,DELETE,/settings/tax-engines/global-tax-hub/{id},id = Unique Id of global tax hub tax engine,Setting for global tax hub tax engine
+ZuoraTaxEngine,Entity,GET,/settings/tax-engines/ztax/{id},id = Unique Id of Zuora tax engine,Setting for Zuora tax engine
+ZuoraTaxEngine,Entity,PUT,/settings/tax-engines/ztax/{id},id = Unique Id of Zuora tax engine,Setting for Zuora tax engine
+AllTaxRatePeriod,Entity,GET,/settings/tax-rate-periods,,all tax rate periods
+AllTaxRatePeriod,Entity,POST,/settings/tax-rate-periods,,all tax rate periods
+TaxRatePeriod,Entity,GET,/settings/tax-rate-periods/{id},id = Unique Id of the Tax Rate Period,Setting for Zuora tax rate period
+TaxRatePeriod,Entity,PUT,/settings/tax-rate-periods/{id},id = Unique Id of the Tax Rate Period,Setting for Zuora tax rate period
+TaxRatePeriod,Entity,DELETE,/settings/tax-rate-periods/{id},id = Unique Id of the Tax Rate Period,Setting for Zuora tax rate period
+TaxRates,Entity,GET,/settings/tax-rate-periods/{taxRatePeriodId}/tax-rates?size=<size>&page=<page>,page = The page number:size = The page size:taxRatePeriodId = Unique Id of tax rate period,Setting for tax rates
+TaxRates,Entity,POST,/settings/tax-rate-periods/{taxRatePeriodId}/tax-rates,taxRatePeriodId = Unique Id of tax rate period,Setting for tax rates
+TaxRates,Entity,DELETE,/settings/tax-rate-periods/{taxRatePeriodId}/tax-rates,taxRatePeriodId = Unique Id of tax rate period,Setting for tax rates
+TranslationProfile,Entity,GET,/settings/translation-profiles/presentment-translation,,Setting to enable/disable PDF Translation
+TranslationProfile,Entity,PUT,/settings/translation-profiles/presentment-translation,,Setting to enable/disable PDF Translation
+AllUnitsOfMeasure,Entity,GET,/settings/units-of-measure,,List of all Units of Measure
+AllUnitsOfMeasure,Entity,POST,/settings/units-of-measure,,List of all Units of Measure
+UnitOfMeasure,Entity,GET,/settings/units-of-measure/{id},id = Unique Id of the Unit of Measure,Unit of Measure
+UnitOfMeasure,Entity,PUT,/settings/units-of-measure/{id},id = Unique Id of the Unit of Measure,Unit of Measure
+UnitOfMeasure,Entity,DELETE,/settings/units-of-measure/{id},id = Unique Id of the Unit of Measure,Unit of Measure
+UserRoles,Entity,GET,/settings/user-roles?size=<size>&page=<page>,page = The page number:size = The page size,User Roles
+AllTaxDateOptions,Entity,GET,/settings/tax-date-options,,List of all Tax Date Options
+AllTaxDateOptions,Entity,POST,/settings/tax-date-options,,Add new Tax Date Options
+TaxDateOption,Entity,PUT,/settings/tax-date-options/{id},Unique Id of the Tax Date Options,Update a Tax Date Option
+TaxDateOption,Entity,DELETE,/settings/tax-date-options/{id},Unique Id of the Tax Date Options,Delete a Tax Date Option
+AllDocumentTemplateAttachment,Entity,DELETE,/settings/document-template-attachments/{id},Unique Id of the Document Template Attachment,Delete a document template attachment
+DocumentTemplateAttachment,Entity,GET,/settings/document-template-attachments,,List document template attachments
+DocumentTemplateAttachment,Entity,POST,/settings/document-template-attachments,,Upload document template attachment

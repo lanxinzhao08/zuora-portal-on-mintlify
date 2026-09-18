@@ -1,21 +1,12 @@
 ---
-seo:
-  title: Zephr Public API Changelog - Zuora
-  description: Changelog for the Zephr Public API
-  keywords: 'api, zephr, public api, changelog'
-markdown:
-  toc:
-    hide: false
-    maxDepth: 2
+title: "Public API changelog"
+sidebarTitle: "Zephr Public API"
+description: "Changelog for the Zephr Public API"
 ---
-
-# Public API changelog
-
-
-This changelog outlines the latest API updates and resolved issues to the Zephr Public API, and documentation updates to the [Zephr Public API Reference](/api-references/zephr-public-api/overview/). We would love to hear your feedback on how we can improve it. If you have any comments on the Changelog for the Zephr Public API, please use the "Feedback" button on the right of this page or send an e-mail to [docs@zuora.com](mailto:docs@zuora.com).
+This changelog outlines the latest API updates and resolved issues to the Zephr Public API, and documentation updates to the [Zephr Public API Reference](/zephr-api-reference/zephr-api-introduction). We would love to hear your feedback on how we can improve it. If you have any comments on the Changelog for the Zephr Public API, please use the "Feedback" button on the right of this page or send an e-mail to [docs@zuora.com](mailto:docs@zuora.com).
 
 
-This changelog outlines the latest API updates and documentation updates in the Zephr Public API Reference. 
+This changelog outlines the latest API updates and documentation updates in the Zephr Public API Reference.
 
 ## June 12, 2026
 
@@ -270,14 +261,14 @@ This section lists the documentation updates that were made in this version of t
 
 This section lists operations and fields that were added, changed, or removed.
 
-- [Component Library](/zephr-api-reference/zephr-public-api/component-library) - Added a section called "Component Library" that includes the following operations:
+- [Component Library](/zephr-api-reference/zephr-public-api/component-library/retrievecomponentlibrary) - Added a section called "Component Library" that includes the following operations:
   - Component Library
   - Template Components
   - UI Components
 
-- [SDK Feature Decision Engine](/api-references/zephr-public-api/operation/Process_multiple_decisions/) - Updated the SDK Feature Decision Engine operations to support the `JSON` and `TRANSFORMATION` output types.
+- [SDK Feature Decision Engine](/zephr-api-reference/zephr-public-api/sdk-feature-decision-engine/processmultipledecisions) - Updated the SDK Feature Decision Engine operations to support the `JSON` and `TRANSFORMATION` output types.
 
-- [Dynamic Offer Decision Engine](/zephr-api-reference/zephr-public-api/sdk-feature-decision-engine) - Renamed the "Process dynamic package decisions" operation to "Process dynamic offer decisions".
+- [Dynamic Offer Decision Engine](/zephr-api-reference/zephr-public-api/sdk-feature-decision-engine/processmultipledecisions) - Renamed the "Process dynamic package decisions" operation to "Process dynamic offer decisions".
 
 ## August 24, 2023
 

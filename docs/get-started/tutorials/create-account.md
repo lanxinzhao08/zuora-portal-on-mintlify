@@ -1,15 +1,6 @@
 ---
-markdown:
-  toc:
-    hide: true
-redirects:
-  /docs/get-started/tutorials/subscriptions/: {}
+title: "Create a billing account"
 ---
-
-
-# Create a billing account
-
-
 ## End-user flow
 
 After your customers click your **Checkout** button, they might be taken to a login page or registration page where they can register before purchasing.
@@ -35,9 +26,9 @@ The following sample codes creates a new billing account with the following info
 - **Currency**: USD
 - **Bill cycle day**: 1st of each month
 
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl -L -X POST 'https://rest.test.zuora.com/v1/accounts' \
 -H 'Content-Type: application/json' \
 -H 'Authorization: Bearer be616b3c658c420489e1c31e015fb8fe' \
@@ -54,10 +45,10 @@ curl -L -X POST 'https://rest.test.zuora.com/v1/accounts' \
     "billCycleDay": 1
 }'
 ```
-  {% /tab %}
-  {% tab label="Java" %}
+  </Tab>
+  <Tab title="Java">
 
-```java {% title="Java" %}
+```java Java
 CreateAccountContact contact = new CreateAccountContact()
             .firstName("Amy")
             .lastName("Lawrence")
@@ -76,9 +67,9 @@ CreateAccountResponse res = zuoraClient.accountsApi().createAccountApi(req).exec
 System.out.println("Account is created, Number: " + res.getAccountNumber());
 
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 const contact = new CreateAccountContact("Amy", "Lawrence");
 contact.state = 'California';
 contact.country = 'USA';
@@ -93,9 +84,9 @@ const resp = await zuoraClient.accountsApi.createAccount(accountRequest);
 console.log(JSON.stringify(resp, (k, v) => v ?? undefined, 2))
 console.log(resp.accountNumber);
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 ...
 from zuora_sdk import CreateAccountRequest
 
@@ -126,9 +117,9 @@ def create_account(client=None):
 if __name__ == '__main__':
     create_account()
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 CreateAccountContact contact = new CreateAccountContact
 (
     firstName: "Amy",
@@ -150,8 +141,8 @@ CreateAccountRequest createAccountRequest = new CreateAccountRequest
 CreateAccountResponse account = zuoraClient.AccountsApi.CreateAccount(createAccountRequest);
 Console.WriteLine(account.ToJson());
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 If the request succeeds, you will get a response similar to the following snippet:

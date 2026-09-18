@@ -1,5 +1,6 @@
-# Obtain your OAuth client credentials
-
+---
+title: "Obtain your OAuth client credentials"
+---
 This document provides a comprehensive overview of obtaining a Zuora Billing OAuth Client ID and Secret. The process involves identifying your Zuora administrator, accessing your Zuora tenant, and determining the correct REST endpoint. Following these steps will ensure you have the necessary credentials to make REST API calls successfully.
 
 ## Process Overview
@@ -18,7 +19,7 @@ Inform your administrator that you require access to both the Zuora user interfa
 
 Once you have set your password or connect through your SSO, you should see a page similar to this one:
 
-![](../images/tutorials-images/zuora-oneid-homepage.png)
+![](/docs/images/tutorials-images/zuora-oneid-homepage.png)
 
 Your administrator must create OAuth client IDs and secrets for each tenant you need API access to. If you are an administrator, you can self-provision following these steps. If you are not, and if your administrator is unfamiliar with setting up OAuth clients, share this process with them. You can easily check to see if you are already an administrator.
 
@@ -26,7 +27,7 @@ Your administrator must create OAuth client IDs and secrets for each tenant you 
 
 Click the tenant panel to go to the tenant home page, which looks similar to this:
 
-![](../images/tutorials-images/admin-setting.png)
+![](/docs/images/tutorials-images/admin-setting.png)
 
 In the upper-right corner, you can find a green circle with your initial. Click it to expand a dropdown menu. If the dropdown includes **Administration** as the first option under **Settings**, you are an administrator and can self-provision your client ID and secret. Otherwise, contact your company's Zuora administrator.
 
@@ -34,11 +35,11 @@ In the upper-right corner, you can find a green circle with your initial. Click 
 
 You or your administrator should click **Settings** > **Administration**, then click the **Manage Users** option.
 
-![](../images/tutorials-images/manage-users-setting.png)
+![](/docs/images/tutorials-images/manage-users-setting.png)
 
 You will then see a list of all users within your tenant. Click your user name, and your user details including platform roles are displayed. See the following user details page for an example:
 
-![](../images/tutorials-images/user-config.png)
+![](/docs/images/tutorials-images/user-config.png)
 
 ## Step 5
 
@@ -50,7 +51,7 @@ With your client ID and secret in place, you are ready to make OAuth calls. The 
 
 To determine the correct REST endpoint, examine the URL of the user interface. For example, on this page, the URL reads `apisandbox.zuora.com`.
 
-![](../images/tutorials-images/tenant-url.png)
+![](/docs/images/tutorials-images/tenant-url.png)
 
 Using our secret decoder ring, the table below, match the middle column value and use the right column's REST endpoint. In this example, the correct endpoint for `apisandbox.zuora.com` is `rest.apisandbox.zuora.com`.
 With your client ID, secret, and a call to create an OAuth token, you will obtain a token for your subsequent API calls.
@@ -72,13 +73,12 @@ With your client ID, secret, and a call to create an OAuth token, you will obtai
 
 For details on the token call, see [Create an OAuth token](/v1-api-reference/api/oauth/createtoken):
 
-Tokens last one hour before needing a refresh. Avoid generating a new token for each call to prevent exceeding request limits. The [comprehensive list of rate limits](/docs/guides/rate-limits/) is also available at [developer.zuora.com](http://developer.zuora.com). Sticking with the previous example of a UI login using [apisandbox.zuora.com](http://apisandbox.zuora.com), the following URL should return a token: [https://rest.apisandbox.zuora.com/oauth/token](https://rest.apisandbox.zuora.com/oauth/token)
+Tokens last one hour before needing a refresh. Avoid generating a new token for each call to prevent exceeding request limits. The [comprehensive list of rate limits](/docs/guides/rate-limits) is also available at [developer.zuora.com](http://developer.zuora.com). Sticking with the previous example of a UI login using [apisandbox.zuora.com](http://apisandbox.zuora.com), the following URL should return a token: [https://rest.apisandbox.zuora.com/oauth/token](https://rest.apisandbox.zuora.com/oauth/token)
 
 If you are getting unauthorized access errors, it is likely that you have the wrong combination of client ID and secret and tenant URL. Check the combination carefully and open a Support ticket by clicking on the "?" to the left of that green circle in the top right hand corner of the UI if you can't resolve your issue.
 
 ## Summary
 
-You should have the access you need for your API and SDK based development. [Our client libraries for Java, Node.js, Python, and C#](/docs/guides/libraries/) are available for your use. If you’re new to Zuora you might find the [Billing FAQ](/faq/billing-faq/) and [Payment FAQ](/faq/payments-faq/) answer many of your questions. Also you can access our Support team by clicking the question mark next to the green circle with your initial that we introduced in Step 3.
+You should have the access you need for your API and SDK based development. [Our client libraries for Java, Node.js, Python, and C#](/docs/guides/libraries) are available for your use. If you’re new to Zuora you might find the [Billing FAQ](/faq/billing-faq) and [Payment FAQ](/faq/payments-faq) answer many of your questions. Also you can access our Support team by clicking the question mark next to the green circle with your initial that we introduced in Step 3.
 
 We hope this helps you obtain the necessary components. Provide feedback and reach out if you have any questions. In addition to Support, we have a [Developer community](https://community.zuora.com/communities/community-home?CommunityKey=e2a932b4-50c4-4019-a3e8-362e38714df3) for you to discuss issues with your fellow developers. There's no charge for these resources, though accessing the moderated Community will require you to register with a customer email address.
-

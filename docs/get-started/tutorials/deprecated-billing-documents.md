@@ -1,25 +1,14 @@
 ---
-excludeFromSearch: true
-markdown:
-  toc:
-    hide: true
-redirects:
-  /quickstart-api/tutorial/create-billing-documents/: {}
-  /quickstart-api/tutorial/create-bill-runs/: {}
-  /quickstart-api/tutorial/view-billing-documents/: {}
-  /rest-api/api-guides/7-create-billing-document/: {}
+title: "Create billing documents"
 ---
-
-# Create billing documents
-
 Billing documents represent your customer's invoices, credit memos, and debit memos.
 
 Invoices are statements of amounts owed by a customer, and are either generated one-off or periodically from a subscription. They contain invoice items, and proration adjustments that may be caused by changes to a subscription.
 
 If your invoice is configured to be charged automatically, Zuora automatically finalizes your invoice and attempts payment; otherwise Zuora will email the invoice to your customer and await payment. Any credit memos may be applied before determining the amount due for the invoice, which is the amount that will be charged.
 
-{% tabsComponent %}
-  {% tabComponent title="Quickstart API" %}
+<Tabs>
+  <Tab title="Quickstart API">
 
 ## Create an invoice
 
@@ -27,10 +16,10 @@ Assume the billing timing of the recurring price that your customer subscribes t
 
 The following code sample creates an invoice for the subscription of the Gold product and post it to your customer's account.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request POST \
       --url https://rest.test.zuora.com/v2/invoices \
       --header 'Authorization: Bearer 36d7146ffe674eb5988c6838dfe370ae' \
@@ -51,9 +40,9 @@ The following code sample creates an invoice for the subscription of the Gold pr
           }]
       }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
     LocalDate startDate = LocalDate.of(2022,11,1);
     LocalDate endDate = LocalDate.of(2023,11,1);
 
@@ -78,9 +67,9 @@ The following code sample creates an invoice for the subscription of the Gold pr
     BillingDocument newInvoice = zuoraClient.billingDocuments().postBillingDocument(invoiceRequest);
     System.out.println(newInvoice);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const invoiceItemRequest = {
       amount: 300,
       booking_reference: 'PE2FGW',
@@ -103,8 +92,8 @@ The following code sample creates an invoice for the subscription of the Gold pr
 
   const newInvoice = await zuoraClient.billingDocuments.postBillingDocument(invoiceRequest);
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ## Create a credit memo
 
@@ -124,10 +113,10 @@ You can use the [Create a credit memo](/other-api/quickstart-api/credit-memos/cr
 
 The following example creates a credit memo from an invoice with `invoice_id` = `8ad0889d8736ecc50187460849231ae2`. The credit memo item is created based on the invoice item with `invoice_item_id` = `8ad0889d8736ecc501874608493d1ae3`:
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request POST \
     --url https://rest.apisandbox.zuora.com/v2/credit_memos \
     --header 'Authorization: Bearer 8c839831b0c74af9af01d0171647019b' \
@@ -150,9 +139,9 @@ The following example creates a credit memo from an invoice with `invoice_id` = 
               "reason_code": "Charge Dispute"
   }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   LocalDate startDate = LocalDate.of(2022,9,20);
   LocalDate endDate = LocalDate.of(2022,9,30);
 
@@ -178,9 +167,9 @@ The following example creates a credit memo from an invoice with `invoice_id` = 
 
   BillingDocument creditMemoFromInvoice = zuoraClient.billingDocuments().postBillingDocument(creditMemoRequest);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const invoiceItem = {
       amount: 10,
       quantity: 5,
@@ -202,17 +191,17 @@ The following example creates a credit memo from an invoice with `invoice_id` = 
 
   const newCreditMemo = await zuoraClient.billingDocuments.postBillingDocument(creditMemoRequest);
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ### Create a credit memo from a price
 
 The following example creates a credit memo from a price where `price_id` = `8ad0887182afa5d00182b017730c5fcb`:
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request POST \
       --url https://rest.apisandbox.zuora.com/v2/credit_memos \
       --header 'Authorization: Bearer 38fcea81ac494dfdb1ff9832689ef510' \
@@ -234,9 +223,9 @@ The following example creates a credit memo from a price where `price_id` = `8ad
     }'
 
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   LocalDate date = LocalDate.of(2022,9,20);
 
   BillingDocumentItemCreateRequest priceItem = new BillingDocumentItemCreateRequest()
@@ -259,9 +248,9 @@ The following example creates a credit memo from a price where `price_id` = `8ad
 
   BillingDocument creditMemoFromPrice = zuoraClient.billingDocuments().postBillingDocument(creditMemoRequest);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const priceItem = {
       amount: 10,
       quantity: 5,
@@ -281,8 +270,8 @@ The following example creates a credit memo from a price where `price_id` = `8ad
 
   const newCreditMemoFromPrice = await zuoraClient.billingDocuments.postBillingDocument(creditMemoRequest);
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ## Create bill runs
 
@@ -295,10 +284,10 @@ To create a bill run, you must specify the following required fields:
 
 Suppose that a batch of your customers (`Batch1`) subscribed to your delivery service for 1 year, and you have posted the 1 year’s invoices to them. However, on April 10th, some customers canceled their recurring and one-time subscriptions starting from July 1st. In this case, the `target_date` should be specified as a date on or later than `2023-07-01`, and the invoice date can be specified as `2023-04-10`.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request POST \
     --url https://rest.test.zuora.com/v2/bill_runs \
     --header 'Authorization: Bearer 9ebfa50a12ef4d77b3de8c2c17923250' \
@@ -310,9 +299,9 @@ Suppose that a batch of your customers (`Batch1`) subscribed to your delivery se
               "charges_excluded": "Usage"
   }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   LocalDate invoiceDate = LocalDate.of(2023,4,10);
   LocalDate targetDate = LocalDate.of(2023,7,1);
 
@@ -325,9 +314,9 @@ Suppose that a batch of your customers (`Batch1`) subscribed to your delivery se
   BillRun billRun = zuoraClient.billRuns().createBillRun(billRunRequest);
   System.out.print(billRun);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const billRunRequest = {
       invoice_date: '2023-04-10',
       target_date: '2023-07-01',
@@ -339,8 +328,8 @@ Suppose that a batch of your customers (`Batch1`) subscribed to your delivery se
 
   console.log(billRuns);
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 If the bill run request succeeds, you will get the following `201 Created` response:
 
@@ -383,30 +372,30 @@ Use the following operations to view invoices, credit memos, or debit memos in y
 - [List credit memos](/other-api/quickstart-api/credit-memos/getcreditmemos)
 - [List debit memos](/other-api/quickstart-api/debit-memos/getdebitmemoes)
 
-To further filter the results, specify the `filter[]` query parameter. For example, to list all posted invoices, you can set the `filter[]` parameter to `state.EQ:posted`. For the full list of filterable fields on each object, see [Expands, filter, fields, and sort](/docs/guides/expand-filter-fields-sort/).
+To further filter the results, specify the `filter[]` query parameter. For example, to list all posted invoices, you can set the `filter[]` parameter to `state.EQ:posted`. For the full list of filterable fields on each object, see [Expands, filter, fields, and sort](/docs/guides/expand-filter-fields-sort).
 
 ### List invoices
 
 The following example lists all invoices in your tenant:
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request GET \
         --url 'https://rest.test.zuora.com/v2/invoices' \
         --header 'Authorization: Bearer 406c9801b1cb4899a8dec61ed4fb5111' \
         --header 'Content-Type: application/json'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   InvoiceListResponse invoiceListResponse = zuoraClient.invoices().getinvoices(null,Collections.singletonList("account"),null);
   System.out.println(invoiceListResponse);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const invoiceList = await zuoraClient.invoices.getInvoices(({
           filter: [
           'document_date.GT:2023-01-01'
@@ -415,32 +404,32 @@ The following example lists all invoices in your tenant:
 
   console.log(invoiceList);
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 ### List credit memos
 
 The following example lists all credit memos in your tenant:
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request GET \
         --url https://rest.test.zuora.com/v2/credit_memos \
         --header 'Authorization: Bearer e6f7611768fd4297aade3e9e68a56f8f' \
         --header 'Content-Type: application/json'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   CreditMemoListResponse creditMemoListResponse = zuoraClient.creditMemos().getCreditMemos(null,Collections.singletonList("account"),null);
   System.out.println(creditMemoListResponse);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const creditMemoList = await zuoraClient.creditMemos.getCreditMemos(({
       filter: [
       'document_date.GT:2023-01-01'
@@ -449,32 +438,32 @@ The following example lists all credit memos in your tenant:
 
   console.log(creditMemoList);
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 ### List debit memos
 
 The following example lists all debit memos in your tenant:
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request GET \
         --url https://rest.test.zuora.com/v2/debit_memos \
         --header 'Authorization: Bearer 5e8a3e540235449cb6615465411f445b' \
         --header 'Content-Type: application/json'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   DebitMemoListResponse debitMemoListResponse = zuoraClient.debitmemo().getDebitMemoes(null,Collections.singletonList("account"),null);
   System.out.println(debitMemoListResponse);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const debitMemoList = await zuoraClient.debitMemos.getDebitMemoes(({
       filter: [
       'document_date.GT:2023-01-01'
@@ -483,11 +472,11 @@ The following example lists all debit memos in your tenant:
 
   console.log(debitMemoList);
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
-  {% /tabComponent %}
-  {% tabComponent title="v1 API" %}
+  </Tab>
+  <Tab title="v1 API">
 
 Suppose you are trying to generate two invoices at the same time.
 
@@ -776,6 +765,6 @@ You can search the invoices by ID at the All Invoices page by navigating to **Bi
 You can also search the credit memo and debit memo by ID at the All Credit Memos or All Debit Memos page by navigating to **Billing** > **Credit and Debit Memos** in the Zuora UI.
 
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>

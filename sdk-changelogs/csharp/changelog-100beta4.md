@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.0.0-beta.4 changelog"
+sidebarTitle: "1.0.0-beta.4"
 ---
-
-# C# client library 1.0.0-beta.4 changelog
-
 ## CreditMemosApi
 
 * Added asynchronous methods for applying and unapplying credit memos: ApplyCreditMemoAsync, UnapplyCreditMemoAsync, and their corresponding WithHttpInfo and Async variants.

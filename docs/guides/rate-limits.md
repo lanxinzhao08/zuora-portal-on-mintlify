@@ -1,19 +1,7 @@
 ---
-seo:
-  title: Rate and concurrent request limits - Zuora
-  description: Describes the concurrent request limits and rate limits of the Zuora API
-  keywords: >-
-    concurrent request limits, rate limits, concurrency limiting, rate limiting,
-    REST API
-markdown:
-  toc:
-    hide: false
-redirects:
-  /rest-api/general-concepts/rate-concurrency-limits/: {}
+title: "Rate limits"
+description: "Describes the concurrent request limits and rate limits of the Zuora API"
 ---
-
-# Rate limits
-
 ## Why do we have rate limits?
 
 Rate limits are a common practice for APIs, and they are put in place for different reasons:
@@ -24,9 +12,9 @@ Rate limits are a common practice for APIs, and they are put in place for differ
 
 - **Rate limits can help Zuora manage the aggregate load on its infrastructure**. If requests to the API increase dramatically, it could tax the servers and cause performance issues. By setting rate limits, Zuora can help maintain a smooth and consistent experience for all users.
 
-See the [Error handling tutorial](/docs/guides/error-handling/) for code examples and guidance on preventing rate limit breaches. The tutorial also outlines best practices for avoiding rate limits and recommended strategies for handling rate limit errors when they occur.
+See the [Error handling tutorial](/docs/guides/error-handling) for code examples and guidance on preventing rate limit breaches. The tutorial also outlines best practices for avoiding rate limits and recommended strategies for handling rate limit errors when they occur.
 
-![Zuora API rate limits](../images/api-guides-images/rate_limits_explained.png)
+![Zuora API rate limits](/docs/images/api-guides-images/rate_limits_explained.png)
 
 
 ## How do these rate limits work?
@@ -145,7 +133,7 @@ The default request limit applies to all requests, except:
 
   - The [Create an OAuth token](/v1-api-reference/api/oauth/createtoken) request, which is unlimited and not bound by the concurrency limit.
 
-  - The [Object Query](/v1-api-reference/api/object-queries/) and [Quickstart API](/other-api/quickstart-api/) requests, which are calculated towards the Object Query concurrency limit.
+  - The [Object Query](/v1-api-reference/api/object-queries/queryaccounts) and [Quickstart API](/other-api/quickstart-api-intro) requests, which are calculated towards the Object Query concurrency limit.
 
 
 ## Concurrent request limits in headers
@@ -160,5 +148,3 @@ These headers provide visibility into the total and remaining concurrency limits
 **Notes**:
 - The `Concurrency-Limit-Remaining` header parameter is fetched every second from the Zuora server. In high-throughput scenarios, you might see a sudden drop in this value. It is recommended that you do not consume the entire limit to prevent throttling.
 - Depending on the encountered issue, these headers are not always returned in the 500 response.
-
-

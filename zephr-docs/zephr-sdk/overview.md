@@ -1,12 +1,7 @@
 ---
-seo:
-  title: Zephr SDK - Zephr Developer Docs
-redirects:
-  /zephr-docs/zephr-sdk/zephr-sdk/: {}
+title: "Zephr SDK"
+sidebarTitle: "Libraries"
 ---
-
-# Zephr SDK
-
 Zephr uses web APIs for all its functionality. These are split into two categories: the Admin API and the Public API. All functionality of the system can be controlled by the Admin API. The Public API is used for client-side implementations and is tightly linked to a user’s session.
 
 You can read the Admin API and Public API specifications online.

@@ -1,17 +1,12 @@
 ---
-markdown:
-  toc:
-    hide: true
+title: "Show products to your customers"
+sidebarTitle: "Show your products to your customers"
 ---
-
-# Show products to your customers
-
-
 ## End-user flow
 
 Imagine you want to present a pricing page like below based on the products you have created in the Zuora Billing product catalog:
 
-<img width="800px" src="../../../static/images/Tutorials/SmartLearn-catalog.png" alt="Example product catalog page" />
+<img width="800px" src="/static/images/Tutorials/SmartLearn-catalog.png" alt="Example product catalog page" />
 
 
 ## Sample code
@@ -26,15 +21,15 @@ While that product had four rate plans added, here we are only querying for prod
 
 The next tutorial step will retrieve charges.
 
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl -L -g -X GET 'https://rest.test.zuora.com/object-query/products' \
 -H 'Authorization: Bearer d427f8217d6c48de8ad3888a6bf55e9e'
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 QueryProductsResponse resp = zuoraClient.objectQueriesApi()
         .queryProductsApi()
         .execute();
@@ -43,16 +38,16 @@ List<ExpandedProduct> productList = resp.getData();
 
 System.out.print(productList);
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 const products = await zuoraClient.objectQueriesApi.queryProducts();
 
 console.log(JSON.stringify(products, (k, v) => v ?? undefined, 2))
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 def query_products(client=None):
     if client is None:
         client = get_client()
@@ -70,9 +65,9 @@ def query_products(client=None):
 if __name__ == '__main__':
     query_products()
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 QueryProductsResponse products = zuoraClient.ObjectQueriesApi.QueryProducts();
 
 foreach(var item in products.Data)
@@ -80,8 +75,8 @@ foreach(var item in products.Data)
     Console.WriteLine("Product Number: " + item.ProductNumber + " Product Name: " + item.Name);
 }
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 If the request succeeds, you will get a response similar to the following snippet:
@@ -109,5 +104,3 @@ If the request succeeds, you will get a response similar to the following snippe
     ]
 }
 ```
-
-

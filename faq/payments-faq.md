@@ -1,18 +1,8 @@
 ---
-seo:
-  title: Developer FAQ for Zuora Payments
-  description: Everything developers need to know before start integrating with Zuora Payments
-  keywords: 'faq, api, sdk, zuora payments'
-markdown:
-  toc:
-    hide: false
-    maxDepth: 2
+title: "Developer FAQs for Payments with Zuora"
+description: "Everything developers need to know before start integrating with Zuora Payments"
 ---
-
-# Developer FAQs for Payments with Zuora
-
-
-Welcome! This FAQ is for developers looking to understand how payments work with Zuora Billing. While Zuora offers several products like [Zephr](/zephr-docs/zephr-sdk/overview/), [Revenue](/other-api/revenue/), Payments and [Togai](https://docs.togai.com/docs/introduction), this document specifically focuses on processing **Payments with Zuora**. Our Payments functionality is available to most of you as part of our Zuora Billing product, but Zuora Payments is also available as a standalone product. Regardless, this FAQ will help get you, a developer new to our Payments functionality, become oriented and grounded quickly. As the name implies Payments is  responsible for ensuring you get paid.
+Welcome! This FAQ is for developers looking to understand how payments work with Zuora Billing. While Zuora offers several products like [Zephr](/zephr-docs/zephr-sdk/overview), [Revenue](/other-api/revenue/authentication/post_authenticate), Payments and [Togai](https://docs.togai.com/docs/introduction), this document specifically focuses on processing **Payments with Zuora**. Our Payments functionality is available to most of you as part of our Zuora Billing product, but Zuora Payments is also available as a standalone product. Regardless, this FAQ will help get you, a developer new to our Payments functionality, become oriented and grounded quickly. As the name implies Payments is  responsible for ensuring you get paid.
 
 If you're looking for a secure, compliant, and reliable solution to automate your company's payments across multiple payment gateways, you’re in the right place.
 
@@ -52,7 +42,7 @@ That’s between you and your payment gateway, Zuora doesn’t charge for paymen
 
 ## New to payments?
 
-This section is only for those of you who aren’t already familiar with the payments industry. If you know what a payment gateway or an issuing bank is you can probably skip this section. This FAQ is going to assume that you have already browsed and absorbed much of the content in the [Developer FAQs for Zuora Billing](/faq/billing-faq/). Our SDKs and APIs for Billing and for Payments share the same endpoints, libraries, authentication, rate limiting, date formats, error handling, webhooks/notifications and versioning. So we’re not going to duplicate all that here.
+This section is only for those of you who aren’t already familiar with the payments industry. If you know what a payment gateway or an issuing bank is you can probably skip this section. This FAQ is going to assume that you have already browsed and absorbed much of the content in the [Developer FAQs for Zuora Billing](/faq/billing-faq). Our SDKs and APIs for Billing and for Payments share the same endpoints, libraries, authentication, rate limiting, date formats, error handling, webhooks/notifications and versioning. So we’re not going to duplicate all that here.
 
 ### Zuora’s Place in the Payments Industry
 
@@ -237,9 +227,9 @@ We have [over 20 out of the box payment related notifications](https://docs.zuor
 ### How can I export my payment and refund transaction data?
 All Zuora data is yours to extract as you see best. [The FAQ above about how to view the status of a payment or refund using the API](#bookmark=id.grmh6zktuqhb) is only one method of exporting your transaction data. You can use:
 [Industry standard SQL](/v1-api-reference/api/data-queries/post_dataqueryjob) \- while the link is to an API call, look for the Data Query option in the Zuora UI to write and test your SQL in an interactive environment.
-[AQuA API](/v1-api-reference/api/aggregate-queries/) to query for and export data in bulk.
+[AQuA API](/v1-api-reference/api/aggregate-queries/post_batchqueryjob) to query for and export data in bulk.
 [One of our out of the box data warehouse add-on connectors](https://docs.zuora.com?resourceId=platform-zuora-connectors-for-data-warehouses) that will automatically copy your Zuora data to your data warehouse.
-[Reporting option](https://docs.zuora.com?resourceId=platform-use-reporting) in our UI, you can easily build a report for your transaction data and either run that in the UI or schedule it to run automatically and to email you the results. You can also [invoke or download report results using our API](/v1-api-reference/older-api/reporting/).
+[Reporting option](https://docs.zuora.com?resourceId=platform-use-reporting) in our UI, you can easily build a report for your transaction data and either run that in the UI or schedule it to run automatically and to email you the results. You can also [invoke or download report results using our API](/v1-api-reference/older-api/reporting/get_reportrun).
 
 ### How do I improve collection rates? How do I reduce payment failures? How do I implement dunning processes?
 A short summary of [basic techniques for improving collections rates is written up here](https://docs.zuora.com/en/zuora-payments/overview/zuora-payments-overview). You should plan on enabling at least some of the automated notifications based around billing and payments so [you can automate email delivery of payment successes or failures](https://docs.zuora.com?resourceId=platform-events-and-notifications-overview). Since this is a developer focused FAQ we’ve avoided sales pitches, but if your organization needs to automate collections using custom rules defined by your business or based on our best practices you should know we have an add-on called ‘[Configurable Payment Retry](https://docs.zuora.com?resourceId=payments-configurable-payment-retry)’ focused on automating the recovery process for organizations struggling with high payment volumes.

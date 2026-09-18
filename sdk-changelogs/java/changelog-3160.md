@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.16.0 changelog"
+sidebarTitle: "3.16.0"
 ---
-
-# Java client library 3.16.0 changelog
-
 ## ObjectQueriesApi
 
 * Changed supported expands for queryCommitmentAssociatedItemByKey from `commitment,account` to `commitment,invoiceowner`.

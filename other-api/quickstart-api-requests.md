@@ -1,5 +1,6 @@
-# Making requests
-
+---
+title: "Making requests"
+---
 You can paste the command below into your terminal to run your first API request. Make sure to replace `$ZUORA_BEARER_TOKEN` with your authentication token.
 
 Note that the timeout for the Quickstart API is 60 seconds.
@@ -35,6 +36,3 @@ This request creates a product. You should get a response back that resembles th
   "active": true
 }
 ```
-
-
-

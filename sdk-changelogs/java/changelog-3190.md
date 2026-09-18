@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.19.0 changelog"
+sidebarTitle: "3.19.0"
 ---
-
-# Java client library 3.19.0 changelog
-
 ## ObjectQueriesApi
 
 * Added import com.zuora.model.ExpandedChildCommitmentLink.

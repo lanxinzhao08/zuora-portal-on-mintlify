@@ -1,10 +1,6 @@
 ---
-seo:
-  title: Form Pre/Post Processing
+title: "Form pre/post processing"
 ---
-
-# Form pre/post processing
-
 This guide describes how to use Zephr form pre/post processing on your Zephr CDN proxied site.
 
 All forms served by Zephr come with JavaScript hooks for pre/post processing of form data.
@@ -22,12 +18,12 @@ The processor callback will be called with one argument containing the form data
 The following example adds a form preprocessor to the login form and logs out the users attributes:
 
 ```javascript
-window.Blaize.registerFormPreProcessor('login', (formData) => 
-{ 
+window.Blaize.registerFormPreProcessor('login', (formData) =>
+{
     // Process formData
     console.log(formData.attributes);
     return formData;
-}); 
+});
 ```
 
 ## Form Postprocessor Registration
@@ -43,11 +39,11 @@ The processor callback will be called with two arguments, the first being the fo
 The following example adds a form postprocessor to the login form, prints the response error message if the request failed; otherwise prints a success message:
 
 ```javascript
-window.Blaize.registerFormPostProcessor('login', (formData, response) => { 
-    if (response.status !== 200 || response.status !== 201 ) { 
-        _c_onsole.log(response.message); 
-    } else { 
-        console.log(\`${formData.identifiers.email\_address} successfully submitted form\`); 
-    } 
+window.Blaize.registerFormPostProcessor('login', (formData, response) => {
+    if (response.status !== 200 || response.status !== 201 ) {
+        _c_onsole.log(response.message);
+    } else {
+        console.log(\`${formData.identifiers.email\_address} successfully submitted form\`);
+    }
 });
 ```

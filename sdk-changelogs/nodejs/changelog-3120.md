@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.12.0 changelog"
+sidebarTitle: "3.12.0"
 ---
-
-# Node.js client library 3.12.0 changelog
-
-
 ## ContactSnapshotsApi
 
 * Removed pagination parameters `page` and `page_size` from the API call, which may affect how data is retrieved in paginated form.

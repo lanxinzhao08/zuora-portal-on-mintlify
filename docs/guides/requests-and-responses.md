@@ -1,13 +1,7 @@
 ---
-seo:
-  title: REST API Requests - Zuora
-  description: Additional notes to REST API requests
-  keywords: 'api requests, testing requests, timeout limit'
+title: "REST API requests"
+description: "Additional notes to REST API requests"
 ---
-
-
-# REST API requests
-
 ## Object IDs
 
 As a general rule, when asked to supply a key for an object (for example, accountKey), you can provide either the actual 32-digit ID or the number of the object.
@@ -19,7 +13,7 @@ Most parameters and data accompanying your requests will be contained in the bod
 
 ### Data type
 
-([Actions](/v1-api-reference/api/actions/) and CRUD operations only) We recommend that you do not specify the decimal values with quotation marks, commas, and spaces. Use characters of `+-0-9.eE`, for example, `5`, `1.9`, `-8.469`, and `7.7e2`. Also, Zuora does not convert currencies for decimal values.
+([Actions](/v1-api-reference/api/actions/action_postcreate) and CRUD operations only) We recommend that you do not specify the decimal values with quotation marks, commas, and spaces. Use characters of `+-0-9.eE`, for example, `5`, `1.9`, `-8.469`, and `7.7e2`. Also, Zuora does not convert currencies for decimal values.
 
 
 ## Testing a request

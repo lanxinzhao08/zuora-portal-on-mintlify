@@ -1,10 +1,6 @@
 ---
-seo:
-  title: HMAC Request Signing and Key Pair
+title: "HMAC request signing and key pair"
 ---
-
-# HMAC request signing and key pair
-
 The Zephr Admin API is secured using key pair authentication. Once a key pair has been created against an Admin User, a request can be signed using an HMAC algorithm in order to allow the request to be executed with the role and identity of the Admin User who owns the keypair.
 
 > NOTE: Because Key Pairs are user-specific, we recommend you create a generic admin user within your Zephr Console – for example `team@<yourcompany>.com` – and create relevant Key Pairs within this user. This means that you will not lose key pairs if a user’s access is removed.
@@ -19,7 +15,7 @@ Here you will see a list of the available Key Pairs for your admin user.
 
 To create a key pair, click Issue Key Pair.
 
-![HMAC_1](../../zephr-image/img-1-HMAC.png)
+![HMAC_1](/zephr-docs/zephr-image/img-1-HMAC.png)
 
 
 A modal will open showing your Access Key and Secret Key. Take note of these, as you will not be able to recover the secret key in the future.
@@ -30,13 +26,13 @@ Once you have saved these details, click Ok.
 
 Key pairs are managed under the user icon in the top right of the Zephr admin dashboard:
 
-![HMAC_2](../../zephr-image/img_2_HMAC_Request_Signing_and_Key_Pairs.png)
+![HMAC_2](/zephr-docs/zephr-image/img_2_HMAC_Request_Signing_and_Key_Pairs.png)
 
 Click “Issue keypair” and take note of the secret key.
 
 You will not be able to retrieve the secret key after it is initially displayed.
 
-![HMAC_3](../../zephr-image/img_3_HMAC_Request_Signing_and_Key_Pairs.png)
+![HMAC_3](/zephr-docs/zephr-image/img_3_HMAC_Request_Signing_and_Key_Pairs.png)
 
 ### Managing Key Pairs
 
@@ -53,10 +49,10 @@ Note that no body is required in this request.
 The response will be:
 
 ```
-{   
-  "access\_key": 
-  "access key...",   "secret\_key": "secret key...",   
-  "message": "Keypair created: you will not be able to recover the secret, so take note of it" 
+{
+  "access\_key":
+  "access key...",   "secret\_key": "secret key...",
+  "message": "Keypair created: you will not be able to recover the secret, so take note of it"
 }
 ```
 
@@ -67,7 +63,7 @@ The secret key can never be recovered so it is important to record the payload f
 To execute a secure request you must provide an Authorization header with a request signature:
 
 ```
-GET /v3/users 
+GET /v3/users
 Authorization: ZEPHR-HMAC-{{ALGORITHM}} {{ACCESS\_KEY}}:{{TIMESTAMP}}:{{NONCE}}:{{HASH}}
 ```
 

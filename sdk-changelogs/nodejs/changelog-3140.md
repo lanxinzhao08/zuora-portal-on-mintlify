@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.14.0 changelog"
+sidebarTitle: "3.14.0"
 ---
-
-# Node.js client library 3.14.0 changelog
-
-
 ## CreditMemosApi
 
 * Added a new optional parameter `should_include_acknowledged` to fetch notifications marked as acknowledged along with unacknowledged ones.

@@ -1,15 +1,7 @@
 ---
-seo:
-  title: Error handling
-  description: Best practices for API error handling in the Zuora v1 API.
-  keywords: 'error handling, authentication, HTTP status code, timeout'
-markdown:
-  toc:
-    hide: true
+title: "Error handling"
+description: "Best practices for API error handling in the Zuora v1 API."
 ---
-
-# Error handling
-
 How do you ensure your custom integrations and code are resilient to errors? This tutorial describes typical scenarios and related topics such as authentication, HTTP responses, and error handling with the Zuora v1 API.
 
 ## Tutorial scope
@@ -24,13 +16,13 @@ This tutorial covers the following failure scenarios:
 
 - **Your requests start failing with 429**: You're hitting Zuora's rate limits.
 
-![API failure classification diagram](../images/api-guides-images/api_failure_classifications.png)
+![API failure classification diagram](/docs/images/api-guides-images/api_failure_classifications.png)
 
 
 
 ## Authentication and token management
 
-Before you can make any API calls, you need credentials, for Zuora APIs that means OAuth 2.0 credentials. Use your Zuora login or ask an administrator of your Zuora tenant to create a client ID and secret for you. See [Get started](/docs/get-started/introduction/) for a tutorial explaining this process along with a chart to figure out the correct REST endpoint for your tenant. Use your credentials to request a token from the [Create an OAuth token](/v1-api-reference/api/oauth/createtoken) operation. Tokens expire after one hour. When you get a 401 response, request a new token and retry. Cache tokens until near expiration to avoid unnecessary token requests.
+Before you can make any API calls, you need credentials, for Zuora APIs that means OAuth 2.0 credentials. Use your Zuora login or ask an administrator of your Zuora tenant to create a client ID and secret for you. See [Get started](/docs/get-started/introduction) for a tutorial explaining this process along with a chart to figure out the correct REST endpoint for your tenant. Use your credentials to request a token from the [Create an OAuth token](/v1-api-reference/api/oauth/createtoken) operation. Tokens expire after one hour. When you get a 401 response, request a new token and retry. Cache tokens until near expiration to avoid unnecessary token requests.
 
 Example OAuth token request:
 
@@ -143,7 +135,7 @@ Endpoints that generally don't include a success flag are as follows:
 
 - File downloads (but these operations use HTTP 200 for success)
 
-- Object Query operations, such as [Object Query - List accounts](/v1-api-reference/api/object-queries/queryaccounts) and [Object Query - Retrieve an account](/v1-api-reference/api/object-queries/queryaccountbykey/)
+- Object Query operations, such as [Object Query - List accounts](/v1-api-reference/api/object-queries/queryaccounts) and [Object Query - Retrieve an account](/v1-api-reference/api/object-queries/queryaccountbykey)
 
 - Query operations, such as `POST /v1/action/query` and `POST /v1/object/account`, that return data directly. Note that for historical reasons, other CRUD action calls such as `POST /v1/action/create` (the [Create](/v1-api-reference/api/actions/action_postcreate) operation) return `Success` instead of `success`.
 
@@ -275,7 +267,7 @@ for error in data["reasons"]:
         raise PermanentError(f"Invalid request: {error_msg}")
 ```
 
-The [Zuora v1 API Reference](/v1-api-reference/introduction/) documents the valid values for the call for any standard field. Note that your tenant may have custom fields that expect valid values and these are not documented in Zuora Developer Center, you should review the custom field definitions in your tenant. For more information, see <a href="https://docs.zuora.com/en/zuora-platform/extensibility/custom-fields/custom-field-management-with-the-object-manager" target="_blank">Custom field management</a>.
+The [Zuora v1 API Reference](/v1-api-reference/introduction) documents the valid values for the call for any standard field. Note that your tenant may have custom fields that expect valid values and these are not documented in Zuora Developer Center, you should review the custom field definitions in your tenant. For more information, see <a href="https://docs.zuora.com/en/zuora-platform/extensibility/custom-fields/custom-field-management-with-the-object-manager" target="_blank">Custom field management</a>.
 
 
 ### Transient vs permanent errors
@@ -456,12 +448,12 @@ Obviously change the idempotency key when the payload changes, and don't reuse k
 
 Zuora enforces two limits, rate limits and concurrency limits.
 
-[Rate limits](/docs/guides/rate-limits/) cap how many requests you can send over the specified period of time:
+[Rate limits](/docs/guides/rate-limits) cap how many requests you can send over the specified period of time:
 - 50,000 requests per minute
 - 2.25 million per hour
 - 27 million per day
 
-[Concurrency limits](/docs/guides/rate-limits/#concurrent-request-limits) cap how many simultaneous requests you can have in flight. The default is 40 (doubled for Performance Boost customers). If you process high-volume transactions (like creating orders or capturing credit cards), the limit is 200 concurrent requests, again doubled for Performance Booster customers. [Object Queries](/docs/guides/expand-filter-fields-sort/) have their own concurrency limit of 80 concurrent requests. Developer and API Sandboxes have much lower limits than the production tenant limits above.
+[Concurrency limits](/docs/guides/rate-limits#concurrent-request-limits) cap how many simultaneous requests you can have in flight. The default is 40 (doubled for Performance Boost customers). If you process high-volume transactions (like creating orders or capturing credit cards), the limit is 200 concurrent requests, again doubled for Performance Booster customers. [Object Queries](/docs/guides/expand-filter-fields-sort) have their own concurrency limit of 80 concurrent requests. Developer and API Sandboxes have much lower limits than the production tenant limits above.
 
 Zuora API responses include headers that indicate where your call is within these limits. For example, there is a header `Concurrency-Limit-Remaining`, that tells you the remaining number of permitted concurrent requests. Hitting rate or concurrency limits should be observable if you log the headers and keep headroom.
 
@@ -539,7 +531,7 @@ def retry_with_backoff(
 
 ```
 
-If you consistently hit rate limits, you need to consider alternative mitigation solutions. Can you optimize your code and avoid unnecessary API calls? For example, you can submit multiple order actions in a single orders call. Zuora also supports asynchronous batch requests for major calls. See [Asynchronous requests](/docs/guides/async-requests/) for more information. Is your implementation stale and can be refactored to be more efficient? Or do you need <a href="https://docs.zuora.com/en/entitlements/current-entitlements/performance-booster" target="_blank">Performance Booster</a>?
+If you consistently hit rate limits, you need to consider alternative mitigation solutions. Can you optimize your code and avoid unnecessary API calls? For example, you can submit multiple order actions in a single orders call. Zuora also supports asynchronous batch requests for major calls. See [Asynchronous requests](/docs/guides/async-requests) for more information. Is your implementation stale and can be refactored to be more efficient? Or do you need <a href="https://docs.zuora.com/en/entitlements/current-entitlements/performance-booster" target="_blank">Performance Booster</a>?
 
 Log those response headers and set up alerts so you know before you hit the limits. For more information, see <a href="https://docs.zuora.com/en/zuora-platform/extensibility/events-and-notifications/standard-events/common-use-cases-of-standard-events/configure-notifications-for-the-api-performance-event" target="_blank">Configure notifications for the API Performance event</a>.
 

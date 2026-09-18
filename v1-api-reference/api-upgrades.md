@@ -1,24 +1,17 @@
 ---
-seo:
-  title: API upgrades
-  description: Changelog for backward-incompatible changes made to the v1 API
-markdown:
-  toc:
-    hide: false
+title: "API upgrades"
+description: "Changelog for backward-incompatible changes made to the v1 API"
 ---
-
-# API upgrades
-
 This page summarizes the backward-incompatible changes made to the v1 API Reference.
 
-{% admonition type="info"%}
+<Note>
   Starting from May 20, 2024, all versions are in the date format such as <code>2024-05-20</code>. The versions before this date are the legacy versions in the numbered format such as <code>196.0</code>, which are still supported for backward compatibility.
-{% /admonition %}
+</Note>
 
 
-To learn how to upgrade to the latest version, see [API upgrade guide](./api-upgrade-guide.md).
+To learn how to upgrade to the latest version, see [API upgrade guide](/v1-api-reference/api-upgrade-guide).
 
-For backward-compatible (non-breaking) changes, see [v1 API changelog](../docs/get-started/changelogs/v1-api-changelog.md) for more information.
+For backward-compatible (non-breaking) changes, see [v1 API changelog](/docs/get-started/changelogs/v1-api-changelog) for more information.
 
 
 ## 2025-08-12
@@ -46,7 +39,7 @@ For backward-compatible (non-breaking) changes, see [v1 API changelog](../docs/g
   ```
 
   This enhancement ensures that the Object Query API error response is consistent with the v1 API, which potentially simplifies your error-handling effort.
-  The returned error code is a 8-digit code, such as `50000060`, following the standard error code convention. See [Error codes](/docs/guides/error-codes/) for details.
+  The returned error code is a 8-digit code, such as `50000060`, following the standard error code convention. See [Error codes](/docs/guides/error-codes) for details.
 
   Previously, the 4XX and 500 error response formats for Object Query API operations varied depending on the error scenarios.
   In some cases, the failed requests returned 200 HTTP status codes. It was also rectified to display the appropriate HTTP status code in the unified error response format.
@@ -54,7 +47,7 @@ For backward-compatible (non-breaking) changes, see [v1 API changelog](../docs/g
 
 ## 2024-05-20
 
-- We have made the following HTTP status code changes to all v1 operations (except [Actions](/v1-api-reference/api/actions) and CRUD operations):
+- We have made the following HTTP status code changes to all v1 operations (except [Actions](/v1-api-reference/api/actions/action_postcreate) and CRUD operations):
 
   Any errors containing an error category code now return a standard HTTP status code that aligns with the indication of the error. See the following table for details.
 
@@ -216,4 +209,3 @@ For backward-compatible (non-breaking) changes, see [v1 API changelog](../docs/g
     - [Suspend a subscription](/v1-api-reference/api/subscriptions/put_suspendsubscription)
     - [Resume a subscription](/v1-api-reference/api/subscriptions/put_resumesubscription)
     - [Create an account](/v1-api-reference/api/accounts/post_account)
-

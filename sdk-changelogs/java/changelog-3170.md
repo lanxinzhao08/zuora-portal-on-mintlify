@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.17.0 changelog"
+sidebarTitle: "3.17.0"
 ---
-
-# Java client library 3.17.0 changelog
-
 ## ZuoraClient
 
 * Removed method: public BalanceTrackingApi balanceTrackingApi()
@@ -391,8 +387,8 @@ markdown:
 
 ## PreviewOrderChargeUpdate
 
-* Added new field `pricingAttributes` of type Map<String, Object> with @SerializedName annotation.
-* Added new field `negotiatedPriceTable` of type List<Map<String, Object>> with @SerializedName annotation.
+* Added new field `pricingAttributes` of type Map&lt;String, Object> with @SerializedName annotation.
+* Added new field `negotiatedPriceTable` of type List&lt;Map&lt;String, Object>> with @SerializedName annotation.
 * Added method `pricingAttributes(Map<String, Object> pricingAttributes)` to set the `pricingAttributes` field.
 * Added method `putPricingAttributesItem(String key, Object pricingAttributesItem)` to add an item to the `pricingAttributes` map.
 * Added method `getPricingAttributes()` to retrieve the `pricingAttributes` field.

@@ -1,38 +1,30 @@
 ---
-seo:
-  title: Modify existing subscriptions - Orders API tutorial
-  description: 'Orders API tutorial to showcase how to modify an existing subscription in different scenarios using cURL or Zuora client libraries'
-  keywords: 'order, subscription, api, create an order, update a subscription'
-markdown:
-  toc:
-    hide: false
+title: "Modify subscriptions throughout subscription lifecycle"
+description: "Orders API tutorial to showcase how to modify an existing subscription in different scenarios using cURL or Zuora client libraries"
 ---
+This guide covers the basics of modifying existing subscriptions to reflect the customer's changing needs. Ensure you've completed the [Get started](/docs/get-started/introduction) section to authenticate with Zuora. This tutorial is part of the Essential Skills Path.
 
-# Modify subscriptions throughout subscription lifecycle
-
-This guide covers the basics of modifying existing subscriptions to reflect the customer's changing needs. Ensure you've completed the [Get started](../../introduction.md) section to authenticate with Zuora. This tutorial is part of the Essential Skills Path.
-
-Customers don't just sign up for new subscriptions, they add products to, remove products from, suspend, resume, renew, and cancel their subscriptions. This tutorial builds upon the examples in the previous [Create subscriptions](./create-subscriptions.md) tutorial.
+Customers don't just sign up for new subscriptions, they add products to, remove products from, suspend, resume, renew, and cancel their subscriptions. This tutorial builds upon the examples in the previous [Create subscriptions](/docs/get-started/api-tutorials/orders-tutorials/create-subscriptions) tutorial.
 
 For this tutorial, we will build out this example subscription timeline starting **Jan 1st, 2024** and ending **March 21st, 2025**:
 
-<img src="../../../images/tutorials-images/modify-subscription-example-timeline.png" alt="Modify subscription tutorial timeline" />
+<img src="/docs/images/tutorials-images/modify-subscription-example-timeline.png" alt="Modify subscription tutorial timeline" />
 
 When created, the subscription had a 12 month initial term with the option to extend that for another 12 months. Initially the customer started with a 5 user license for CloudStream SaaS Pro, then added another two seats on May 15th, combining that order with the addition of 3 licenses of CloudStream Digital Access. Both rate plans are configured to bill monthly. Invoice activity was intentionally left out of the above timeline for simplicity.
 
 The following screenshots are the Product Catalog UI for these two products. They include the object IDs we will need for the orders calls:
 
-<img src="../../../images/tutorials-images/cloudstream-saas-pro-plan.png" alt="CloudStream SaaS Pro Plan" />
+<img src="/docs/images/tutorials-images/cloudstream-saas-pro-plan.png" alt="CloudStream SaaS Pro Plan" />
 
-<img src="../../../images/tutorials-images/cloudstream-digital-access-plan.png" alt="CloudStream Digital Access Plan" />
+<img src="/docs/images/tutorials-images/cloudstream-digital-access-plan.png" alt="CloudStream Digital Access Plan" />
 
 ## Create an initial subscription
 
 The following sample code shows you how to create this subscription with an order and start date of **Jan 1st, 2024** for 5 users of "CloudStream SaaS Pro":
 
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl -i  -X POST https://rest.apisandbox.zuora.com/v1/orders \
  -H "Authorization: Bearer $ztoken" \
  -H "Content-Type: application/json" \
@@ -93,9 +85,9 @@ curl -i  -X POST https://rest.apisandbox.zuora.com/v1/orders \
        }
    }'
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 // Define initial and renewal terms
 InitialTerm initialTerm = new InitialTerm()
         .period(12)
@@ -165,9 +157,9 @@ if (response.getSuccess()) {
     System.out.println("Failed to create order: " + response.getReasons());
 }
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-  ```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+  ```javascript Node.js
 // Build the order request as a plain object
 const orderRequest = {
   orderDate: "2024-01-01",
@@ -229,9 +221,9 @@ const orderRequest = {
 const response = await zuoraClient.ordersApi.createOrder(orderRequest);
 console.log("Order created!", response);
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 # Define terms
 initial_term = InitialTerm(
     period=12,
@@ -306,9 +298,9 @@ order_request = CreateOrderRequest(
 create_order_resp = client.orders_api().create_order(order_request)
 print(f"Order created: {create_order_resp.order_number}")
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 var orderDate = new DateOnly(2024, 1, 1);
 
 // Define Initial and Renewal Terms
@@ -393,8 +385,8 @@ catch (ApiException ex)
     Console.WriteLine($"Zuora API Error: {ex.Message}");
 }
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 You should expect to see a response payload similar to this:
@@ -438,17 +430,17 @@ On our subscription timeline, the next event occurs on **May 15th, 2024** when t
 
 Before we can update the existing product quantity on the subscription we need to know the rate plan ID, rate plan charge ID, and the current quantity of "CloudStream SaaS Pro" for this customer. So we first need to query this information using the synchronous Object Query endpoints for subscription:
 
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl --request GET \
 --url 'https://rest.apisandbox.zuora.com/object-query/subscriptions/A-S00000181?subscription.fields[]=name,version&expand[]=rateplans&rateplans.fields[]=id,name&expand[]=rateplans.rateplancharges&rateplancharges.fields[]=id,chargenumber,name,quantity'\
   -H "Authorization: Bearer $ztoken" \
   -H "Content-Type: application/json"
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 // Define the subscription key and expand parameters
 String subscriptionNumber = "A-S00000181";
 List<String> expand = List.of("rateplans", "rateplans.rateplancharges");
@@ -462,9 +454,9 @@ ExpandedSubscription response = zuoraClient.objectQueriesApi()
 // Print the subscription details
 System.out.println("Subscription details: " + response);
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 // Define the subscription key and expand parameters
 const subscriptionNumber = "A-S00000181";
 const expand = ["rateplans", "rateplans.rateplancharges"];
@@ -477,9 +469,9 @@ const response = await zuoraClient.objectQueriesApi.querySubscriptionByKey(
 
 console.log("Subscription details:", JSON.stringify(response, null, 2));
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 # Define the subscription key and query parameters
 subscription_number = "A-S00000181"
 
@@ -491,9 +483,9 @@ response = client.object_queries_api().query_subscription_by_key(
 
 print("Subscription details:", response.to_json())
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 // Define the subscription key
 string subscriptionNumber = "A-S00000181";
 
@@ -506,8 +498,8 @@ var response = await zuoraClient.ObjectQueriesApi.QuerySubscriptionByKeyAsync(
 Console.WriteLine("Subscription details:");
 Console.WriteLine(response.ToJson());
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 This will return:
@@ -535,9 +527,9 @@ This will return:
 
 The following sample code calls the Orders API using this information:
 
-{% tabs %}
-  {% tab label="cURL" %}
-  ```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+  ```bash cURL
   curl -i  -X POST https://rest.apisandbox.zuora.com/v1/orders \
   -H "Authorization: Bearer $ztoken" \
   -H "Content-Type: application/json" \
@@ -588,9 +580,9 @@ The following sample code calls the Orders API using this information:
       ]
   }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java " %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   // --- AddProduct Action ---
   ChargeOverride addProductChargeOverride = new ChargeOverride()
           .productRatePlanChargeId("8ad08c0f7f54e6b5017f6af6b11b5b46")
@@ -657,9 +649,9 @@ The following sample code calls the Orders API using this information:
       System.out.println("Failed to create order: " + response.getReasons());
   }
   ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-  ```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+  ```javascript Node.js
   const orderRequest = {
     orderDate: "2024-05-15",
     existingAccountNumber: "A00000001",
@@ -722,9 +714,9 @@ The following sample code calls the Orders API using this information:
   const response = await zuoraClient.ordersApi.createOrder(orderRequest);
   console.log("Order created!", response);
   ```
-  {% /tab %}
-  {% tab label="Python" %}
-  ```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+  ```python Python
   # AddProduct action
   add_product_charge_override = ChargeOverride(
       product_rate_plan_charge_id="8ad08c0f7f54e6b5017f6af6b11b5b46",
@@ -800,9 +792,9 @@ The following sample code calls the Orders API using this information:
   create_order_resp = client.orders_api().create_order(order_request)
   print(f"Order created: {create_order_resp.order_number}")
   ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 var orderDate = new DateOnly(2024, 5, 15);
 
 // --- AddProduct Action ---
@@ -894,8 +886,8 @@ catch (ApiException ex)
     Console.WriteLine($"Zuora API Error: {ex.Message}");
 }
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 This will return a response similar to the following example:
 
@@ -977,9 +969,9 @@ The second segment’s effective end date is January 1st, 2025. If no changes ar
 
 The query results above provide us with the necessary IDs and numbers for the new order:
 
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl -i  -X POST https://rest.apisandbox.zuora.com/v1/orders \
  -H "Authorization: Bearer $ztoken" \
  -H "Content-Type: application/json" \
@@ -1020,9 +1012,9 @@ curl -i  -X POST https://rest.apisandbox.zuora.com/v1/orders \
     ]
 }'
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 // --- RenewSubscription Action ---
 TriggerDate renewTrigger = new TriggerDate()
         .name(TriggerDateName.CONTRACTEFFECTIVE)
@@ -1070,9 +1062,9 @@ if (response.getSuccess()) {
     System.out.println("Failed to create order: " + response.getReasons());
 }
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 const orderRequest = {
   orderDate: "2025-01-01",
   existingAccountNumber: "A00000001",
@@ -1112,9 +1104,9 @@ const orderRequest = {
 const response = await zuoraClient.ordersApi.createOrder(orderRequest);
 console.log("Order created!", response);
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 # RenewSubscription action
 renew_trigger = TriggerDate(
     name="ContractEffective",
@@ -1166,9 +1158,9 @@ create_order_resp = client.orders_api().create_order(order_request)
 print(f"Order created: {create_order_resp.order_number}")
 ```
 
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 var orderDate = new DateOnly(2025, 1, 1);
 
 // --- RenewSubscription Action ---
@@ -1235,8 +1227,8 @@ catch (ApiException ex)
     Console.WriteLine($"Zuora API Error: {ex.Message}");
 }
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 This should return a response similar to this:
@@ -1255,11 +1247,11 @@ In the response, `subscriptionNumbers` is an array as you can create or modify m
 
 ## Cancel a subscription
 
-The final step in this subscription’s life cycle is the customer’s decision to cancel their subscription on **March 21st, 2025**. Our [Cancel a subscription tutorial](/docs/get-started/tutorials/cancel-subscription/) explains the options available to you. We won’t repeat this material here, but we have included a cancelation order that assumes the cancelation will take effect on the customer’s next billing day, **April 1st, 2025**. It prevents any refunds of the prepaid month of March.
+The final step in this subscription’s life cycle is the customer’s decision to cancel their subscription on **March 21st, 2025**. Our [Cancel a subscription tutorial](/docs/get-started/tutorials/cancel-subscription) explains the options available to you. We won’t repeat this material here, but we have included a cancelation order that assumes the cancelation will take effect on the customer’s next billing day, **April 1st, 2025**. It prevents any refunds of the prepaid month of March.
 
-{% tabs %}
-  {% tab label="cURL" %}
-```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+```bash cURL
 curl -i -X POST https://rest.apisandbox.zuora.com/v1/orders \
  -H "Authorization: Bearer $ztoken" \
  -H "Content-Type: application/json" \
@@ -1287,9 +1279,9 @@ curl -i -X POST https://rest.apisandbox.zuora.com/v1/orders \
   ]
 }'
 ```
-  {% /tab %}
-  {% tab label="Java" %}
-```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+```java Java
 // --- CancelSubscription Action ---
 TriggerDate cancelTrigger = new TriggerDate()
         .name(TriggerDateName.CONTRACTEFFECTIVE)
@@ -1324,9 +1316,9 @@ if (response.getSuccess()) {
     System.out.println("Failed to create order: " + response.getReasons());
 }
 ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+```javascript Node.js
 const orderRequest = {
   orderDate: "2025-03-21",
   existingAccountNumber: "A00000001",
@@ -1354,9 +1346,9 @@ const orderRequest = {
 const response = await zuoraClient.ordersApi.createOrder(orderRequest);
 console.log("Order created!", response);
 ```
-  {% /tab %}
-  {% tab label="Python" %}
-```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+```python Python
 # CancelSubscription action
 cancel_trigger = TriggerDate(
     name="ContractEffective",
@@ -1390,9 +1382,9 @@ order_request = CreateOrderRequest(
 create_order_resp = client.orders_api().create_order(order_request)
 print(f"Order created: {create_order_resp.order_number}")
 ```
-  {% /tab %}
-  {% tab label="C#" %}
-```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+```csharp C#
 var orderDate = new DateOnly(2025, 3, 21);
 
 // --- CancelSubscription Action ---
@@ -1442,8 +1434,8 @@ catch (ApiException ex)
     Console.WriteLine($"Zuora API Error: {ex.Message}");
 }
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 You should receive a response similar to the following example:

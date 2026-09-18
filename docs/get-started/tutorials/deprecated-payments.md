@@ -1,19 +1,6 @@
 ---
-markdown:
-  toc:
-    hide: true
-redirects:
-  /quickstart-api/tutorial/create-payment-methods/: {}
-  /quickstart-api/tutorial/create-payments/: {}
-  /quickstart-api/tutorial/create-payment-runs/: {}
-  /quickstart-api/tutorial/create-refunds/: {}
-  /rest-api/api-guides/8-create-payments/: {}
-  /rest-api/api-guides/3.2-create-paymentmethod/: {}
+title: "Manage payment methods and payments"
 ---
-
-# Manage payment methods and payments
-
-
 You can create a payment method using the "Create a payment method" operation. However, to guarantee PCI-compliance, we recommend that you create payment methods using Zuora’s Payment Pages 2.0 feature.
 
 Zuora’s Payment Pages allow end subscribers to send payment method details to your company in a secure and PCI-compliant manner. The payment page is hosted in Zuora and iframed directly onto your company’s website.
@@ -23,13 +10,13 @@ Payment Pages are usually embedded into the customer acquisition flow and shown 
 The following diagram shows the default workflow of Zuora Payment Pages:
 
 
-![Payment Pages 2.0 flow](../../../static/HPM2workflow.jpeg)
+![Payment Pages 2.0 flow](/static/HPM2workflow.jpeg)
 
 
 For more information, see <a href="https://docs.zuora.com?resourceId=payments-paymentpages2.0-implementation-overview" target="_blank">Payment Pages 2.0 implementation overview</a>.
 
-{% tabsComponent %}
-  {% tabComponent title="Quickstart API" %}
+<Tabs>
+  <Tab title="Quickstart API">
 
 
 ## Create payment methods
@@ -44,10 +31,10 @@ Suppose that you want to create a credit card payment method for your customer's
   - `expiry_year`
 - `account_id`: Set this field to `8ad093d07ae636bb017ae97518762aa3`, the unique identifier of this account.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl --request POST \
     --url https://rest.test.zuora.com/v2/payment_methods \
     --header 'Authorization: Bearer 723aa66a78384cb69ddb067fc448a776' \
@@ -74,9 +61,9 @@ Suppose that you want to create a credit card payment method for your customer's
     "account_id": "8ad093d07ae636bb017ae97518762aa3"
   }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   Card cardInfo = new Card()
             .cardNumber("41111111111")
             .brand(Card.BrandEnum.VISA)
@@ -105,9 +92,9 @@ Suppose that you want to create a credit card payment method for your customer's
 
   System.out.print(createdPaymentMethod);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const cardInfo = {
     card_number: '41111111111',
     brand: 'visa',
@@ -139,8 +126,8 @@ Suppose that you want to create a credit card payment method for your customer's
   console.log(creditCardRequest);
 
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ## Create payment runs
 
@@ -148,7 +135,7 @@ After invoices have been created in the bill run, they are ready to collect paym
 
 Suppose that you have created an ad hoc bill run (id=`8ad094b98736ff1f01874b6f2f307eae`) for a batch of your customers (`Batch1`), you can create a payment run for this batch to collect payment. In addition, you want to apply credit memos to their invoices before using their default payment methods.
 
-```bash {% title="cURL" %}
+```bash cURL
 curl --request POST \
   --url https://rest.test.zuora.com/v2/payment_runs \
   --header 'Authorization: Bearer ac8a7ba092414c9c96c7243699ee6a6b' \
@@ -189,10 +176,10 @@ The Payment object holds all of the information about a payment, including the p
 
 The following code sample creates a payment to the invoice created for your customer account, Amy Lawrence (`account_id=2c92c0f96abc17de016abd62bd0c5854`), using the payment method (`payment_method_id=8f64d4d7b1b989f6c571d931f84e0458`) associated with this account.
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl -X POST "https://rest.test.zuora.com/v2/payments"
   -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3"
   -H "Content-Type: application/json"
@@ -210,9 +197,9 @@ The following code sample creates a payment to the invoice created for your cust
       "external": true
   }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   LocalDate date = LocalDate.of(2022,3,8);
 
   BillingDocumentApplicationRequest invoiceApplicationRequest = new BillingDocumentApplicationRequest()
@@ -231,9 +218,9 @@ The following code sample creates a payment to the invoice created for your cust
 
   Payment newPayment = zuoraClient.payments().createPayment(paymentCreateRequest);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const invoiceApplicationRequest = {
       amount: 30,
       type: 'invoice',
@@ -252,8 +239,8 @@ The following code sample creates a payment to the invoice created for your cust
 
   const newPayment = await zuoraClient.payments.createPayment(paymentCreateRequest);
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ## Create refunds
 
@@ -269,10 +256,10 @@ If the refund type is electronic, you cannot specify the refund date because the
 
 The following example uses the [Create a refund](/other-api/quickstart-api/refunds/createrefund) operation to refund part of the unapplied amount ($10) from the payment:
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl -X POST "https://rest.test.zuora.com/v2/refunds"
       -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3"
       -H "Content-Type: application/json"
@@ -283,9 +270,9 @@ The following example uses the [Create a refund](/other-api/quickstart-api/refun
               "external": false
             }'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   String accountId = "8ad09b7d8292b85d0182a4d6f875225a";
   String paymentId = newPayment.getId();
 
@@ -297,9 +284,9 @@ The following example uses the [Create a refund](/other-api/quickstart-api/refun
 
   Refund refund = zuoraClient.refunds().createRefund(refundRequest);
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const refundRequest = {
       amount: 10,
       account_id: '8ad09b7d8292b85d0182a4d6f875225a',
@@ -309,11 +296,11 @@ The following example uses the [Create a refund](/other-api/quickstart-api/refun
 
   const refund = await zuoraClient.refunds.createRefund(refundRequest);
 ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
-  {% /tabComponent %}
-  {% tabComponent title="v1 API" %}
+  </Tab>
+  <Tab title="v1 API">
 
 In this guide, you will learn:
 - How to create a credit card payment method
@@ -335,7 +322,7 @@ In order to make a valid request, ensure that you have the following information
 
 ### Create a credit card payment method
 
-Use the [Create a payment method](/api-references/api/operation/POST_PaymentMethods/) operation to create a credit card payment method.
+Use the [Create a payment method](/v1-api-reference/api/payment-methods/post_paymentmethods) operation to create a credit card payment method.
 
 The following cURL code sample creates a Discover credit card with `securityCode` = `123`. This card will expire on October, 2023.
 
@@ -376,7 +363,7 @@ The Payment object holds all of the information about a payment, including the p
 
 You can create a new payment to apply a payment to one or more invoices.
 
-Suppose that you have the invoice numbers retrieved from the [Create billing documents step](deprecated-billing-documents.md). You now want to create an external payment with a total amount of 44.1 USD. Both the debit memo amount and the invoice balance should be considered and paid.
+Suppose that you have the invoice numbers retrieved from the [Create billing documents step](/docs/get-started/tutorials/deprecated-billing-documents). You now want to create an external payment with a total amount of 44.1 USD. Both the debit memo amount and the invoice balance should be considered and paid.
 
 **Note**: This operation is only available if you have Invoice Settlement enabled.
 
@@ -450,6 +437,6 @@ After the payment is created, you can verify the result in the Zuora UI or throu
 To verify the result through the Zuora UI, you can find the payment displayed at the top of the All Payments page by navigating to **Payments** > **Payments** in the Zuora UI.
 
 
-  {% /tabComponent %}
+  </Tab>
 
-{% /tabsComponent %}
+</Tabs>

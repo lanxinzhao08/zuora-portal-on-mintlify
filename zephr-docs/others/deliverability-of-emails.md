@@ -1,10 +1,6 @@
 ---
-seo:
-  title: Deliverability of Emails
+title: "Deliverability of emails"
 ---
-
-# Deliverability of emails
-
 If you’re using Zephr’s Identity Module, your end-users will, from time-to-time, receive hygiene emails for tasks such as logging in, registering, and resetting passwords.
 
 It’s important for these emails to reach your end-users, to enable them to get the most out of your platform. Generally speaking, there are three key pillars to an email being received first-time, every-time for a user, rather than being sent to spam. They are:

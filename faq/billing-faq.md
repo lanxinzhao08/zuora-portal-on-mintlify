@@ -1,19 +1,8 @@
 ---
-seo:
-  title: Developer FAQ for Zuora Billing
-  description: Everything developers need to know before start integrating with Zuora Billing
-  keywords: 'faq, api, sdk, zuora billing'
-markdown:
-  toc:
-    hide: false
-    maxDepth: 2
+title: "Developer FAQs for Zuora Billing"
+description: "Everything developers need to know before start integrating with Zuora Billing"
 ---
-
-
-# Developer FAQs for Zuora Billing
-
-
-Welcome! This FAQ is for developers starting with Zuora Billing. While Zuora offers several products like [Zephr](/zephr-docs/zephr-sdk/overview/), [Revenue](/other-api/revenue/), Payments and [Togai](https://docs.togai.com/docs/introduction), this document specifically focuses on **Zuora Billing**, the product responsible for generating invoices.
+Welcome! This FAQ is for developers starting with Zuora Billing. While Zuora offers several products like [Zephr](/zephr-docs/zephr-sdk/overview), [Revenue](/other-api/revenue/authentication/post_authenticate), Payments and [Togai](https://docs.togai.com/docs/introduction), this document specifically focuses on **Zuora Billing**, the product responsible for generating invoices.
 
 
 If you're looking for a secure, compliant, and reliable solution to automate your company's invoicing, you’re in the right place.
@@ -41,7 +30,7 @@ Your current system may struggle with recurring or usage-based billing, scaling 
 
 ### New to billing systems?
 
-Start with [this two minute video](https://share.vidyard.com/watch/SoBFCxjYzUb8nU4QWPEZt7), then [the tour](https://www.zuora.com/products/billing-software/tour/), then our [Get Started guide](/docs/get-started/introduction/), which covers the basics of using Zuora Billing with REST APIs. You can also review the [object model](https://docs.zuora.com?resourceId=zuora-business-object-model) to get familiar with how Zuora structures data, but remember for later that the standard objects can have [custom fields of your design added](https://docs.zuora.com?resourceId=platform-custom-field-overview) and you can [add your own integrated objects](https://docs.zuora.com?resourceId=platform-custom-objects-overview).
+Start with [this two minute video](https://share.vidyard.com/watch/SoBFCxjYzUb8nU4QWPEZt7), then [the tour](https://www.zuora.com/products/billing-software/tour/), then our [Get Started guide](/docs/get-started/introduction), which covers the basics of using Zuora Billing with REST APIs. You can also review the [object model](https://docs.zuora.com?resourceId=zuora-business-object-model) to get familiar with how Zuora structures data, but remember for later that the standard objects can have [custom fields of your design added](https://docs.zuora.com?resourceId=platform-custom-field-overview) and you can [add your own integrated objects](https://docs.zuora.com?resourceId=platform-custom-objects-overview).
 
 
 ### Why not build my own solution?
@@ -52,7 +41,7 @@ Building a homegrown billing system is possible, but it’s resource-intensive a
 
 ### Is Zuora too complex?
 
-Zuora’s rich functionality may seem complex, but our [Get started](/docs/get-started/introduction/) guide will walk you through essential setup, such as OAuth authentication and API/SDK calls. Our customers submit millions of API calls to Zuora every day—you can, too.
+Zuora’s rich functionality may seem complex, but our [Get started](/docs/get-started/introduction) guide will walk you through essential setup, such as OAuth authentication and API/SDK calls. Our customers submit millions of API calls to Zuora every day—you can, too.
 
 
 ### Multilingual and multi-currency support
@@ -69,11 +58,11 @@ Zuora has 80+ connectors to App Stores, CRMs, ERPs, Payment Gateways, Tax System
 
 ### Do you have SDKs?
 
-Yes, we’ve got [SDKs for Java, Node.js, Python, and C\#](/docs/guides/libraries/). But if you prefer more control, our REST API is OpenAPI-compliant, so you can generate your own libraries.
+Yes, we’ve got [SDKs for Java, Node.js, Python, and C\#](/docs/guides/libraries). But if you prefer more control, our REST API is OpenAPI-compliant, so you can generate your own libraries.
 
 ### What can I do with the Zuora Billing API?
 
-You can create, query, and update objects like customer accounts, orders, subscriptions, invoices, and memos. For efficiency, you can also use endpoints like `POST v1/orders` to handle multiple actions (e.g., create an account, order, subscription, invoice, and collect payment) in one go. We know, you want to jump in there right now, patience, start with [Get Started](/docs/get-started/introduction/), baby steps.
+You can create, query, and update objects like customer accounts, orders, subscriptions, invoices, and memos. For efficiency, you can also use endpoints like `POST v1/orders` to handle multiple actions (e.g., create an account, order, subscription, invoice, and collect payment) in one go. We know, you want to jump in there right now, patience, start with [Get Started](/docs/get-started/introduction), baby steps.
 
 ### Why are there two APIs — Quickstart and v1?
 
@@ -87,17 +76,17 @@ Quickstart is for speed; v1 is for depth.
 
 Besides SDKs, our OpenAPI spec lets you generate libraries for whatever language you're most comfortable with:
 
-* [V1 API download](/v1-api-reference/api)
-* [Quickstart API download](/other-api/quickstart-api/)
+* [V1 API download](/v1-api-reference/introduction)
+* [Quickstart API download](/other-api/quickstart-api-intro)
 
 
 ### How do I make my first API call?
 
-Check out the [Get Started](/docs/get-started/introduction/) tutorial to grab an OAuth token and make your first call.
+Check out the [Get Started](/docs/get-started/introduction) tutorial to grab an OAuth token and make your first call.
 
 ### How do I get API credentials?
 
-You’ll get an email to set up your password for Zuora. If you don’t have one, hit up your admin or account team. Once you're logged in, you can generate OAuth credentials. The [Get Started](/docs/get-started/introduction/) guide covers this.
+You’ll get an email to set up your password for Zuora. If you don’t have one, hit up your admin or account team. Once you're logged in, you can generate OAuth credentials. The [Get Started](/docs/get-started/introduction) guide covers this.
 
 ### What are the base URLs for environments?
 
@@ -125,7 +114,7 @@ If you’ve got a Central Sandbox, that can be your UAT. Every Zuora Billing cus
 
 ### Are there official SDKs or client libraries available?
 
-Yes, they’re available [here](/docs/guides/libraries/).
+Yes, they’re available [here](/docs/guides/libraries).
 
 ### Which programming languages are supported?
 
@@ -139,8 +128,8 @@ That’s cool—the SDKs are optional. Check out our API options in the section 
 
 No problem. Our API follows the OpenAPI standard, so you can generate libraries for any language you prefer.
 
-* [V1 API download](/v1-api-reference/api)
-* [Quickstart API download](/other-api/quickstart-api/)
+* [V1 API download](/v1-api-reference/introduction)
+* [Quickstart API download](/other-api/quickstart-api-intro)
 
 ### What can I do with the API?
 
@@ -148,12 +137,12 @@ Pretty much everything. You can create accounts, capture orders, generate invoic
 
 ### Where’s the API reference?
 
-It’s in the Developer Center. But first, decide which API or SDK you want to use by checking out the [Get Started](/docs/get-started/introduction/) section.
+It’s in the Developer Center. But first, decide which API or SDK you want to use by checking out the [Get Started](/docs/get-started/introduction) section.
 
 
 ### Does Zuora Billing support idempotent endpoints?
 
-Yes, the details are [here](/docs/guides/idempotent-requests/).
+Yes, the details are [here](/docs/guides/idempotent-requests).
 
 
 
@@ -161,11 +150,11 @@ Yes, the details are [here](/docs/guides/idempotent-requests/).
 
 ### What authentication method does the API use?
 
-We recommend [OAuth 2.0](/docs/get-started/introduction/), though some APIs also support basic authentication. Avoid using basic auth since passwords expire, which could break your integration.
+We recommend [OAuth 2.0](/docs/get-started/introduction), though some APIs also support basic authentication. Avoid using basic auth since passwords expire, which could break your integration.
 
 ### How do I include authentication in my API requests?
 
-First, get your [OAuth client ID](/docs/get-started/introduction/) and secret, then obtain a token and include it in your requests using the Bearer token header.
+First, get your [OAuth client ID](/docs/get-started/introduction) and secret, then obtain a token and include it in your requests using the Bearer token header.
 
 
 
@@ -173,7 +162,7 @@ First, get your [OAuth client ID](/docs/get-started/introduction/) and secret, t
 
 ### What are the rate limits for the API?
 
-The [Rate Limits](/docs/guides/rate-limits/) section in the documentation has the details.
+The [Rate Limits](/docs/guides/rate-limits) section in the documentation has the details.
 
 ### How can I monitor my current API usage?
 
@@ -181,11 +170,11 @@ Use the [System Health Dashboard](https://docs.zuora.com?resourceId=platform-sys
 
 ### What happens if I exceed the rate limit?
 
-You’ll get a ["request limit exceeded"](/docs/guides/error-codes/) error. Use a [retry strategy](/docs/guides/rate-limits/#retrying-with-exponential-backoff) with exponential backoff or consider caching. For persistent issues, contact your Zuora account team.
+You’ll get a ["request limit exceeded"](/docs/guides/error-codes) error. Use a [retry strategy](/docs/guides/rate-limits#retrying-with-exponential-backoff) with exponential backoff or consider caching. For persistent issues, contact your Zuora account team.
 
 ### Can I avoid rate limits?
 
-Yes, by using [asynchronous API calls](/docs/guides/async-requests/).
+Yes, by using [asynchronous API calls](/docs/guides/async-requests).
 
 
 
@@ -195,8 +184,8 @@ Yes, by using [asynchronous API calls](/docs/guides/async-requests/).
 
 Check the API Reference section for a full list. [Root URLs vary by data center and tenant type (Production vs. Sandbox)](https://docs.zuora.com?resourceId=zuora-data-centers).
 
-* [V1 API](/v1-api-reference/api)
-* [Quickstart API](/other-api/quickstart-api/)
+* [V1 API](/v1-api-reference/introduction)
+* [Quickstart API](/other-api/quickstart-api-intro)
 
 ### What’s this about SDKs?
 
@@ -204,7 +193,7 @@ For more on SDKs, see the SDK FAQ section.
 
 ### How do I use pagination with the listed endpoints?
 
-[The summary is here](/docs/guides/pagination/).
+[The summary is here](/docs/guides/pagination).
 
 
 ## Data and Date Formats
@@ -223,7 +212,7 @@ Dates and timestamps vary. Transactions usually have just a date (e.g., order da
 
 ### What are common error codes and their meanings?
 
-There’s a [summary with sample code here](/docs/guides/error-codes/) and more [details on specific codes here](https://docs.zuora.com?resourceId=platform-resource-codes-for-billing-and-payments-rest-api).
+There’s a [summary with sample code here](/docs/guides/error-codes) and more [details on specific codes here](https://docs.zuora.com?resourceId=platform-resource-codes-for-billing-and-payments-rest-api).
 
 ### At what point should I worry about error messages?
 
@@ -247,7 +236,7 @@ You can set them up through [the UI](https://docs.zuora.com?resourceId=platform-
 
 ### How is API versioning handled?
 
-[V1 versioning is explained here.](/v1-api-reference/api-versions/)
+[V1 versioning is explained here.](/v1-api-reference/api-versions)
 
 ### How will I be notified of API changes or deprecations?
 
@@ -255,8 +244,8 @@ You can set them up through [the UI](https://docs.zuora.com?resourceId=platform-
 
 ### Where are the changelogs?
 
-* [V1 API changelogs](/docs/get-started/changelogs/v1-api-changelog/)
-* [Quickstart API changelogs](/docs/get-started/changelogs/quickstart-api-changelog/)
+* [V1 API changelogs](/docs/get-started/changelogs/v1-api-changelog)
+* [Quickstart API changelogs](/docs/get-started/changelogs/quickstart-api-changelog)
 
 
 
@@ -327,7 +316,7 @@ We have a group of features applicable for DevOps, [this is a great summary on h
 
 ### How is API usage billed?
 
-Zuora doesn’t charge for API usage. Instead, we focus on invoice volume, we only succeed if you succeed. [API governor limits are in place,](/docs/guides/rate-limits/) but we’ll work with you if there are issues.
+Zuora doesn’t charge for API usage. Instead, we focus on invoice volume, we only succeed if you succeed. [API governor limits are in place,](/docs/guides/rate-limits) but we’ll work with you if there are issues.
 
 ### How can I monitor my API usage?
 
@@ -335,7 +324,7 @@ Check the [System Health Dashboard](https://docs.zuora.com?resourceId=platform-s
 
 ### How do I use Zuora to bill my customers?
 
-See the [Get Started](/docs/get-started/introduction/) section.
+See the [Get Started](/docs/get-started/introduction) section.
 
 
 ## Orders - Subscriptions - Invoices
@@ -420,4 +409,3 @@ Answer the following questions in 2-3 sentences each:
   Zuora offers comprehensive support through various channels. The Zuora Community, developer forum, and trust.zuora.com provide community-based assistance. Zuora University offers self-paced and instructor-led training, including certification programs.
 
   </details>
-

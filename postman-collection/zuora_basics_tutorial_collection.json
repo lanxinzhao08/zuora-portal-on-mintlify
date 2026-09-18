@@ -1,0 +1,226 @@
+{
+  "info": {
+    "name": "Zuora Basics Tutorial",
+    "description": "Collection for the Zuora Basics tutorial covering customer accounts, invoicing, and payments",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://rest.test.zuora.com",
+      "type": "string"
+    },
+    {
+      "key": "client_id",
+      "value": "{{ZUORA_CLIENT_ID}}",
+      "type": "string"
+    },
+    {
+      "key": "client_secret",
+      "value": "{{ZUORA_CLIENT_SECRET}}",
+      "type": "string"
+    },
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "account_number",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "invoice_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "1. Get OAuth Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "client_id",
+              "value": "{{client_id}}",
+              "type": "text"
+            },
+            {
+              "key": "client_secret",
+              "value": "{{client_secret}}",
+              "type": "text"
+            },
+            {
+              "key": "grant_type",
+              "value": "client_credentials",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/oauth/token",
+          "host": ["{{base_url}}"],
+          "path": ["oauth", "token"]
+        },
+        "description": "Get OAuth access token using client credentials. This token will be automatically used by subsequent requests."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 200) {",
+              "    const response = pm.response.json();",
+              "    pm.collectionVariables.set('access_token', response.access_token);",
+              "    console.log('OAuth token set successfully');",
+              "} else {",
+              "    console.error('Failed to get OAuth token');",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Create Customer Account",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"autoPay\": false,\n    \"billCycleDay\": 0,\n    \"currency\": \"USD\",\n    \"name\": \"Postman Account for Amy\",\n    \"billToContact\": {\n        \"country\": \"United States\",\n        \"firstName\": \"Amy\",\n        \"lastName\": \"Lawrence\",\n        \"state\": \"CA\"\n    }\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/v1/accounts",
+          "host": ["{{base_url}}"],
+          "path": ["v1", "accounts"]
+        },
+        "description": "Create a new customer account with basic billing information."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 200) {",
+              "    const response = pm.response.json();",
+              "    pm.collectionVariables.set('account_number', response.accountNumber);",
+              "    console.log('Account created successfully: ' + response.accountNumber);",
+              "} else {",
+              "    console.error('Failed to create account');",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Create Invoice",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"invoiceDate\": \"2024-10-30\",\n    \"accountNumber\": \"{{account_number}}\",\n    \"autoPay\": false,\n    \"status\": \"Posted\",\n    \"invoiceItems\": [\n        {\n            \"amount\": 100.0,\n            \"chargeName\": \"Standalone Invoice Item for $100\",\n            \"serviceStartDate\": \"2024-10-30\"\n        }\n    ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/v1/invoices",
+          "host": ["{{base_url}}"],
+          "path": ["v1", "invoices"]
+        },
+        "description": "Create an invoice for the customer account with a $100 charge."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 200) {",
+              "    const response = pm.response.json();",
+              "    pm.collectionVariables.set('invoice_id', response.id);",
+              "    console.log('Invoice created successfully: ' + response.invoiceNumber);",
+              "} else {",
+              "    console.error('Failed to create invoice');",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Create and Apply Payment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"accountNumber\": \"{{account_number}}\",\n    \"type\": \"External\",\n    \"paymentMethodType\": \"Check\",\n    \"amount\": 100,\n    \"currency\": \"USD\",\n    \"invoices\": [\n        {\n            \"amount\": 100.0,\n            \"invoiceId\": \"{{invoice_id}}\"\n        }\n    ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/v1/payments",
+          "host": ["{{base_url}}"],
+          "path": ["v1", "payments"]
+        },
+        "description": "Create a payment and apply it to the invoice created in the previous step."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 200) {",
+              "    const response = pm.response.json();",
+              "    console.log('Payment created and applied successfully: ' + response.paymentNumber);",
+              "} else {",
+              "    console.error('Failed to create payment');",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ]
+}

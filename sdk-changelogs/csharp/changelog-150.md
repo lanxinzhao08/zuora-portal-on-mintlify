@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.5.0 changelog"
+sidebarTitle: "1.5.0"
 ---
-
-# C# client library 1.5.0 changelog
-
-
 ## CommitmentBaseAttributes
 
 * The `eligibleAccountConditions` parameter is now required and cannot be null. This change will require developers to ensure that this parameter is provided when creating an instance of CommitmentBaseAttributes.

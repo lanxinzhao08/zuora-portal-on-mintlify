@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.19.0 changelog"
+sidebarTitle: "3.19.0"
 ---
-
-# Python client library 3.19.0 changelog
-
 ## object\_queries\_api
 
 * Added new import: from zuora_sdk.models.expanded_child_commitment_link import ExpandedChildCommitmentLink.

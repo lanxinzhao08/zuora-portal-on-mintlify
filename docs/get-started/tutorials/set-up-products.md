@@ -1,19 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: true
-redirects:
-  /quickstart-api/tutorial/update-contact-info/: {}
-  /quickstart-api/tutorial/create-products-and-prices/: {}
-  /quickstart-api/tutorial/list-products/: {}
-  /rest-api/api-guides/2-create-product/: {}
-  /docs/get-started/tutorials/products/: {}
+title: "Set up your product catalog"
 ---
-
-
-# Set up your product catalog
-
-If you have not yet set up your product catalog in your tenant yet, follow the steps below to set up the products. Otherwise, skip this step and proceed to the [Show products to your customers](show-product-details.md) section.
+If you have not yet set up your product catalog in your tenant yet, follow the steps below to set up the products. Otherwise, skip this step and proceed to the [Show products to your customers](/docs/get-started/tutorials/show-product-details) section.
 
 
 Products describe the goods or services you offer to your customers. Each product has a unique ID and SKU.
@@ -45,7 +33,7 @@ To create the SmartLearn Tablet product, take the following steps:
 
 3. Click **Save** to save the product. Then this new product is created.
 
-<img src="../../../static/images/Tutorials/SmartLearn-product-config.png" alt="SmartLearn Product configuration" />
+<img src="/static/images/Tutorials/SmartLearn-product-config.png" alt="SmartLearn Product configuration" />
 
 
 ## Step 2: Create product rate plans
@@ -98,7 +86,7 @@ Note that when creating the per unit charges, you need to configure the followin
 Now you have set up all the product rate plans and charges for the SmartLearn Tablet product in Zuora!
 This product is ready to be sold to your customers.
 
-<img src="../../../static/images/Tutorials/SmartLearnPlans.png" alt="SmartLearn Product Rate Plans" />
+<img src="/static/images/Tutorials/SmartLearnPlans.png" alt="SmartLearn Product Rate Plans" />
 
 
 ## More about product catalog concepts
@@ -125,4 +113,3 @@ Zuora’s product catalog has the three-tier structure to support pricing flexib
 
 There is power and complexity embedded within our product catalog so this is a topic you’ll be exploring more as your Zuora skills increase.
 Be sure to lean on more experienced Zuora knowledgeable colleagues or reach out to your contacts at Zuora for help.
-

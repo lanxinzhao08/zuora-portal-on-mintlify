@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.7.0 changelog"
+sidebarTitle: "3.7.0"
 ---
-
-# Python client library 3.7.0 changelog
-
 ## credit\_memos\_api
 * Added method `download_e_invoice_file_for_credit_memo` to provide downloadable content in binary format of the E-Invoice file for a given billing document.
 * Added method `get_e_invoicing_mandate_for_credit_memo` to fetch the Avalara Mandate for a given document if submitted to Avalara.

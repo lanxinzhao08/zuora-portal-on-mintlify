@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.12.0 changelog"
+sidebarTitle: "3.12.0"
 ---
-
-# Python client library 3.12.0 changelog
-
 ## \_\_init\_\_
 
 * Removed ExpandedBundle model import.
@@ -60,7 +56,7 @@ markdown:
 ## add\_subscription\_rate\_plan
 
 * The `product_rate_plan_id` field now uses `Annotated[str, Field(strict=True)]`, which enforces stricter type checking. This may require developers to ensure that the input for this field is strictly a string.
-* A new field validator `product_rate_plan_id_validate_regular_expression` has been added to enforce that `product_rate_plan_id` must match the regular expression /^[0-9a-fA-F]{32}$/. This change requires developers to ensure that the `product_rate_plan_id` adheres to this format.
+* A new field validator `product_rate_plan_id_validate_regular_expression` has been added to enforce that `product_rate_plan_id` must match the regular expression /^[0-9a-fA-F]&#123;32&#125;$/. This change requires developers to ensure that the `product_rate_plan_id` adheres to this format.
 
 ## bill\_run\_filter
 
@@ -228,7 +224,7 @@ markdown:
 
 ## create\_or\_update\_catalog\_group\_product\_rate\_plan
 
-* The `id` field now requires a non-empty string with strict validation and must match the regular expression /^[0-9a-fA-F]{32}$/.
+* The `id` field now requires a non-empty string with strict validation and must match the regular expression /^[0-9a-fA-F]&#123;32&#125;$/.
 
 ## create\_order\_action
 
@@ -574,7 +570,7 @@ markdown:
 
 ## remove\_catalog\_group\_product\_rate\_plan
 
-* The `id` field now requires a non-empty string with a strict type and must match the regular expression /^[0-9a-fA-F]{32}$/.
+* The `id` field now requires a non-empty string with a strict type and must match the regular expression /^[0-9a-fA-F]&#123;32&#125;$/.
 
 ## remove\_subscription\_rate\_plan
 

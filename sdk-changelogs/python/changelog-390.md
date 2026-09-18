@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.9.0 changelog"
+sidebarTitle: "3.9.0"
 ---
-
-# Python client library 3.9.0 changelog
-
 ## \_\_init\_\_
 
 * Added new model `ActionType`.
@@ -182,4 +178,3 @@ markdown:
 * Added methods to configure and retrieve token refresh intervals and retry configurations.
 * Provided manual token refresh capability.
 * Implemented thread safety measures for token and configuration operations.
-

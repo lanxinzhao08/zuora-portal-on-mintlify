@@ -1,14 +1,9 @@
 ---
-excludeFromSearch: true
+title: "Rate and concurrent request limits"
 ---
-
-
-# Rate and concurrent request limits
-
-
 This article describes the request rate limits, concurrent request limits, and other limits that Zuora enforces to maximize the stability of its service.
 
-Note that these limits apply only to the API operations in the [REST API Reference](/api-references/api/overview/).
+Note that these limits apply only to the API operations in the [REST API Reference](/v1-api-reference/introduction).
 
 ## Rate limits
 
@@ -19,7 +14,7 @@ Zuora employs a number of tenant-level rate limits against bursts of incoming tr
 Zuora sets limits on the type and number of requests that a tenant can make per minute, per hour, and per day. All incoming requests are classified as follows:
 
 - UI requests: all UI requests
-- Authentication requests: all [OAuth authentication](/api-references/api/operation/createToken), [Establish a connection to Zuora REST API](/v1-api-reference/older-api/exports/object_postexport) and <a href="https://docs.zuora.com?resourceId=platform-soap-api-calls-login" target="_blank">SOAP login</a> requests
+- Authentication requests: all [OAuth authentication](/v1-api-reference/api/oauth/createtoken), [Establish a connection to Zuora REST API](/v1-api-reference/older-api/exports/object_postexport) and <a href="https://docs.zuora.com?resourceId=platform-soap-api-calls-login" target="_blank">SOAP login</a> requests
 - API requests: all API requests other than authentication requests
 
 Zuora enforces the following rate limits on each tenant.
@@ -101,324 +96,18 @@ Zuora applies different request limits to different types of requests. The reque
 
 See the following table for the concurrent request limits that apply to different product areas.
 
-<table>
-
-<thead>
-
-<tr>
-
-<th scope="col" >Product Area</th>
-
-<th scope="col" >Operations</th>
-
-<th scope="col" >Total Request Limit</th>
-
-<th scope="col" >Big Data Request Limit</th>
-
-<th scope="col" >Big Process Request Limit</th>
-
-<th scope="col" >Custom Request Limit</th>
-
-</tr>
-</thead>
-<tbody>
-<tr>
-
-<td style="vertical-align:middle;">
-
-Subscriptions
-
-</td>
-
-<td>
-
-Subscribe and amend REST method calls:
-
-* [Create a subscription](/v1-api-reference/api/subscriptions/post_subscription)
-
-* [Update a subscription](/v1-api-reference/api/subscriptions/put_subscription)
-
-* [Cancel a subscription](/v1-api-reference/api/subscriptions/put_cancelsubscription)
-
-* [Renew a subscription](/v1-api-reference/api/subscriptions/put_renewsubscription)
-
-* [Preview a subscription](/api-references/api/operation/POST_PreviewSubscription)
-
-* [Create Account](/v1-api-reference/api/accounts/post_account)
-
-Subscribe and amend SOAP calls, and the corresponding [Actions](/api-references/older-api/tag/Actions/) calls in the REST API Reference:
-
-* [Amend](/api-references/older-api/operation/Action_POSTamend/)
-* [Subscribe](/api-references/older-api/operation/Action_POSTsubscribe/)
-* Subscribe with an existing account
-
-</td>
-
-<td> </td>
-
-<td> </td>
-
-<td> </td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-</tr>
-
-<tr>
-
-<td colspan="1" rowspan="2" style="vertical-align:middle;">Orders</td>
-
-<td>
-
-Orders:
-
-*   Preview order
-*   Create order
-
-</td>
-
-<td> </td>
-
-<td> </td>
-
-<td> </td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-</tr>
-
-<tr>
-
-<td>
-
-Orders:
-
-*   All requests except Preview order and Create order
-
-</td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-<td> </td>
-
-<td> </td>
-
-<td> </td>
-
-</tr>
-
-<tr>
-
-<td style="vertical-align:middle;">Login</td>
-
-<td>Login Requests:
-
-*   Login API calls (REST and SOAP)
-*   UI login requests
-
-(No applicable concurrent limit for Login requests)
-
-</td>
-
-<td> </td>
-
-<td> </td>
-
-<td> </td>
-
-<td> </td>
-
-</tr>
-
-<tr>
-
-<td style="vertical-align:middle;">HPM</td>
-
-<td>
-
-Hosted Payment Method Pages:
-
-*  <a href="https://docs.zuora.com?resourceId=payments-integrate-payment-pages-2.0" target="_blank">Payment Pages 2.0</a> (`PublicHostedPageLite.do`)
-
-</td>
-
-<td> </td>
-
-<td> </td>
-
-<td> </td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-</tr>
-
-<tr>
-
-<td colspan="1" rowspan="2" style="vertical-align:middle;">CPQ</td>
-
-<td>Zuora 360 Order Builder (includes APEX wrappers for SOAP APIs)</td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-<td> </td>
-
-<td> </td>
-
-<td> </td>
-
-</tr>
-
-<tr>
-
-<td>Zuora for Salesforce
-
-*   360 Sync
-*   Zuora Quotes
-
-(No applicable concurrent limit)
-
-</td>
-
-<td> </td>
-
-<td> </td>
-
-<td> </td>
-
-<td> </td>
-
-</tr>
-
-<tr>
-
-<td colspan="1" rowspan="2" style="vertical-align:middle;">AQuA</td>
-
-<td>AQuA API requests
-
-*   Post query
-*   Get job results
-*   Get results files
-
-</td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-<td> </td>
-
-<td> </td>
-
-<td> </td>
-
-</tr>
-
-<tr>
-
-<td>AQuA results files download</td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-<td> </td>
-
-<td> </td>
-
-</tr>
-
-<tr>
-
-<td colspan="1" rowspan="2" style="vertical-align:middle;">Usage</td>
-
-<td>
-
-Usage request
-
-*   Post usage
-
-</td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-<td> </td>
-
-<td> </td>
-
-</tr>
-
-<tr>
-
-<td>
-
-Usage request
-
-*   Check import status
-
-</td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-<td> </td>
-
-<td> </td>
-
-<td> </td>
-
-</tr>
-
-<tr>
-
-<td colspan="1" style="vertical-align:middle;">Data Source Export</td>
-
-<td>Data source file download</td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-<td> </td>
-
-<td> </td>
-
-</tr>
-
-<tr>
-
-<td colspan="1" style="vertical-align:middle;">Invoicing</td>
-
-<td>
-
-Transactions
-
-*   Get payments
-
-</td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-<td> </td>
-
-<td><img src="../images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td>
-
-<td> </td>
-
-</tr>
-
-</tbody>
-
-</table>
+<table> <thead> <tr> <th scope="col">Product Area</th> <th scope="col">Operations</th> <th scope="col">Total Request Limit</th> <th scope="col">Big Data Request Limit</th> <th scope="col">Big Process Request Limit</th> <th scope="col">Custom Request Limit</th> </tr> </thead> <tbody> <tr> <td style="vertical-align:middle;">Subscriptions</td> <td>Subscribe and amend REST method calls: * [Create a subscription](/v1-api-reference/api/subscriptions/post_subscription) * [Update a subscription](/v1-api-reference/api/subscriptions/put_subscription) * [Cancel&nbsp;a subscription](/v1-api-reference/api/subscriptions/put_cancelsubscription) * [Renew a subscription](/v1-api-reference/api/subscriptions/put_renewsubscription) * [Preview a subscription](/v1-api-reference/api/subscriptions/post_previewsubscription) * [Create Account](/v1-api-reference/api/accounts/post_account) Subscribe and amend&nbsp;SOAP calls,&nbsp;and the corresponding [Actions](/v1-api-reference/older-api/actions/action_postamend) calls&nbsp;in the&nbsp;REST API Reference: * [Amend](/v1-api-reference/older-api/actions/action_postamend) * [Subscribe](/v1-api-reference/older-api/actions/action_postsubscribe) * Subscribe&nbsp;with an&nbsp;existing&nbsp;account</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> </tr> <tr> <td colspan="1" rowspan="2" style="vertical-align:middle;">Orders</td> <td>Orders: * Preview order * Create order</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> </tr> <tr> <td>Orders: * All requests except Preview order and Create order</td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td style="vertical-align:middle;">Login</td> <td>Login Requests: * Login API calls (REST and SOAP) * UI login requests (No applicable concurrent limit&nbsp;for Login requests)</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td style="vertical-align:middle;">HPM</td> <td>Hosted Payment Method Pages: * <a href="https://docs.zuora.com?resourceId=payments-integrate-payment-pages-2.0" target="_blank">Payment Pages 2.0</a> (`PublicHostedPageLite.do`)</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> </tr> <tr> <td colspan="1" rowspan="2" style="vertical-align:middle;">CPQ</td> <td>Zuora&nbsp;360 Order Builder (includes APEX wrappers for SOAP APIs)</td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td>Zuora&nbsp;for Salesforce * 360 Sync * Zuora&nbsp;Quotes (No applicable concurrent limit)</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td colspan="1" rowspan="2" style="vertical-align:middle;">AQuA</td> <td>AQuA&nbsp;API requests * Post query * Get job results * Get results files</td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td>AQuA results files download</td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td colspan="1" rowspan="2" style="vertical-align:middle;">Usage</td> <td>Usage request * Post usage</td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td>Usage request * Check import status</td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td colspan="1" style="vertical-align:middle;">Data Source Export</td> <td>Data&nbsp;source file download</td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td colspan="1" style="vertical-align:middle;">Invoicing</td> <td>Transactions * Get payments</td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> <td>&nbsp;</td> <td><img src="/docs/images/icons/green_checkmark_icon.png" alt="green_checkmark" /></td> <td>&nbsp;</td> </tr> </tbody> </table>
 
 #### Big process requests
 
-<a href="https://docs.zuora.com?resourceId=platform-soap-api-calls-overview" target="_blank">SOAP API calls</a> on some objects are handled as Big Process Requests. See the following table for details. The corresponding [Actions](/v1-api-reference/api/actions/) are also handled as big process requests.
+<a href="https://docs.zuora.com?resourceId=platform-soap-api-calls-overview" target="_blank">SOAP API calls</a> on some objects are handled as Big Process Requests. See the following table for details. The corresponding [Actions](/v1-api-reference/api/actions/action_postcreate) are also handled as big process requests.
 
 | SOAP API Calls | Objects |
 | --- | --- |
 | Create | invoice |
 | Generate | invoice |
-| QueryMore | Account <br/>InvoiceItem <br/>PaymentTransactionLog<br/>RatePlan<br/>RatePlanCharge<br/>RatePlanChargeTier<br/>Subscription|
-| Query | Account<br/>Invoice<br/>InvoicePayment<br/>Payment<br/>PaymentTransactionLog<br/>RatePlan<br/>RatePlanCharge<br/>Subscription<br/>Usage<br/>ProcessedUsage|
+| QueryMore | Account <br/>InvoiceItem <br/>PaymentTransactionLog&lt;br/>RatePlan&lt;br/>RatePlanCharge&lt;br/>RatePlanChargeTier&lt;br/>Subscription|
+| Query | Account&lt;br/>Invoice&lt;br/>InvoicePayment&lt;br/>Payment&lt;br/>PaymentTransactionLog&lt;br/>RatePlan&lt;br/>RatePlanCharge&lt;br/>Subscription&lt;br/>Usage&lt;br/>ProcessedUsage|
 
 
 #### Errors when reaching concurrent request limits
@@ -499,20 +188,20 @@ The limit of orders allowed on a subscription is 1000.
 
 Zuora has the following limits on the Orders synchronous API to prevent performance degradation:
 
-- Up to 50 subscriptions are allowed in a single [Create an order](/api-references/api/operation/POST_Order) or [Preview an order](/api-references/api/operation/POST_PreviewOrder) operation call.
-- Up to 50 order actions are allowed in a single [Create an order](/api-references/api/operation/POST_Order) or [Preview an order](/api-references/api/operation/POST_PreviewOrder) operation call.
-- Up to 50 order actions are allowed on a single subscription in a [Create an order](/api-references/api/operation/POST_Order) or [Preview an order](/api-references/api/operation/POST_PreviewOrder) operation call.
+- Up to 50 subscriptions are allowed in a single [Create an order](/v1-api-reference/api/orders/post_order) or [Preview an order](/v1-api-reference/api/orders/post_previeworder) operation call.
+- Up to 50 order actions are allowed in a single [Create an order](/v1-api-reference/api/orders/post_order) or [Preview an order](/v1-api-reference/api/orders/post_previeworder) operation call.
+- Up to 50 order actions are allowed on a single subscription in a [Create an order](/v1-api-reference/api/orders/post_order) or [Preview an order](/v1-api-reference/api/orders/post_previeworder) operation call.
 
 If you have an Order that exceeds any limits of the above, Zuora recommends you use the following asynchronous API operations:
 
-- [Preview an order asynchronously](/api-references/api/operation/POST_PreviewOrderAsynchronously)
-- [Create an order asynchronously](/api-references/api/operation/POST_CreateOrderAsynchronously)
+- [Preview an order asynchronously](/v1-api-reference/api/orders/post_previeworderasynchronously)
+- [Create an order asynchronously](/v1-api-reference/api/orders/post_createorderasynchronously)
 
 Zuora has the following limits on the Orders asynchronous API operations to prevent performance degradation:
 
-- Up to 300 subscriptions are allowed in a single [Create an order asynchronously](/api-references/api/operation/POST_CreateOrderAsynchronously) or [Preview an order asynchronously](/api-references/api/operation/POST_PreviewOrderAsynchronously) operation call.
-- Up to 300 order actions are allowed in a single [Create an order asynchronously](/api-references/api/operation/POST_CreateOrderAsynchronously) or [Preview an order asynchronously](/api-references/api/operation/POST_PreviewOrderAsynchronously) operation call.
-- Up to 300 order actions are allowed on a single subscription in a [Create an order asynchronously](/api-references/api/operation/POST_CreateOrderAsynchronously) or [Preview an order asynchronously](/api-references/api/operation/POST_PreviewOrderAsynchronously) operation call.
+- Up to 300 subscriptions are allowed in a single [Create an order asynchronously](/v1-api-reference/api/orders/post_createorderasynchronously) or [Preview an order asynchronously](/v1-api-reference/api/orders/post_previeworderasynchronously) operation call.
+- Up to 300 order actions are allowed in a single [Create an order asynchronously](/v1-api-reference/api/orders/post_createorderasynchronously) or [Preview an order asynchronously](/v1-api-reference/api/orders/post_previeworderasynchronously) operation call.
+- Up to 300 order actions are allowed on a single subscription in a [Create an order asynchronously](/v1-api-reference/api/orders/post_createorderasynchronously) or [Preview an order asynchronously](/v1-api-reference/api/orders/post_previeworderasynchronously) operation call.
 
 If you have a need for a large order that exceeds any limits of the above, you can request a limit increase for the Orders asynchronous API by submitting a request at <a href="https://support.zuora.com/" target="_blank">Zuora Global Support</a>.
 

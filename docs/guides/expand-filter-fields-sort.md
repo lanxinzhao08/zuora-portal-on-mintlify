@@ -1,39 +1,22 @@
 ---
-seo:
-  title: Object Query - Expand, Filter, Fields, and Sort
-  description: Describes query parameters for using the Zuora API.
-  keywords: expand responses, filter returned fields, sorting responses
-markdown:
-  toc:
-    hide: true
-redirects:
-  /quickstart-api/tutorial/introduction-to-query-parameters/: {}
-  /quickstart-api/tutorial/expand-responses/: {}
-  /quickstart-api/tutorial/filter-lists/: {}
-  /quickstart-api/tutorial/list-specific-fields/: {}
-  /api-references/quickstart-api/tag/Expanding-Responses/: {}
-  /api-references/quickstart-api/tag/Pagination/: {}
-  /rest-api/api-guides/9-retrieve-object-info/: {}
+title: "Object Query - Expand, filter, fields, and sort"
+description: "Describes query parameters for using the Zuora API."
 ---
+<Tabs>
+<Tab title="v1 API">
 
-# Object Query - Expand, filter, fields, and sort
-
-
-{% tabsComponent %}
-{% tabComponent title="v1 API" %}
-
-The <a href="/v1-api-reference/api/object-queries">Object Query</a> API operations allow you to query objects in your Zuora Billing tenant in an efficient, consistent, and flexible manne. Object Queries calls are synchronous. You can:
+The <a href="/v1-api-reference/api/object-queries/queryaccounts">Object Query</a> API operations allow you to query objects in your Zuora Billing tenant in an efficient, consistent, and flexible manne. Object Queries calls are synchronous. You can:
 
 - Dictate which object fields are returned for each record using `fields[]`
 - Retrieve fields from related records using `expand[]`
 - `filter[]` the records returned using logical operators
 - Sort the returned records using `sort[]`
 
-For detailed information about the filterable, expandable, and sortable fields on each object, refer to the Query Parameters section for each API operation in the [API reference](/v1-api-reference/api/object-queries/).
+For detailed information about the filterable, expandable, and sortable fields on each object, refer to the Query Parameters section for each API operation in the [API reference](/v1-api-reference/api/object-queries/queryaccounts).
 
-Unlike Data Query, not every field can be filtered on or sorted on, and the list of related objects you can pull into your query is predefined. For detailed information about each object, check the Query Parameters section for each API operation in the <a href="/v1-api-reference/api/object-queries">API reference</a>.
+Unlike Data Query, not every field can be filtered on or sorted on, and the list of related objects you can pull into your query is predefined. For detailed information about each object, check the Query Parameters section for each API operation in the <a href="/v1-api-reference/api/object-queries/queryaccounts">API reference</a>.
 
-![Object Query explained](../images/api-guides-images/object_query_explained.png)
+![Object Query explained](/docs/images/api-guides-images/object_query_explained.png)
 
 
 
@@ -46,7 +29,7 @@ Using the `fields[]` query parameter is how you get just the fields you care abo
 
 Suppose that you want to query all accounts that use the Canadian Dollar as their currency, and you only want to see the name, number, and balance for each account:
 
-```bash {% title="cURL" %}
+```bash cURL
 curl --request GET \
 --url 'https://rest.apisandbox.zuora.com/object-query/accounts?account.fields[]=id,name,accountNumber,balance&filter[]=currency.EQ:CAD' \
   -H "Authorization: Bearer $ztoken" \
@@ -76,7 +59,7 @@ If the call succeeds, you would see results similar to this:
 
 Note that the order you list the fields in `fields[]` is not reflected in the output. So your custom code needs to get values by name instead of by location.
 
-If you need to return a single record and you already know the ID or number of the object such as Account, you can use the companion [Retrieve an account](/v1-api-reference/api/object-queries/queryaccountbykey/) operation to get that specific record.
+If you need to return a single record and you already know the ID or number of the object such as Account, you can use the companion [Retrieve an account](/v1-api-reference/api/object-queries/queryaccountbykey) operation to get that specific record.
 
 
 ## Using expand[] query parameter
@@ -93,7 +76,7 @@ Note that the last two, `rateplans` and `rateplancharges` are not directly assoc
 For example, we use the same basic Canadian Dollar filter, but we change the `fields[]` values and ask for the bill-to contact's first name and last name to be returned, and nothing else.
 
 
-```bash {% title="cURL" %}
+```bash cURL
 curl --request GET \
 --url 'https://rest.apisandbox.zuora.com/object-query/accounts?account.fields[]=name,accountNumber,balance&expand[]=billto&billto.fields[]=firstname,lastname&filter[]=currency.EQ:CAD' \
   -H "Authorization: Bearer $ztoken" \
@@ -133,7 +116,7 @@ The returned response is similar to this:
 
 The `filter[]` query parameter allows you to filter the returned records by specifying spcific conditions. In our examples so far we've used a simple example: `filter[]=currency.EQ:CAD`.
 
-Multiple filters in a single call are combined using AND logic, and Object Query does not support an OR operator. You can only filter on fields listed in the <code>filter[]</code> parameter section of each API operation in the [API reference](/v1-api-reference/api/object-queries/).
+Multiple filters in a single call are combined using AND logic, and Object Query does not support an OR operator. You can only filter on fields listed in the <code>filter[]</code> parameter section of each API operation in the [API reference](/v1-api-reference/api/object-queries/queryaccounts).
 
 
 The following table lists all supported operators that you can use to construct a `filter[]` query, and an example for each operator.
@@ -164,7 +147,7 @@ For the example in the previous section, we've kept the 'CAD' filter on `currenc
 The `updateddate.LT:2024-01-01T00:00:00Z` filter will exclude Accounts updated after the end of 2023.
 Our two filters combined will only return accounts with a currency of CAD that haven't been updated recently.
 
-```bash {% title="cURL" %}
+```bash cURL
 curl --request GET \
 --url 'https://rest.apisandbox.zuora.com/object-query/accounts?&filter[]=currency.EQ:CAD&filter[]=updateddate.LT:2024-01-01T00:00:00Z' \
   -H "Authorization: Bearer $ztoken" \
@@ -184,7 +167,7 @@ Do not use quotes around a date.
 
 The following example shows how to include accounts with the CAD currency that were last invoiced before April 22nd, 2024:
 
-```bash {% title="cURL" %}
+```bash cURL
 curl --request GET \
 --url 'https://rest.apisandbox.zuora.com/object-query/accounts?&filter[]=currency.EQ:CAD&filter[]=lastinvoicedate.LT:2024-04-22' \
 -H "Authorization: Bearer $ztoken" \
@@ -193,7 +176,7 @@ curl --request GET \
 
 The following example shows you how a space can be embedded into the filter condition. The name of the account we want to query is "Oh Canada":
 
-```bash {% title="cURL" %}
+```bash cURL
 curl --request GET \
 --url 'https://rest.apisandbox.zuora.com/object-query/accounts?&filter[]=name.EQ:Oh%20Canada' \
   -H "Authorization: Bearer $ztoken" \
@@ -209,7 +192,7 @@ When using the IN operator, you should URL encode the square brackets surroundin
 So a query for Canadian Dollar or UK Pound billing accounts would be:
 
 
-```bash {% title="cURL" %}
+```bash cURL
 curl --request GET \
 --url 'https://rest.apisandbox.zuora.com/object-query/accounts?&filter[]=currency.IN:%5BCAD,GBP%5D' \
 -H "Authorization: Bearer $ztoken" \
@@ -223,7 +206,7 @@ Failure to do so can result in the `curl: (3) bad range in URL position` error.
 
 ## Using sort[] query parameter
 
-You can sort query results using the supported `sort[]` parameters for the base object. For supported `sort[]` values for each operation, check the Query Parameters section for each operation in the [API reference](/v1-api-reference/api/object-queries/).
+You can sort query results using the supported `sort[]` parameters for the base object. For supported `sort[]` values for each operation, check the Query Parameters section for each operation in the [API reference](/v1-api-reference/api/object-queries/queryaccounts).
 .
 You can change the sorting order using `ASC` or `DESC` as appropriate.
 You cannot sort on more than one field or any related object fields.
@@ -240,7 +223,7 @@ By default, records returned by your query are paginated 10 records at a time.
 You can change this value to be any positive integer up to 99 using the `pageSize` parameter.
 The following example specifies a `pageSize` to 2:
 
-```bash {% title="cURL" %}
+```bash cURL
 curl --request GET \
 --url 'https://rest.apisandbox.zuora.com/object-query/accounts?pageSize=2&filter[]=currency.EQ:CAD&account.fields[]=name,accountNumber,balance&expand[]=billto&billto.fields[]=firstname,lastname' \
   -H "Authorization: Bearer $ztoken" \
@@ -268,7 +251,7 @@ If multiple pages of records are returned, then a `nextPage` value is included i
 ```
 To obtain the next page of results, add the `nextPage` value returned as the value of the `cursor` parameter and resubmit your query. Nothing else needs to change. So in our example, it would mean resubmitting this:
 
-```bash {% title="cURL" %}
+```bash cURL
 curl --request GET \
 --url 'https://rest.apisandbox.zuora.com/object-query/accounts?pageSize=2&filter[]=currency.EQ:CAD&account.fields[]=name,accountNumber,balance&expand[]=billto&billto.fields[]=firstname,lastname&cursor=W3sidmFsdWUiOiJPaCBDYW5hZGEiLCJvcmRlckJ5Ijp7ImZpZWxkIjoiTmFtZSIsIm8zZGVyIjoiREVTQyJ9fSx7InZhbHVlIjoiOGFkMDgxZGQ5MDRkYTE2NTAxOTA1MWIwMDFhMDJhM2IiLCJvcmRlckJ5Ijp7ImZpZWxkIjoiSWQiLCJvcmRlciI6IkRFU0MifX1d' \
   -H "Authorization: Bearer $ztoken" \
@@ -281,7 +264,7 @@ Bear in mind that pagination focuses the base object and is not designed for exp
 
 Assume you have a billing account with 20 subscriptions and you ask to expand the response with subscription details. You might run an object query similar to this:
 
-```bash {% title="cURL" %}
+```bash cURL
 curl --request GET \
 --url 'https://rest.apisandbox.zuora.com/object-query/accounts?filter[]=accountnumber.EQ:A00024824&expand[]=subscriptions' \
   -H "Authorization: Bearer $ztoken" \
@@ -307,7 +290,7 @@ The following cURL example demonstrates how to query products with the following
 - The results are sorted by account name in the descending order
 
 
-```bash {% title="cURL" %}
+```bash cURL
 curl --request GET \
 --url 'https://rest.apisandbox.zuora.com/object-query/accounts?account.fields[]=name,accountNumber,balance,ACC_Banner__c&expand[]=billto&billto.fields[]=firstname,lastname&filter[]=currency.EQ:CAD&sort[]=name.DESC' \
   -H "Authorization: Bearer $ztoken" \
@@ -335,9 +318,9 @@ The same functionality is available using our client libraries, so you can also 
 The following code examples use the `expand[]`, `filter[]`, and `sort[]` query parameters to filter the accounts based on currency, expanding on subscriptions and the default payment method, and sorting the results by the ascending order of account number.
 A subset of key fields are formatted and printed out to the console.
 
-{% tabs %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+<Tabs>
+  <Tab title="Java">
+  ```java Java
   QueryAccountsResponse response = zuoraClient.objectQueriesApi()
           .queryAccountsApi()
           .filter(List.of("currency.EQ:CAD"))
@@ -372,9 +355,9 @@ A subset of key fields are formatted and printed out to the console.
   }
 
   ```
-  {% /tab %}
-  {% tab label="Node.js" %}
-  ```javascript {% title="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
+  ```javascript Node.js
   const response = await zuoraClient.objectQueriesApi.queryAccounts({
     filter: ['currency.EQ:USD'],
     expand: ['subscriptions','defaultpaymentmethod'],
@@ -403,9 +386,9 @@ A subset of key fields are formatted and printed out to the console.
       console.log("-".repeat(40));
   });
   ```
-  {% /tab %}
-  {% tab label="Python" %}
-  ```python {% title="Python" %}
+  </Tab>
+  <Tab title="Python">
+  ```python Python
   response = client.object_queries_api().query_accounts(filter=['currency.EQ:CAD'],sort=['accountnumber.ASC'],expand=['subscriptions,defaultpaymentmethod'])
   resp_data = response.data
   # Iterating through each record in the 'data' list
@@ -420,9 +403,9 @@ A subset of key fields are formatted and printed out to the console.
         print(f"Default Payment Method Type: {record.default_payment_method.type}")
     print("-" * 40)
   ```
-  {% /tab %}
-  {% tab label="C#" %}
-  ```csharp {% title="C#" %}
+  </Tab>
+  <Tab title="C#">
+  ```csharp C#
   QueryAccountsResponse response = await zuoraClient.ObjectQueriesApi.QueryAccountsAsync(
       expand:["subscriptions", "defaultpaymentmethod"],
       filter:["currency.EQ:CAD"],
@@ -456,22 +439,22 @@ A subset of key fields are formatted and printed out to the console.
       Console.WriteLine(new string('-', 40));
   }
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 
 ## Throttling
 
-- Rate limits for Object Query operations are the same as the REST API rate limits. See [Rate Limits](/rest-api/general-concepts/rate-concurrency-limits/#rate-limits) for more information.
+- Rate limits for Object Query operations are the same as the REST API rate limits. See [Rate Limits](/docs/guides/rate-limits#rate-limits) for more information.
 
 ## Limitations
 
 - Filtering on non-indexed advanced custom fields is not supported. Although filtering on non-indexed legacy custom fields is allowed for backward compatibility, it is not recommended because it can cause performance degradation. For more information about advanced and legacy custom fields, see <a href="https://docs.zuora.com/en/zuora-platform/extensibility/custom-fields/custom-fields-and-legacy-custom-fields" target="_blank">Custom fields and legacy custom fields</a>. This limitation applies not only to direct Object Query API calls but also services that use the Object Query API, such as the Query function in Workflows.
-- Filtering on base objects is supported, but you cannot filter on the associated expandable objects. For example, when calling the [List subscriptions](/api-references/api/operation/querySubscriptions/) operation, you can only filter on the Subscription objects. Filtering on the Account object is not supported.
+- Filtering on base objects is supported, but you cannot filter on the associated expandable objects. For example, when calling the [List subscriptions](/v1-api-reference/api/object-queries/querysubscriptions) operation, you can only filter on the Subscription objects. Filtering on the Account object is not supported.
 - To filter on an empty string, specify a filter condition using the `<field>.EQ:%02%03` syntax. `<field>.EQ:''` is not supported.
 - If you want to expose a Relationship-type field on custom objects through Object Query, you must set the field name to be suffixed with `Id__c` (case-sensitive). For example, `RatePlanId__c`. Otherwise, it cannot be queried through the Object Query API.
 - It is not supported to filter custom objects using the `SW` or `NE` operator.
-- The pagination for Object Query is primarily designed for querying the base object. It means that not all expandable object items can be exposed through Object Query. For detailed example, see [Pagination](/docs/guides/pagination/#how-pagination-works-for-the-object-query-api).
+- The pagination for Object Query is primarily designed for querying the base object. It means that not all expandable object items can be exposed through Object Query. For detailed example, see [Pagination](/docs/guides/pagination#how-pagination-works-for-the-object-query-api).
 - The following objects are currently not supported:
   - Catalog Group
   - Product Rate Plan Definition
@@ -483,8 +466,8 @@ A subset of key fields are formatted and printed out to the console.
   If there is a feature enablement change, the changes in object availability may not take effect immediately. There may be a delay before newly enabled object types and their related fields become accessible via the API due to caching refresh intervals in the related services.
 - Object Query normalizes standard and custom field names to camelCase (with the first letter in lowercase) for consistency. For custom fields, the resulting field name may differ from the API name displayed in Object Manager.
 
-{% /tabComponent %}
-{% tabComponent title="Quickstart API" %}
+</Tab>
+<Tab title="Quickstart API">
 
 When you query records from Zuora objects, the following query parameters enable you to flexibly customize the returned results:
 
@@ -521,43 +504,43 @@ The API has an `expand[]` query parameter that allows you to retrieve linked obj
 
 For example, if you want to access details of the subscriptions and payment methods associated with a customer account, you would retrieve the account and pass the `subscription` and `payment_method` properties to the expand array, which tells Zuora to include the entire Subscriptions and Payment Method objects in the response:
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  {% /tab %}
-  {% tab label="Java" %}
+  </Tab>
+  <Tab title="Java">
 
-  {% /tab %}
-  {% tab label="Node.js" %}
+  </Tab>
+  <Tab title="Node.js">
 
-  {% /tab %}
-  {% tab label="Python" %}
+  </Tab>
+  <Tab title="Python">
 
-  {% /tab %}
-  {% tab label="C#" %}
+  </Tab>
+  <Tab title="C#">
 
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
-{% tabs %}
-  {% tab label="cURL" %}
+<Tabs>
+  <Tab title="cURL">
 
-  ```bash {% title="cURL" %}
+  ```bash cURL
   curl -X GET
   'https://rest.sandbox.na.zuora.com/v2/accounts?expand%5B%5D=subscriptions&expand%5B%5D=payment_methods'
   -H 'Authorization: Bearer aa69290d875f4cfb97b226135ce278ad'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   Account account = zuoraClient.accounts().getAccount(
   "2c92c0f86cbe335a016cbece4a434ada",
   Arrays.asList("subscriptions", "payment_methods")
   );
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const accounts = await zuoraClient.accounts.getAccounts({
       filter: [
         'account_number.EQ:A00000077',
@@ -568,8 +551,8 @@ For example, if you want to access details of the subscriptions and payment meth
       ]
   });
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 It will return the subscriptions and payment methods associated with the account:
 
@@ -607,23 +590,23 @@ It will return the subscriptions and payment methods associated with the account
 
 If the value you want is nested deeply across multiple linked resources, you can reach it by recursively expanding using dot notation. For instance, if you want to know the payment method and the subscription plans of the subscriptions associated with an account, you can expand the subscription plan of the subscription and the payment method by passing `subscriptions.subscription_plans` and `payment_methods` into the expand array.
 
-{% tabs %}
-  {% tab label="cURL" %}
-  ```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+  ```bash cURL
   curl -X GET
   'https://rest.sandbox.na.zuora.com/v2/accounts?expand%5B%5D=subscriptions.subscription_plans&expand%5B%5D=payment_methods'
   -H 'Authorization: Bearer aa69290d875f4cfb97b226135ce278ad'
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   Account account = zuoraClient.accounts().getAccount(
   "2c92c0f86cbe335a016cbece4a434ada", Arrays.asList("subscriptions.subscription_plans", "payment_methods")
   );
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const accounts = await zuoraClient.accounts.getAccounts({
     filter: [
       'account_number.EQ:A100032',
@@ -634,34 +617,34 @@ If the value you want is nested deeply across multiple linked resources, you can
     ]
   });
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ### Request non-default includable properties
 
 If you query on a billing document, its included items are returned without details by default. You will not get any meaningful data in the returned `items` object. The details of this property is returned in responses only if the `expand[]` parameter is specified. For example:
 
-{% tabs %}
-  {% tab label="cURL" %}
-  ```bash {% title="cURL" %}
+<Tabs>
+  <Tab title="cURL">
+  ```bash cURL
   curl -X GET "https://rest.sandbox.na.zuora.com/v2/billing_documents/2c93808457d78703011d86c4c57"
   -d "expand[]=items"
   -H "Authorization: Bearer 6e3b8958cc2b4b4bbfca2e4ab8d75126"
   ```
-  {% /tab %}
-  {% tab label="Java" %}
-  ```java {% title="Java" %}
+  </Tab>
+  <Tab title="Java">
+  ```java Java
   BillingDocument Invoice = zuoraClient.billingDocuments().getBillingDocument("2c92c0f86cbe335a016cbece4a434ada", Arrays.asList("items");
   ```
-  {% /tab %}
-  {% tab label="Node" %}
-  ```javascript {% title="Node" %}
+  </Tab>
+  <Tab title="Node">
+  ```javascript Node
   const newInvoice = await zuoraClient.billingDocuments.getBillingDocument('2c92c0f86cbe335a016cbece4a434ada',{
     expand: ['items']
   });
   ```
-  {% /tab %}
-{% /tabs %}
+  </Tab>
+</Tabs>
 
 ### Expandable objects and fields
 
@@ -1114,7 +1097,7 @@ This query parameter provides you extended flexibility to suit your use cases. T
 
 `account.fields[]=created_time,name`
 
-For the supported associated objects available for use in the `<object>.fields[]` parameter, see the "Query Parameters" section for each GET operation in the [Quickstart API Reference](/other-api/quickstart-api/).
+For the supported associated objects available for use in the `<object>.fields[]` parameter, see the "Query Parameters" section for each GET operation in the [Quickstart API Reference](/other-api/quickstart-api-intro).
 
 
 ### Examples
@@ -1123,7 +1106,7 @@ If you use the [List accounts](/other-api/quickstart-api/accounts/getaccounts) o
 
 The following code snippet is an example for this case:
 
-```bash {% title="cURL" %}
+```bash cURL
 curl --request GET \
      --url 'https://rest.na.zuora.com/v2/account?account.fields[]=created_time,account_number,custom_fields'
      --header 'Authorization: Bearer eeb5a22d679345ddaa1220640d2f440f'
@@ -1153,7 +1136,7 @@ If you want to retrieve a subset of fields from a secondary object such as Payme
 
 For example, if you are using the same "List accounts" operation as before and you want to retrieve the `id`, `type`, and `state` fields of any payment methods associated with the account, you can specify the `expand[]=payment_methods` and `payment_methods.fields[]=type,state` query parameters in your request as follows:
 
-```bash {% title="cURL" %}
+```bash cURL
 curl --request GET \
      --url 'https://rest.na.zuora.com/v2/account?account.fields[]=created_time,account_number,custom_fields&expand[]=payment_methods&payment_methods.fields[]=type,state' \
      --header 'Authorization: Bearer eeb5a22d679345ddaa1220640d2f440f'
@@ -1173,6 +1156,6 @@ The `sort[]` query parameter is case-sensitive and it specifies the sort order o
 
 You cannot sort on properties in arrays. If the array-type properties are specified for the `sort[]` parameter, they are ignored.
 
-{% /tabComponent %}
+</Tab>
 
-{% /tabsComponent %}
+</Tabs>

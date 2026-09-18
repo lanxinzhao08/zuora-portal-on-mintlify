@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.11.0 changelog"
+sidebarTitle: "3.11.0"
 ---
-
-# Python client library 3.11.0 changelog
-
-
 ## object\_queries\_api
 
 * Added `query_bundle_by_key` method to query a bundle by key with filters, expands, and sort capabilities.

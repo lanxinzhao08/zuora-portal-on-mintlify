@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.2.0 changelog"
+sidebarTitle: "1.2.0"
 ---
-
-# C# client library 1.2.0 changelog
-
-
 ## ObjectQueriesApi
 
 * Renamed methods and return types from `CommitmentCycle` to `CommitmentPeriod`. This affects methods such as QueryCommitmentCycleByKey, QueryCommitmentCycles, and their async counterparts.
@@ -85,4 +80,3 @@ markdown:
 
 * Removed the `DefaultAssociationRule` parameter and property, which may require updates to code that relied on this field.
 * Replaced `Segments` with `Periods`, which changes the expected input type from `List<UpsertCommitmentSegmentInput>` to `List<UpsertCommitmentPeriodInput>`.
-

@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.3.0 changelog"
+sidebarTitle: "3.3.0"
 ---
-
-# Java client library 3.3.0 changelog
-
-
 ## ZuoraClient
 
 * Added new API integrations: DataLabelingApi, DeploymentApi, DeploymentConfigurationTemplatesApi, and OmniChannelSubscriptionsApi.
@@ -153,7 +148,7 @@ markdown:
 * Added new field `shipToContactSnapshotId` with associated methods.
 * Added new field `subscriptionOwnerId` with associated methods.
 * Added new field `subscriptionOwner` of type ExpandedAccount with associated methods.
-* Added new field `creditTaxationItems` of type List\<ExpandedCreditTaxationItem> with associated methods.
+* Added new field `creditTaxationItems` of type List&lt;ExpandedCreditTaxationItem> with associated methods.
 
 ## ExpandedDebitMemo
 * Added new field `shipToContactSnapshotId` with associated methods.
@@ -252,7 +247,7 @@ markdown:
 * Added a new field `paymentProfile` to the OrderActionOwnerTransfer class, allowing developers to associate a PaymentProfile with an order action.
 
 ## OrderActionRatePlanAmendment
-* Added support for custom fields in OrderActionRatePlanAmendment with a new Map<String, Object> customFields attribute.
+* Added support for custom fields in OrderActionRatePlanAmendment with a new Map&lt;String, Object> customFields attribute.
 
 ## OrderActionRatePlanChargeOverride
 * Added a new field `estimatedStartDate` to the OrderActionRatePlanChargeOverride class. This field is available if the Pending Charge Flexibility feature is enabled.
@@ -267,11 +262,11 @@ markdown:
 * Added a new field `cardBinInfo` of type `PaymentMethodResponseCardBinInfo` to the PaymentMethodResponse class.
 
 ## PaymentRun
-* Changed the type of the `organizationLabels` field from String to List\<OrganizationLabel>, which may require updates to existing code that interacts with this field.
+* Changed the type of the `organizationLabels` field from String to List&lt;OrganizationLabel>, which may require updates to existing code that interacts with this field.
 * Added the addOrganizationLabelsItem method to facilitate adding individual OrganizationLabel items to the organizationLabels list.
 
 ## PaymentRunResponse
-* The type of `organizationLabels` has been changed from String to List\<OrganizationLabel>, which may require updates to existing code that interacts with this field.
+* The type of `organizationLabels` has been changed from String to List&lt;OrganizationLabel>, which may require updates to existing code that interacts with this field.
 * Added a method `addOrganizationLabelsItem` to facilitate adding individual OrganizationLabel items to the organizationLabels list.
 
 ## PostCompareTemplateRequest

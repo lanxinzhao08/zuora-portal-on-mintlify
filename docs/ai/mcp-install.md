@@ -1,19 +1,11 @@
 ---
-seo:
-  title: MCP install
-  description: Learn how to install and configure the Zuora remote and local MCP server. Explore Zuora AI capabilities, setup guides, and authentication configuration.
-  keywords: Zuora AI, Zuora MCP, Remote MCP server, Local MCP server, MCP server installation guide
-markdown:
-  toc:
-    hide: true
+title: "MCP install"
+description: "Learn how to install and configure the Zuora remote and local MCP server. Explore Zuora AI capabilities, setup guides, and authentication configuration."
 ---
-
-# MCP install
-
 Use the following resources to learn about Zuora AI and install the Zuora MCP server:
 
 - <a href="https://docs.zuora.com/en/zuora-platform/system-management/zuora-ai" target="_blank">Zuora AI overview</a>
-- <a href="https://docs.zuora.com/en/basics/use-of-ai-in-zuora/zuoras-approach-to-ai" target="_blank">Zuora’s approach to AI and the commitments to you</a>  
+- <a href="https://docs.zuora.com/en/basics/use-of-ai-in-zuora/zuoras-approach-to-ai" target="_blank">Zuora’s approach to AI and the commitments to you</a>
 - <a href="https://docs.zuora.com/en/zuora-platform/system-management/zuora-ai/access-and-permissions-for-zuora-ai" target="_blank">Review AI enablement in your tenant</a>
 - <a href="https://docs.zuora.com/en/zuora-platform/system-management/zuora-ai/zuora-mcp-server" target="_blank">Zuora MCP server overview and capabilities</a>
 - <a href="https://docs.zuora.com/en/zuora-platform/system-management/zuora-ai/zuora-mcp-server/configure-zuora-remote-mcp-server/create-oauth-2.0-credentials-for-remote-mcp-client" target="_blank">Remote MCP server installation guide</a>

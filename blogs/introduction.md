@@ -1,69 +1,62 @@
 ---
-seo:
-  title: Developer Blogs - Zuora
-markdown:
-  toc:
-    hide: true
+title: "Developer Blogs"
+sidebarTitle: "Introduction"
 ---
-
-# Developer Blogs
-
-{% banner /%}
 
 ## Most Recent
 
-{% cards columns=3 cardMinWidth=180 %}
+<CardGroup cols={3}>
 
-  {% card title="Zuora's Prompt-A-Thon 2025" to="./2025-9-10-Prompt-A-Thon.md" variant="elevated" %}
+  <Card title="Zuora's Prompt-A-Thon 2025" href="/blogs/2025-9-10-Prompt-A-Thon">
     Sneak peek at Zuora's Prompt-A-Thon 2025
-  {% /card %}
+  </Card>
 
-   {% card title="Latest AI Week at Zuora" to="./2025-8-31-LatestAIWeek.md" variant="elevated" %}
+   <Card title="Latest AI Week at Zuora" href="/blogs/2025-8-31-LatestAIWeek">
     A digest on Zuora's first-ever AI Week
-   {% /card %}
+   </Card>
 
-   {% card title="Zuora's Partner Hackathon" to="./2025-8-19-ZuoraPartnerHackathon.md" variant="elevated" %}
+   <Card title="Zuora's Partner Hackathon" href="/blogs/2025-8-19-ZuoraPartnerHackathon">
     Unleashing developer innovation at Zuora's Partner Hackathon
-   {% /card %}
+   </Card>
 
-   {% card title="Zuora's patent portfolio" to="./2025-6-3-ZuoraPatentPortfolio.md" variant="elevated" %}
+   <Card title="Zuora's patent portfolio" href="/blogs/2025-6-3-ZuoraPatentPortfolio">
     Zuora's best-kept secret - Our patent portfolio
-   {% /card %}
+   </Card>
 
-   {% card title="Turning failure into gold" to="./2025-3-18-TurningFailureIntoGold.md" variant="elevated" %}
+   <Card title="Turning failure into gold" href="/blogs/2025-3-18-TurningFailureIntoGold">
     Explaining how Zuora Smart Retry feature assists you to turn payment failures into measurable revenue.
-   {% /card %}
+   </Card>
 
-   {% card title="Evolution of Zuora's AI Copilot" to="./2025-3-6-ZuoraAICopilotEvolution.md" variant="elevated" %}
+   <Card title="Evolution of Zuora's AI Copilot" href="/blogs/2025-3-6-ZuoraAICopilotEvolution">
     Story telling: How Zuora's AI Copilot evolved
-   {% /card %}
+   </Card>
 
-{% /cards %}
+</CardGroup>
 
 ## Most popular
 
-{% cards columns=3 cardMinWidth=180 %}
-  {% card title="Zuora's Partner Hackathon" to="./2025-8-19-ZuoraPartnerHackathon.md" variant="elevated" %}
+<CardGroup cols={3}>
+  <Card title="Zuora's Partner Hackathon" href="/blogs/2025-8-19-ZuoraPartnerHackathon">
     Unleashing developer innovation at Zuora's Partner Hackathon
-  {% /card %}
+  </Card>
 
-   {% card title="Rules and logic in Zuor" to="./2025-2-26-RulesAndLogicInZuora.md" variant="elevated" %}
+   <Card title="Rules and logic in Zuor" href="/blogs/2025-2-26-RulesAndLogicInZuora">
     Deep dive into Zuora's Rules Engin
-   {% /card %}
+   </Card>
 
-   {% card title="Evolution of Zuora's AI Copilot" to="./2025-3-6-ZuoraAICopilotEvolution.md" variant="elevated" %}
+   <Card title="Evolution of Zuora's AI Copilot" href="/blogs/2025-3-6-ZuoraAICopilotEvolution">
     Story telling: How Zuora's AI Copilot evolved
-   {% /card %}
+   </Card>
 
-   {% card title="Turning failure into gold" to="./2025-3-18-TurningFailureIntoGold.md" variant="elevated" %}
+   <Card title="Turning failure into gold" href="/blogs/2025-3-18-TurningFailureIntoGold">
     Explaining how Zuora Smart Retry feature assists you to turn payment failures into measurable revenue.
-   {% /card %}
+   </Card>
 
-   {% card title="Latest AI Week at Zuora" to="./2025-8-31-LatestAIWeek.md" variant="elevated" %}
+   <Card title="Latest AI Week at Zuora" href="/blogs/2025-8-31-LatestAIWeek">
     A digest on Zuora's first-ever AI Wee
-   {% /card %}
+   </Card>
 
-   {% card title="Zuora's Prompt-A-Thon 2025" to="./2025-9-10-Prompt-A-Thon.md" variant="elevated" %}
+   <Card title="Zuora's Prompt-A-Thon 2025" href="/blogs/2025-9-10-Prompt-A-Thon">
     Sneak peek at Zuora's Prompt-A-Thon 2025
-   {% /card %}
-{% /cards %}
+   </Card>
+</CardGroup>

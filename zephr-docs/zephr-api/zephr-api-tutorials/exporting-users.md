@@ -1,10 +1,6 @@
 ---
-seo:
-  title: Exporting Users
+title: "Exporting users"
 ---
-
-# Exporting users
-
 The following information references how to export Zephrs stored in Zephr from your Zephr Admin Console. If you are using an older version of Zephr, such as Zephr Classic, please review <a href="https://docs.zuora.com?resourceId=zephr-export-user-details" target="_blank">this guide</a> instead.
 
 Zephr provides you with the ability to export a list of Users from the Zephr Identity Store as a JSON export.
@@ -25,7 +21,7 @@ The information you get will looks similar to the following:
 
 ### Export Progress Indicator
 
-When you start a user export, a progress indicator appears in the bottom-right corner of the screen. It updates in real time to show how the export is progressing. 
+When you start a user export, a progress indicator appears in the bottom-right corner of the screen. It updates in real time to show how the export is progressing.
 
 #### Progress States
 

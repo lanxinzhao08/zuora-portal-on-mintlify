@@ -1,13 +1,6 @@
 ---
-markdown:
-  toc:
-    hide: true
-redirects:
-  /api-references/quickstart-api/tag/Idempotent-Requests/: {}
+title: "Idempotent requests"
 ---
-
-# Idempotent requests
-
 The Zuora API supports idempotency that prevents the same operation from
 being performed multiple times by accident. For example, when you attempt
 to create a product using the [Create a

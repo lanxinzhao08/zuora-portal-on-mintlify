@@ -1,17 +1,7 @@
 ---
-seo:
-  title: Zuora Object Model - Zuora
-  description: Describes the Zuora object model
-  keywords: object model, data model
-markdown:
-  toc:
-    hide: false
-redirects:
-  /rest-api/general-concepts/object-model/: {}
+title: "Zuora object model"
+description: "Describes the Zuora object model"
 ---
-
-# Zuora object model
-
 ## Overview
 
 The following diagram is a high-level view of how key business objects are related to one another within Zuora Billing and Payments.
@@ -19,7 +9,7 @@ The following diagram is a high-level view of how key business objects are relat
 Click the diagram to open it in a new tab and zoom in. For more information about the different sections, see
 <a href="https://docs.zuora.com?resourceId=zuora-business-object-model" target="_blank">Zuora business object model</a>.
 
-<a href="../static/images/Zuora-Billing-object-model-May2023.png" target="_blank"><img src="../static/images/Zuora-Billing-object-model-May2023.png" alt="Zuora object model diagram"></a>
+<a href="/static/images/Zuora-Billing-object-model-May2023.png" target="_blank"><img src="/static/images/Zuora-Billing-object-model-May2023.png" alt="Zuora object model diagram" /></a>
 
 This diagram is intended to provide a conceptual understanding; it does not illustrate a specific way to integrate with Zuora.
 

@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.15.0 changelog"
+sidebarTitle: "3.15.0"
 ---
-
-# Java client library 3.15.0 changelog
-
 ## ZuoraClient
 
 * Added BalanceTrackingApi to the ZuoraClient, allowing developers to access balance tracking functionalities.

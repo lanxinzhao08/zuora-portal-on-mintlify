@@ -1,12 +1,6 @@
 ---
-seo:
-  title: Outbound IP Addresses from Zephr
-redirects:
-  /zephr-docs/others/zephr-other-tutorials/: {}
+title: "Outbound IP addresses from Zephr"
 ---
-
-# Outbound IP addresses from Zephr
-
 Some organizations limit inbound communication from the Internet for security purposes. This may be achieved using application configuration or via network-level configuration.
 
 This page provides the list of outbound IP addresses used by Zephr: the Zephr Outbound IPs. Zephr will only initiate communications with other systems from IP addresses included in this list.

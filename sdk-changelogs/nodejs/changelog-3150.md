@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.15.0 changelog"
+sidebarTitle: "3.15.0"
 ---
-
-# Node.js client library 3.15.0 changelog
-
 ## ZuoraClient
 
 * Added BalanceTrackingApi for managing balance tracking.

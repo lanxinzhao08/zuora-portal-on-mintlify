@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.10.0 changelog"
+sidebarTitle: "3.10.0"
 ---
-
-# Node.js client library 3.10.0 changelog
-
 ## ObjectQueriesApi
 
 * Renamed methods related to CommitmentCycle to CommitmentPeriod, including queryCommitmentCycleByKeyWithHttpInfo to queryCommitmentPeriodByKeyWithHttpInfo, queryCommitmentCycleByKey to queryCommitmentPeriodByKey, queryCommitmentCyclesWithHttpInfo to queryCommitmentPeriodsWithHttpInfo, and queryCommitmentCycles to queryCommitmentPeriods.
@@ -109,4 +105,3 @@ markdown:
 
 * The `segments` property has been replaced with `periods`. Developers need to update their code to use `periods` instead of `segments`.
 * The `defaultAssociationRule` property has been removed. Any code relying on this property will need to be updated.
-

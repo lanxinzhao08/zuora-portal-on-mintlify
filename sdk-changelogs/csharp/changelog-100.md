@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.0.0 changelog"
+sidebarTitle: "1.0.0"
 ---
-
-# C# client library 1.0.0 changelog
-
 Note that the `1.0.0-beta.7` version is identical to `1.0.0`.
 
 ## ObjectQueriesApi
@@ -25,7 +21,7 @@ Note that the `1.0.0-beta.7` version is identical to `1.0.0`.
 * Introduced support for additional optional parameters in `QueryRamps` and `QueryRampsAsync` methods, including `idempotencyKey`, `acceptEncoding`, `contentEncoding`, `zuoraTrackId`, `zuoraEntityIds`, `authorization`, `zuoraVersion`, `zuoraOrgIds`, `pageSize`, `cursor`, `sort`, `expand`, `filter`, `fields`, and `includeNullFields`.
 
 ## BulkUpdateInvoicesRequest
-* Changed the type of the `invoices` parameter and property from List\<UpdateInvoiceRequest> to List\<InvoiceForBulkUpdate>.
+* Changed the type of the `invoices` parameter and property from List&lt;UpdateInvoiceRequest> to List&lt;InvoiceForBulkUpdate>.
 
 ## BulkUpdateOrderLineItem
 * Removed the `itemNumber` parameter from the constructor and the corresponding property from the class.

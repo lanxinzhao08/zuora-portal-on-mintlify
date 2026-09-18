@@ -1,17 +1,7 @@
 ---
-seo:
-  title: Authentication
-markdown:
-  toc:
-    hide: true
-redirects:
-  /api-references/quickstart-api/tag/Authentication/: {}
-  /rest-api/general-concepts/authentication/: {}
+title: "Authentication"
 ---
-
-# Authentication
-
-The Zuora API uses bearer tokens for authentication. See the [Get started tutorial](../get-started/introduction.md) to learn how to generate a bearer token.
+The Zuora API uses bearer tokens for authentication. See the [Get started tutorial](/docs/get-started/introduction) to learn how to generate a bearer token.
 
 All API requests should include a bearer token in an Authorization HTTP header as follows:
 &nbsp;

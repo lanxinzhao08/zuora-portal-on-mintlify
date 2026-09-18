@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.11.0 changelog"
+sidebarTitle: "3.11.0"
 ---
-
-# Node.js client library 3.11.0 changelog
-
 ## ObjectQueriesApi
 
 * Added queryBundleByKey and queryBundles methods to support querying bundles with filters, expands, and sort capabilities.

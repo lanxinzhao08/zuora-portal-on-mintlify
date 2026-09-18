@@ -1,5 +1,6 @@
-# Swift SDK
-
+---
+title: "Swift SDK"
+---
 The following guide provides documentation for the Zephr Swift SDK. If you need access to this SDK, please email [support@zuora.com.](mailto:support@zuora.com "support@zuora.com")
 
 ## Installation
@@ -208,7 +209,7 @@ func entitlementChallenge() {
             print("Something went wrong")
         }
     }
-} 
+}
 ```
 
 ### Entitlement challenge
@@ -224,7 +225,7 @@ func checkEntitlements() {
     if response\[articleEntitlementId\] == nil {
         print("You cannot view articles")
     }
-        
+
     if response\[videoEntitlementId\] == nil {
         print("You cannot view videos")
     }

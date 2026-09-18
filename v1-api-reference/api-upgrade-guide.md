@@ -1,20 +1,12 @@
 ---
-seo:
-  title: API upgrade guide
-  description: Introduction about Zuora API changes and guide for upgrading to a later minor version.
-markdown:
-  toc:
-    hide: false
+title: "API upgrade guide"
+description: "Introduction about Zuora API changes and guide for upgrading to a later minor version."
 ---
-
-
-# API upgrade guide
-
 This API upgrade guide explains the different types of API changes, and how to upgrade to the latest API version.
 
-For a list of detailed backward-incompatible changes, see [API upgrades](api-upgrades.md).
+For a list of detailed backward-incompatible changes, see [API upgrades](/v1-api-reference/api-upgrades).
 
-For detailed backward-compatible changes, see [v1 API Changelog](../docs/get-started/changelogs/v1-api-changelog.md).
+For detailed backward-compatible changes, see [v1 API Changelog](/docs/get-started/changelogs/v1-api-changelog).
 
 ## Types of API changes
 
@@ -62,7 +54,7 @@ To upgrade your API minor version, take the following steps:
 
   **Note**: By default, your requests are on version `186.0` unless you have used the `Zuora-Version` header to override.
 
-3. Check for the changes between the version you are running on and the latest version that are documented in the [API upgrades](api-upgrades.md). For example, if you are running on version `186.0`, and the latest version is `2024-05-20`, check all the changes between `186.0` and `2024-05-20`.
+3. Check for the changes between the version you are running on and the latest version that are documented in the [API upgrades](/v1-api-reference/api-upgrades). For example, if you are running on version `186.0`, and the latest version is `2024-05-20`, check all the changes between `186.0` and `2024-05-20`.
 4. In your testing environment, update your code to incorporate the changes for each version incrementally.
 5. Once all backward-incompatible changes have been incorporated into the code, validate that your code works for the new version.
 6. After you have validated your changes in the testing environments, click **Upgrade** on the API Version page. Then your testing environment is upgraded to the latest version.
@@ -71,4 +63,3 @@ To upgrade your API minor version, take the following steps:
   **Note**: Excercise caution before clicking the **Upgrade** or **Roll Back** button as some changes cannot be reverted to in case of multiple upgrade and rollback operations. For example, you're currently on `2024-05-20`, and the latest version is `2025-08-12`. You can roll back to `186.0`. But from `186.0`, you can only upgrade to the latest version, `2025-08-12`, and cannot upgrade to the previous version, `2024-05-20`.
 
 8. After you are confident to upgrade to the latest version, repeat Step 1-6 for your Production environments.
-

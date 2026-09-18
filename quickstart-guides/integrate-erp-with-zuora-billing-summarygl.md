@@ -1,14 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
-seo:
-  title: Integrate your ERP with Zuora Billing digital business add-on (Summary GL) - quickstart guide for developers
+title: "Integrate your ERP system with Zuora Billing Summary GL pattern"
+sidebarTitle: "Integrate ERP with Zuora Billing Summary GL pattern"
 ---
-
-
-# Integrate your ERP system with Zuora Billing Summary GL pattern
-
 ## Overview
 
 This guide will help you quickly integrate your ERP system with Zuora Billing, allowing you to manage both digital and physical goods. By the end of this guide:
@@ -22,7 +15,7 @@ This guide will help you quickly integrate your ERP system with Zuora Billing, a
 
 Before getting started, ensure you have the following:
 
-- **API access credentials**: For both your ERP and Zuora Billing in both production and test/dev environments. Zuora’s Developer [Get Started tutorial](/docs/get-started/introduction/) explains how.
+- **API access credentials**: For both your ERP and Zuora Billing in both production and test/dev environments. Zuora’s Developer [Get Started tutorial](/docs/get-started/introduction) explains how.
 - **Basic understanding of REST APIs**: Familiarity with JSON and API calls.
 - **Access to a Zuora Billing sandbox**: Every Zuora customer is provisioned at least one sandbox. If you need one for this project you can request one from Zuora.
 - **Product Catalog configuration**: This document assumes pricing is captured in Zuora Billing's Product Catalog. This is optional but is assumed here for clarity. Order capture in Zuora Billing is also excluded for clarity.
@@ -41,10 +34,10 @@ A complete ERP integration with Zuora includes two out of the three integration 
    Your ERP receives summary journal entries from Zuora Billing for financial reporting. This guide explains how to do this.
 
 - **ERP item level integration**:
-   You choose to centralize all your AR in your ERP system even though Zuora's AR and collections abilities are superior to your ERP's capabilities. This pattern is detailed in a companion guide, [Integrate your ERP with Zuora Billing item level pattern](./integrate-erp-with-zuora-billing-item-level.md).
+   You choose to centralize all your AR in your ERP system even though Zuora's AR and collections abilities are superior to your ERP's capabilities. This pattern is detailed in a companion guide, [Integrate your ERP with Zuora Billing item level pattern](/quickstart-guides/integrate-erp-with-zuora-billing-item-level).
 
 - **ERP Fulfillment integration**:
-   Zuora Billing handles all orders and financial transactions including Receivables. Your ERP system manages the fulfillment of physical goods and acts as the General Ledger (GL). This pattern is detailed in a companion guide, [Integrate your ERP with Zuora Billing ERP Fulfillment pattern](./integrate-erp-with-zuora-billing-erpfulfillment.md).
+   Zuora Billing handles all orders and financial transactions including Receivables. Your ERP system manages the fulfillment of physical goods and acts as the General Ledger (GL). This pattern is detailed in a companion guide, [Integrate your ERP with Zuora Billing ERP Fulfillment pattern](/quickstart-guides/integrate-erp-with-zuora-billing-erpfulfillment).
 
 The ERP item level pattern and the ERP fulfillment pattern are complementary. You will implement one or the other, but not both.
 
@@ -246,4 +239,4 @@ When complete, verify again that all the journal entries have been tagged correc
 
 ## Conclusion
 
-Congratulations\! You’ve completed the initial integration setup. More on all our APIs, including tutorials, FAQs, and reference documentation can be found in our [Zuora Developer Center](https://developer.zuora.com).
+Congratulations\! You’ve completed the initial integration setup. More on all our APIs, including tutorials, FAQs, and reference documentation can be found in our [Zuora Developer Center](/).

@@ -1,23 +1,11 @@
 ---
-seo:
-  title: Quickstart API Changelog - Zuora
-  description: Changelog for the Quickstart API
-  keywords: api, quickstart api, changelog
-markdown:
-  toc:
-    hide: false
-    maxDepth: 2
-redirects:
-  /quickstart-api/changelog/2022q4-changelog/: {}
-  /quickstart-api/changelog/quickstart-api-changelog/: {}
+title: "Quickstart API changelog"
+sidebarTitle: "Quickstart API"
+description: "Changelog for the Quickstart API"
 ---
-
-# Quickstart API changelog
-
-
 From Zuora Release 2022.09.R1, the Quickstart API is available to customers with the Orders (or Order Harmonization) and Invoice Settlement features enabled. The Quickstart API allows new integrators to swiftly integrate with Zuora, and it supports essential business use cases.
 
-This changelog outlines the latest API updates and resolved issues to the Quickstart API, and documentation updates to the [Quickstart API Reference](/other-api/quickstart-api/). We would love to hear your feedback on how we can improve it. If you have any comments on the Changelog for the Quickstart API, please send an e-mail to [docs@zuora.com](mailto:docs@zuora.com).
+This changelog outlines the latest API updates and resolved issues to the Quickstart API, and documentation updates to the [Quickstart API Reference](/other-api/quickstart-api-intro). We would love to hear your feedback on how we can improve it. If you have any comments on the Changelog for the Quickstart API, please send an e-mail to [docs@zuora.com](mailto:docs@zuora.com).
 
 
 ## September 27, 2024
@@ -52,7 +40,7 @@ This section lists operations and fields that were added, changed, or removed, a
 
 The following API update is available as of July 15, 2024.
 
-- [Accounts](/other-api/quickstart-api/accounts/) - In the request body of the "Generate billing documents for an account" operation, updated the data type of the `charges_excluded` parameter from string to array of strings.
+- [Accounts](/other-api/quickstart-api/accounts/getaccounts) - In the request body of the "Generate billing documents for an account" operation, updated the data type of the `charges_excluded` parameter from string to array of strings.
 
 
 ## April 22, 2024
@@ -63,7 +51,7 @@ This section lists operations and fields that were added, changed, or removed, a
 
 The following API updates are available as of April 22, 2024.
 
-- [Orders](/other-api/quickstart-api/orders/) - Made the following updates:
+- [Orders](/other-api/quickstart-api/orders/getorders) - Made the following updates:
 
   - Added the following fields to the Order object:
       - `scheduled_date`
@@ -80,7 +68,7 @@ The following API updates are available as of April 22, 2024.
       - `processing_options` > `apply_credit`
 
 
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - Made the following updates:
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - Made the following updates:
 
   - In the request body the "Update a subscription" operation, added the following parameters:
       - `change_reason`
@@ -119,7 +107,7 @@ The following API updates are available as of April 22, 2024.
       - Update a subscription
       - List all versions of a subscription
 
-- [Prices](/other-api/quickstart-api/prices/) - Made the following updates:
+- [Prices](/other-api/quickstart-api/prices/getprice) - Made the following updates:
   - Added the following fields to the Price object:
       - `price_change_percentage`
       - `price_change_option`
@@ -135,11 +123,11 @@ The following API updates are available as of April 22, 2024.
       - `price_change_option`
       - `price_increase_option`
 
-- [Subscription Plans](/other-api/quickstart-api/subscription-plans/) -  Added the `subscription_plan_number` field to the Subscription Plan object. It can be accessed through the following operations:
+- [Subscription Plans](/other-api/quickstart-api/subscription-plans/getsubscriptionplan) -  Added the `subscription_plan_number` field to the Subscription Plan object. It can be accessed through the following operations:
   - Retrieve a subscription plan
   - List subscription plans
 
-- [Usage Records](/other-api/quickstart-api/usage-records/) - In the request body of the "Create a usage record" operation, added the `subscription_item_number` parameter.
+- [Usage Records](/other-api/quickstart-api/usage-records/getusagerecords) - In the request body of the "Create a usage record" operation, added the `subscription_item_number` parameter.
 
 
 
@@ -180,7 +168,7 @@ This section lists operations and fields that were added, changed, or removed, a
 
 The following API updates are available as of Janurary 24, 2024.
 
-- [Billing Documents](/other-api/quickstart-api/billing-documents/) and [Billing Document Items](/other-api/quickstart-api/billing-document-items/) - Moved all operations in these sections to the "Deprecated" category. If you have used these operations in your integration, you can continue to use them. However, these operations are no longer under active development.
+- [Billing Documents](/other-api/quickstart-api/billing-documents/getbillingdocument) and [Billing Document Items](/other-api/quickstart-api/billing-document-items/getbillingdocumentitems) - Moved all operations in these sections to the "Deprecated" category. If you have used these operations in your integration, you can continue to use them. However, these operations are no longer under active development.
 
 
 ## January 10, 2024
@@ -191,7 +179,7 @@ This section lists operations and fields that were added, changed, or removed, a
 
 The following API updates are available as of Janurary 10, 2024.
 
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - Made the following updates:
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - Made the following updates:
   - In the response body of the following operations, added the `prepaid_balances` field and deprecated the `prepaid_balance` field on the Subscription object:
       - Create a subscription
       - List subscriptions
@@ -205,9 +193,9 @@ The following API updates are available as of Janurary 10, 2024.
   - Added the following query parameter to all Subscription operations:
       - `prepaid_balances.fields[]`
       - `validity_period.fields[]`
-  - Added `prepaid_balances` as a supported value for the `expand[]` query parameter for the Subscription object. See [Expand responses](/quickstart-api/tutorial/expand-responses/) for details.
+  - Added `prepaid_balances` as a supported value for the `expand[]` query parameter for the Subscription object. See [Expand responses](/docs/guides/expand-filter-fields-sort) for details.
 
-- [Invoices](/other-api/quickstart-api/invoices/) - For the "List invoices" operation, added support for filtering results by `due_date`. See [Filter lists](/quickstart-api/tutorial/filter-lists/#invoices) for details.
+- [Invoices](/other-api/quickstart-api/invoices/getinvoice) - For the "List invoices" operation, added support for filtering results by `due_date`. See [Filter lists](/docs/guides/expand-filter-fields-sort#invoices) for details.
 
 ### Resolved issues
 
@@ -226,7 +214,7 @@ This section lists operations and fields that were added, changed, or removed, a
 
 The following API updates are available as of December 20, 2023.
 
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - Made the following changes:
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - Made the following changes:
   - In the response object of each of the "List subscriptions" and "Retrieve a subscription" operations, added the following fields:
       - `cancel_reason`
       - `last_booking_date`
@@ -236,18 +224,18 @@ The following API updates are available as of December 20, 2023.
       - Preview a subscription
 
 
-- [Orders](/other-api/quickstart-api/orders/) - Made the following changes:
+- [Orders](/other-api/quickstart-api/orders/getorders) - Made the following changes:
   - In the request body and response of the "Create an order" operation, added the `subscriptions` > `currency` field.
 
   - In the request body of the "Preview an order" operation, added the `subscriptions` > `currency` parameter.
 
   - For the "Create an order" operation, updated the behavior of the `subscriptions` > `subscription_number` parameter. Now, if you specify an existing `subscription_number` in the request, the order will update that subscription. If the specified `subscription_number` does not exist in the tenant, a new subscription is created instead.
 
-- [Invoices](/other-api/quickstart-api/invoices/) - In the request body and response of the "Create an invoice" operation, added the `currency` field.
+- [Invoices](/other-api/quickstart-api/invoices/getinvoice) - In the request body and response of the "Create an invoice" operation, added the `currency` field.
 
-- [Credit Memos](/other-api/quickstart-api/credit-memos/) - In the request body and response of the "Create a credit memo" operation, added the `currency` field.
+- [Credit Memos](/other-api/quickstart-api/credit-memos/getcreditmemo) - In the request body and response of the "Create a credit memo" operation, added the `currency` field.
 
-- [Debit Memos](/other-api/quickstart-api/debit-memos/) - In the request body and response of the "Create a debit memo" operation, added the `currency` field.
+- [Debit Memos](/other-api/quickstart-api/debit-memos/getdebitmemo) - In the request body and response of the "Create a debit memo" operation, added the `currency` field.
 
 ### Resolved issues
 
@@ -272,19 +260,19 @@ This section lists operations and fields that were added, changed, or removed, a
 
 The following API updates are available as of November 29, 2023.
 
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - In the request body of the "Update a subscription" operation, added the `start_on` field and its nested fields, which allows you to update the contract effective date, service activation date, and customer acceptance date of the subscription.
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - In the request body of the "Update a subscription" operation, added the `start_on` field and its nested fields, which allows you to update the contract effective date, service activation date, and customer acceptance date of the subscription.
 
-- [Payment Methods](/other-api/quickstart-api/payment-methods/) - In the request body of the "Update a payment method" operation, added the following fields:
+- [Payment Methods](/other-api/quickstart-api/payment-methods/getpaymentmethods) - In the request body of the "Update a payment method" operation, added the following fields:
   - `gateway_id`
   - `gateway_options`
 
-- [Prices](/other-api/quickstart-api/prices/) - In each of the following operations, added `amounts` as a supported value for the `fields[]` query parameter:
+- [Prices](/other-api/quickstart-api/prices/getprice) - In each of the following operations, added `amounts` as a supported value for the `fields[]` query parameter:
   - Create a price
   - Retrieve a price
   - List prices
   - Update a price
 
-- [Orders](/other-api/quickstart-api/orders/) - Made the following changes:
+- [Orders](/other-api/quickstart-api/orders/getorders) - Made the following changes:
   - For the "Create an order" operation, added the support for updating subscriptions for Pre-Rated Pricing charge models.
 
   - In the response body of each of the following operations:
@@ -333,13 +321,13 @@ This section lists operations and fields that were added, changed, or removed, a
 
 The following API updates are available as of November 16, 2023.
 
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - In the request body of the "Update a subscription" operation, added the `start_on` request parameter, which allows you to update the activation dates of the subscription.
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - In the request body of the "Update a subscription" operation, added the `start_on` request parameter, which allows you to update the activation dates of the subscription.
 
-- [Payment Methods](/other-api/quickstart-api/payment-methods/) - In the request body of the "Update a payment method" operation, added the following request parameters:
+- [Payment Methods](/other-api/quickstart-api/payment-methods/getpaymentmethods) - In the request body of the "Update a payment method" operation, added the following request parameters:
   - `gateway_id`
   - `gateway_options`
 
-- [Prices](/other-api/quickstart-api/prices/) - In each of the following operations, added `amounts` as a supported value for the `fields[]` query parameter:
+- [Prices](/other-api/quickstart-api/prices/getprice) - In each of the following operations, added `amounts` as a supported value for the `fields[]` query parameter:
   - Create a price
   - Retrieve a price
   - List prices
@@ -368,7 +356,7 @@ This section lists operations and fields that were added, changed, or removed, a
 
 The following API updates are available as of November 8, 2023.
 
-- [Orders](/other-api/quickstart-api/orders/) - In the request body of the "Create an order" operation, added the following parameters:
+- [Orders](/other-api/quickstart-api/orders/getorders) - In the request body of the "Create an order" operation, added the following parameters:
   - `subscriptions` > `remove_subscription_plans` > `unique_token`
   - `subscriptions` > `update_subscription_plans` > `start_date`
 
@@ -398,17 +386,17 @@ This section lists operations and fields that were added, changed, or removed, a
 
 The following API updates are available as of October 19, 2023.
 
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - Made the following updates:
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - Made the following updates:
   - In the request body of the "Update a subscription", added the `renewals` parameter to replace the `renewal` parameter.
   - In the request body of the "Create a subscription" operation, added the following parameters to support the Pre-Rated Per Unit Pricing charge model:
       - `subscription_plans` > `prices`> `custom_field_total_amount`
       - `subscription_plans` > `prices`> `custom_field_per_unit_rate`
 
-- [Prices](/other-api/quickstart-api/prices/) - In the request body of the "Create a price" operation, added the following parameters to support the Pre-Rated Per Unit Pricing charge model:
+- [Prices](/other-api/quickstart-api/prices/getprice) - In the request body of the "Create a price" operation, added the following parameters to support the Pre-Rated Per Unit Pricing charge model:
   - `custom_field_total_amount`
   - `custom_field_per_unit_rate`
 
-- [Orders](/other-api/quickstart-api/orders/) - Made the following updates:
+- [Orders](/other-api/quickstart-api/orders/getorders) - Made the following updates:
   - In the request body and 200 response body of the "Preview an order" operation, added the `line_items` fields.
   - In the 200 response body of the "Preview an order" operation, added the `subscriptions` > `actions` > `subscription_items` > `tcv` field.
   - In the request body of the following operations, added the `subscriptions` > `renewals` parameter to replace the `subscriptions` > `renewal` parameter:
@@ -444,7 +432,7 @@ This section lists operations and fields that were added, changed, or removed, a
 
 The following API updates are available as of September 25, 2023.
 
-- [Prices](/other-api/quickstart-api/prices/) - Made the following update:
+- [Prices](/other-api/quickstart-api/prices/getprice) - Made the following update:
   - Added the `taxable` field on the Price object. You can access this field or set this field through the following operations:
       - Create a price
       - Update a price
@@ -456,15 +444,15 @@ The following API updates are available as of September 25, 2023.
   - Enhanced the "Create a price" operation to support multiple-year intervals.
 
 
-- [Orders](/other-api/quickstart-api/orders/) - Made the following updates:
+- [Orders](/other-api/quickstart-api/orders/getorders) - Made the following updates:
   - Added the "Delete an order" operation.
   - Enhanced the "Create an order" operation to support creating subscriptions for overage price.
 
-- [Bill Runs](/other-api/quickstart-api/bill-runs/) - Added the following parameters to the "Create a bill run" operation:
+- [Bill Runs](/other-api/quickstart-api/bill-runs/getbillrun) - Added the following parameters to the "Create a bill run" operation:
   - `type`
   - `subscription_ids`
 
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - Added the `prepaid_balance` and `contracted_mrr` fields to the returned Subscription object in the response of the following operations:
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - Added the `prepaid_balance` and `contracted_mrr` fields to the returned Subscription object in the response of the following operations:
   - Retrieve a subscription
   - List subscriptions
   - List all versions of a subscription
@@ -495,13 +483,13 @@ This section lists operations and fields that were added, changed, or removed, a
 
 The following API updates are available as of September 7, 2023.
 
-- [Payment Schedules](/other-api/quickstart-api/payment-schedules) - Added a "Payment Schedules" section that contains the following operations:
+- [Payment Schedules](/other-api/quickstart-api/payment-schedules/getpaymentschedule) - Added a "Payment Schedules" section that contains the following operations:
   - Create a payment schedule
   - Update a payment schedule
   - Retrieve a payment schedule
   - Cancel a payment schedule
 
-- [Payment Schedule Items](/other-api/quickstart-api/payment-schedule-items) - Added a "Payment Schedule Items" section that contains the following operations:
+- [Payment Schedule Items](/other-api/quickstart-api/payment-schedule-items/getpaymentscheduleitem) - Added a "Payment Schedule Items" section that contains the following operations:
   - Create a payment schedule item
   - Update a payment schedule item
   - Retrieve a payment schedule item
@@ -509,18 +497,18 @@ The following API updates are available as of September 7, 2023.
   - Retry a payment schedule item
   - Skip a payment schedule item
 
-- [Accounts](/other-api/quickstart-api/accounts/) - Added the `fax` nested parameter to the `bill_to` and `sold_to` parameters in the following operations:
+- [Accounts](/other-api/quickstart-api/accounts/getaccounts) - Added the `fax` nested parameter to the `bill_to` and `sold_to` parameters in the following operations:
   - Create an account
   - Update an account
 
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - For the `expand[]` query parameter of the Subscription operations, added `invoice_items` as a supported value to allow expanding invoice items.
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - For the `expand[]` query parameter of the Subscription operations, added `invoice_items` as a supported value to allow expanding invoice items.
 
-- [Refunds](/other-api/quickstart-api/refunds/) - For the `expand[]` query parameter of the Refund operations, added the following supported values:
+- [Refunds](/other-api/quickstart-api/refunds/getrefunds) - For the `expand[]` query parameter of the Refund operations, added the following supported values:
   - `applied_to.payment`
   - `applied_to.items`
 
 
-- [Orders](/other-api/quickstart-api/orders/) - Made the following updates to support prepaid products on the "Create an order" operation:
+- [Orders](/other-api/quickstart-api/orders/getorders) - Made the following updates to support prepaid products on the "Create an order" operation:
   - Support the `term_end_day` enum value for the following parameters:
       - `subscriptions` > `subscription_plans` > `prices` > `recurring` > `recurring_on`
       - `subscriptions` > `add_subscription_plans` >`subscrption_plan`> `prices` > `recurring` > `recurring_on`
@@ -555,14 +543,14 @@ This section lists operations and fields that were added, changed, or removed, a
 
 The following API updates are available as of August 22, 2023.
 
-- [Bill Runs](/other-api/quickstart-api/bill-runs/) - Made the following updates:
+- [Bill Runs](/other-api/quickstart-api/bill-runs/getbillrun) - Made the following updates:
   - In the request body of the "Create a bill run" operation, added the `name` parameter.
   - In the 200 response body of the following operations, added the `name` field to the returned Bill Run object:
       - Create a bill run
       - Retrieve a bill run
       - List bill runs
 
-- [Invoices](/other-api/quickstart-api/invoices/) - In the 200 response body of the following operations, added the `sold_to_id` and `sold_to` fields to the returned Invoice object:
+- [Invoices](/other-api/quickstart-api/invoices/getinvoice) - In the 200 response body of the following operations, added the `sold_to_id` and `sold_to` fields to the returned Invoice object:
   - Create an invoice
   - Retrieve an invoice
   - List invoices
@@ -573,7 +561,7 @@ The following API updates are available as of August 22, 2023.
   - Pay an invoice
   - Cancel an invoice
 
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - In the 200 response body of the following operations, added the `sold_to_id` and `sold_to` fields to the returned Subscription object:
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - In the 200 response body of the following operations, added the `sold_to_id` and `sold_to` fields to the returned Subscription object:
   - Create a subscription
   - Retrieve a subscription
   - List subscriptions
@@ -585,7 +573,7 @@ The following API updates are available as of August 22, 2023.
   - List all versions of a subscription
 
 
-- [Taxation Items](/other-api/quickstart-api/taxation-items/) - In the request body of the "Create a taxation item" operation, updated the `invoice_item_id` parameter from optional to required.
+- [Taxation Items](/other-api/quickstart-api/taxation-items/gettaxationitems) - In the request body of the "Create a taxation item" operation, updated the `invoice_item_id` parameter from optional to required.
 
 
 ### Resolved issues
@@ -609,29 +597,29 @@ The following API updates are available as of May 31, 2023.
 
 #### Enhancements for the Prepaid Drawdown feature
 
-- [Prices](/other-api/quickstart-api/prices/) - Added `prepayment` and `drawdown` fields to the Price object. The following operations are affected:
+- [Prices](/other-api/quickstart-api/prices/getprice) - Added `prepayment` and `drawdown` fields to the Price object. The following operations are affected:
   - Create a price
   - List prices
   - Retrieve a price
   - Update a price
 
-- [Subscription Items](/other-api/quickstart-api/subscription-items/) - In the response body of the "List subscription items" operation, added the  `prepayment` and `drawdown` nested fields to the `price` field.
+- [Subscription Items](/other-api/quickstart-api/subscription-items/getsubscriptionitems) - In the response body of the "List subscription items" operation, added the  `prepayment` and `drawdown` nested fields to the `price` field.
 
 #### Other enhancents
 
-- [Prices](/other-api/quickstart-api/prices/) - Added the `stacked_discount` and `revenue_recognition_rule` fields to the Price object to support the stacked discount charges. The following operations are affected:
+- [Prices](/other-api/quickstart-api/prices/getprice) - Added the `stacked_discount` and `revenue_recognition_rule` fields to the Price object to support the stacked discount charges. The following operations are affected:
   - Create a price
   - Update a price
   - List prices
   - Retrieve a price
 
-- [Refunds](/other-api/quickstart-api/refunds/) - In the request body of the "Create a refund" operation, added the `credit_memo` field to support creating a refund for a credit memo.
+- [Refunds](/other-api/quickstart-api/refunds/getrefunds) - In the request body of the "Create a refund" operation, added the `credit_memo` field to support creating a refund for a credit memo.
 
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - Made the following updates:
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - Made the following updates:
   - For the `expand[]` query parameter of the "List all versions of a subscription" operation, added `order` as a supported value to allow expanding on orders.
   - For the `expand[]` query parameter of all Subscriptions operations, added `invoice_owner_account` as a supported value to support expanding on invoice owner account details.
 
-- [Payment Methods](/other-api/quickstart-api/payment-methods/) - Made the following updates:
+- [Payment Methods](/other-api/quickstart-api/payment-methods/getpaymentmethods) - Made the following updates:
   - Added the `apple_pay` and `google_pay` fields to the Payment Method object. The following operations are affected:
       - Create a payment method
       - Retrieve a payment method
@@ -647,11 +635,11 @@ The following API updates are available as of May 31, 2023.
       - Verify a payment method
 
 
-- [Orders](/other-api/quickstart-api/orders/ )- In the response body of all Orders operations, added the `next_page` nested field to the `subscriptions` > `actions` > `subscription_plans` field.
+- [Orders](/other-api/quickstart-api/orders/getorders)- In the response body of all Orders operations, added the `next_page` nested field to the `subscriptions` > `actions` > `subscription_plans` field.
 
-- [Usage Records](/other-api/quickstart-api/usage-records/) - For the "Create a usage record" operation, added `subscription_number` as a filterable field for the `filter[]` query parameter. See [Filter Lists](/quickstart-api/tutorial/filter-lists/) for more information.
+- [Usage Records](/other-api/quickstart-api/usage-records/getusagerecords) - For the "Create a usage record" operation, added `subscription_number` as a filterable field for the `filter[]` query parameter. See [Filter Lists](/docs/guides/expand-filter-fields-sort) for more information.
 
-- Add support for the `IN` operator for the` filter[]` query parameter to allow filtering on one field with multiple values. For more information about how to use this operator, see [Filter Lists](/quickstart-api/tutorial/filter-lists/).
+- Add support for the `IN` operator for the` filter[]` query parameter to allow filtering on one field with multiple values. For more information about how to use this operator, see [Filter Lists](/docs/guides/expand-filter-fields-sort).
 
 - The default `page_size` for all List endpoints are now updated to 30. Previously, it was not consistent across the objects.
 
@@ -678,7 +666,7 @@ This section lists operations and fields that were added, changed, or removed, a
 
 The following API updates are available as of April 26, 2023.
 
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - Made the following updates:
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - Made the following updates:
   - Added the "List all versions of a subscription" operation.
   - In the request body of the "Cancel a subscription" operation, added the following fields to support the canceling a subscription with write-off use case:
       - `write_off`
@@ -688,12 +676,12 @@ The following API updates are available as of April 26, 2023.
       - `add_subscription_plans` > `subscription_plan` > `plan_number`
       - `replace_subscription_plans` > `subscription_plan` > `plan_number`
 
-- [Orders](/other-api/quickstart-api/orders/) - In the request body of the "Create an order" operation, added the following fields:
+- [Orders](/other-api/quickstart-api/orders/getorders) - In the request body of the "Create an order" operation, added the following fields:
   - `subscriptions` > `subscription_plans` > `plan_number`
   - `subscriptions` > `add_subscription_plans` > `plan_number`
   - `subscriptions` > `replace_subscription_plans` > `subscription_plans` > `plan_number`
 
-- [Plans](/other-api/quickstart-api/plans/) - Made the following updates:
+- [Plans](/other-api/quickstart-api/plans/getplan) - Made the following updates:
   - In the request body of each of the following operations, added the `plan_number` field:
       - Create a plan
       - Update a plan
@@ -713,7 +701,7 @@ The following API updates are available as of April 18, 2023.
 
 - Added the `<object>.fields[]` query parameter to all operations to support returning only the intended fields in the response.
 
-- [Fulfillments](/other-api/quickstart-api/fulfillments/) - Added the "Fulfillments" section that contains the following operations:
+- [Fulfillments](/other-api/quickstart-api/fulfillments/getfulfillments) - Added the "Fulfillments" section that contains the following operations:
   - Create a fulfillment
   - Create fulfillments
   - Retrieve a fulfillment
@@ -721,7 +709,7 @@ The following API updates are available as of April 18, 2023.
   - Update a fulfillment
   - Delete a fulfillment
 
-- [Fulfillment Items](/other-api/quickstart-api/fulfillment-items/) - Added the "Fulfillment Items" section that contains the following operations:
+- [Fulfillment Items](/other-api/quickstart-api/fulfillment-items/getfulfillmentitem) - Added the "Fulfillment Items" section that contains the following operations:
   - Create a fulfillment item
   - Create fulfillment items
   - Retrieve a fulfillment item
@@ -729,24 +717,24 @@ The following API updates are available as of April 18, 2023.
   - Update a fulfillment item
   - Delete a fulfillment item
 
-- [Bill Run Previews](/other-api/quickstart-api/bill-run-previews/) - Added the "Bill Run Previews" section that contains the following operations:
+- [Bill Run Previews](/other-api/quickstart-api/bill-run-previews/getbillrunpreview) - Added the "Bill Run Previews" section that contains the following operations:
   - Create a bill run preview
   - Retrieve a bill run preview
 
-- [Query Runs](/other-api/quickstart-api/query-runs/) - Added the "Query Runs" section that contains the following operations:
+- [Query Runs](/other-api/quickstart-api/query-runs/getqueryrun) - Added the "Query Runs" section that contains the following operations:
   - Create a query run
   - Retrieve a query run
   - Cancel a query run
 
-- [Orders](/other-api/quickstart-api/orders/) - Added the following operations:
+- [Orders](/other-api/quickstart-api/orders/getorders) - Added the following operations:
   - Activate an order
   - Cancel an order
 
-- [Payment Methods](/other-api/quickstart-api/payment-methods/) - Added the following operations:
+- [Payment Methods](/other-api/quickstart-api/payment-methods/getpaymentmethods) - Added the following operations:
   - Create a payment authorization
   - Cancel a payment authorization
 
-- [Accounts](/other-api/quickstart-api/accounts/) - Made the following changes:
+- [Accounts](/other-api/quickstart-api/accounts/getaccounts) - Made the following changes:
   - Added support for the account number to be used in the `account_id` path parameter:
       - Retrieve an account
       - Update an account
@@ -758,14 +746,14 @@ The following API updates are available as of April 18, 2023.
       - `debit_memos`
       - `invoices`
 
-- [Invoices](/other-api/quickstart-api/invoices/) - Added support for the invoice number to be used in the `invoice_id` path parameter for the following operations:
+- [Invoices](/other-api/quickstart-api/invoices/getinvoice) - Added support for the invoice number to be used in the `invoice_id` path parameter for the following operations:
   - Update an invoice
   - Post an invoice
   - Unpost an invoice
 
   Previously, only the invoice ID was allowed.
 
-- [Payment Runs](/other-api/quickstart-api/payment-runs/) - Added `summary` as the supported value for the `expand[]` parameter to retrieve the payment run summary information.
+- [Payment Runs](/other-api/quickstart-api/payment-runs/getpaymentruns) - Added `summary` as the supported value for the `expand[]` parameter to retrieve the payment run summary information.
 
 
 - Deprecated the `balance` field on the following objects and replaced it with the `remaining_balance` field:
@@ -802,7 +790,7 @@ The following API updates are available as of March 13, 2023.
 
 Made the following changes to support the Flexible Billing feature:
 
-- [Credit Memos](/other-api/quickstart-api/credit-memos/) - Added the following fields:
+- [Credit Memos](/other-api/quickstart-api/credit-memos/getcreditmemo) - Added the following fields:
   - `bill_to_id`
   - `bill_to` (expandable)
   - `billing_document_settings`
@@ -819,7 +807,7 @@ Made the following changes to support the Flexible Billing feature:
   - Post a credit memo
   - Cancel a credit memo
 
-- [Debit Memos](/other-api/quickstart-api/debit-memos/) - Added the following fields:
+- [Debit Memos](/other-api/quickstart-api/debit-memos/getdebitmemo) - Added the following fields:
   - `bill_to_id`
   - `bill_to` (expandable)
   - `billing_document_settings`
@@ -836,7 +824,7 @@ Made the following changes to support the Flexible Billing feature:
   - Unpost a debit memo
   - Pay a debit memo
 
-- [Invoices](/other-api/quickstart-api/invoices/) - Added the following fields:
+- [Invoices](/other-api/quickstart-api/invoices/getinvoice) - Added the following fields:
   - `bill_to_id`
   - `bill_to` (expandable)
   - `billing_document_settings`
@@ -853,7 +841,7 @@ Made the following changes to support the Flexible Billing feature:
   - Cancel an invoice
   - Write off an invoice
 
-- [Subscriptions](/other-api/quickstart-api/invoices/) - Made the following changes:
+- [Subscriptions](/other-api/quickstart-api/invoices/getinvoice) - Made the following changes:
   - Added the following fields:
       - `bill_to_id`
       - `billing_document_settings`
@@ -885,7 +873,7 @@ Made the following changes to support the Flexible Billing feature:
   Note that these fields are only applicable for new subscriptions, or updating a subscription when changing terms, invoice owners, or renewals.
 
 
-- [Orders](/other-api/quickstart-api/orders/) - Made the following changes:
+- [Orders](/other-api/quickstart-api/orders/getorders) - Made the following changes:
   - Added the following nested fields:
       - `subscriptions` > `bill_to_id`
       - `subscriptions` > `billing_document_settings`
@@ -914,29 +902,29 @@ Made the following changes to support the Flexible Billing feature:
 
 #### Other API enhancements
 
-- [Payment Runs](/other-api/quickstart-api/payment-runs/) - Added the "Payment Runs" section that contains the following operations:
+- [Payment Runs](/other-api/quickstart-api/payment-runs/getpaymentruns) - Added the "Payment Runs" section that contains the following operations:
   - Create a payment run
   - List payment runs
   - Retrieve a payment run
   - Update a payment run
   - Delete a payment run
 
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - Added the following operation:
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - Added the following operation:
   - Preview an existing subscription
   - List subscription items
 
-- [Invoices](/other-api/quickstart-api/invoices/) - Made the following updates:
+- [Invoices](/other-api/quickstart-api/invoices/getinvoice) - Made the following updates:
   - Added the `canceled_time` supported value to the `state_transitions` field of the Invoice object.
   - Changed the following `state` field enum values for the Invoice object:
       - Updated `open` to `posted`
       - Updated `uncollectible` to `canceled`
 
 
-- [Debit Memos](/other-api/quickstart-api/debit-memos/) and [Credit Memos](/other-api/quickstart-api/credit-memos/) - Made the following value changes for the `state` field for the Credit Memo and Debit Memo objects:
+- [Debit Memos](/other-api/quickstart-api/debit-memos/getdebitmemo) and [Credit Memos](/other-api/quickstart-api/credit-memos/getcreditmemo) - Made the following value changes for the `state` field for the Credit Memo and Debit Memo objects:
   - Updated `open` to `posted`
   - Updated `uncollectible` to `canceled`
 
-- [Payment Methods](/other-api/quickstart-api/payment-methods/) - Added `other` to the `type` field enum values of the Payment Method object to indicate external payment methods.
+- [Payment Methods](/other-api/quickstart-api/payment-methods/getpaymentmethods) - Added `other` to the `type` field enum values of the Payment Method object to indicate external payment methods.
 
 
 ### Resolved issues
@@ -966,27 +954,27 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of March 7, 2023.
 
-- [Invoices](/other-api/quickstart-api/invoices/) - Made the following updates:
+- [Invoices](/other-api/quickstart-api/invoices/getinvoice) - Made the following updates:
   - Added the following operations:
       - Email an invoice
       - Write off an invoice
   - In the "List invoice items" operation, added the `line_item` expand[] parameter to support expanding order line items on invoice items.
 
 
-- [Orders](/other-api/quickstart-api/orders/) - Made the following updates:
+- [Orders](/other-api/quickstart-api/orders/getorders) - Made the following updates:
   - In the request body of the "Create an order" operation, added the `subscription` > `term` nested field to support changing terms and conditions in an order.
   - In the following operations, added the `account` and `line_items.invoice_items` expand[] parameters:
       - List orders
       - Create an order
       - Retrieve an order
 
-- [Usage Records](/other-api/quickstart-api/usage-records/) - In the following operations, added the `account` expand[] parameter to support expanding account data on usage records:
+- [Usage Records](/other-api/quickstart-api/usage-records/getusagerecords) - In the following operations, added the `account` expand[] parameter to support expanding account data on usage records:
   - Create a usage record
   - Retrieve a usage record
   - List usage records
   - Update a usage record
 
-- [Accounts](/other-api/quickstart-api/accounts/) - In the following operations, added the `usage_records` expand[] parameter to support expanding usage records on accounts:
+- [Accounts](/other-api/quickstart-api/accounts/getaccounts) - In the following operations, added the `usage_records` expand[] parameter to support expanding usage records on accounts:
   - Create an account
   - List all accounts
   - Retrieve an account
@@ -1013,7 +1001,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of February 27, 2023.
 
-- [Bill Runs](/other-api/quickstart-api/bill-runs/) - Added the "Bill Runs" section with the following operations:
+- [Bill Runs](/other-api/quickstart-api/bill-runs/getbillrun) - Added the "Bill Runs" section with the following operations:
   - Create a bill run
   - Retrieve a bill run
   - List bill runs
@@ -1022,33 +1010,33 @@ The following API updates are available as of February 27, 2023.
   - Post a bill run
   - Cancel a bill run
 
-- [Taxation Items](/other-api/quickstart-api/taxation-items/) - Added the "Taxation Items" section with the following operations:
+- [Taxation Items](/other-api/quickstart-api/taxation-items/gettaxationitems) - Added the "Taxation Items" section with the following operations:
   - Create a taxation item
   - Retrieve a taxation item
   - List taxation items
   - Update a taxation item
   - Delete a taxation item
 
-- [Usage Records](/other-api/quickstart-api/usage-records/) - Added the "Usage Records" section with the following operations:
+- [Usage Records](/other-api/quickstart-api/usage-records/getusagerecords) - Added the "Usage Records" section with the following operations:
   - Create a usage record
   - Retrieve a usage record
   - List usage records
   - Update a usage record
   - Delete a usage record
 
-- [Invoices](/other-api/quickstart-api/invoices/) - Added the following operations:
+- [Invoices](/other-api/quickstart-api/invoices/getinvoice) - Added the following operations:
   - Update an invoice
   - Reverse an invoice
   - Pay an invoice
   - Delete an invoice
 
-- [Debit Memos](/other-api/quickstart-api/debit-memos/) - Added the following operations:
+- [Debit Memos](/other-api/quickstart-api/debit-memos/getdebitmemo) - Added the following operations:
   - Update a debit memo
   - Pay a debit memo
   - Cancel a debit memo
   - Delete a debit memo
 
-- [Credit Memos](/other-api/quickstart-api/credit-memos/) - Made the following updates:
+- [Credit Memos](/other-api/quickstart-api/credit-memos/getcreditmemo) - Made the following updates:
   - Added the following operations:
       - Update a credit memo
       - Delete a credit memo
@@ -1056,7 +1044,7 @@ The following API updates are available as of February 27, 2023.
       - `credit_memo_item_id`
       - `credit_memo_taxation_item_id`
 
-- [Payment Methods](/other-api/quickstart-api/payment-methods/) - Added the "Scrub a payment method" operation.
+- [Payment Methods](/other-api/quickstart-api/payment-methods/getpaymentmethods) - Added the "Scrub a payment method" operation.
 
 
 ## February 6, 2023
@@ -1067,26 +1055,26 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of February 6, 2023.
 
-- [Orders](/other-api/quickstart-api/orders/) - Made the following updates:
+- [Orders](/other-api/quickstart-api/orders/getorders) - Made the following updates:
   - Added the "List orders" operation.
   - In the `subscription` field in the request body of the "Create an order" operation, added the `replace_subscription_plans` nested field.
 
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - In the request body of the "Update a subscription" operation, added the `replace_subscription_plans` field.
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - In the request body of the "Update a subscription" operation, added the `replace_subscription_plans` field.
 
-- [Invoices](/other-api/quickstart-api/invoices/) - Added the following operations:
+- [Invoices](/other-api/quickstart-api/invoices/getinvoice) - Added the following operations:
   - List invoice items
   - Post an invoice
   - Unpost an invoice
   - Cancel an invoice
 
-- [Debit Memos](/other-api/quickstart-api/debit-memos/) - Added the following operations:
+- [Debit Memos](/other-api/quickstart-api/debit-memos/getdebitmemo) - Added the following operations:
   - List debit memo items
   - Post a debit memo
   - Unpost a debit memo
 
-- [Payment Methods](/other-api/quickstart-api/payment-methods/) - Added the "Verify a payment method" operation.
+- [Payment Methods](/other-api/quickstart-api/payment-methods/getpaymentmethods) - Added the "Verify a payment method" operation.
 
-- [Refunds](/other-api/quickstart-api/refunds/) - Added the following operations:
+- [Refunds](/other-api/quickstart-api/refunds/getrefunds) - Added the following operations:
   - Delete a refund
   - Cancel a refund
 
@@ -1123,17 +1111,17 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of January 16, 2023.
 
-- [Orders](/other-api/quickstart-api/orders/) - Added the "Orders" section that contains the following operations:
+- [Orders](/other-api/quickstart-api/orders/getorders) - Added the "Orders" section that contains the following operations:
   - Create an order
   - Preview an order
   - Retrieve an order
 
-- [Invoices](/other-api/quickstart-api/invoices/) - Added the "Invoices" section that contains the following operations:
+- [Invoices](/other-api/quickstart-api/invoices/getinvoice) - Added the "Invoices" section that contains the following operations:
   - Create an invoice
   - Retrieve an invoice
   - List all invoices
 
-- [Credit Memos](/other-api/quickstart-api/credit-memos/) - Added the "Credit Memos" section that contains the following operations:
+- [Credit Memos](/other-api/quickstart-api/credit-memos/getcreditmemo) - Added the "Credit Memos" section that contains the following operations:
   - Create a credit memo
   - Apply a credit memo
   - Unapply a credit memo
@@ -1142,12 +1130,12 @@ The following API updates are available as of January 16, 2023.
   - Retrieve a credit memo
   - List all credit memos
 
-- [Debit Memos](/other-api/quickstart-api/debit-memos/) - Added the "Debit Memos" section that contains the following operations:
+- [Debit Memos](/other-api/quickstart-api/debit-memos/getdebitmemo) - Added the "Debit Memos" section that contains the following operations:
   - Create a debit memo
   - Retrieve a debit memo
   - List all debit memos
 
-- [Accounts](/other-api/quickstart-api/accounts/) - Made the following updates:
+- [Accounts](/other-api/quickstart-api/accounts/getaccounts) - Made the following updates:
   - In the request body of each of the following operations, added the `sales_rep` field:
       - Create an account
       - Update an account
@@ -1168,7 +1156,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of December 20, 2022.
 
-- [Contacts](/other-api/quickstart-api/contacts/) - Made the following updates:
+- [Contacts](/other-api/quickstart-api/contacts/getcontact) - Made the following updates:
     - Added the "Scrub a contact" operation.
     - In the request body of each of the following operations, renamed the `nick_name` field to `nickname`:
         - Create a contact
@@ -1222,11 +1210,11 @@ The following API updates are available as of December 5, 2022.
 
 - In all "Create" and "Update" requests of Zuora standard objects, added the `expand[]` query parameter. It allows you to expand related objects when creating or updating an object, and the related objects will be expanded in the response.
 - [Payment Methods](/other-api/quickstart-api/payment-methods/createpaymentmethod) - In the request body of the "Create a payment method" operation, updated the `account_id` field to an optional field.
-- [Custom Objects](/other-api/quickstart-api/custom-objects/) - In the following operations, added the `expand[]` query parameter:
+- [Custom Objects](/other-api/quickstart-api/custom-objects/getcustomobjects) - In the following operations, added the `expand[]` query parameter:
   - Retrieve a custom object
   - List custom objects
 Note that you can expand Zuora objects to related custom objects by specifying the custom objects' plural names.
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - In the `filter[]` query parameter of the following operations, added support for filtering by `end_date`:
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - In the `filter[]` query parameter of the following operations, added support for filtering by `end_date`:
   - Retrieve a subscription
   - List all subscriptions
 
@@ -1251,7 +1239,7 @@ We have resolved the following issues:
 This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of November 21, 2022.
- - [Contacts](/other-api/quickstart-api/contacts/) - Made the following updates:
+ - [Contacts](/other-api/quickstart-api/contacts/getcontact) - Made the following updates:
    - In the request body of each of the following operations, renamed the `nickname` field to `nick_name`:
      - Create a contact
      - Update a contact
@@ -1260,7 +1248,7 @@ The following API updates are available as of November 21, 2022.
      - Update a contact
      - Retrieve a contact
      - List all contacts
-- [Refunds](/other-api/quickstart-api/refunds/) - In the 200 response body of each of the following operations, added the `comment` field:
+- [Refunds](/other-api/quickstart-api/refunds/getrefunds) - In the 200 response body of each of the following operations, added the `comment` field:
 	- Create a refund
 	- Update a refund
 	- Retrieve a refund
@@ -1352,7 +1340,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of October 24, 2022.
 
-   - [Subscriptions](/other-api/quickstart-api/subscriptions/)  - Added the "Preview a subscription" operation. This operation allows you to preview the charge metrics and invoice items of a subscription.
+   - [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey)  - Added the "Preview a subscription" operation. This operation allows you to preview the charge metrics and invoice items of a subscription.
 
 
 ### Resolved issues
@@ -1381,7 +1369,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of October 17, 2022.
 
-   - [Subscriptions](/other-api/quickstart-api/subscriptions/)  - Made the following changes:
+   - [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey)  - Made the following changes:
       - In the 200 response body of each of the following operations, added the `version` field that can be used in the `filter[]` query parameter to filter subscriptions:
         - Retrieve a subscription
         - Update a subscription
@@ -1392,8 +1380,8 @@ The following API updates are available as of October 17, 2022.
         - Cancel a subscription
         - Activate a subscription
      - In the request body of the "Resume a subscription" operation, added the `resume_at` field that allows you to resume a paused subscription from the pause date.
-  - [Products](/other-api/quickstart-api/products/) - In the request body of the "Update a product" operation, added the `sku` field.
-  - [Custom Objects](/other-api/quickstart-api/custom-objects/) -  In the "List custom objects" operation, removed the `expand[]` and `filter[]` query parameters.
+  - [Products](/other-api/quickstart-api/products/getproduct) - In the request body of the "Update a product" operation, added the `sku` field.
+  - [Custom Objects](/other-api/quickstart-api/custom-objects/getcustomobjects) -  In the "List custom objects" operation, removed the `expand[]` and `filter[]` query parameters.
   - In all requests, added the following header parameters to support request and response compression:
     - `Content-Encoding`
     - `Accept-Encoding`
@@ -1441,7 +1429,7 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of September 30, 2022.
 
-- [Prices](/other-api/quickstart-api/prices/) - Made the following changes:
+- [Prices](/other-api/quickstart-api/prices/getprice) - Made the following changes:
     - In the following places:
         -  The request body of the "Create a price" operation
         -  The request body of the "Update a price" operation
@@ -1459,9 +1447,9 @@ The following API updates are available as of September 30, 2022.
     -  In the response body of each of the following operations, updated the `active` field as deprecated:
         - Retrieve a price
         - List all prices
-- [Billing Document Items](/other-api/quickstart-api/billing-document-items/) - In the "List billing document items" operation, enhanced the `expand[]` query parameter to support expanding the associated billing documents.
-- [Subscriptions](/other-api/quickstart-api/subscriptions/) - In the request body of the "Pause a subscription" operation, updated the processing logic of the `pause_interval` and `pause_interval_count` fields. They now define the period where the subscription is paused. Previously they were used to define the period before the pause begins.
-- [Plans](/other-api/quickstart-api/plans/) - In the request body of the "Create a plan" operation, updated the processing logic of the `start_date` and `end_date` fields. If the `start_date` and `end_date` fields are not specified in the request, they are automatically set based on the `start_date` and `end_date` of the parent product of this plan.
+- [Billing Document Items](/other-api/quickstart-api/billing-document-items/getbillingdocumentitems) - In the "List billing document items" operation, enhanced the `expand[]` query parameter to support expanding the associated billing documents.
+- [Subscriptions](/other-api/quickstart-api/subscriptions/getsubscriptionbykey) - In the request body of the "Pause a subscription" operation, updated the processing logic of the `pause_interval` and `pause_interval_count` fields. They now define the period where the subscription is paused. Previously they were used to define the period before the pause begins.
+- [Plans](/other-api/quickstart-api/plans/getplan) - In the request body of the "Create a plan" operation, updated the processing logic of the `start_date` and `end_date` fields. If the `start_date` and `end_date` fields are not specified in the request, they are automatically set based on the `start_date` and `end_date` of the parent product of this plan.
 - Added the `idempotency-key` header parameter to all POST and PATCH operations
 - Enhanced error handling by providing the `invalid_parameter` error code consistently in the error response for all operations.\
 
@@ -1498,10 +1486,10 @@ This section lists operations and fields that were added, changed, or removed.
 
 The following API updates are available as of September 20, 2022.
 
-- [Accounts](/other-api/quickstart-api/accounts) - Removed the `account_id` nested field from the `bill_to` and `sold_to` fields in the request body of each of the following operations:
+- [Accounts](/other-api/quickstart-api/accounts/getaccounts) - Removed the `account_id` nested field from the `bill_to` and `sold_to` fields in the request body of each of the following operations:
     -  Create an account
     -  Update an account
-- [Refunds](/other-api/quickstart-api/refunds) - Made the following changes:
+- [Refunds](/other-api/quickstart-api/refunds/getrefunds) - Made the following changes:
     - In the request body of each of the following operations, removed the `transfer_to_accounting` field:
         -  Create a refund
         -  Update a refund
@@ -1509,7 +1497,7 @@ The following API updates are available as of September 20, 2022.
         -  List all refunds
         -  Retrieve a refund
     -  Added the "Update a refund" operation.
--   [Payments](/other-api/quickstart-api/payments) - Made the following changes:
+-   [Payments](/other-api/quickstart-api/payments/getpayment) - Made the following changes:
     -  Added the "Unapply a payment" operation.
     -  In the request body of the "Create a payment" operation, added the `gateway_options` field.
 - For all DELETE operations, we now return the **204 No Content** status code for successful requests.

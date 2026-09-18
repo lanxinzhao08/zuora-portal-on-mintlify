@@ -1,14 +1,7 @@
 ---
-seo:
-  title: CORS and Zuora REST API
-  description: Explains Zuora CORS-enabled APIs and how to make CORS-invoked API calls
-  keywords: CORS, CORS REST
-redirects:
-  /rest-api/general-concepts/cors-rest/: {}
+title: "CORS and Zuora v1 API"
+description: "Explains Zuora CORS-enabled APIs and how to make CORS-invoked API calls"
 ---
-
-# CORS and Zuora v1 API
-
 The Cross-Origin Resource Sharing (CORS) specification provides an additional security mechanism to process some Zuora REST APIs. REST API calls can be made from your customer's browser directly to Zuora using AJAX – securely transferring data, such as a user's personal information – without passing this data through your servers.
 
 This article describes Zuora CORS REST and explains how Zuora REST API calls are made when CORS-enabled.
@@ -38,13 +31,13 @@ This section explains how a Zuora CORS-invoked request is processed:
 
 The following illustrates the Zuora CORS REST request workflow:
 
-![CORS Mechanism](../docs/images/CORS_Mechanism.png)
+![CORS Mechanism](/docs/images/CORS_Mechanism.png)
 
 ### Stage 1: Request for Signature and Token
 
 1.  A customer visits your website and performs an action that needs to use the Zuora REST API, such as providing credit card information when upgrading to a paid plan.
 2.  Every call by your customer to the REST API via CORS first goes to your website and passes the URI requested by your customer to Zuora. See  steps 1 and 2 on the workflow diagram.
-3.  Zuora generates a keyed-hash message authentication code (HMAC) by encrypting the requested URI into a code called a signature. See [HMAC Singatures](/api-references/older-api/tag/HMAC-Signatures/) for more information.
+3.  Zuora generates a keyed-hash message authentication code (HMAC) by encrypting the requested URI into a code called a signature. See [HMAC Singatures](/v1-api-reference/older-api/hmac-signatures/post_hmacsignatures) for more information.
 4.  This signature is sent back to your website with a token that is a like a ticket that can only be used by a customer's browser once to call the specific REST API URI that was requested. See step 3 in the workflow diagram.
 5.  Both signature and token are then passed to the customer's browser making the request. See step 4 in the workflow diagram.
 
@@ -60,10 +53,10 @@ The following illustrates the Zuora CORS REST request workflow:
 
 The following REST APIs are CORS-enabled:
 
-- **Create a credit card payment method** - This API creates a new credit card payment method for a specified customer account. See [Create a credit card payment method](/api-references/older-api/operation/POST_PaymentMethodsCreditCard/) for more information.
+- **Create a credit card payment method** - This API creates a new credit card payment method for a specified customer account. See [Create a credit card payment method](/v1-api-reference/older-api/payment-methods/post_paymentmethodscreditcard) for more information.
 - **Create an account** - This API creates a new customer account with billTo/soldTo contacts and a credit-card payment method. See [Create an account](/v1-api-reference/api/accounts/post_account) for more information.
 - **Retrieve a file** - This API gets the file content by file-id. See [Retrieve a file](/v1-api-reference/api/files/get_files) for more information.
-- **RSA Signatures** - This API generates and returns the required digital signature and token for a Payment Pages 2.0 form. See [RSA Signatures](/v1-api-reference/api/rsa-signatures/) for more information.
+- **RSA Signatures** - This API generates and returns the required digital signature and token for a Payment Pages 2.0 form. See [RSA Signatures](/v1-api-reference/api/rsa-signatures/post_rsasignatures) for more information.
 
 ## Which Browsers are CORS-Enabled?
 
@@ -84,14 +77,14 @@ Include an HTML button on your website that calls a client-side JavaScript metho
 This is an example HTML code snippet for adding a credit card button to your website that calls a Zuora API using CORS:
 
 ```
- <input class="btn" type="button" name="submit" value="call zuora" onclick="javascript: generateSignature(makeCorsRequest);">
+ <input className="btn" type="button" name="submit" value="call zuora" onclick="javascript: generateSignature(makeCorsRequest);">
 ```
 
 ### Step 2 - Write a Server-Side HMAC Method
 
 Write a server side method that calls the HMAC API (itself a REST API). This method will have one CORS-enabled REST API URI hard-coded into the request body, which it passes to the HMAC API along with an HTTP method and (optionally) a parameter.
 
-For full details on the HMAC method, visit the [HMAC Signatures](/api-references/older-api/tag/HMAC-Signatures/) API reference page.
+For full details on the HMAC method, visit the [HMAC Signatures](/v1-api-reference/older-api/hmac-signatures/post_hmacsignatures) API reference page.
 
 #### The Request
 
@@ -106,7 +99,7 @@ To call the HMAC API, you use the following JSON format for the request body:
 }
 ```
 
-`uri` and `method` are always required. `accountKey` (or other parameter) may be required, depending on the API you are calling; if a parameter is required by the API but not provided, the call will fail. See [HMAC Signatures](/api-references/older-api/tag/HMAC-Signatures/) for detailed information.
+`uri` and `method` are always required. `accountKey` (or other parameter) may be required, depending on the API you are calling; if a parameter is required by the API but not provided, the call will fail. See [HMAC Signatures](/v1-api-reference/older-api/hmac-signatures/post_hmacsignatures) for detailed information.
 
 The URI and parameter are concatenated and hashed together for security, to prevent any malicious modification of parameters.
 

@@ -1,0 +1,528 @@
+{
+	"info": {
+		"_postman_id": "160d9e65-adda-472c-8878-453296f5f477",
+		"name": "New Customer Flow",
+		"description": "Collection covering the 'new customer acquisition' flow of the subscription lifecycle. This collection queries the product catalog, before running an order preview call to see what the future charges will be, before onboarding a new customer, creating a subscription and invoicing that customer. Optionally you can also create a payment to apply to the new invoice.\n\n## Required Environment Variables\n\nSet up these variables in your Postman environment:\n\n- `base_url`: For example: [https://rest.apisandbox.zuora.com](https://rest.zuora.com) but you must make sure to use YOUR sandbox URL. [This page lists our data centers](https://docs.zuora.com?resourceId=zuora-data-centers) and the associated REST root URLs, if you can login into a Zuora Billing tenant you can compare the root URL of the UI to identify the data center and associated sandbox tenant. DO NOT run this collection against a production tenant, only sandbox.\n    \n- `client_id`: Your OAuth client ID - if you don't have a client id and secret [here are the instructions](/docs/get-started/introduction/) on getting them\n    \n- `client_secret`: Your OAuth client secret\n    \n\n<img src=\"https://content.pstmn.io/288d4200-ed1f-4cdd-b641-2d02cf582cfb/U2NyZWVuc2hvdCAyMDI1LTEwLTAzIGF0IDMuMTMuMjfigK9QTS5wbmc=\">\n\n## Collection Variables\n\nThis collections includes several post-response scripts that set collection variables such as 'access_token'. These are then used by later calls in the collections and this is why it is important to run the calls in the supplied order. For example create order call will return an account number that is then used in the 'Get Account Summary' call.\n\nThere are two collection variables YOU MUST SET:\n\n- productrateplanid: The object id of your chosen product rate plan\n    \n- productrateplanchargeid: The object id of your chosen product rate plan charge\n    \n\nThe samples here assume you will identify the product rate plan id and the product rate plan charge id of a recurring per unit charge. Collection variables for these have been defined, you should click on the Variables tab above to enter the correct id values.\n\nIf you don't already have a suitable product rate plan id, the object query in step 2.b Per Unit Catalog Object Query can assist. After having gotten an OAuth token, this call will list all the recurring per unit charges and rate plans in your tenant, you can pick any suitable one. If the query returns no records your tenant does not have a recurring per unit rate plan charge and you will have to create one or ask your Zuora administrator to create one. There is a companion collection, '**Zuora Catalog — Create Product, Rate Plan, Charge**' that you can use to do this. Alternatively t[his tutorial describes using the UI to create product catalog items](https://docs.zuora.com?resourceId=teamcollaboration-tutorial-design-custom-product-catalog). In exercise 3, 'Launch TeamCollab Basic' the tutorial describes how to create a recurring month charge that uses 'Flat Fee Pricing', change that step to use 'Per Unit Pricing' and specify a unit of measure and price per unit. Actual values do not matter, this collection will set it's own pricing.\n\n## Usage\n\n1. Create a new environment as described above in '**Required Environment Variables**'. All these calls will fail if you do not complete this step.\n    \n2. Run \"**Get OAuth Token**\"\n    \n3. Run the requests in order:\n    \n    1. Optionally list all products or Per Unit Catalog Object Query - this are just 'helper' calls specifically included for this Collection, production scenarios likely won't require either call. But...\n        \n    2. BEFORE CONTINUING YOU MUST specify the product rate plan id and charge id of a per unit recurring charge in the Variables tab in this collection. All remaining calls will fail if you do not do this.\n        \n    3. Preview an order - notice that the preview specifies a quantity of 10 and a price of $100 over-riding any values in the product catalog. This is optional but is a common use case.\n        \n    4. Create order, account subscription and invoice - in a single orders call create a new customer billing account, a new subscription and a new invoice. While there is an option to also collect payment that is set to false as we have not captured a payment method for this new billing account.\n        \n    5. We've included three calls that can be used to query accounts so you can compare the differences and strengths of each. For subscription lifecycle work we strongly recommend always using '**5c. Get Account Subscription**' as it provides complete rate plan charge details useful in some lifecycle use cases such as updating the quantity or price of an active subscription.\n        \n    6. For extra credit you can run '**Create and Apply Payment**', this applies a $100 payment to that new invoice, note the invoice is for $1000 and both the invoice and account balance will be $900 after the first time you invoke this call.\n        \n4. You can rerun the collection repeatedly, creating a new account and subscription every time, if you wish. While Zuora will automatically assign a unique Account Number every time, you may want to change the name of the account in the JSON request payload for clarity.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45708597",
+		"_collection_link": "https://gold-capsule-135956.postman.co/workspace/YNTEST~b4cbb18b-458c-41cc-b2b9-d0a767753947/collection/45708597-160d9e65-adda-472c-8878-453296f5f477?action=share&source=collection_link&creator=45708597"
+	},
+	"item": [
+		{
+			"name": "1. Get OAuth Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    pm.collectionVariables.set('access_token', response.access_token);",
+							"    console.log('OAuth token set successfully');",
+							"} else {",
+							"    console.error('Failed to get OAuth token');",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "{{client_id}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/oauth/token",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Get OAuth access token using client credentials. This token will be automatically used by subsequent requests."
+			},
+			"response": []
+		},
+		{
+			"name": "2a. List all products (catalog)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/v1/catalog/products",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"catalog",
+						"products"
+					]
+				},
+				"description": "Retrieve the full product catalog including product rate plans and charges."
+			},
+			"response": []
+		},
+		{
+			"name": "2b. Per Unit Catalog Object Query",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/object-query/product-rate-plan-charges?productrateplancharges.fields[]=name,id&expand[]=productrateplan&productrateplan.fields[]=name,id&filter[]=chargemodel.EQ:Per%20Unit%20Pricing&filter[]=chargetype.EQ:Recurring",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"object-query",
+						"product-rate-plan-charges"
+					],
+					"query": [
+						{
+							"key": "productrateplancharges.fields[]",
+							"value": "name,id"
+						},
+						{
+							"key": "expand[]",
+							"value": "productrateplan"
+						},
+						{
+							"key": "productrateplan.fields[]",
+							"value": "name,id"
+						},
+						{
+							"key": "filter[]",
+							"value": "chargemodel.EQ:Per%20Unit%20Pricing"
+						},
+						{
+							"key": "filter[]",
+							"value": "chargetype.EQ:Recurring"
+						}
+					]
+				},
+				"description": "Retrieve the full product catalog including product rate plans and charges."
+			},
+			"response": []
+		},
+		{
+			"name": "3. Preview an order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        console.log('Order preview complete');",
+							"    } else {",
+							"        console.error('Did you set the collection variables productRatePlanId and productRatePlanChargeId - ' + response.reasons[0].code + ' : ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{todayDate}}\",\n    \"previewAccountInfo\": {\n        \"currency\": \"USD\",\n        \"billCycleDay\": 0,\n        \"soldToContact\": {\n            \"city\": \"Redwood Shores\",\n            \"postalCode\": \"94065\",\n            \"state\": \"CA\",\n            \"country\": \"USA\"\n        }\n    },\n    \"previewOptions\": {\n        \"previewThruType\": \"NumberOfPeriods\",\n        \"previewNumberOfPeriods\": 1,\n        \"previewTypes\": [\"BillingDocs\", \"ChargeMetrics\", \"OrderDeltaMetrics\"]\n    },\n    \"subscriptions\": [\n        {\n            \"orderActions\": [\n                {\n                    \"type\": \"CreateSubscription\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{todayDate}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{todayDate}}\"},\n                        {\"name\": \"CustomerAcceptance\", \"triggerDate\": \"{{todayDate}}\"}\n                    ],\n                    \"createSubscription\": {\n                        \"notes\": \"New customer sign-up using Postman\",\n                        \"terms\": {\n                            \"initialTerm\": {\"period\": 12, \"periodType\": \"Month\", \"termType\": \"TERMED\"},\n                            \"renewalSetting\": \"RENEW_WITH_SPECIFIC_TERM\",\n                            \"renewalTerms\": [{\"period\": 12, \"periodType\": \"Month\"}]\n                        },\n                        \"subscribeToRatePlans\": [\n                            {\n                                \"productRatePlanId\": \"{{productrateplanid}}\",\n                                \"chargeOverrides\": [\n                                    {\n                                        \"productRatePlanChargeId\": \"{{productrateplanchargeid}}\",\n                                        \"pricing\": {\n                                            \"recurringPerUnit\": {\n                                                \"quantity\": 10,\n                                                \"listPrice\": 100\n                                            }\n                                        }\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders/preview",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders",
+						"preview"
+					]
+				},
+				"description": "Preview the order totals and billing documents before creating the order."
+			},
+			"response": []
+		},
+		{
+			"name": "4. Create order, account, subscription and invoice, collect later",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (!(response.success) && (response.reasons[0].code)) {",
+							"        console.error('Did you set the collection variables productRatePlanId and productRatePlanChargeId? - Error Code: ' + response.reasons[0].code + ' : ' + response.reasons[0].message);",
+							"    }",
+							"    if (response.success) {",
+							"        pm.collectionVariables.set('account_number', response.accountNumber);",
+							"        pm.collectionVariables.set('order_number', response.orderNumber);",
+							"        pm.collectionVariables.set('subscription', response.subscriptionNumbers[0]);",
+							"        pm.collectionVariables.set('invoice_number', response.invoiceNumbers[0]);",
+							"        console.log('Account created successfully: ' + response.accountNumber);",
+							"    } else {",
+							"       console.error('v1/orders failed to create account. Error code: ' + response.reasons[0].code + ' : ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderDate\": \"{{todayDate}}\",\n    \"processingOptions\": {\n        \"runBilling\": true,\n        \"collectPayment\": false\n    },\n    \"newAccount\": {\n        \"name\": \"Acme Corp\",\n        \"currency\": \"USD\",\n        \"autoPay\": false,\n        \"billCycleDay\": 0,\n        \"billToContact\": {\n            \"address1\": \"1051 E Hillsdale\",\n            \"city\": \"Foster City\",\n            \"country\": \"United States\",\n            \"firstName\": \"Bella\",\n            \"lastName\": \"Lawrence\",\n            \"postalCode\": \"94404\",\n            \"state\": \"CA\",\n            \"workEmail\": \"myorder@example.com\"\n        }\n    },\n    \"subscriptions\": [\n        {\n            \"orderActions\": [\n                {\n                    \"type\": \"CreateSubscription\",\n                    \"triggerDates\": [\n                        {\"name\": \"ContractEffective\", \"triggerDate\": \"{{todayDate}}\"},\n                        {\"name\": \"ServiceActivation\", \"triggerDate\": \"{{todayDate}}\"},\n                        {\"name\": \"CustomerAcceptance\", \"triggerDate\": \"{{todayDate}}\"}\n                    ],\n                    \"createSubscription\": {\n                        \"notes\": \"New customer sign-up Postman\",\n                        \"terms\": {\n                            \"initialTerm\": {\"period\": 12, \"periodType\": \"Month\", \"termType\": \"TERMED\"},\n                            \"renewalSetting\": \"RENEW_WITH_SPECIFIC_TERM\",\n                            \"renewalTerms\": [{\"period\": 12, \"periodType\": \"Month\"}]\n                        },\n                        \"subscribeToRatePlans\": [\n                            {\n                                \"productRatePlanId\": \"{{productrateplanid}}\",\n                                \"chargeOverrides\": [\n                                    {\n                                        \"productRatePlanChargeId\": \"{{productrateplanchargeid}}\",\n                                        \"pricing\": {\n                                            \"recurringPerUnit\": {\n                                                \"quantity\": 10,\n                                                \"listPrice\": 100\n                                            }\n                                        }\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/orders",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"orders"
+					]
+				},
+				"description": "Create account and subscription and generate an invoice. Collect payment later."
+			},
+			"response": []
+		},
+		{
+			"name": "5a. Get Account Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/accounts/{{account_number}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"accounts",
+						"{{account_number}}"
+					]
+				},
+				"description": "Create a new customer account with basic billing information."
+			},
+			"response": []
+		},
+		{
+			"name": "5b. Get Account Summary",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/accounts/{{account_number}}/summary",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"accounts",
+						"{{account_number}}",
+						"summary"
+					]
+				},
+				"description": "Create a new customer account with basic billing information."
+			},
+			"response": []
+		},
+		{
+			"name": "5c. Get Account Subscriptions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/subscriptions/accounts/{{account_number}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"subscriptions",
+						"accounts",
+						"{{account_number}}"
+					]
+				},
+				"description": "Create a new customer account with basic billing information."
+			},
+			"response": []
+		},
+		{
+			"name": "EC. Create and Apply Payment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    if (response.success) {",
+							"        console.log('Payment created and applied successfully: ' + response.number);",
+							"    } else {",
+							"       console.error('v1/payments failed to create or apply payment. Error code: ' + response.reasons[0].code + ' : ' + response.reasons[0].message);",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountNumber\": \"{{account_number}}\",\n    \"type\": \"External\",\n    \"paymentMethodType\": \"Check\",\n    \"amount\": 1000,\n    \"currency\": \"USD\",\n    \"invoices\": [\n        {\n            \"amount\": 100.0,\n            \"invoiceId\": \"{{invoice_id}}\"\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/payments",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"payments"
+					]
+				},
+				"description": "Create a payment and apply it to the invoice created in the previous step."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					"const today = new Date(); // the date generated will be in UTC, not your local date",
+					"const formattedDate = today.toISOString().split('T')[0];",
+					"pm.globals.set(\"todayDate\", formattedDate);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "productrateplanid",
+			"value": ""
+		},
+		{
+			"key": "productrateplanchargeid",
+			"value": ""
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		},
+		{
+			"key": "account_number",
+			"value": ""
+		},
+		{
+			"key": "order_number",
+			"value": ""
+		},
+		{
+			"key": "subscription",
+			"value": ""
+		},
+		{
+			"key": "invoice_number",
+			"value": ""
+		},
+		{
+			"key": "invoice_id",
+			"value": ""
+		}
+	]
+}

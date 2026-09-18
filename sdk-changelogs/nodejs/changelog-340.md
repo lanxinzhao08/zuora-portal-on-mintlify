@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.4.0 changelog"
+sidebarTitle: "3.4.0"
 ---
-
-# Node.js client library 3.4.0 changelog
-
-
 ## ObjectQueriesApi
 
 * Added support for expanding `invoiceschedulebookings`, `invoiceschedulebookings.order`, and `invoiceschedulebookings.subscription` to the Query InvoiceSchedule and Query InvoiceSchedules methods.

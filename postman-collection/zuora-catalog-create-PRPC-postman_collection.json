@@ -1,0 +1,340 @@
+{
+	"info": {
+		"_postman_id": "12a8540b-609c-492b-bbb9-bb777e270762",
+		"name": "Zuora Catalog — Create Product, Rate Plan, Charge",
+		"description": "This collection is a companion to the Subscription Lifecycle collections from Zuora. This simple collection will create a new product catalog product, product rate plan and product rate plan charge suitable for use with the other collections. Using this collection is entirely optional, if you already have some recurring per unit rate plans in your tenant you should use one of those. You will need to use an Environment configured for your tenant.\n\n## Required Environment Variables\n\nSet up these variables in your Postman environment:\n\n- `base_url`: For example: [https://rest.apisandbox.zuora.com](https://rest.zuora.com) but you must make sure to use YOUR sandbox URL. [This page lists our data centers](https://docs.zuora.com?resourceId=zuora-data-centers) and the associated REST root URLs, if you can login into a Zuora Billing tenant you can compare the root URL of the UI to identify the data center and associated sandbox tenant. DO NOT run this collection against a production tenant, only sandbox.\n    \n- `client_id`: Your OAuth client ID - if you don't have a client id and secret [here are the instructions](/docs/get-started/introduction/) on getting them\n    \n- `client_secret`: Your OAuth client secret\n    \n\n<img src=\"https://content.pstmn.io/288d4200-ed1f-4cdd-b641-2d02cf582cfb/U2NyZWVuc2hvdCAyMDI1LTEwLTAzIGF0IDMuMTMuMjfigK9QTS5wbmc=\">\n\nAlso [instructions on how to do this are in our Basics tutorial](/docs/get-started/basics/).\n\n**Never run this collection in a production tenant.**\n\nMake sure to note the resulting product rate plan id and the product rate plan charge id as they are both needed as inputs to the other collections.\n\nOne of the subscription lifecycle use cases calls for a second recurring per unit rate plan, you can modify the calls here and run Create Product Rate Plan and Create Recurring Monthly Per Unit twice BUT CHANGE THE NAMES of each. Failing to do will result in much confusion. We strongly recommend that every rate plan and every charge have unique names across your entire tenant. Don't call the monthly charges, 'Monthly Charge', include the product and rate plan names. In this collection the charge name is 'Typical Monthly Charge' making clear that this charge belongs to 'Typical Recurring Product'.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45708597",
+		"_collection_link": "https://gold-capsule-135956.postman.co/workspace/YNTEST~b4cbb18b-458c-41cc-b2b9-d0a767753947/collection/45708597-12a8540b-609c-492b-bbb9-bb777e270762?action=share&source=collection_link&creator=45708597"
+	},
+	"item": [
+		{
+			"name": "1. Get OAuth Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    pm.collectionVariables.set('access_token', response.access_token);",
+							"    console.log('OAuth token set successfully');",
+							"} else {",
+							"    console.error('Failed to get OAuth token');",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "{{client_id}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/oauth/token",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Get OAuth access token using client credentials. This token will be automatically used by subsequent requests."
+			},
+			"response": []
+		},
+		{
+			"name": "2. Create Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    pm.collectionVariables.set('productId', pm.response.json().Id);",
+							"    console.log('productId: ' + pm.response.json().Id);",
+							"} else {",
+							"    console.error('Failed to get productId - was product created?');",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"Name\": \"Typical Recurring Product\",\n  \"EffectiveStartDate\": \"2020-01-01\",\n  \"EffectiveEndDate\": \"2099-12-31\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/object/product",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"object",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Create Product Rate Plan",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    pm.collectionVariables.set('productRatePlanId', pm.response.json().Id);",
+							"    console.log('productRatePlanId: ' + pm.response.json().Id);",
+							"} else {",
+							"    console.error('Failed to get productRatePlanId - was product created?');",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"Name\": \"Typical Monthly Plan\",\n  \"ProductId\": \"{{productId}}\",\n  \"ActiveCurrencies\": \"USD\",\n  \"EffectiveStartDate\": \"2020-01-01\",\n  \"EffectiveEndDate\": \"2099-12-31\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/object/product-rate-plan",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"object",
+						"product-rate-plan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Create Recurring Monthly Per Unit Charge",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    pm.collectionVariables.set('productRatePlanChargeId', pm.response.json().Id);",
+							"    console.log('productRatePlanChargeId: ' + pm.response.json().Id);",
+							"} else {",
+							"    console.error('Failed to get productRatePlanChargeId');",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"Name\": \"Typical Monthly Recurring Charge\",\n  \"ProductRatePlanId\": \"{{productRatePlanId}}\",\n  \"ChargeType\": \"Recurring\",\n  \"ChargeModel\": \"Per Unit Pricing\",\n  \"BillingPeriod\": \"Month\",\n  \"BillCycleType\": \"DefaultFromCustomer\",\n  \"DefaultQuantity\": \"1\",\n  \"TriggerEvent\": \"ContractEffective\",\n  \"DeferredRevenueAccount\": \"Accounts Receivable\",\n  \"RecognizedRevenueAccount\": \"Accounts Receivable\",\n  \"ProductRatePlanChargeTierData\": {\n    \"ProductRatePlanChargeTier\": [\n      {\n        \"Price\": 11\n      }\n    ]\n  },\n  \"UOM\": \"Each\"\n}\n"
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/object/product-rate-plan-charge",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"object",
+						"product-rate-plan-charge"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Review",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/catalog/products/{{productId}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"catalog",
+						"products",
+						"{{productId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "productId",
+			"value": ""
+		},
+		{
+			"key": "productRatePlanId",
+			"value": ""
+		},
+		{
+			"key": "productRatePlanChargeId",
+			"value": ""
+		}
+	]
+}

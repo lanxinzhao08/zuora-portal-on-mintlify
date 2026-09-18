@@ -1,10 +1,7 @@
 ---
-seo:
-  title: Single Sign-On For Zephr Sites
+title: "Single Sign-On For Zephr sites"
+sidebarTitle: "Single sign-on for Zephr sites"
 ---
-
-# Single Sign-On For Zephr sites
-
 The following information explains how you would configure single sign-on across Zephr-run sites when using the Zephr Identity Module.
 
 Using single sign-on, after signing-on to Site A, a user can use that sign-on to receive a registered session for Site B (and C, D, etc), when they visit the respective site. This is done through the use of an authentication domain, for example, `<org-name>.auth.zephr.com`.
@@ -37,4 +34,4 @@ To facilitate a user experience that is transparent and informative, integration
 
 ## Single Sign-On Sequence Diagram
 
-![Single-Sign-On-Zephr-SSO-Flow.jpg](../zephr-image/img1_Single-Sign-On-Zephr-SSO-Flow.jpeg)
+![Single-Sign-On-Zephr-SSO-Flow.jpg](/zephr-docs/zephr-image/img1_Single-Sign-On-Zephr-SSO-Flow.jpeg)

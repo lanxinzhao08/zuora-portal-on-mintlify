@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.8.0 changelog"
+sidebarTitle: "3.8.0"
 ---
-
-# Python client library 3.8.0 changelog
-
 ## object\_queries\_api
 
 * Introduced the `include_null_fields` parameter to control inclusion of null fields in the response.
@@ -204,7 +200,7 @@ markdown:
 * Added `field_validator` for `actual_instance` to ensure only one valid schema is matched.
 ## create\_payment\_method\_updater\_batch\_request
 * The type for `updater_account_id` has been changed from `StrictStr` to `Annotated[str, Field(strict=True)]`. This may require updates to code that interacts with this field.
-* Added a field validator for `updater_account_id` to ensure it matches the regular expression /^[0-9a-fA-F]{32}$/.
+* Added a field validator for `updater_account_id` to ensure it matches the regular expression /^[0-9a-fA-F]&#123;32&#125;$/.
 ## create\_payment\_request
 * The `payment_gateway_number` field now uses `Annotated[str, Field(strict=True, max_length=40)]` instead of `Optional[StrictStr]`. This change enforces stricter validation on the field.
 * The `gateway_order_id` field now uses `Optional[StrictStr]` instead of `Annotated[str, Field(strict=True, max_length=50)]`. This change modifies the validation approach for the field.

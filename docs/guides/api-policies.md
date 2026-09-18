@@ -1,13 +1,8 @@
 ---
-seo:
-  title: Zuora API Policies - Zuora
-redirects:
-  /rest-api/general-concepts/api-policy/: {}
+title: "Zuora API policies"
+sidebarTitle: "Policies"
 ---
-
-# Zuora API policies
-
-This is a living document that defines forward compatibility, backward compatibility, versioning and lifecycle design patterns of Zuora APIs. Additions will be made over time as new style and design patterns are adopted and approved. In this spirit, please check in regularly and provide feedback using the Feedback widget or emailing <docs@zuora.com>.
+This is a living document that defines forward compatibility, backward compatibility, versioning and lifecycle design patterns of Zuora APIs. Additions will be made over time as new style and design patterns are adopted and approved. In this spirit, please check in regularly and provide feedback using the Feedback widget or emailing [docs@zuora.com](mailto:docs@zuora.com).
 
 ## Compatibility policy
 
@@ -45,12 +40,12 @@ Zuora considers the following changes to be backwards-compatible:
 
 The following limits are applicable to Zuora API:
 
-* Zuora API requests are subject to the [Rate and concurrent request limits](./rate-limits.md).
+* Zuora API requests are subject to the [Rate and concurrent request limits](/docs/guides/rate-limits).
 * Zuora API is subject to Zuora Data Retention Policy. The retention period of deleted data is 30 days. You can only retrieve deleted data for 30 days through Zuora API.
 
 
 ## Stay informed
 
-The [API Changelog](../get-started/changelogs/v1-api-changelog.md) outlines the latest API updates and documentation updates.
+The [API Changelog](/docs/get-started/changelogs/v1-api-changelog) outlines the latest API updates and documentation updates.
 
-We would love to hear your feedback on how we can improve it. If you have any comments on the API Changelog, please send an e-mail to <docs@zuora.com>. Thank you!
+We would love to hear your feedback on how we can improve it. If you have any comments on the API Changelog, please send an e-mail to [docs@zuora.com](mailto:docs@zuora.com). Thank you!

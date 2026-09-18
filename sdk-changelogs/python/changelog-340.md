@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Python client library 3.4.0 changelog"
+sidebarTitle: "3.4.0"
 ---
-
-# Python client library 3.4.0 changelog
-
 ## \_\_init\_\_
 
 * Added CustomObjectDefinitionRelationship model.

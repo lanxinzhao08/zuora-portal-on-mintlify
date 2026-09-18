@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.8.0 changelog"
+sidebarTitle: "3.8.0"
 ---
-
-# Java client library 3.8.0 changelog
-
 ## ObjectQueriesApi
 
 * Introduced the `includeNullFields` parameter to control the inclusion of null fields in the response.

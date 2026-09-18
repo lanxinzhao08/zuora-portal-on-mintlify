@@ -1,13 +1,6 @@
 ---
-markdown:
-  toc:
-    hide: true
-redirects:
-  /api-references/quickstart-api/tag/Request-and-Response-Compression/: {}
+title: "Request and response compression"
 ---
-
-# Request and response compression
-
 The Zuora API supports uploading gzipped file as payload, and compressing responses that contain large volume of data.
 
 ## Request Compression

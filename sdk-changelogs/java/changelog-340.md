@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Java client library 3.4.0 changelog"
+sidebarTitle: "3.4.0"
 ---
-
-# Java client library 3.4.0 changelog
-
-
 ## ZuoraClient
 
 * The constructor ZuoraClient(String clientId, String clientSecret, String zuoraBaseUrl) now uses ZuoraClientConfig for configuration, which may require updates to how instances are created.

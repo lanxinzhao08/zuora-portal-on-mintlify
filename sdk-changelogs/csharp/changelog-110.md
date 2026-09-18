@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.1.0 changelog"
+sidebarTitle: "1.1.0"
 ---
-
-# C# client library 1.1.0 changelog
-
 ## InvoicesApi
 
 * Added optional parameters `pageSize` and `page` to the GetInvoiceApplicationParts and GetInvoiceApplicationPartsAsync methods, allowing for pagination of results.

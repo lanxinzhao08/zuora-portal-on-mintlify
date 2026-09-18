@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.0.0-beta.3 changelog"
+sidebarTitle: "1.0.0-beta.3"
 ---
-
-# C# client library 1.0.0-beta.3 changelog
-
-
 ## BulkUpdateOrderLineItem
 
 * Added a new parameter `communicationProfileId` to the BulkUpdateOrderLineItem constructor.

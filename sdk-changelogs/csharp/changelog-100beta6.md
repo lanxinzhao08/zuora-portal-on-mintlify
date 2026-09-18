@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.0.0-beta.6 changelog"
+sidebarTitle: "1.0.0-beta.6"
 ---
-
-# C# client library 1.0.0-beta.6 changelog
-
-
 ## CreditMemosApi
 
 * Added method `DownloadEInvoiceFileForCreditMemo` to provide downloadable content in binary format of the E-Invoice file for a given billing document.
@@ -53,7 +48,7 @@ markdown:
 
 ## CreateAccountingCodeRequest
 
-* Added a new parameter `segmentConstantValues` of type Dictionary<string, Object> to the CreateAccountingCodeRequest constructor.
+* Added a new parameter `segmentConstantValues` of type Dictionary&lt;string, Object> to the CreateAccountingCodeRequest constructor.
 
 ## CreateOrderSubscription
 * Added a new `notes` parameter to the CreateOrderSubscription constructor, allowing developers to include additional notes when creating an order subscription.

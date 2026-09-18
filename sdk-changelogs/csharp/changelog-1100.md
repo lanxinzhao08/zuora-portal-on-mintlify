@@ -1,12 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.10.0 changelog"
+sidebarTitle: "1.10.0"
 ---
-
-# C# client library 1.10.0 changelog
-
-
 ## CreditMemosApi
 
 * Added optional parameter `transactionId` to the following methods: UpdateCreditMemoInvokeSyncStatus, UpdateCreditMemoInvokeSyncStatusWithHttpInfo, UpdateCreditMemoInvokeSyncStatusAsync, UpdateCreditMemoInvokeSyncStatusWithHttpInfoAsync.

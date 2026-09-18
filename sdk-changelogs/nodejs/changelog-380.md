@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "Node.js client library 3.8.0 changelog"
+sidebarTitle: "3.8.0"
 ---
-
-# Node.js client library 3.8.0 changelog
-
 ## ObjectQueriesApi
 * Introduced the `include_null_fields` parameter to control inclusion of null fields in the response.
 * Added queryCommitmentByKey and queryCommitmentByKeyWithHttpInfo methods for querying Commitment objects by key.

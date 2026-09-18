@@ -1,11 +1,7 @@
 ---
-markdown:
-  toc:
-    hide: false
+title: "C# client library 1.4.0 changelog"
+sidebarTitle: "1.4.0"
 ---
-
-# C# client library 1.4.0 changelog
-
 ## ContactSnapshotsApi
 
 * Removed `page` and `pageSize` parameters from GetContactSnapshot and GetContactSnapshotAsync methods, which may affect pagination handling in existing implementations.
@@ -63,7 +59,7 @@ markdown:
 
 ## AddSubscriptionRatePlan
 
-* Added validation for ProductRatePlanId to ensure it matches the pattern ^[0-9a-fA-F]{32}$.
+* Added validation for ProductRatePlanId to ensure it matches the pattern ^[0-9a-fA-F]&#123;32&#125;$.
 
 ## BillRunFilter
 

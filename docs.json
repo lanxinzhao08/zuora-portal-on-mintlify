@@ -6,13 +6,16 @@
   "colors": {
     "primary": "#007079",
     "light": "#02929C",
-    "dark": "#00C7B1"
+    "dark": "#008C7F"
   },
   "favicon": "/favicon.png",
   "logo": {
     "light": "/images/zuora-logo-full-color.png",
     "dark": "/images/logo.png",
     "href": "/"
+  },
+  "appearance": {
+    "default": "light"
   },
   "navigation": {
     "tabs": [

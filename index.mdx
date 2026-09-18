@@ -4,17 +4,66 @@ description: "Automate billing, manage subscriptions, and extend Zuora's capabil
 mode: custom
 ---
 
-<div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-[#e6f3f7] px-6 py-20 text-center dark:bg-[#082f33] md:py-28">
-  <div className="mx-auto max-w-5xl">
-    <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#007079] dark:text-[#70d5dc]">Zuora Developer Center</p>
-    <h1 className="m-0 text-4xl font-bold tracking-tight text-black dark:text-white md:text-6xl">Welcome, Zuora Developers!</h1>
-    <p className="mx-auto mt-5 max-w-3xl text-lg text-slate-600 dark:text-slate-300 md:text-xl">Automate billing, manage subscriptions, and extend Zuora's capabilities.</p>
-  </div>
-</div>
+<section className="relative overflow-hidden border-b border-slate-200/70 bg-gradient-to-br from-[#eef9fa] via-white to-[#eef1fb] dark:border-white/10 dark:from-[#061f22] dark:via-[#0b171a] dark:to-[#14182a]">
+  <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#00c7b1]/15 blur-3xl dark:bg-[#00c7b1]/10" />
+  <div className="pointer-events-none absolute -bottom-32 left-1/3 h-72 w-72 rounded-full bg-[#6383d3]/15 blur-3xl dark:bg-[#6383d3]/10" />
+  <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 sm:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16 lg:px-8 lg:py-28">
+    <div>
+      <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-[#007079] dark:text-[#54ddd0]">Zuora Developer Center</p>
+      <h1 className="m-0 max-w-3xl text-5xl font-semibold tracking-[-0.04em] text-slate-950 dark:text-white sm:text-6xl lg:text-7xl">Welcome, Zuora Developers!</h1>
+      <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300 sm:text-xl">Automate billing, manage subscriptions, and extend Zuora's capabilities.</p>
+      <div className="mt-9 flex flex-wrap gap-3">
+        <a href="/docs/get-started/introduction" className="inline-flex items-center rounded-lg bg-[#007079] px-5 py-3 text-sm font-semibold text-white no-underline shadow-sm transition hover:bg-[#005a61] hover:text-white dark:bg-[#00c7b1] dark:text-slate-950 dark:hover:bg-[#39d8c8] dark:hover:text-slate-950">
+          Get started
+          <span aria-hidden="true" className="ml-2">→</span>
+        </a>
+        <a href="/v1-api-reference/introduction" className="inline-flex items-center rounded-lg border border-slate-300 bg-white/80 px-5 py-3 text-sm font-semibold text-slate-800 no-underline shadow-sm backdrop-blur transition hover:border-[#02929c] hover:text-[#007079] dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:border-[#00c7b1] dark:hover:text-[#54ddd0]">
+          Explore API reference
+        </a>
+      </div>
+    </div>
 
-<div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-gradient-to-r from-[#02929c] to-[#6383d3] px-6 py-14">
-  <div className="mx-auto max-w-7xl">
-    <h2 className="mb-8 text-center text-3xl font-semibold text-white">Get started</h2>
+    <div className="rounded-2xl border border-white/80 bg-white/80 p-3 shadow-xl shadow-[#007079]/10 backdrop-blur dark:border-white/10 dark:bg-white/5 dark:shadow-black/20">
+      <a href="/v1-api-reference/introduction" className="group block rounded-xl border border-slate-200 bg-white p-5 no-underline transition hover:-translate-y-0.5 hover:border-[#02929c]/60 hover:shadow-md dark:border-white/10 dark:bg-white/5 dark:hover:border-[#00c7b1]/50">
+        <div className="flex items-start gap-4">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#e6f3f7] text-[#007079] dark:bg-[#00c7b1]/15 dark:text-[#54ddd0]">01</div>
+          <div>
+            <p className="m-0 font-semibold text-slate-950 group-hover:text-[#007079] dark:text-white dark:group-hover:text-[#54ddd0]">Zuora Billing</p>
+            <p className="mb-0 mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Create accounts, subscriptions, invoices, and orders.</p>
+          </div>
+        </div>
+      </a>
+      <a href="/docs/get-started/tutorials/collect-payments" className="group mt-3 block rounded-xl border border-slate-200 bg-white p-5 no-underline transition hover:-translate-y-0.5 hover:border-[#02929c]/60 hover:shadow-md dark:border-white/10 dark:bg-white/5 dark:hover:border-[#00c7b1]/50">
+        <div className="flex items-start gap-4">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#eef1fb] text-[#536eb5] dark:bg-[#6383d3]/15 dark:text-[#9caee2]">02</div>
+          <div>
+            <p className="m-0 font-semibold text-slate-950 group-hover:text-[#007079] dark:text-white dark:group-hover:text-[#54ddd0]">Zuora Payments</p>
+            <p className="mb-0 mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Embed payment forms, collect payments, and issue refunds.</p>
+          </div>
+        </div>
+      </a>
+      <a href="/docs/guides/expand-filter-fields-sort" className="group mt-3 block rounded-xl border border-slate-200 bg-white p-5 no-underline transition hover:-translate-y-0.5 hover:border-[#02929c]/60 hover:shadow-md dark:border-white/10 dark:bg-white/5 dark:hover:border-[#00c7b1]/50">
+        <div className="flex items-start gap-4">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#f0ebfa] text-[#7150a4] dark:bg-[#8566b3]/15 dark:text-[#b9a3d9]">03</div>
+          <div>
+            <p className="m-0 font-semibold text-slate-950 group-hover:text-[#007079] dark:text-white dark:group-hover:text-[#54ddd0]">Zuora Platform</p>
+            <p className="mb-0 mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Query data, define custom objects, and automate workflows.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section className="bg-white py-20 dark:bg-[#0b1012] sm:py-24">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="mb-10 flex items-end justify-between gap-6">
+      <div>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#007079] dark:text-[#54ddd0]">Start building</p>
+        <h2 className="m-0 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-4xl">Get started</h2>
+      </div>
+      <a href="/docs/get-started/introduction" className="hidden text-sm font-semibold text-[#007079] no-underline hover:text-[#005a61] dark:text-[#54ddd0] dark:hover:text-[#7ee6dc] sm:block">Read the introduction →</a>
+    </div>
     <CardGroup cols={3}>
       <Card title="Get Started & FAQs" icon="play-circle" href="/docs/get-started/introduction">
         <ul>
@@ -58,11 +107,14 @@ mode: custom
       </Card>
     </CardGroup>
   </div>
-</div>
+</section>
 
-<div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-[#e6f3f7] px-6 py-16 dark:bg-[#0b2528]">
-  <div className="mx-auto max-w-7xl">
-    <h2 className="mb-8 text-center text-3xl font-semibold text-black dark:text-white">Explore the APIs</h2>
+<section className="border-y border-slate-200/70 bg-slate-50 py-20 dark:border-white/10 dark:bg-[#101719] sm:py-24">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="mb-10 max-w-2xl">
+      <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#007079] dark:text-[#54ddd0]">Build by product or task</p>
+      <h2 className="m-0 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-4xl">Explore the APIs</h2>
+    </div>
     <Tabs>
       <Tab title="Products">
         <CardGroup cols={3}>
@@ -158,11 +210,14 @@ mode: custom
       </Tab>
     </Tabs>
   </div>
-</div>
+</section>
 
-<div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-[#e8eef6] px-6 py-16 dark:bg-[#111d2b]">
-  <div className="mx-auto max-w-5xl">
-    <h2 className="mb-8 text-center text-3xl font-semibold text-black dark:text-white">Explore the SDKs</h2>
+<section className="bg-white py-20 dark:bg-[#0b1012] sm:py-24">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="mb-10 max-w-2xl">
+      <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#007079] dark:text-[#54ddd0]">Use your preferred language</p>
+      <h2 className="m-0 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-4xl">Explore the SDKs</h2>
+    </div>
     <CardGroup cols={2}>
       <Card title="Zuora Billing SDKs" icon="code" href="/docs/guides/libraries">
         <ul>
@@ -181,11 +236,14 @@ mode: custom
       </Card>
     </CardGroup>
   </div>
-</div>
+</section>
 
-<div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-white px-6 py-16 dark:bg-[#101314]">
-  <div className="mx-auto max-w-7xl">
-    <h2 className="mb-8 text-center text-3xl font-semibold text-black dark:text-white">Other Developer Resources</h2>
+<section className="border-t border-slate-200/70 bg-gradient-to-br from-[#eef9fa] to-[#eef1fb] py-20 dark:border-white/10 dark:from-[#0b2528] dark:to-[#151b2e] sm:py-24">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="mb-10 max-w-2xl">
+      <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#007079] dark:text-[#54ddd0]">Learn, monitor, and connect</p>
+      <h2 className="m-0 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-4xl">Other Developer Resources</h2>
+    </div>
     <CardGroup cols={3}>
       <Card title="System Status" icon="signal" href="https://one.zuora.com/one-id/private-trust">Monitor the status, performance, and reliability of Zuora services. Login required.</Card>
       <Card title="Developer Blog" icon="newspaper" href="/blogs/introduction">Read stories from our trenches and stay current with Zuora.</Card>
@@ -194,4 +252,4 @@ mode: custom
       <Card title="Support" icon="life-ring" href="https://support.zuora.com/">Get help from the Zuora Support Center.</Card>
     </CardGroup>
   </div>
-</div>
+</section>

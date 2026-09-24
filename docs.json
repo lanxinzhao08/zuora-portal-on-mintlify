@@ -33,6 +33,7 @@
             ],
             "expanded": false
           },
+          "docs/guides/api-policies",
           {
             "group": "Tutorials",
             "pages": [
@@ -55,16 +56,16 @@
                   },
                   "docs/get-started/tutorials/create-orders",
                   "docs/get-started/tutorials/view-invoice",
+                  "docs/get-started/tutorials/subscription-lifecycle-tutorial",
                   {
                     "group": "Manage user account",
+                    "expanded": false,
                     "pages": [
                       "docs/get-started/tutorials/cancel-subscription",
                       "docs/get-started/tutorials/check-account-details",
                       "docs/get-started/tutorials/view-all-invoices"
-                    ],
-                    "expanded": false
-                  },
-                  "docs/get-started/tutorials/subscription-lifecycle-tutorial"
+                    ]
+                  }
                 ],
                 "expanded": false
               },
@@ -125,7 +126,6 @@
             ],
             "expanded": false
           },
-          "docs/guides/api-policies",
           {
             "group": "Zephr",
             "pages": [
@@ -339,6 +339,7 @@
               "v1-api-reference/introduction",
               "v1-api-reference/object-model",
               "v1-api-reference/cors-rest",
+              "v1-api-reference/api-object-names",
               {
                 "group": "API versions",
                 "pages": [
@@ -347,7 +348,6 @@
                   "v1-api-reference/api-upgrade-guide"
                 ]
               },
-              "v1-api-reference/api-object-names",
               {
                 "group": "Endpoints",
                 "openapi": {
